@@ -1,17 +1,34 @@
 "use client"
-import React, { useState } from 'react';
-import './AuthPage.css';
-import {ChevronLeft, Eye, EyeOff, LockKeyhole, Mail, User} from "lucide-react";
+import React, {useEffect, useState} from 'react';
+import './auth.css';
+import {ChevronLeft, Eye, EyeOff, LockKeyhole, Mail, Phone, User} from "lucide-react";
 import {sileo} from "sileo";
 import Link from "next/link";
+import {useAuthStore} from "@/data/store/useAuthStore";
+import {useRouter} from "next/navigation";
+import {authApi} from "@/data/AuthApi";
 
 export default function AuthPage() {
-    const [activeTab, setActiveTab] = useState('login'); // 'login' | 'register'
+    const [activeTab, setActiveTab] = useState('login');
+    const { setAuth, isAuth } = useAuthStore();
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
 
     // Состояния для полей пароля
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showLoginPassword, setShowLoginPassword] = useState(false);
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
+    useEffect(() => {
+        if (isHydrated && isAuth) {
+            router.replace('/agent');
+        }
+    }, [isAuth, isHydrated, router]);
 
     const [loginData, setLoginData] = useState({
         email: "",
@@ -21,55 +38,59 @@ export default function AuthPage() {
     const [registerData, setRegisterData] = useState({
         name: '',
         email: '',
+        phone: '',
         password: '',
         confirmPassword: ''
     });
 
     const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
-        setLoginData(prev => ({...prev, [name]: value}))
-    }
-
-    const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setRegisterData(prev => ({...prev, [name]: value}));
+        setLoginData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleRegisterSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setRegisterData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleRegisterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Валидация
         if (registerData.password !== registerData.confirmPassword) {
-            sileo.error({
-                title: "Ошибка",
-                description: "Пароли не совпадают"
-            });
-            return;
+            return sileo.error({ title: "Ошибка", description: "Пароли не совпадают" });
         }
 
-        if (registerData.password.length < 6) {
-            sileo.error({
-                title: "Ошибка",
-                description: "Пароль должен быть не менее 6 символов"
-            });
-            return;
-        }
-    }
+        setLoading(true);
+        try {
+            const payload = {
+                fullName: registerData.name,
+                email: registerData.email,
+                phone: registerData.phone,
+                password: registerData.password
+            };
 
-    const handleLoginSubmit = async (e) => {
+            await authApi.register(payload);
+
+            sileo.success({ title: "Успех!", description: "Регистрация прошла успешно. Теперь войдите." });
+            setActiveTab('login');
+        } catch (error: any) {
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
 
-        // Простой success тост
-        if (loginData.email && loginData.password) {
-            sileo.success({
-                title: "Добро пожаловать!",
-                description: `Вы успешно вошли в систему`,
-            });
-        } else {
-            sileo.error({
-                title: "Ошибка",
-                description: "Заполните все поля"
-            });
+        try {
+            const data = await authApi.login(loginData);
+            setAuth(data.accessToken, data.refreshToken);
+
+            sileo.success({ title: "Успех!", description: "Добро пожаловать"});
+            router.push('/agent');
+        } catch (err: any) {
+            sileo.error({ title: "Ошибка", description: "Неверный логин или пароль" });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -141,15 +162,30 @@ export default function AuthPage() {
                                 </div>
 
                                 <div className="auth-field">
-                                    <label className="auth-field__label">Почта</label>
-                                    <div className="auth-input-wrapper">
+                                <label className="auth-field__label">Почта</label>
+                                <div className="auth-input-wrapper">
                                     <span className="auth-input-wrapper__icon">
                                         <Mail size={15} color={"#99A1AF"}/>
                                     </span>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={registerData.email}
+                                        onChange={handleRegisterChange}
+                                        className="auth-input auth-input--with-icon"
+                                    />
+                                </div>
+                            </div>
+                                <div className="auth-field">
+                                    <label className="auth-field__label">Номер телефона</label>
+                                    <div className="auth-input-wrapper">
+                                    <span className="auth-input-wrapper__icon">
+                                        <Phone size={15} color={"#99A1AF"}/>
+                                    </span>
                                         <input
-                                            type="email"
-                                            name="email"
-                                            value={registerData.email}
+                                            type="tel"
+                                            name="phone"
+                                            value={registerData.phone}
                                             onChange={handleRegisterChange}
                                             className="auth-input auth-input--with-icon"
                                         />
@@ -202,7 +238,9 @@ export default function AuthPage() {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="auth-btn">Зарегистрироваться</button>
+                                <button type="submit" disabled={loading} className="auth-btn">
+                                    {loading ? "Загрузка..." : "Зарегистрироваться"}
+                                </button>
 
                                 <div className="auth-footer">
                                     <span>Уже есть аккаунт? <button className="auth-footer__link" onClick={() => setActiveTab('login')}>Авторизация</button></span>
@@ -244,7 +282,9 @@ export default function AuthPage() {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="auth-btn">Войти</button>
+                                <button type="submit" disabled={loading} className="auth-btn">
+                                    {loading ? "Вход..." : "Войти"}
+                                </button>
 
                                 <div className="auth-footer">
                                     <button type="button" className="auth-footer__link">Забыли пароль?</button>
