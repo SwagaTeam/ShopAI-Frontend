@@ -1,0 +1,311 @@
+/* AuthPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #F4F7FB;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-page__back-btn {
+    position: absolute;
+    top: 40px;
+    left: 52%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.auth-page__container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+/* Декоративные элементы слева */
+.auth-decor {
+    position: relative;
+    width: 800px;
+    height: 100vh;
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .auth-decor {
+        display: block;
+    }
+}
+
+.auth-decor__item {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px #00000040;
+}
+.auth-decor__item--small {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.auth-decor__item--super-small {
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.auth-decor__item--white {
+    background-color: #FFFFFF;
+}
+
+.auth-decor__item--blue {
+    background: linear-gradient(135deg, #155DFC 0%, #1447E6 100%);
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.auth-decor__dot {
+    position: absolute;
+    top: -16px;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #155DFC 0%, #1447E6 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px -4px #0000001A;
+}
+
+.auth-decor__item--blue .auth-decor__dot {
+    background: linear-gradient(135deg, #2B7FFF 0%, #155DFC 100%);
+    box-shadow: 0 4px 6px -4px #0000001A;
+    width: 40px;
+    height: 40px;
+    top: -20px;
+}
+
+.auth-decor__item--small .auth-decor__dot {
+    position: absolute;
+    top: -16px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #155DFC 0%, #1447E6 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px -4px #0000001A;
+}
+
+.auth-decor__item--super-small .auth-decor__dot {
+    position: absolute;
+    top: -16px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #155DFC 0%, #1447E6 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px -4px #0000001A;
+}
+
+.auth-decor__dot--left { left: 18%; }
+.auth-decor__dot--right { right: 18%; }
+
+/* Позиционирование плавающих блоков (на основе макета) */
+.auth-decor__item:nth-child(1) { top: 15%; left: 20%; }
+.auth-decor__item:nth-child(2) { top: 30%; left: 60%; }
+.auth-decor__item:nth-child(3) { top: 50%; left: 40%; }
+.auth-decor__item:nth-child(4) { top: 70%; left: 10%; }
+
+
+/* Карточка авторизации */
+.auth-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+    margin-left: auto;
+    margin-right: 80px;
+}
+
+.auth-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.auth-card__logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #155DFC 0%, #1447E6 100%);
+    border-radius: 10px;
+}
+
+.auth-card__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #101828;
+    margin: 0;
+}
+
+/* Табы Вход / Регистрация */
+.auth-tabs {
+    display: flex;
+    background-color: #F3F4F6;
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 31px;
+}
+
+.auth-tabs__btn {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4A5565;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-tabs__btn--active {
+    background-color: #155DFC;
+    color: #fff;
+    box-shadow: 0 2px 4px -2px #0000001A;
+
+}
+
+/* Поля ввода */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth-field__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #364153;
+}
+
+.auth-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-input-wrapper__icon {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    color: #9CA3AF;
+}
+
+.auth-input-wrapper__action {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #9CA3AF;
+    padding: 0;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.auth-input::placeholder {
+    color: #0A0A0A80;
+}
+
+.auth-input:focus {
+    border-color: #1A56DB;
+}
+
+.auth-input--with-icon {
+    padding-left: 40px;
+}
+
+.auth-input--with-action {
+    padding-right: 40px;
+}
+
+/* Кнопка */
+.auth-btn {
+    margin-top: 10px;
+    background-color: #1A56DB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.2);
+}
+
+.auth-btn:hover {
+    background-color: #1E40AF;
+}
+
+.auth-btn:active {
+    transform: translateY(1px);
+}
+
+/* Футер формы */
+.auth-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.auth-footer__link {
+    color: #1A56DB;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.auth-footer__link:hover {
+    text-decoration: underline;
+}

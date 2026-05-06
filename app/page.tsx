@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import {MessageCircleMore, MessageSquareMore, Puzzle, Send, Zap} from "lucide-react";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
@@ -22,8 +23,8 @@ export default function LandingPage() {
               </nav>
 
               <div className={styles.headerActions}>
-                <a href="#" className={styles.loginLink}>Войти</a>
-                <button className={styles.btnPrimary}>Создать магазин</button>
+                <Link href={"/auth"} className={styles.loginLink}>Войти</Link>
+                <Link href={"/auth"} className={styles.btnPrimary}>Создать магазин</Link>
               </div>
             </div>
           </header>
