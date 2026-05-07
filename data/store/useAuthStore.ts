@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { jwtDecode } from 'jwt-decode'; // Импортируем декодер
+import { jwtDecode } from 'jwt-decode';
 
 interface MyJwtPayload {
     sub?: string;

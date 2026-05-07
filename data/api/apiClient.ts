@@ -1,10 +1,8 @@
 import axios from "axios";
 import {useAuthStore} from "@/data/store/useAuthStore";
 
-export const API_URL = "http://localhost:5000/api"
-
 export const apiClient = axios.create({
-    baseURL: API_URL,
+    baseURL: "/api/",
 });
 
 // Добавление токена к каждому запросу
@@ -26,7 +24,7 @@ apiClient.interceptors.response.use(
 
             try {
                 const { refreshToken } = useAuthStore.getState();
-                const response = await axios.post(`${API_URL}/Auth/refresh`, {
+                const response = await axios.post(`/api/Auth/refresh`, {
                     refresh_token: refreshToken
                 });
 
