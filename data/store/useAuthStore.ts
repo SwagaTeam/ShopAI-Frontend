@@ -1,12 +1,19 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { jwtDecode } from 'jwt-decode'; // Импортируем декодер
+
+interface MyJwtPayload {
+    sub?: string;
+    FullName?: string;
+    id?: string;
+}
 
 interface AuthState {
     token: string | null;
     refreshToken: string | null;
     userId: string | null;
+    fullName: string | null;
     isAuth: boolean;
-    // Действия
     setAuth: (token: string, refreshToken: string) => void;
     clearAuth: () => void;
 }
@@ -17,13 +24,28 @@ export const useAuthStore = create<AuthState>()(
             token: null,
             refreshToken: null,
             userId: null,
+            fullName: null,
             isAuth: false,
 
-            setAuth: (token, refreshToken) =>
-                set({ token, refreshToken, isAuth: true }),
+            setAuth: (token, refreshToken) => {
+                const decoded = jwtDecode<MyJwtPayload>(token);
+                set({
+                    token,
+                    refreshToken,
+                    isAuth: true,
+                    userId: decoded.sub || decoded.id || null,
+                    fullName: decoded.FullName || null
+                });
+            },
 
             clearAuth: () =>
-                set({ token: null, refreshToken: null, userId: null, isAuth: false }),
+                set({
+                    token: null,
+                    refreshToken: null,
+                    userId: null,
+                    fullName: null,
+                    isAuth: false
+                }),
         }),
         {
             name: 'auth-storage',

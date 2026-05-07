@@ -15,6 +15,13 @@
     font-weight: 700;
 }
 
+.dev h1 {
+    color: #155DFC;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: -20px;
+}
+
 .btnPrimary {
     background: #155DFC;
     color: #FFFFFF;

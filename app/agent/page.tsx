@@ -3,18 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import './agent.css';
 import { useRouter } from "next/navigation";
-import {useAuthStore} from "@/data/store/useAuthStore";
+import { useAuthStore } from "@/data/store/useAuthStore";
 
 export default function AgentPage() {
     const router = useRouter();
-    const { clearAuth, isAuth } = useAuthStore();
+    const { clearAuth, isAuth, fullName } = useAuthStore();
     const [isHydrated, setIsHydrated] = useState(false);
 
     useEffect(() => {
         setIsHydrated(true);
     }, []);
 
-    // Если юзер не авторизован — выкидываем на страницу входа
     useEffect(() => {
         if (isHydrated && !isAuth) {
             router.replace('/auth');
@@ -33,7 +32,8 @@ export default function AgentPage() {
 
     return (
         <div className="dev">
-            <p>В разработке</p>
+            <h1>Привет, </h1>
+            <p>{fullName || 'Пользователь'}!</p>
             <button
                 onClick={handleLogout}
                 className="btnPrimary"
