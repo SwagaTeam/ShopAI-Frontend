@@ -1,18 +1,16 @@
 import React from 'react';
 import styles from './styles.module.css';
-import {MessageCircleMore, MessageSquareMore, Puzzle, Send, Zap} from "lucide-react";
+import {Heart, Lightbulb, MessageSquareMore, Send, Zap} from "lucide-react";
 import Link from "next/link";
 
 export default function LandingPage() {
   return (
       <div className={styles.pageWrapper}>
-        {/* Секция с голубым фоном (Header + Hero + Stats) */}
-
         <div className={styles.topBackground}>
           <header className={styles.header}>
             <div className={styles.headerContent}>
               <div className={styles.logo}>
-                <div className={styles.logoIcon}></div>
+                <img src={"/images/logo.svg"} alt="logo" />
                 <span className={styles.logoText}>ShopAI</span>
               </div>
 
@@ -23,79 +21,86 @@ export default function LandingPage() {
               </nav>
 
               <div className={styles.headerActions}>
-                <Link href={"/auth"} className={styles.loginLink}>Войти</Link>
-                <Link href={"/auth"} className={styles.btnPrimary}>Создать магазин</Link>
+                <Link href={"/auth"} className={styles.loginLink}></Link>
+                <Link href={"/auth"} className={styles.btnPrimary}>Войти</Link>
               </div>
             </div>
           </header>
           <div className={styles.container}>
-            {/* HERO */}
             <section className={styles.hero}>
               <div className={styles.heroContent}>
                 <h1 className={styles.heroTitle}>
-                  Соберите интернет-<br />магазин как<br />конструктор
+                  Шоппинг, который понимает вас
                 </h1>
                 <p className={styles.heroSubtitle}>
-                  Опишите идею в чате — получите готовый магазин за 60<br />
-                  секунд. Без знаний кода и дизайна.
+                  ИИ найдет нужные товары среди 100 000+ предложений. Без листания и фильтров.
                 </p>
                 <div className={styles.heroButtons}>
                   <button className={`${styles.btnPrimary} ${styles.btnLarge}`}>
-                    Создать магазин с помощью ИИ
+                    Подобрать товар с ИИ
                   </button>
                   <button className={`${styles.btnOutline} ${styles.btnLarge}`}>
-                    Смотреть демо
+                    Смотреть каталог
                   </button>
                 </div>
               </div>
 
               <div className={styles.heroIllustration}>
-                {/* Имитация плавающих карточек из макета */}
-                <div className={`${styles.floatingCard} ${styles.cardCatalog}`}>
-                  <div className={styles.cardHeader}>
-                    <div className={styles.dotGroup}><span className={styles.dot}></span><span className={styles.dot}></span><span className={styles.dot}></span></div>
-                    <span>Каталог</span>
+
+                {/* Синий баббл запроса */}
+                <div className={`${styles.floatingElement} ${styles.requestBubble}`}>
+                  Найди подарок маме до 3000₽
+                  <span className={styles.blueDotAttach}></span>
+                </div>
+
+                {/* Задняя карточка (с подарком) */}
+                <div className={`${styles.floatingElement} ${styles.cardBack}`}>
+                  <span className={styles.blueDotAttach}></span>
+                  <div className={styles.cardImage}>
+                    <img className={styles.emoji} src="/images/gift.png" alt="Подарок" />
                   </div>
-                  <div className={styles.cardGrid}>
-                    <div className={styles.cardBox}></div><div className={styles.cardBox}></div>
-                    <div className={styles.cardBox}></div><div className={styles.cardBox}></div>
+                  <div className={styles.cardSkeleton}>
+                    <div className={styles.skeletonLineLong}></div>
+                    <div className={styles.skeletonLineShort}></div>
+                  </div>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.skeletonButton}></div>
                   </div>
                 </div>
 
-                <div className={`${styles.floatingCard} ${styles.cardCart}`}>
-                  <div className={styles.cardHeader}>
-                    <div className={styles.dotGroup}><span className={styles.dot}></span><span className={styles.dot}></span></div>
-                    <span>Корзина</span>
+                {/* Передняя карточка (с пакетами) */}
+                <div className={`${styles.floatingElement} ${styles.cardFront}`}>
+                  <div className={styles.cardImage}>
+                    <img className={styles.emoji} src="/images/shoping.png" alt="Результаты поиска" />
                   </div>
-                  <div className={styles.cardLines}>
-                    <div className={styles.line}></div>
-                    <div className={styles.line}></div>
+                  <div className={styles.cardSkeleton}>
+                    <div className={styles.skeletonLineLong}></div>
+                    <div className={styles.skeletonLineShort}></div>
+                  </div>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.skeletonButton}></div>
+                    <div className={styles.yellowDots}>
+                      <span></span><span></span><span></span>
+                    </div>
                   </div>
                 </div>
 
-                <div className={`${styles.floatingCard} ${styles.cardCheckout}`}>
-                  <div className={styles.cardHeader}>
-                    <div className={styles.checkIcon}></div>
-                    <span>Оформление</span>
-                  </div>
-                  <div className={styles.formLines}>
-                    <div className={styles.formInput}></div>
-                    <div className={styles.formInput}></div>
-                    <div className={styles.formButton}></div>
-                  </div>
+                {/* Белый баббл ответа */}
+                <div className={`${styles.floatingElement} ${styles.responseBubble}`}>
+                  Нашел 12 отличных вариантов! Вот топ-3 по отзывам.
                 </div>
+
               </div>
             </section>
 
-            {/* STATS */}
             <section className={styles.stats}>
               <div className={styles.statItem}>
-                <div className={styles.statValue}>10 000+</div>
-                <div className={styles.statLabel}>магазинов</div>
+                <div className={styles.statValue}>100 000+</div>
+                <div className={styles.statLabel}>товаров</div>
               </div>
               <div className={styles.statItem}>
                 <div className={styles.statValue}>60 сек</div>
-                <div className={styles.statLabel}>создание</div>
+                <div className={styles.statLabel}>подбор товара</div>
               </div>
               <div className={styles.statItem}>
                 <div className={styles.statValue}>24/7</div>
@@ -105,59 +110,52 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Секция с белым фоном (Особенности + Демо) */}
         <div className={styles.bottomBackground}>
           <div className={styles.container}>
-
-            {/* FEATURES HEADER */}
             <section className={styles.featuresSection}>
-              <h2 className={styles.sectionTitle}>Всё просто как LEGO</h2>
-              <p className={styles.sectionSubtitle}>Никакого кода. Только идеи.</p>
+              <h2 className={styles.sectionTitle}>Персональный шоппинг-ассистент</h2>
+              <p className={styles.sectionSubtitle}>ИИ, который знает, что вам нужно.</p>
 
               <div className={styles.featuresGrid}>
                 <div className={styles.featureCard}>
                   <div className={styles.featureIconWrap}>
-                    <MessageCircleMore color={"#155DFC"} size={28}/>
+                    <Lightbulb color={"#155DFC"} size={28}/>
                   </div>
-                  <h3 className={styles.featureTitle}>ИИ-конструктор</h3>
-                  <p className={styles.featureDesc}>Создайте магазин через диалог с ИИ-агентом</p>
-                </div>
-
-                <div className={styles.featureCard}>
-                  <div className={styles.featureIconWrap}>
-                    <Puzzle color={"#155DFC"} size={28}/>
-                  </div>
-                  <h3 className={styles.featureTitle}>Готовые модули</h3>
-                  <p className={styles.featureDesc}>Все компоненты как конструктор — просто соберите</p>
+                  <h3 className={styles.featureTitle}>Понимает контекст</h3>
+                  <p className={styles.featureDesc}>Скажите 'подарок маме до 3000₽' — ИИ учтет повод и вкусы</p>
                 </div>
 
                 <div className={styles.featureCard}>
                   <div className={styles.featureIconWrap}>
                     <Zap color={"#155DFC"} size={28}/>
                   </div>
-                  <h3 className={styles.featureTitle}>Мгновенный запуск</h3>
-                  <p className={styles.featureDesc}>Публикация за 60 секунд без настройки</p>
+                  <h3 className={styles.featureTitle}>Мгновенный подбор</h3>
+                  <p className={styles.featureDesc}>Анализ тысяч товаров за 30 секунд вместо часов поиска</p>
+                </div>
+
+                <div className={styles.featureCard}>
+                  <div className={styles.featureIconWrap}>
+                    <Heart color={"#155DFC"} size={28}/>
+                  </div>
+                  <h3 className={styles.featureTitle}>Персональные рекомендации</h3>
+                  <p className={styles.featureDesc}>ИИ запоминает предпочтения и показывает только релевантное</p>
                 </div>
               </div>
             </section>
-
-            {/* DEMO BLOCK */}
             <section className={styles.demoSection}>
               <div className={styles.demoContainer}>
-
-                {/* Левая часть: Чат */}
                 <div className={styles.chatPanel}>
                   <div className={styles.chatHeader}>
                     <div className={styles.chatIcon}>
                       <MessageSquareMore color={"#fff"} size={20}/>
                     </div>
-                    <span className={styles.chatTitle}>ИИ-агент</span>
+                    <span className={styles.chatTitle}>ИИ-ассистент</span>
                   </div>
                   <div className={styles.chatBody}>
-                    <div className={styles.msgBot}>Какой магазин вы хотите создать?</div>
-                    <div className={styles.msgUser}>Магазин электроники с каталогом товаров и корзиной</div>
+                    <div className={styles.msgBot}>Что вы ищите?</div>
+                    <div className={styles.msgUser}>Ноутбук для работы и видеомонтажа до 80 000₽</div>
                     <div className={styles.msgBotGenerating}>
-                      Отлично! Создаю магазин...
+                      Подбираю варианты...
                       <div className={styles.loadingDots}><span></span><span></span><span></span></div>
                     </div>
                   </div>
@@ -168,40 +166,64 @@ export default function LandingPage() {
                     </div>
                   </div>
                 </div>
-
-                {/* Правая часть: Предпросмотр */}
                 <div className={styles.previewPanel}>
                   <div className={styles.previewHeader}>
-                    <span>Предпросмотр</span>
+                    <span>Результаты</span>
                     <div className={styles.windowControls}>
-                      <span style={{backgroundColor: '#FF5F56'}}></span>
-                      <span style={{backgroundColor: '#FFBD2E'}}></span>
-                      <span style={{backgroundColor: '#27C93F'}}></span>
+                      <span style={{ backgroundColor: '#FF5F56' }}></span>
+                      <span style={{ backgroundColor: '#FFBD2E' }}></span>
+                      <span style={{ backgroundColor: '#27C93F' }}></span>
                     </div>
                   </div>
+
                   <div className={styles.previewBody}>
-                    <div className={styles.mockHeader}>
-                      <div className={styles.mockLogo}></div>
-                      <div className={styles.mockNav}></div>
-                    </div>
-                    <div className={styles.previewContainer}>
-                      <div className={styles.mockGrid}>
-                        <div className={styles.mockBlock}></div>
-                        <div className={styles.mockBlock}></div>
-                        <div className={styles.mockBlock}></div>
-                        <div className={styles.mockBlock}></div>
+                    <div className={styles.mockWindow}>
+                      <div className={styles.mockHeader}>
+                        <div className={styles.mockHeaderLeft}></div>
+                        <div className={styles.mockHeaderRight}>
+                          <div className={styles.mockHeaderPill}></div>
+                          <div className={styles.mockHeaderPill}></div>
+                        </div>
                       </div>
-                      <div className={styles.mockFooter}></div>
+
+                      <div className={styles.mockContent}>
+                        <div className={styles.mockMainTitle}></div>
+
+                        <div className={styles.mockList}>
+                          {/* Элемент списка 1 */}
+                          <div className={styles.mockListItem}>
+                            <div className={styles.mockItemIcon}>
+                              <img className={styles.mockItemIconLaptop} src="./images/laptop.png" alt="Ноутбук"/>
+                            </div>
+                            <div className={styles.mockItemDetails}>
+                              <div className={styles.mockLineLong}></div>
+                              <div className={styles.mockLineShort}></div>
+                              <div className={styles.mockButton}></div>
+                            </div>
+                          </div>
+
+                          {/* Элемент списка 2 */}
+                          <div className={styles.mockListItem}>
+                            <div className={styles.mockItemIcon}>
+                              <img className={styles.mockItemIconLaptop} src="./images/laptop.png" alt="Ноутбук"/>
+                            </div>
+                            <div className={styles.mockItemDetails}>
+                              <div className={styles.mockLineLong}></div>
+                              <div className={styles.mockLineShort}></div>
+                              <div className={styles.mockButton}></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
                   <div className={styles.successBadge}>
-                    <span className={styles.successDot}></span> Генерация завершена
+                    <span className={styles.successDot}></span> Найдено 8 вариантов
                   </div>
                 </div>
-
               </div>
             </section>
-
           </div>
         </div>
       </div>
