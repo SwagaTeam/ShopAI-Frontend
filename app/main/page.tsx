@@ -6,7 +6,6 @@ import {ProductCard} from "@/app/components/product-card/product-card";
 import {ItemInterface} from "@/data/interfaces/ItemInterface";
 import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
 
-// --- Моковые данные ---
 const personalSelections: ItemInterface[] = [
     { productId: "1", productName: 'Ноутбук для работы', price: 75990, imageUrl: "https://i1-e.pinimg.com/736x/d6/46/14/d646147952636b44ac290ff5b14a5524.jpg"},
     { productId: "2", productName: 'Подарок маме', price: 2890, imageUrl: "https://i1-e.pinimg.com/1200x/37/d8/08/37d8086c81539907ae60b680825ffd69.jpg"},
@@ -18,7 +17,8 @@ const personalSelections: ItemInterface[] = [
 export default function ShopAIPage() {
     return (
         <div className="page">
-            <Header />
+            <Header isCompact={false} />
+
             <main className="main">
                 <section className="selections">
                     <div className="section__header">
