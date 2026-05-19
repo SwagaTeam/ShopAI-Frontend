@@ -19,10 +19,15 @@
     align-items: center;
     gap: 10px;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 32px;
     line-height: 28px;
     letter-spacing: 0;
     color: #2563EB;
+}
+
+.header__logo img{
+    width: 36px;
+    height: 36px;
 }
 
 .header__catalog-btn {

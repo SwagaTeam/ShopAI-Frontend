@@ -15,7 +15,7 @@ export const Header = ({isCompact} : HeaderProps) => {
             <header className="header">
                 <div className="header__top">
                     <a href="#" className="header__logo">
-                        <img src="/images/logo.svg" alt="logo" />
+                        <img src="/images/logo.png" alt="logo" />
                         ShopAI
                     </a>
 

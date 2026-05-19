@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: catalog">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="add catalog to main">
+      <change afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/catalog/Catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/catalog/Catalog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,7 @@
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/Evgen/Desktop/ShopAI-Frontend/public/images",
+    "last_opened_file_path": "C:/Users/Evgen/Desktop/ShopAI-Frontend/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,10 +82,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\components\header" />
       <recent name="C:\Users\Евгений\Desktop\ShopAI-Frontend\data" />
@@ -120,7 +123,7 @@
       <updated>1778077818023</updated>
       <workItem from="1778077819132" duration="308000" />
       <workItem from="1778078451518" duration="20256000" />
-      <workItem from="1779182940557" duration="21321000" />
+      <workItem from="1779182940557" duration="23041000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -218,7 +221,39 @@
       <option name="project" value="LOCAL" />
       <updated>1779215846662</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add catalog to header">
+      <option name="closed" value="true" />
+      <created>1779215909357</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779215909357</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix catalog">
+      <option name="closed" value="true" />
+      <created>1779215917952</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779215917952</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix logo">
+      <option name="closed" value="true" />
+      <created>1779215923798</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779215923798</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add catalog to main">
+      <option name="closed" value="true" />
+      <created>1779215949011</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779215949011</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +272,10 @@
     <MESSAGE value="feat: mock main page" />
     <MESSAGE value="fix warnings" />
     <MESSAGE value="feat: catalog" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: catalog" />
+    <MESSAGE value="add catalog to header" />
+    <MESSAGE value="fix catalog" />
+    <MESSAGE value="fix logo" />
+    <MESSAGE value="add catalog to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="add catalog to main" />
   </component>
 </project>

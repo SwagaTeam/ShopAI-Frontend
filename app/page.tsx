@@ -10,7 +10,7 @@ export default function LandingPage() {
           <header className={styles.header}>
             <div className={styles.headerContent}>
               <div className={styles.logo}>
-                <img src={"/images/logo.svg"} alt="logo" />
+                <img src={"/images/logo.png"} alt="logo" />
                 <span className={styles.logoText}>ShopAI</span>
               </div>
 
