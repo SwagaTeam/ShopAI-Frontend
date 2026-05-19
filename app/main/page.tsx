@@ -28,7 +28,7 @@ export default function ShopAIPage() {
 
                     <div className="selections__grid">
                         {personalSelections.map((item: ItemInterface) => (
-                            <ProductCard item={item} />
+                            <ProductCard item={item} key={item.productId} />
                         ))}
                     </div>
                 </section>
@@ -81,7 +81,7 @@ export default function ShopAIPage() {
                 <section className="recommendations">
                     <div className="recommendations__grid">
                         {personalSelections.map((item: ItemInterface) => (
-                            <ProductCard item={item} />
+                            <ProductCard item={item} key={item.productId} />
                         ))}
                     </div>
                 </section>
