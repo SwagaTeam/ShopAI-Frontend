@@ -1,6 +1,7 @@
 .header {
     background-color: #ffffff;
     border-bottom: 1px solid #e2e8f0;
+    z-index: 1002;
 }
 
 .header__top {
@@ -139,7 +140,6 @@
     font-size: 14px;
 }
 
-/* ================= NAV ================= */
 .nav {
     display: flex;
     justify-content: center;
@@ -170,4 +170,42 @@
     right: 0;
     height: 2px;
     background-color: #2563eb;
+}
+
+.catalog-overlay {
+    position: fixed;
+    top: 111px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.catalog-wrapper {
+    position: fixed;
+    top: 111px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.header-catalog__compact {
+    top: 65px;
+}
+
+.catalog-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    z-index: 1;
 }
