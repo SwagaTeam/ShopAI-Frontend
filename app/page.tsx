@@ -193,7 +193,7 @@ export default function LandingPage() {
                           {/* Элемент списка 1 */}
                           <div className={styles.mockListItem}>
                             <div className={styles.mockItemIcon}>
-                              <img className={styles.mockItemIconLaptop} src="./images/laptop.png" alt="Ноутбук"/>
+                              <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
                             </div>
                             <div className={styles.mockItemDetails}>
                               <div className={styles.mockLineLong}></div>
@@ -205,7 +205,7 @@ export default function LandingPage() {
                           {/* Элемент списка 2 */}
                           <div className={styles.mockListItem}>
                             <div className={styles.mockItemIcon}>
-                              <img className={styles.mockItemIconLaptop} src="./images/laptop.png" alt="Ноутбук"/>
+                              <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
                             </div>
                             <div className={styles.mockItemDetails}>
                               <div className={styles.mockLineLong}></div>
