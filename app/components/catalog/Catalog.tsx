@@ -46,10 +46,6 @@ const subcategoriesData = {
     },
 };
 
-interface CatalogProps {
-    isCompact: boolean;
-}
-
 export function Catalog() {
     const [activeCategory, setActiveCategory] = useState('shoes');
 
