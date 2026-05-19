@@ -26,7 +26,7 @@ export default function AuthPage() {
 
     useEffect(() => {
         if (isHydrated && isAuth) {
-            router.replace('/agent');
+            router.replace('/main');
         }
     }, [isAuth, isHydrated, router]);
 
