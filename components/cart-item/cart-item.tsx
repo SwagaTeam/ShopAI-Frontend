@@ -1,9 +1,10 @@
 import React from "react";
-import { Heart, Plus, Minus, Trash2 } from "lucide-react";
+import {Heart, Plus, Minus, Trash2, CircleOff} from "lucide-react";
 import "./cart-item.css"
+import {ICartItem} from "@/data/interfaces/ICartItem";
 
 export const CartItem = ({ item, onToggle, onIncrement, onDecrement, onRemove, onToggleFavorite }: {
-    item: any;
+    item: ICartItem;
     onToggle?: () => void;
     onIncrement?: () => void;
     onDecrement?: () => void;
@@ -16,21 +17,23 @@ export const CartItem = ({ item, onToggle, onIncrement, onDecrement, onRemove, o
                 <input
                     type="checkbox"
                     className="cart-item__checkbox"
-                    defaultChecked={item.checked}
+                    defaultChecked={false}
                     onChange={onToggle}
                 />
             </div>
-            <div className="cart-item__image-wrap"></div>
+            <div className="cart-item__image-wrap">
+                {item.imageUrl ? (<img src={item.imageUrl} alt={item.productName}/>) : (<CircleOff size={60} color={"#d1d1d1"}/>)}
+            </div>
             <div className="cart-item__info">
-                <h3 className="cart-item__name">{item.name}</h3>
-                <p className="cart-item__price">{item.price}</p>
+                <h3 className="cart-item__name">{item.productName}</h3>
+                <p className="cart-item__price">{item.price} ₽</p>
             </div>
             <div className="cart-item__controls">
                 <div className="cart-item__counter">
                     <button className="cart-item__counter-btn" onClick={onDecrement}>
                         <Minus size={16} color={"#0A0A0A"} />
                     </button>
-                    <span className="cart-item__counter-value">{item.count}</span>
+                    <span className="cart-item__counter-value">{item.quantity}</span>
                     <button className="cart-item__counter-btn" onClick={onIncrement}>
                         <Plus size={16} color={"#0A0A0A"}/>
                     </button>
