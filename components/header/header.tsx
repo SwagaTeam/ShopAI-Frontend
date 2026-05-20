@@ -53,7 +53,7 @@ export const Header = ({isCompact} : HeaderProps) => {
                         </button>
                         <Link href={"/cart"} className="header__icon-btn">
                             <Handbag size={24} color={"#4A5565"}/>
-                            <span className="header__badge">3</span>
+                            {/*<span className="header__badge">3</span>*/}
                         </Link>
                         <Link href={"/profile"} className="header__avatar">{getInitials(name)}</Link>
                     </div>
@@ -61,8 +61,8 @@ export const Header = ({isCompact} : HeaderProps) => {
 
                 {!isCompact && <nav className="nav">
                     <Link href={"/main"} className={isActive("/main")}>Главная</Link>
-                    <Link href={""} className="nav__link">Мои заказы</Link>
                     <Link href="/favorites" className={isActive("/favorites")}>Избранное</Link>
+                    <Link href={""} className="nav__link">Мои заказы</Link>
                 </nav>}
             </header>
 
