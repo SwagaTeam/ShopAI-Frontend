@@ -1,14 +1,20 @@
-/* ================= CHECKOUT PAGE ================= */
-.checkout-page {
-    max-width: 1200px;
+.checkout-page-container {
     margin: 0 auto;
-    padding: 40px 24px;
+    width: 100%;
+}
+
+.checkout-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px;
 }
 
 .checkout-page__title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #111827;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #101828;
     margin: 0 0 32px 0;
 }
 
@@ -29,8 +35,8 @@
 .form-card {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    border: 1px solid #E5E7EB
 }
 
 .form-card__title {
@@ -44,7 +50,7 @@
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .form-group:last-child {
@@ -52,17 +58,19 @@
 }
 
 .form-group__label {
-    font-size: 14px;
     font-weight: 500;
-    color: #374151;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #3c475a;
 }
 
 .form-group__input,
 .form-group__textarea {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1px solid #D1D5DC;
+    border-radius: 14px;
     font-size: 15px;
     color: #111827;
     outline: none;
@@ -77,7 +85,7 @@
 
 .form-group__input:focus,
 .form-group__textarea:focus {
-    border-color: #2563eb;
+    border-color: #608ef3;
 }
 
 .form-group__textarea {
@@ -121,9 +129,11 @@
 }
 
 .payment-method__label {
-    font-size: 15px;
     font-weight: 500;
-    color: #111827;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #101828;
     cursor: pointer;
 }
 

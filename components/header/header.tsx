@@ -18,10 +18,10 @@ export const Header = ({isCompact} : HeaderProps) => {
         <>
             <header className="header">
                 <div className="header__top">
-                    <a href="#" className="header__logo">
+                    <Link href={"/main"} className="header__logo">
                         <img src="/images/logo.png" alt="logo" />
                         ShopAI
-                    </a>
+                    </Link>
 
                     <div className="header__search">
                         <button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
