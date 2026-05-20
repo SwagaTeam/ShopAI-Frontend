@@ -1,0 +1,119 @@
+.cart-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 15px 24px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cart-item__checkbox-wrap {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-item__checkbox {
+    width: 20px;
+    border-radius: 4px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #155DFC;
+}
+
+.cart-item__image-wrap {
+    width: 84px;
+    height: 84px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+}
+
+.cart-item__image {
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+}
+
+.cart-item__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-item__name {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: #101828;
+    margin: 0;
+}
+
+.cart-item__price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #101828;
+    margin: 0;
+}
+
+.cart-item__controls {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.cart-item__counter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cart-item__counter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid #D1D5DC;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cart-item__counter-btn:hover {
+    border-color: #9ca3af;
+}
+
+.cart-item__counter-value {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #0A0A0A;
+}
+
+.cart-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cart-item__action-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    transition: color 0.2s;
+}
