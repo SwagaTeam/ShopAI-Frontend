@@ -5,7 +5,6 @@ export const apiClient = axios.create({
     baseURL: "/api/",
 });
 
-// Добавление токена к каждому запросу
 apiClient.interceptors.request.use((config) => {
     const token = useAuthStore.getState().token;
     if (token) {
@@ -14,7 +13,6 @@ apiClient.interceptors.request.use((config) => {
     return config;
 });
 
-// Обработка 401 и Refresh Token
 apiClient.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -25,7 +23,7 @@ apiClient.interceptors.response.use(
             try {
                 const { refreshToken } = useAuthStore.getState();
                 const response = await axios.post(`/api/Auth/refresh`, {
-                    refresh_token: refreshToken
+                    refreshToken: refreshToken
                 });
 
                 const { accessToken, refreshToken: newRefresh } = response.data;

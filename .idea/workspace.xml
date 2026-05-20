@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="add catalog to main">
-      <change afterPath="$PROJECT_DIR$/components/breadcrumb/breadcrumb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/breadcrumb/breadcrumb.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/cart-item/cart-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/cart-item/cart-item.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/order-summary/order-summary.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/order-summary/order-summary.tsx" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="check">
+      <change afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/profile/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cart/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/api/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/api/apiClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useAuthStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAuthStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +252,39 @@
       <option name="project" value="LOCAL" />
       <updated>1779215949011</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: breadcrumb">
+      <option name="closed" value="true" />
+      <created>1779308988119</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779308988119</updated>
+    </task>
+    <task id="LOCAL-00018" summary="cart fix layout">
+      <option name="closed" value="true" />
+      <created>1779309004003</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779309004003</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: order-summary">
+      <option name="closed" value="true" />
+      <created>1779309020630</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1779309020630</updated>
+    </task>
+    <task id="LOCAL-00020" summary="check">
+      <option name="closed" value="true" />
+      <created>1779309028091</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1779309028091</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +307,10 @@
     <MESSAGE value="fix catalog" />
     <MESSAGE value="fix logo" />
     <MESSAGE value="add catalog to main" />
-    <option name="LAST_COMMIT_MESSAGE" value="add catalog to main" />
+    <MESSAGE value="feat: breadcrumb" />
+    <MESSAGE value="cart fix layout" />
+    <MESSAGE value="feat: order-summary" />
+    <MESSAGE value="check" />
+    <option name="LAST_COMMIT_MESSAGE" value="check" />
   </component>
 </project>

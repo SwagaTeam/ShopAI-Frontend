@@ -5,6 +5,8 @@ import {Bell, ChevronDown, Handbag, Search} from "lucide-react";
 import React, {useState} from "react";
 import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
+import {useAuthStore} from "@/data/store/useAuthStore";
+import {getInitials} from "@/utils/utils";
 
 interface HeaderProps {
     isCompact: boolean;
@@ -13,7 +15,7 @@ interface HeaderProps {
 
 export const Header = ({isCompact} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
-
+    const { name } = useAuthStore();
     return (
         <>
             <header className="header">
@@ -46,7 +48,7 @@ export const Header = ({isCompact} : HeaderProps) => {
                             <Handbag size={24} color={"#4A5565"}/>
                             <span className="header__badge">3</span>
                         </Link>
-                        <div className="header__avatar">П</div>
+                        <Link href={"/profile"} className="header__avatar">{getInitials(name)}</Link>
                     </div>
                 </div>
 

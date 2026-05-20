@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f9fafb;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.profile-page-container {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.profile-page {
+    display: flex;
+    gap: 32px;
+    max-width: 1500px;
+    margin: 40px auto;
+    padding: 0 24px;
+    align-items: flex-start;
+}
+
+/* ================= SIDEBAR ================= */
+.profile-sidebar {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-nav__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0;
+
+    color: #4b5563;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+}
+
+.profile-nav__item:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.profile-nav__item--active {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.profile-nav__item--active:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* ================= MAIN CONTENT ================= */
+.profile-content {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.profile-section {
+}
+
+.profile-section:last-child {
+    margin-bottom: 0;
+}
+
+.profile-section__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0;
+
+    color: #111827;
+    margin: 0 0 24px 0;
+}
+
+/* ================= AVATAR ================= */
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.profile-avatar__circle-wrap {
+    position: relative;
+}
+
+.profile-avatar__circle {
+    width: 120px;
+    height: 120px;
+    background-color: #eff6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 54px;
+    letter-spacing: 0;
+    color: #2563eb;
+}
+
+.profile-avatar__btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background-color: #2563EB;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile-avatar__info-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.profile-avatar__info-desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #6B7280;
+    margin: 0;
+}
+
+/* ================= FORM FIELDS ================= */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-field__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.profile-field__input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-field__input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #D1D5DC;
+    border-radius: 14px;
+    font-size: 16px;
+    color: #111827;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.profile-field__input::placeholder {
+    color: #0A0A0A80;
+}
+
+.profile-field__input:focus {
+    border-color: #2563eb;
+}
+
+/* Кнопка с глазом (Пароли) */
+.profile-field__icon-btn {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-field__icon-btn:hover {
+    color: #6b7280;
+}
+
+/* ================= BUTTONS ================= */
+.profile-btn-outline {
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.profile-btn-outline:hover {
+    background-color: #eff6ff;
+}
+
+.profile-btn-primary {
+    padding: 11px 32px;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 4px;
+    transition: background-color 0.2s;
+}
+
+.profile-btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.password-section {
+    width: 40%;
+}
+
+.password-title {
+    margin-top: 40px;
+}
