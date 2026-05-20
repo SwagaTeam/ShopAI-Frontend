@@ -1,0 +1,47 @@
+
+
+.main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: #155DFC;
+}
+
+.section__link {
+    color: #155DFC;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+
+}
+
+.favorites {
+    color: #ef117d;
+}
+
+/* ================= SELECTIONS (Horizontal Scroll) ================= */
+.selections__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}

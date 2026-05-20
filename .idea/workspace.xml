@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: favorites">
-      <change afterPath="$PROJECT_DIR$/components/like-button/like-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/like-button/like-button.tsx" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: animated like btn">
+      <change afterPath="$PROJECT_DIR$/components/favorites/favorites.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/placeholder/placeholder.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/placeholder/placeholder.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779319487552</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feat: animated like btn">
+      <option name="closed" value="true" />
+      <created>1779320079432</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1779320079432</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +372,7 @@
     <MESSAGE value="get cart items" />
     <MESSAGE value="fix cart" />
     <MESSAGE value="feat: favorites" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: favorites" />
+    <MESSAGE value="feat: animated like btn" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: animated like btn" />
   </component>
 </project>

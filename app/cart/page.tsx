@@ -11,6 +11,7 @@ import {Breadcrumb} from "@/components/breadcrumb/breadcrumb";
 import {ICartItem} from "@/data/interfaces/ICartItem";
 import { useCartStore } from '@/data/store/useCartStore';
 import {CartSkeleton} from "@/components/cart-item/cart-skeleton";
+import {Placeholder} from "@/components/placeholder/placeholder";
 
 export default function CartPage() {
     const { items, totalPrice, isLoading, error, fetchCart, updateItemQuantity, removeItem } = useCartStore();
@@ -54,14 +55,13 @@ export default function CartPage() {
                     {error}
                 </div>
             ) : items.length === 0 ? (
-                <div className="cart-page__empty">
-                    <img className="cart-page__empty-image" src={"/images/placeholder.png"} alt={"Пустая корзина"}/>
-                    <h2 className="cart-page__empty-title">Корзина пуста</h2>
-                    <p className="cart-page__empty-text">Добавьте первый товар, чтобы я не грустил</p>
-                    <Link href="/main" className="cart-page__continue-link">
-                        Продолжить покупки
-                    </Link>
-                </div>
+                <Placeholder
+                    title={"Корзина пуста"}
+                    text={"Добавьте первый товар, чтобы я не грустил"}
+                    buttonText={"Продолжить покупки"}
+                    img={"/images/placeholder.png"}
+                    nav={"/main"}
+                />
             ) : (
                 <div className="cart-page__layout">
                     <div className="cart-page__list">
