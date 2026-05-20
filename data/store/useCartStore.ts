@@ -10,8 +10,11 @@ interface CartState {
     totalPrice: number;
     isLoading: boolean;
     error: string | null;
-    
+
     fetchCart: () => Promise<void>;
+    addOrUpdateItem: (productId: string, quantity: number) => Promise<void>;
+    removeItem: (productId: string) => Promise<void>;
+    updateItemQuantity: (productId: string, quantity: number) => Promise<void>;
     setItems: (items: ICartItem[]) => void;
     setTotalPrice: (price: number) => void;
     clearCart: () => void;
@@ -45,6 +48,37 @@ export const useCartStore = create<CartState>()(
                         isLoading: false
                     });
                 }
+            },
+
+            async addOrUpdateItem(productId, quantity) {
+                try {
+                    await apiClient.post('/Cart/items', {
+                        productId,
+                        quantity
+                    });
+                    await useCartStore.getState().fetchCart();
+                } catch (error) {
+                    console.error('Ошибка при добавлении товара в корзину:', error);
+                    set({
+                        error: 'Ошибка при добавлении товара'
+                    });
+                }
+            },
+
+            async removeItem(productId) {
+                try {
+                    await apiClient.delete(`/Cart/items/${productId}`);
+                    await useCartStore.getState().fetchCart();
+                } catch (error) {
+                    console.error('Ошибка при удалении товара из корзины:', error);
+                    set({
+                        error: 'Ошибка при удалении товара'
+                    });
+                }
+            },
+
+            async updateItemQuantity(productId, quantity) {
+                await useCartStore.getState().addOrUpdateItem(productId, quantity);
             },
 
             setItems(items) {

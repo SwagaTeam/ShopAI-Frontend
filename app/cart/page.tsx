@@ -13,11 +13,25 @@ import { useCartStore } from '@/data/store/useCartStore';
 import {CartSkeleton} from "@/components/cart-item/cart-skeleton";
 
 export default function CartPage() {
-    const { items, totalPrice, isLoading, error, fetchCart } = useCartStore();
+    const { items, totalPrice, isLoading, error, fetchCart, updateItemQuantity, removeItem } = useCartStore();
 
     useEffect(() => {
         fetchCart();
     }, [fetchCart]);
+
+    const handleIncrement = (productId: string) => {
+        updateItemQuantity(productId, 1);
+    };
+
+    const handleDecrement = (productId: string, currentQuantity: number) => {
+        if (currentQuantity > 1) {
+            updateItemQuantity(productId, -1);
+        }
+    };
+
+    const handleRemove = (productId: string) => {
+        removeItem(productId);
+    };
 
     return (
         <>
@@ -52,7 +66,13 @@ export default function CartPage() {
                 <div className="cart-page__layout">
                     <div className="cart-page__list">
                         {items.map((item) => (
-                            <CartItem item={item} key={item.productId} />
+                            <CartItem 
+                                item={item} 
+                                key={item.productId}
+                                onIncrement={() => handleIncrement(item.productId)}
+                                onDecrement={() => handleDecrement(item.productId, item.quantity)}
+                                onRemove={() => handleRemove(item.productId)}
+                            />
                         ))}
                     </div>
                     <OrderSummary isCart={true} />
