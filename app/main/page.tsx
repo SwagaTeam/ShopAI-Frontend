@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import './main.css';
-import {Header} from "@/app/components/header/header";
-import {ProductCard} from "@/app/components/product-card/product-card";
+import {Header} from "@/components/header/header";
+import {ProductCard} from "@/components/product-card/product-card";
 import {ItemInterface} from "@/data/interfaces/ItemInterface";
 import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
 

@@ -1,7 +1,7 @@
 import "./header.css"
 import {Bell, ChevronDown, Handbag, Search} from "lucide-react";
 import React, {useState} from "react";
-import {Catalog} from "@/app/components/catalog/Catalog";
+import {Catalog} from "@/components/catalog/Catalog";
 
 interface HeaderProps {
     isCompact: boolean;
