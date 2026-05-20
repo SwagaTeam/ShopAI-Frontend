@@ -7,6 +7,7 @@ import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
 import {getInitials} from "@/utils/utils";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
     isCompact: boolean;
@@ -16,6 +17,12 @@ interface HeaderProps {
 export const Header = ({isCompact} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
     const { name } = useAuthStore();
+    const pathname = usePathname();
+
+    const isActive = (href: string) => {
+        return pathname === href ? 'nav__link nav__link--active' : 'nav__link';
+    };
+
     return (
         <>
             <header className="header">
@@ -53,9 +60,9 @@ export const Header = ({isCompact} : HeaderProps) => {
                 </div>
 
                 {!isCompact && <nav className="nav">
-                    <Link href={"/main"} className="nav__link nav__link--active">Главная</Link>
+                    <Link href={"/main"} className={isActive("/main")}>Главная</Link>
                     <Link href={""} className="nav__link">Мои заказы</Link>
-                    <Link href="#" className="nav__link">Избранное</Link>
+                    <Link href="/favorites" className={isActive("/favorites")}>Избранное</Link>
                 </nav>}
             </header>
 

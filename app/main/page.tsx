@@ -1,20 +1,18 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './main.css';
 import {Header} from "@/components/header/header";
 import {ProductCard} from "@/components/product-card/product-card";
-import {ItemInterface} from "@/data/interfaces/ItemInterface";
 import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
-
-const personalSelections: ItemInterface[] = [
-    { productId: "1", productName: 'Ноутбук для работы', price: 75990, imageUrl: "https://i1-e.pinimg.com/736x/d6/46/14/d646147952636b44ac290ff5b14a5524.jpg"},
-    { productId: "2", productName: 'Подарок маме', price: 2890, imageUrl: "https://i1-e.pinimg.com/1200x/37/d8/08/37d8086c81539907ae60b680825ffd69.jpg"},
-    { productId: "3", productName: 'Спортивная форма', price: 4500, imageUrl: "https://i1-e.pinimg.com/736x/4b/5b/9b/4b5b9bd24eac9539ff301ac9c7332144.jpg"},
-    { productId: "4", productName: 'Смартфон флагман', price: 89990, imageUrl: "https://i1-e.pinimg.com/1200x/91/16/db/9116dbc4ff54139192b5658911583d3f.jpg"},
-    { productId: "5", productName: 'Наушники беспроводные', price: 12990, imageUrl: "https://i1-e.pinimg.com/736x/a7/92/e2/a792e27edaadf63065ae62bb0188cab0.jpg"},
-];
+import { useProductsStore } from '@/data/store/useProductsStore';
 
 export default function ShopAIPage() {
+    const { popular, latest, isLoading, fetchMainPageProducts } = useProductsStore();
+
+    useEffect(() => {
+        fetchMainPageProducts(50);
+    }, [fetchMainPageProducts]);
+
     return (
         <div className="page">
             <Header isCompact={false} />
@@ -27,9 +25,23 @@ export default function ShopAIPage() {
                     </div>
 
                     <div className="selections__grid">
-                        {personalSelections.map((item: ItemInterface) => (
-                            <ProductCard item={item} key={item.productId} />
-                        ))}
+                        {isLoading ? (
+                            <p>Загрузка...</p>
+                        ) : popular.length > 0 ? (
+                            popular.map((item) => (
+                                <ProductCard 
+                                    item={{
+                                        productId: item.id,
+                                        productName: item.name,
+                                        price: item.price,
+                                        imageUrl: item.imageUrl
+                                    }} 
+                                    key={item.id} 
+                                />
+                            ))
+                        ) : (
+                            <p>Нет товаров</p>
+                        )}
                     </div>
                 </section>
 
@@ -79,10 +91,28 @@ export default function ShopAIPage() {
                 </section>
 
                 <section className="recommendations">
+                    <div className="section__header">
+                        <h2 className="section__title">Новые поступления</h2>
+                        <a href="#" className="section__link">Смотреть все &gt;</a>
+                    </div>
                     <div className="recommendations__grid">
-                        {personalSelections.map((item: ItemInterface) => (
-                            <ProductCard item={item} key={item.productId} />
-                        ))}
+                        {isLoading ? (
+                            <p>Загрузка...</p>
+                        ) : latest.length > 0 ? (
+                            latest.map((item) => (
+                                <ProductCard 
+                                    item={{
+                                        productId: item.id,
+                                        productName: item.name,
+                                        price: item.price,
+                                        imageUrl: item.imageUrl
+                                    }} 
+                                    key={item.id} 
+                                />
+                            ))
+                        ) : (
+                            <p>Нет товаров</p>
+                        )}
                     </div>
                 </section>
 
