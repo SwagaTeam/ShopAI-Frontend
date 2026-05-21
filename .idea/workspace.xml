@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: animated like btn">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="Shop controls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/shop-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/shop/shop-page.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,16 +336,37 @@
       <option name="project" value="LOCAL" />
       <updated>1779320079432</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="profile routing">
+      <option name="closed" value="true" />
+      <created>1779358769555</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1779358769555</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Shops Stores">
+      <option name="closed" value="true" />
+      <created>1779358786221</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1779358786221</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Shop controls">
+      <option name="closed" value="true" />
+      <created>1779358812832</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1779358812832</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Landing layout" />
-    <MESSAGE value="feat AuthPage" />
-    <MESSAGE value="new landing" />
     <MESSAGE value="remove garbage" />
     <MESSAGE value="change route" />
     <MESSAGE value="feat: header component" />
@@ -368,6 +389,9 @@
     <MESSAGE value="fix cart" />
     <MESSAGE value="feat: favorites" />
     <MESSAGE value="feat: animated like btn" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: animated like btn" />
+    <MESSAGE value="profile routing" />
+    <MESSAGE value="Shops Stores" />
+    <MESSAGE value="Shop controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shop controls" />
   </component>
 </project>

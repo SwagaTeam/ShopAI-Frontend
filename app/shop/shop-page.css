@@ -1,7 +1,67 @@
 /* ================= SHOP PAGE LAYOUT ================= */
+body {
+    background-color: #fff;
+}
 .shop-page-container {
     margin: 0 auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.shop-page__header-container {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.shop-page__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 6px 0;
+    background-color: #fff;
+    width: 1164px;
+    margin: 0 auto
+}
+
+.shop-page__back-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 6px; /* Выравниваем стрелку по центру первой строки заголовка */
+    font-size: 20px;
+    color: #667085;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.shop-page__back-btn:hover {
+    color: #111827;
+}
+
+.shop-page__header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-page__title {
+    margin: 0;
+    font-size: 24px; /* Скорректировано под макет */
+    line-height: 32px;
+    font-weight: 700;
+    color: #101828;
+}
+
+.shop-page__subtitle {
+    margin: 4px 0 0 0; /* Уменьшен отступ сверху */
+    color: #667085;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .shop-page {
@@ -20,30 +80,6 @@
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.shop-page__header {
-    margin-bottom: 32px;
-}
-
-.shop-page__breadcrumb {
-    margin: 0 0 8px 0;
-    color: #667085;
-    font-size: 14px;
-}
-
-.shop-page__title {
-    margin: 0;
-    font-size: 28px;
-    line-height: 36px;
-    font-weight: 700;
-    color: #111827;
-}
-
-.shop-page__subtitle {
-    margin: 8px 0 0 0;
-    color: #667085;
-    font-size: 14px;
 }
 
 .shop-page__error {

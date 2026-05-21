@@ -55,18 +55,26 @@ export default function ShopPage() {
 
     return (
         <div className="shop-page-container">
+            <div className="shop-page__header-container">
+                <div className="shop-page__header">
+                    <button className="shop-page__back-btn" onClick={() => router.push('/profile')}>
+                        &larr;
+                    </button>
+                    <div className="shop-page__header-text">
+                        <h1 className="shop-page__title">
+                            {shop ? shop.name : 'Загрузка магазина...'}
+                        </h1>
+                        {shop && (
+                            <p className="shop-page__subtitle">
+                                shopai.com/{shop.urlAlias}
+                            </p>
+                        )}
+                    </div>
+                </div>
+            </div>
             <div className="shop-page">
                 <ShopSidebar activeTab={activeTab} onTabChange={setActiveTab} />
                 <main className="shop-main-content">
-                    <div className="shop-page__header">
-                        <div>
-                            <p className="shop-page__breadcrumb">← Назад</p>
-                            <h1 className="shop-page__title">
-                                {shop ? shop.name : 'Загрузка магазина...'}
-                            </h1>
-                            {shop && <p className="shop-page__subtitle">shopal.com/{shop.urlAlias}</p>}
-                        </div>
-                    </div>
                     {error && <div className="shop-page__error">{error}</div>}
                     {activeTab === 'products' && (
                         <ShopProducts
