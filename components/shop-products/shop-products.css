@@ -1,0 +1,107 @@
+/* ================= SHOP PRODUCTS ================= */
+.shop-products {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.shop-products__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.shop-products__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    color: #111827;
+}
+
+.shop-products__add-btn {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.shop-products__meta {
+    display: flex;
+    justify-content: space-between;
+    color: #667085;
+    font-size: 14px;
+}
+
+.shop-products__table-wrapper {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.shop-products__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.shop-products__table th,
+.shop-products__table td {
+    padding: 18px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.shop-products__table th {
+    color: #667085;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.shop-products__table td {
+    color: #111827;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.shop-products__table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.shop-products__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.shop-products__action-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    color: #475569;
+}
+
+.shop-products__action-btn--danger {
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.shop-products__empty {
+    padding: 32px;
+    text-align: center;
+    color: #667085;
+}
