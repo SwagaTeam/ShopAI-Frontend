@@ -28,6 +28,7 @@ export default function ShopPage() {
         error,
         fetchShop,
         fetchCategories,
+        fetchBrands,
         fetchShopProducts,
         updateShop,
         deleteShop
@@ -37,9 +38,10 @@ export default function ShopPage() {
         if (shopId) {
             fetchShop(shopId);
             fetchCategories(shopId);
+            fetchBrands();
             fetchShopProducts(shopId, 1, 20);
         }
-    }, [shopId, fetchShop, fetchCategories, fetchShopProducts]);
+    }, [shopId, fetchShop, fetchCategories, fetchBrands, fetchShopProducts]);
 
     const handleSave = async (name: string, urlAlias: string) => {
         if (shopId) {

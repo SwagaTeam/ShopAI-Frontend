@@ -23,7 +23,7 @@ export const mainPage = () => {
 
     <div className="selections__grid">
         {personalSelections.map((item: ItemInterface) => (
-            <ProductCard item={item} key={item.productId} />
+            item.imageUrl !== "string" && <ProductCard item={item} key={item.productId} />
         ))}
     </div>
 </section>

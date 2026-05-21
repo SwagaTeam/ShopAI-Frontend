@@ -19,6 +19,12 @@ export interface Category {
     subCategories: Category[];
 }
 
+export interface Brand {
+    id: string;
+    name: string;
+    logoUrl: string;
+}
+
 export interface ShopProduct {
     id: string;
     name: string;
@@ -30,20 +36,36 @@ export interface ShopProduct {
     categoryName?: string | null;
 }
 
+export interface CreateProductRequest {
+    shopId: string;
+    name: string;
+    price: number;
+    categoryId: string;
+    description: string;
+    imageUrl: string;
+    stockQuantity: number;
+    brandId: string;
+}
+
 interface ShopState {
     shop: Shop | null;
     categories: Category[];
+    brands: Brand[];
     products: ShopProduct[];
     productsPage: number;
     productsPageSize: number;
     totalProducts: number;
     totalProductPages: number;
     isLoading: boolean;
+    isSubmittingProduct: boolean;
+    isSubmittingCategory: boolean;
     error: string | null;
     
     fetchShop: (shopId: string) => Promise<void>;
     fetchCategories: (shopId: string) => Promise<void>;
+    fetchBrands: () => Promise<void>;
     fetchShopProducts: (shopId: string, page?: number, pageSize?: number) => Promise<void>;
+    createProduct: (product: CreateProductRequest) => Promise<boolean>;
     updateShop: (shopId: string, name: string, urlAlias: string) => Promise<void>;
     deleteShop: (shopId: string) => Promise<void>;
 }
@@ -51,12 +73,15 @@ interface ShopState {
 export const useShopStore = create<ShopState>((set) => ({
     shop: null,
     categories: [],
+    brands: [],
     products: [],
     productsPage: 1,
     productsPageSize: 20,
     totalProducts: 0,
     totalProductPages: 0,
     isLoading: false,
+    isSubmittingProduct: false,
+    isSubmittingCategory: false,
     error: null,
 
     async fetchShop(shopId) {
@@ -90,6 +115,37 @@ export const useShopStore = create<ShopState>((set) => ({
         }
     },
 
+    async createCategory(category) {
+        set({ isSubmittingCategory: true, error: null });
+        try {
+            await apiClient.post('/Categories', category);
+            await useShopStore.getState().fetchCategories(category.shopId);
+            set({ isSubmittingCategory: false, error: null });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при создании категории:', error);
+            set({
+                error: 'Ошибка при создании категории',
+                isSubmittingCategory: false
+            });
+            return false;
+        }
+    },
+
+    async fetchBrands() {
+        try {
+            const response = await apiClient.get('/Brands');
+            set({
+                brands: response.data
+            });
+        } catch (error) {
+            console.error('Ошибка при получении брендов:', error);
+            set({
+                error: 'Ошибка при загрузке брендов'
+            });
+        }
+    },
+
     async fetchShopProducts(shopId, page = 1, pageSize = 20) {
         set({ isLoading: true, error: null });
         try {
@@ -111,6 +167,23 @@ export const useShopStore = create<ShopState>((set) => ({
                 error: 'Ошибка при загрузке товаров магазина',
                 isLoading: false
             });
+        }
+    },
+
+    async createProduct(product) {
+        set({ isSubmittingProduct: true, error: null });
+        try {
+            await apiClient.post('/Products', product);
+            await useShopStore.getState().fetchShopProducts(product.shopId, 1, useShopStore.getState().productsPageSize);
+            set({ isSubmittingProduct: false, error: null });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при создании товара:', error);
+            set({
+                error: 'Ошибка при создании товара',
+                isSubmittingProduct: false
+            });
+            return false;
         }
     },
 

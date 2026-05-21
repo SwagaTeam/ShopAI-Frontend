@@ -16,10 +16,11 @@
 }
 
 .shop-settings__section--danger {
-    background-color: #FEF2F2;
+    background-color: #ffffff;
     padding: 24px;
     border-radius: 12px;
     border-bottom: none;
+    padding-bottom: 24px !important;
 }
 
 .shop-settings__title {

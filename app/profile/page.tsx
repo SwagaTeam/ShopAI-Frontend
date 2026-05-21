@@ -10,10 +10,18 @@ import {getInitials} from "@/utils/utils";
 import { ProfileSidebar } from "@/components/profile-sidebar/profile-sidebar";
 import { ShopsSection } from "@/components/profile-shops/shops";
 import "@/components/profile-sidebar/profile-sidebar.css";
+import {useRouter} from "next/navigation";
 
 export default function ProfilePage() {
-    const { name, email, phone, updateProfile } = useAuthStore();
+    const { name, email, phone, updateProfile, clearAuth } = useAuthStore();
+    const router = useRouter();
     const [activeTab, setActiveTab] = useState('personal');
+
+    const handleLogout = () => {
+        clearAuth();
+        router.push('/');
+    };
+
 
     const [formData, setFormData] = useState({
         name: name || '',
@@ -189,9 +197,14 @@ export default function ProfilePage() {
                                     </div>
                                 </div>
 
-                                <button type="button" className="profile-btn-primary">
-                                    Обновить пароль
-                                </button>
+                                <div className="profile__botom-section">
+                                    <button type="button" className="profile-btn-primary">
+                                        Обновить пароль
+                                    </button>
+                                    <button onClick={handleLogout} className="profile-btn-primary">
+                                        Выйти
+                                    </button>
+                                </div>
                             </div>
                         </section>
                     </>

@@ -4,10 +4,10 @@ body {
 }
 .shop-page-container {
     margin: 0 auto;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .shop-page__header-container {
@@ -25,7 +25,7 @@ body {
     gap: 16px;
     padding: 6px 0;
     background-color: #fff;
-    width: 1164px;
+    width: 1140px;
     margin: 0 auto
 }
 
@@ -80,6 +80,7 @@ body {
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 .shop-page__error {

@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import "./order-summary.css"
 import {useCartStore} from "@/data/store/useCartStore";
