@@ -262,3 +262,9 @@ body {
 .password-title {
     margin-top: 40px;
 }
+
+.profile__botom-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

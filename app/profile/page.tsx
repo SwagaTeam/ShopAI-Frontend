@@ -7,9 +7,12 @@ import { apiClient } from "@/data/api/apiClient";
 import './profile.css';
 import {Header} from "@/components/header/header";
 import {getInitials} from "@/utils/utils";
+import {router} from "next/client";
+import {useRouter} from "next/navigation";
 
 export default function ProfilePage() {
-    const { name, email, phone, updateProfile } = useAuthStore();
+    const { name, email, phone, updateProfile, clearAuth } = useAuthStore();
+    const router = useRouter();
 
     const [formData, setFormData] = useState({
         name: name || '',
@@ -50,6 +53,11 @@ export default function ProfilePage() {
 
         fetchProfile();
     }, [updateProfile]);
+
+    const handleLogout = () => {
+        clearAuth();
+        router.push('/');
+    };
 
     const handleInputChange = (field: keyof typeof formData, value: string) => {
         setFormData(prev => ({ ...prev, [field]: value }));
@@ -200,9 +208,14 @@ export default function ProfilePage() {
                             </div>
                         </div>
 
-                        <button type="button" className="profile-btn-primary">
-                            Обновить пароль
-                        </button>
+                        <div className="profile__botom-section">
+                            <button type="button" className="profile-btn-primary">
+                                Обновить пароль
+                            </button>
+                            <button onClick={handleLogout} className="profile-btn-primary">
+                                Выйти
+                            </button>
+                        </div>
                     </div>
                 </section>
 
