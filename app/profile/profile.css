@@ -22,50 +22,6 @@ body {
     align-items: flex-start;
 }
 
-/* ================= SIDEBAR ================= */
-.profile-sidebar {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.profile-nav__item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0;
-
-    color: #4b5563;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-    border: none;
-    background: transparent;
-    width: 100%;
-    text-align: left;
-}
-
-.profile-nav__item:hover {
-    background-color: #f3f4f6;
-    color: #111827;
-}
-
-.profile-nav__item--active {
-    background-color: #2563eb;
-    color: #ffffff;
-}
-
-.profile-nav__item--active:hover {
-    background-color: #2563eb;
-    color: #ffffff;
-}
-
 /* ================= MAIN CONTENT ================= */
 .profile-content {
     flex: 1;
