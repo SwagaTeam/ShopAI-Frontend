@@ -18,7 +18,7 @@ export const ProductCard = ({ item }: { item: ItemInterface }) => {
         try {
             await addOrUpdateItem(item.productId, 1);
         } catch (error) {
-            sileo.error({ title: "Ошибка!", description: "Не удалось добавить товар в корзину" });
+            sileo.error({ title: "Ошибка!", description: "Не удалось добавить товар в корзину", duration: 2000  });
         } finally {
             setIsAdding(false);
         }

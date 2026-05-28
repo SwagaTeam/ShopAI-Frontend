@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { Folder, ChevronRight, X, Plus } from 'lucide-react';
 import './shop-categories.css';
-import { useShopStore } from '@/data/store/useShopStore';
-import {sileo} from "sileo"; // Путь к вашему стору
+import {useShopStore} from '@/data/store/useShopStore';
+import {sileo} from "sileo";
 
 interface Category {
     id: string;
@@ -57,13 +57,11 @@ export const ShopCategories = ({ categories, isLoading }: ShopCategoriesProps) =
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [categoryName, setCategoryName] = useState('');
 
-    // Получаем методы и состояние из стора
     const shop = useShopStore((state) => state.shop);
     const createCategory = useShopStore((state) => state.createCategory);
     const isSubmitting = useShopStore((state) => state.isSubmittingCategory);
 
-    // Берем ID текущего магазина (или фоллбэк из вашего контракта, если магазин еще не загружен)
-    const currentShopId = shop?.id || "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+    const currentShopId = shop?.id || "0";
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -76,11 +74,11 @@ export const ShopCategories = ({ categories, isLoading }: ShopCategoriesProps) =
 
         const success = await createCategory({
             name: categoryName.trim(),
-            shopId: currentShopId,
+            shopId: currentShopId
         });
 
         if (success) {
-            sileo.success({ title: "Успех!", description: `Категория ${categoryName} создана` });
+            sileo.success({ title: "Успех!", description: `Категория ${categoryName} создана`, duration: 2000  });
             handleCloseModal();
         }
     };

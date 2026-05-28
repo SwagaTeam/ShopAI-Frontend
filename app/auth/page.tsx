@@ -55,7 +55,7 @@ export default function AuthPage() {
         e.preventDefault();
 
         if (registerData.password !== registerData.confirmPassword) {
-            return sileo.error({ title: "Ошибка", description: "Пароли не совпадают" });
+            return sileo.error({ title: "Ошибка", description: "Пароли не совпадают", duration: 2000 });
         }
 
         setLoading(true);
@@ -69,7 +69,7 @@ export default function AuthPage() {
 
             await authApi.register(payload);
 
-            sileo.success({ title: "Успех!", description: "Регистрация прошла успешно. Теперь войдите." });
+            sileo.success({ title: "Успех!", description: "Регистрация прошла успешно. Теперь войдите.", duration: 2000  });
             setActiveTab('login');
         } catch (error: any) {
         } finally {
@@ -85,10 +85,10 @@ export default function AuthPage() {
             const data = await authApi.login(loginData);
             setAuth(data.accessToken, data.refreshToken);
 
-            sileo.success({ title: "Успех!", description: "Добро пожаловать"});
+            sileo.success({ title: "Успех!", description: "Добро пожаловать", duration: 2000 });
             router.push('/agent');
         } catch (err: any) {
-            sileo.error({ title: "Ошибка", description: "Неверный логин или пароль" });
+            sileo.error({ title: "Ошибка", description: "Неверный логин или пароль", duration: 2000  });
         } finally {
             setLoading(false);
         }

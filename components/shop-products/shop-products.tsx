@@ -91,7 +91,7 @@ export const ShopProducts = ({ products, isLoading, page, totalCount }: ShopProd
         if (success) {
             setIsModalOpen(false);
             resetForm();
-            sileo.success({ title: "Успех!", description: `Товар ${name} создан` });
+            sileo.success({ title: "Успех!", description: `Товар ${name} создан`, duration: 2000  });
         } else {
             setFormError('Не удалось создать товар. Попробуйте ещё раз.');
         }

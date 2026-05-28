@@ -19,6 +19,11 @@ export interface Category {
     subCategories: Category[];
 }
 
+export interface CategoryDTO {
+    name: string;
+    shopId: string;
+}
+
 export interface Brand {
     id: string;
     name: string;
@@ -60,7 +65,7 @@ interface ShopState {
     isSubmittingProduct: boolean;
     isSubmittingCategory: boolean;
     error: string | null;
-    
+
     fetchShop: (shopId: string) => Promise<void>;
     fetchCategories: (shopId: string) => Promise<void>;
     fetchBrands: () => Promise<void>;
@@ -68,6 +73,7 @@ interface ShopState {
     createProduct: (product: CreateProductRequest) => Promise<boolean>;
     updateShop: (shopId: string, name: string, urlAlias: string) => Promise<void>;
     deleteShop: (shopId: string) => Promise<void>;
+    createCategory: (category: CategoryDTO) => Promise<boolean>;
 }
 
 export const useShopStore = create<ShopState>((set) => ({
@@ -115,7 +121,7 @@ export const useShopStore = create<ShopState>((set) => ({
         }
     },
 
-    async createCategory(category) {
+    async createCategory(category: CategoryDTO) {
         set({ isSubmittingCategory: true, error: null });
         try {
             await apiClient.post('/Categories', category);
