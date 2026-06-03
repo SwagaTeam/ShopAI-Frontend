@@ -80,7 +80,7 @@ export default function AuthPage() {
             setAuth(data.accessToken, data.refreshToken);
 
             sileo.success({ title: "Успех!", description: "Добро пожаловать", duration: 2000 });
-            router.push('/agent');
+            router.push('/main');
         } catch {
             sileo.error({ title: "Ошибка", description: "Неверный логин или пароль", duration: 2000  });
         } finally {
