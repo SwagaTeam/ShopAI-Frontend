@@ -25,7 +25,7 @@ export const triggerConfetti = (element: HTMLElement) => {
 
         let posX = x;
         let posY = y;
-        let currentVx = vx;
+        const currentVx = vx;
         let currentVy = vy;
         const gravity = 0.2;
         let opacity = 1;

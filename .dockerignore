@@ -1,0 +1,15 @@
+.git
+.github
+.idea
+node_modules
+.next
+out
+build
+coverage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env*
+*.pem
+*.tsbuildinfo

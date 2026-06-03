@@ -122,7 +122,7 @@ export default function LandingPage() {
                     <Lightbulb color={"#155DFC"} size={28}/>
                   </div>
                   <h3 className={styles.featureTitle}>Понимает контекст</h3>
-                  <p className={styles.featureDesc}>Скажите 'подарок маме до 3000₽' — ИИ учтет повод и вкусы</p>
+                  <p className={styles.featureDesc}>Скажите &apos;подарок маме до 3000₽&apos; — ИИ учтет повод и вкусы</p>
                 </div>
 
                 <div className={styles.featureCard}>

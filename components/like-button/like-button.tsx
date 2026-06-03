@@ -1,19 +1,14 @@
-import {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {useFavoritesStore} from "@/data/store/useFavoritesStore";
 import {triggerConfetti} from "@/utils/confetti";
 import {Heart} from "lucide-react";
 import "./like-button.css"
 
 export function LikeButton(props: { itemId: string }) {
-    const [isFavorite, setIsFavorite] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const { items, toggleFavorite } = useFavoritesStore();
     const buttonRef = useRef<HTMLButtonElement>(null);
-
-    useEffect(() => {
-        const isInFavorites = items.some(item => item.id === props.itemId);
-        setIsFavorite(isInFavorites);
-    }, [items, props.itemId]);
+    const isFavorite = items.some(item => item.id === props.itemId);
 
     const handleLikeClick = async (e: React.MouseEvent) => {
         e.preventDefault();

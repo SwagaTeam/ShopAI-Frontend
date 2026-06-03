@@ -117,7 +117,7 @@ export function Catalog() {
                 ) : (
                     <div className="catalog__header">
                         <h1 className="catalog__title">Раздел в разработке</h1>
-                        <p className="catalog__subtitle">Выберите категорию "Обувь" для просмотра макета</p>
+                        <p className="catalog__subtitle">Выберите категорию &quot;Обувь&quot; для просмотра макета</p>
                     </div>
                 )}
             </main>

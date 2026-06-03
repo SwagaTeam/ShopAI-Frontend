@@ -18,17 +18,11 @@ export default function AuthPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showLoginPassword, setShowLoginPassword] = useState(false);
-    const [isHydrated, setIsHydrated] = useState(false);
-
     useEffect(() => {
-        setIsHydrated(true);
-    }, []);
-
-    useEffect(() => {
-        if (isHydrated && isAuth) {
+        if (isAuth) {
             router.replace('/main');
         }
-    }, [isAuth, isHydrated, router]);
+    }, [isAuth, router]);
 
     const [loginData, setLoginData] = useState({
         email: "",
@@ -71,7 +65,7 @@ export default function AuthPage() {
 
             sileo.success({ title: "Успех!", description: "Регистрация прошла успешно. Теперь войдите.", duration: 2000  });
             setActiveTab('login');
-        } catch (error: any) {
+        } catch {
         } finally {
             setLoading(false);
         }
@@ -87,7 +81,7 @@ export default function AuthPage() {
 
             sileo.success({ title: "Успех!", description: "Добро пожаловать", duration: 2000 });
             router.push('/agent');
-        } catch (err: any) {
+        } catch {
             sileo.error({ title: "Ошибка", description: "Неверный логин или пароль", duration: 2000  });
         } finally {
             setLoading(false);

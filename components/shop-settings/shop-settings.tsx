@@ -19,6 +19,7 @@ export const ShopSettings = ({ shopName, urlAlias, onSave, onDelete }: ShopSetti
     const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFormData({
             name: shopName,
             urlAlias: urlAlias

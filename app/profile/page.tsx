@@ -36,23 +36,22 @@ export default function ProfilePage() {
     });
 
     useEffect(() => {
-        setFormData({
-            name: name || '',
-            email: email || '',
-            phone: phone || '',
-        });
-    }, [name, email, phone]);
-
-    useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const response = await apiClient.get('/Users/current');
                 if (response.data) {
-                    updateProfile({
+                    const profile = {
                         id: response.data.id,
                         name: response.data.name,
                         email: response.data.email,
                         phone: response.data.phone
+                    };
+
+                    updateProfile(profile);
+                    setFormData({
+                        name: profile.name || '',
+                        email: profile.email || '',
+                        phone: profile.phone || '',
                     });
                 }
             } catch (error) {

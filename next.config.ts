@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   async rewrites() {
-    // Получаем адрес бэкенда из переменных окружения
-    const backendUrl = process.env.BACKEND_URL;
+    const backendUrl = process.env.BACKEND_URL ?? "http://localhost:5000/api";
 
     return [
       {
