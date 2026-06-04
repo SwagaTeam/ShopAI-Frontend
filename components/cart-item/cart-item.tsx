@@ -2,6 +2,7 @@ import React from "react";
 import {Heart, Plus, Minus, Trash2, CircleOff} from "lucide-react";
 import "./cart-item.css"
 import {ICartItem} from "@/data/interfaces/ICartItem";
+import Link from "next/link";
 
 export const CartItem = ({ item, onToggle, onIncrement, onDecrement, onRemove, onToggleFavorite }: {
     item: ICartItem;
@@ -13,21 +14,13 @@ export const CartItem = ({ item, onToggle, onIncrement, onDecrement, onRemove, o
 }) => {
     return (
         <div className="cart-item">
-            <div className="cart-item__checkbox-wrap">
-                <input
-                    type="checkbox"
-                    className="cart-item__checkbox"
-                    defaultChecked={false}
-                    onChange={onToggle}
-                />
-            </div>
-            <div className="cart-item__image-wrap">
+            <Link href={`/product/${item.productId}`} className="cart-item__image-wrap">
                 {item.imageUrl ? (<img src={item.imageUrl} alt={item.productName}/>) : (<CircleOff size={60} color={"#d1d1d1"}/>)}
-            </div>
-            <div className="cart-item__info">
+            </Link>
+            <Link href={`/product/${item.productId}`} className="cart-item__info">
                 <h3 className="cart-item__name">{item.productName}</h3>
                 <p className="cart-item__price">{item.price} ₽</p>
-            </div>
+            </Link>
             <div className="cart-item__controls">
                 <div className="cart-item__counter">
                     <button className="cart-item__counter-btn" onClick={onDecrement}>

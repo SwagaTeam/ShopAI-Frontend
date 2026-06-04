@@ -5,8 +5,8 @@ export const renderStars = (rating: number, size: number = 16) => {
         <Star
             key={i}
             size={size}
-            fill={i < rating ? '#1b5af5' : '#e5e7eb'}
-            stroke={i < rating ? '#1b5af5' : '#e5e7eb'}
+            fill={i < rating ? '#4b77e4' : '#e5e7eb'}
+            stroke={i < rating ? '#3867da' : '#e5e7eb'}
         />
     ));
 };

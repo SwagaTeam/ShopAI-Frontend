@@ -1,15 +1,6 @@
 import { create } from 'zustand';
 import { apiClient } from '@/data/api/apiClient';
-
-export interface Product {
-    id: string;
-    name: string;
-    price: number;
-    imageUrl: string;
-    shopName: string | null;
-    brandName: string | null;
-    stockQuantity: number;
-}
+import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 interface Stats {
     cartItemsCount: number;
@@ -20,8 +11,8 @@ interface Stats {
 }
 
 interface ProductsState {
-    latest: Product[];
-    popular: Product[];
+    latest: ItemInterface[];
+    popular: ItemInterface[];
     stats: Stats;
     isLoading: boolean;
     error: string | null;

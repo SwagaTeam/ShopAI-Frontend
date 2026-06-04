@@ -5,6 +5,7 @@ import {Header} from "@/components/header/header";
 import {ProductCard} from "@/components/product-card/product-card";
 import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
 import { useProductsStore } from '@/data/store/useProductsStore';
+import Link from "next/link";
 
 export default function ShopAIPage() {
     const { popular, latest, stats, isLoading, fetchMainPageProducts } = useProductsStore();
@@ -30,12 +31,7 @@ export default function ShopAIPage() {
                         ) : popular.length > 0 ? (
                             popular.slice(0, 5).map((item) => (
                                 <ProductCard 
-                                    item={{
-                                        productId: item.id,
-                                        productName: item.name,
-                                        price: item.price,
-                                        imageUrl: item.imageUrl
-                                    }} 
+                                    item={item}
                                     key={item.id} 
                                 />
                             ))
@@ -84,7 +80,7 @@ export default function ShopAIPage() {
                             <h2 className="banner__title">Рады видеть Вас в ShopAI!</h2>
                             <p className="banner__subtitle">ИИ-помощник Шопи подберет идеальные товары</p>
                             <div className="banner__actions">
-                                <button className="btn btn--white">Подобрать товары с ИИ</button>
+                                <Link href={"/ai-assistant"} className="btn btn--white">Подобрать товары с ИИ</Link>
                                 <button className="btn btn--outline-white">Смотреть рекомендации</button>
                             </div>
                         </div>
@@ -102,12 +98,7 @@ export default function ShopAIPage() {
                         ) : latest.length > 0 ? (
                             latest.map((item) => (
                                 <ProductCard
-                                    item={{
-                                        productId: item.id,
-                                        productName: item.name,
-                                        price: item.price,
-                                        imageUrl: item.imageUrl
-                                    }}
+                                    item={item}
                                     key={item.id}
                                 />
                             ))
