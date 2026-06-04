@@ -153,7 +153,7 @@ export default function AiAssistantPage() {
                             {isLoading && (
                                 <div className="ai-page__message ai-page__message--bot">
                                     <div className="ai-page__message-avatar ai-page__message-avatar--bot">
-                                        <Sparkles size={16} />
+                                        <img src="/images/robot-love.png" alt="Шопи"/>
                                     </div>
                                     <div className="ai-page__message-body">
                                         <div className="ai-page__typing">
@@ -253,7 +253,7 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
 
             <div className="ai-page__message ai-page__message--bot">
                 <div className="ai-page__message-avatar ai-page__message-avatar--bot">
-                    <Sparkles size={16} />
+                    <img src="/images/robot-love.png" alt="Шопи"/>
                 </div>
                 <div className="ai-page__message-body ai-page__message-body--bot">
 

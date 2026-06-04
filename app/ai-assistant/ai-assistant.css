@@ -303,8 +303,13 @@
 }
 
 .ai-page__message-avatar--bot {
-    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    background: #c4ecff;
     color: #ffffff;
+}
+
+.ai-page__message-avatar--bot img {
+    width: 40px;
+    height: 40px;
 }
 
 .ai-page__message-body--bot {
