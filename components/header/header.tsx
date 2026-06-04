@@ -44,10 +44,10 @@ export const Header = ({isCompact} : HeaderProps) => {
                     </div>
 
                     <div className="header__actions">
-                        <button className="header__ai-btn">
+                        <Link href={"/ai-assistant"} className="header__ai-btn">
                             ИИ-помощник
                             <Search size={14} color={"#2563eb"} />
-                        </button>
+                        </Link>
                         <button className="header__icon-btn">
                             <Bell size={24} color={"#4A5565"}/>
                         </button>
