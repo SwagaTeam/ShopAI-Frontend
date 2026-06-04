@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix paths">
-      <change afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: ai">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="13120000" />
+      <workItem from="1780523650488" duration="14719000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -407,14 +406,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780569852354</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat: ai">
+      <option name="closed" value="true" />
+      <created>1780571356460</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571356460</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: product card component" />
     <MESSAGE value="icons" />
     <MESSAGE value="main page layout" />
     <MESSAGE value="feat: mock main page" />
@@ -439,6 +445,7 @@
     <MESSAGE value="fix paths" />
     <MESSAGE value="check" />
     <MESSAGE value="feat: reviews" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: reviews" />
+    <MESSAGE value="feat: ai" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ai" />
   </component>
 </project>
