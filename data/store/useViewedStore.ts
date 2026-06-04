@@ -1,18 +1,9 @@
 import { create } from 'zustand';
 import { apiClient } from '@/data/api/apiClient';
-
-export interface ViewedProduct {
-    id: string;
-    name: string;
-    price: number;
-    imageUrl: string;
-    shopName: string | null;
-    brandName: string | null;
-    stockQuantity: number;
-}
+import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 interface ViewedState {
-    items: ViewedProduct[];
+    items: ItemInterface[];
     isLoading: boolean;
     error: string | null;
     

@@ -39,12 +39,7 @@ export const Viewed = () => {
                             <div className="selections__grid">
                                 {items.map((item) => (
                                     <ProductCard
-                                        item={{
-                                            productId: item.id,
-                                            productName: item.name,
-                                            price: item.price,
-                                            imageUrl: item.imageUrl
-                                        }}
+                                        item={item}
                                         key={item.id}
                                     />
                                 ))}

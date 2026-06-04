@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: pulse anim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewed/viewed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useViewedStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useViewedStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +134,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="32850000" />
+      <workItem from="1780523650488" duration="33115000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -486,14 +488,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780610916579</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="feat: pulse anim">
+      <option name="closed" value="true" />
+      <created>1780611549799</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1780611549799</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix logo" />
     <MESSAGE value="add catalog to main" />
     <MESSAGE value="feat: breadcrumb" />
     <MESSAGE value="cart fix layout" />
@@ -518,6 +527,7 @@
     <MESSAGE value="feat: dashboard stats" />
     <MESSAGE value="feat: new item card" />
     <MESSAGE value="garbage clean" />
-    <option name="LAST_COMMIT_MESSAGE" value="garbage clean" />
+    <MESSAGE value="feat: pulse anim" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: pulse anim" />
   </component>
 </project>
