@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: pulse anim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewed/viewed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useViewedStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useViewedStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +32,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -134,7 +130,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="33115000" />
+      <workItem from="1780523650488" duration="33301000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -496,16 +492,37 @@
       <option name="project" value="LOCAL" />
       <updated>1780611549799</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fix: tsc">
+      <option name="closed" value="true" />
+      <created>1780611804466</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1780611804466</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix: warnings">
+      <option name="closed" value="true" />
+      <created>1780611842187</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1780611842187</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fix: imports">
+      <option name="closed" value="true" />
+      <created>1780611889295</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1780611889295</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add catalog to main" />
-    <MESSAGE value="feat: breadcrumb" />
-    <MESSAGE value="cart fix layout" />
     <MESSAGE value="feat: order-summary" />
     <MESSAGE value="profile layout" />
     <MESSAGE value="get cart items" />
@@ -528,6 +545,9 @@
     <MESSAGE value="feat: new item card" />
     <MESSAGE value="garbage clean" />
     <MESSAGE value="feat: pulse anim" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: pulse anim" />
+    <MESSAGE value="fix: tsc" />
+    <MESSAGE value="fix: warnings" />
+    <MESSAGE value="fix: imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: imports" />
   </component>
 </project>

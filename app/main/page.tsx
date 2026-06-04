@@ -69,8 +69,8 @@ export default function ShopAIPage() {
                             <div className="stat-card__icon">
                                 <CircleDollarSign size={17} color="#155DFC"/>
                             </div>
-                            <div className="stat-card__value">{stats.cartTotal}</div>
-                            <div className="stat-card__label">Сумма корзины ₽</div>
+                            <div className="stat-card__value">{stats.cartTotal} ₽</div>
+                            <div className="stat-card__label">Сумма корзины</div>
                         </div>
                     </div>
 
