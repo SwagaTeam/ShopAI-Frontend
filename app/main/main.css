@@ -101,8 +101,8 @@ body {
 }
 
 .stat-card__label {
-    font-weight: 400;
-    font-size: 10px;
+    font-weight: 500;
+    font-size: 12px;
     line-height: 14px;
     letter-spacing: 0;
     color: #4A5565;
@@ -177,4 +177,161 @@ body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+}
+
+/* ================= ADAPTIVE ================= */
+
+/* 1024px - Ноутбуки */
+@media (max-width: 1024px) {
+    .main {
+        padding: 24px;
+        gap: 28px;
+    }
+
+    .selections__grid,
+    .recommendations__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .dashboard {
+        grid-template-columns: 280px 1fr;
+        gap: 20px;
+    }
+
+    .banner__title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .banner__subtitle {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+/* 768px - Планшеты */
+@media (max-width: 768px) {
+    .main {
+        padding: 20px;
+        gap: 24px;
+    }
+
+    .selections__grid,
+    .recommendations__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+
+    .banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+    }
+
+    .banner__actions {
+        justify-content: center;
+    }
+
+    .section__title {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+/* 640px - Планшеты (вертикально) */
+@media (max-width: 640px) {
+    .selections__grid,
+    .recommendations__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section__header {
+        margin-bottom: 16px;
+    }
+
+    .banner__title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .banner__subtitle {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+/* 480px - Мобильные телефоны */
+@media (max-width: 480px) {
+    .main {
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .selections__grid,
+    .recommendations__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .stat-card__value {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .banner {
+        padding: 24px 16px;
+    }
+
+    .banner__actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section__title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .section__link {
+        font-size: 12px;
+    }
 }

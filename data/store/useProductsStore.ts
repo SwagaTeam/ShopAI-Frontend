@@ -11,9 +11,18 @@ export interface Product {
     stockQuantity: number;
 }
 
+interface Stats {
+    cartItemsCount: number;
+    cartTotal: number;
+    recentlyViewedCount: number;
+    reviewsCount: number;
+    wishlistCount: number;
+}
+
 interface ProductsState {
     latest: Product[];
     popular: Product[];
+    stats: Stats;
     isLoading: boolean;
     error: string | null;
     
@@ -23,18 +32,27 @@ interface ProductsState {
 export const useProductsStore = create<ProductsState>((set) => ({
     latest: [],
     popular: [],
+    stats: {
+        cartItemsCount: 0,
+        cartTotal: 0,
+        recentlyViewedCount: 0,
+        reviewsCount: 0,
+        wishlistCount: 0,
+    },
     isLoading: false,
     error: null,
 
-    async fetchMainPageProducts(count = 50) {
+    async fetchMainPageProducts(count = 30) {
         set({ isLoading: true, error: null });
         try {
-            const response = await apiClient.get('/Products/main-page', {
+            const responseDashboard = await apiClient.get('/dashboard');
+            const responseMain = await apiClient.get('/Products/main-page', {
                 params: { count }
             });
             set({
-                latest: response.data.latest,
-                popular: response.data.popular,
+                latest: responseMain.data.latest,
+                popular: responseDashboard.data.popular,
+                stats: responseDashboard.data.stats,
                 isLoading: false
             });
         } catch (error) {

@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: item layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useProductsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useProductsStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +133,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="22748000" />
+      <workItem from="1780523650488" duration="27933000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -455,14 +455,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780586655627</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="fix: ai">
+      <option name="closed" value="true" />
+      <created>1780589158119</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1780589158119</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix warnings" />
     <MESSAGE value="feat: catalog" />
     <MESSAGE value="add catalog to header" />
     <MESSAGE value="fix catalog" />
@@ -487,6 +494,7 @@
     <MESSAGE value="push to deploy" />
     <MESSAGE value="fix: img" />
     <MESSAGE value="fix: item layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: item layout" />
+    <MESSAGE value="fix: ai" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: ai" />
   </component>
 </project>

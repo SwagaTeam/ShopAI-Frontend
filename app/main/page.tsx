@@ -7,10 +7,10 @@ import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
 import { useProductsStore } from '@/data/store/useProductsStore';
 
 export default function ShopAIPage() {
-    const { popular, latest, isLoading, fetchMainPageProducts } = useProductsStore();
+    const { popular, latest, stats, isLoading, fetchMainPageProducts } = useProductsStore();
 
     useEffect(() => {
-        fetchMainPageProducts(50);
+        fetchMainPageProducts(30);
     }, [fetchMainPageProducts]);
 
     return (
@@ -28,7 +28,7 @@ export default function ShopAIPage() {
                         {isLoading ? (
                             <p>Загрузка...</p>
                         ) : popular.length > 0 ? (
-                            popular.map((item) => (
+                            popular.slice(0, 5).map((item) => (
                                 <ProductCard 
                                     item={{
                                         productId: item.id,
@@ -51,29 +51,30 @@ export default function ShopAIPage() {
                             <div className="stat-card__icon">
                                 <SearchIcon size={17} color="#155DFC" />
                             </div>
-                            <div className="stat-card__value">12</div>
-                            <div className="stat-card__label">Активных подборок</div>
+                            <div className="stat-card__value">{stats.recentlyViewedCount}</div>
+                            <div className="stat-card__label">Недавно просмотрено</div>
+
                         </div>
                         <div className="stat-card">
                             <div className="stat-card__icon">
                                 <HeartIcon size={17} color="#155DFC"/>
                             </div>
-                            <div className="stat-card__value">24</div>
+                            <div className="stat-card__value">{stats.wishlistCount}</div>
                             <div className="stat-card__label">В избранном</div>
                         </div>
                         <div className="stat-card">
                             <div className="stat-card__icon">
                                 <Handbag size={17} color="#155DFC"/>
                             </div>
-                            <div className="stat-card__value">8</div>
-                            <div className="stat-card__label">Заказов в этом месяце</div>
+                            <div className="stat-card__value">{stats.cartItemsCount}</div>
+                            <div className="stat-card__label">Товаров в корзине</div>
                         </div>
                         <div className="stat-card">
                             <div className="stat-card__icon">
                                 <CircleDollarSign size={17} color="#155DFC"/>
                             </div>
-                            <div className="stat-card__value">12 500 ₽</div>
-                            <div className="stat-card__label">Сумма выкупа</div>
+                            <div className="stat-card__value">{stats.cartTotal}</div>
+                            <div className="stat-card__label">Сумма корзины ₽</div>
                         </div>
                     </div>
 
@@ -100,14 +101,14 @@ export default function ShopAIPage() {
                             <p>Загрузка...</p>
                         ) : latest.length > 0 ? (
                             latest.map((item) => (
-                                <ProductCard 
+                                <ProductCard
                                     item={{
                                         productId: item.id,
                                         productName: item.name,
                                         price: item.price,
                                         imageUrl: item.imageUrl
-                                    }} 
-                                    key={item.id} 
+                                    }}
+                                    key={item.id}
                                 />
                             ))
                         ) : (
@@ -115,7 +116,6 @@ export default function ShopAIPage() {
                         )}
                     </div>
                 </section>
-
             </main>
         </div>
     );
