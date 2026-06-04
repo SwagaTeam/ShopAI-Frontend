@@ -1,16 +1,18 @@
+"use client"
+
 import {Header} from "@/components/header/header";
 import {ProductCard} from "@/components/product-card/product-card";
 import React, { useEffect } from "react";
-import { useFavoritesStore } from "@/data/store/useFavoritesStore";
-import "./favorites.css"
+import "./viewed.css"
 import {Placeholder} from "@/components/placeholder/placeholder";
+import {useViewedStore} from "@/data/store/useViewedStore";
 
-export const Favorites = () => {
-    const { items, isLoading, error, fetchFavorites } = useFavoritesStore();
+export const Viewed = () => {
+    const { items, isLoading, error, fetchViewed } = useViewedStore();
 
     useEffect(() => {
-        fetchFavorites();
-    }, [fetchFavorites]);
+        fetchViewed();
+    }, [fetchViewed]);
 
     return (
         <div className="page">
@@ -19,19 +21,17 @@ export const Favorites = () => {
                 <section className="selections">
                     {items.length !== 0 && (
                         <div className="section__header">
-                            <h2 className="section__title favorites">Избранное</h2>
+                            <h2 className="section__title">Просмотренные товары</h2>
                         </div>
                     )}
-
-
                         {isLoading ? (
                             <p>Загрузка...</p>
                         ) : error ? (
                             <p style={{ color: 'red' }}>{error}</p>
                         ) : items.length === 0 ? (
                             <Placeholder
-                                title={"У вас нет избранных товаров"}
-                                text={"Добавьте что-нибудь, чтобы я не грустил"}
+                                title={"Вы ничего не смотрели"}
+                                text={"А я уже приготовил для вас подборку... Пожалуйста, посмотрите хоть что-то, чтобы я не грустил"}
                                 buttonText={"Вернуться на главную"}
                                 img={"/images/placeholder.png"}
                                 nav={"/main"} />
@@ -50,7 +50,6 @@ export const Favorites = () => {
                                 ))}
                             </div>
                         )}
-
                 </section>
             </main>
         </div>

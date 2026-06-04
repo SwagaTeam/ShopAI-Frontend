@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="backend connect">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix paths">
+      <change afterPath="$PROJECT_DIR$/app/product/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/viewed/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/viewed/viewed.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/viewed/viewed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/store/useProductStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/store/useViewedStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile-shops/shops.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile-shops/shops.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useCartStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useCartStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useShopsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopsStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,7 +41,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/SwagaTeam/ShopAI-Frontend.git&quot;,
-    &quot;accountId&quot;: &quot;5364c731-360f-4b1a-bd29-22954a46a568&quot;
+    &quot;accountId&quot;: &quot;10f2b875-0aab-4720-805b-c675e2270909&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -44,8 +60,12 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -53,7 +73,8 @@
     &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend/public/images&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -75,18 +96,20 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\data\store" />
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\viewed" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\product\[id]" />
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\components\header" />
-      <recent name="C:\Users\Евгений\Desktop\ShopAI-Frontend\data" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -118,7 +141,9 @@
       <workItem from="1778077819132" duration="308000" />
       <workItem from="1778078451518" duration="20256000" />
       <workItem from="1779182940557" duration="23041000" />
-      <workItem from="1780519121081" duration="71000" />
+      <workItem from="1780519121081" duration="338000" />
+      <workItem from="1780520443817" duration="1095000" />
+      <workItem from="1780523650488" duration="8599000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -368,14 +393,21 @@
       <option name="project" value="LOCAL" />
       <updated>1779359837398</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="fix paths">
+      <option name="closed" value="true" />
+      <created>1780519220431</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1780519220431</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change route" />
     <MESSAGE value="feat: header component" />
     <MESSAGE value="feat: product card component" />
     <MESSAGE value="icons" />
@@ -400,6 +432,7 @@
     <MESSAGE value="Shops Stores" />
     <MESSAGE value="Shop controls" />
     <MESSAGE value="add header" />
-    <option name="LAST_COMMIT_MESSAGE" value="add header" />
+    <MESSAGE value="fix paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix paths" />
   </component>
 </project>

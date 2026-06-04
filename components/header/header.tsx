@@ -62,6 +62,7 @@ export const Header = ({isCompact} : HeaderProps) => {
                 {!isCompact && <nav className="nav">
                     <Link href={"/main"} className={isActive("/main")}>Главная</Link>
                     <Link href="/favorites" className={isActive("/favorites")}>Избранное</Link>
+                    <Link href="/viewed" className={isActive("/viewed")}>Просмотренные</Link>
                     <Link href={""} className="nav__link">Мои заказы</Link>
                 </nav>}
             </header>

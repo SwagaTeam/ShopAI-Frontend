@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { apiClient } from '@/data/api/apiClient';
 import { ICartItem } from '@/data/interfaces/ICartItem';
+import {sileo} from "sileo";
 
 interface CartState {
     id: string | null;
@@ -57,11 +58,10 @@ export const useCartStore = create<CartState>()(
                         quantity
                     });
                     await useCartStore.getState().fetchCart();
+                    sileo.success({ title: "Успех!", description: "Товар добавлен в корзину", duration: 2000 });
                 } catch (error) {
                     console.error('Ошибка при добавлении товара в корзину:', error);
-                    set({
-                        error: 'Ошибка при добавлении товара'
-                    });
+                    sileo.error({ title: "Ошибка!", description: "Товар не добавлен в корзину", duration: 2000 });
                 }
             },
 
