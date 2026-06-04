@@ -3,18 +3,15 @@
 import React, { useEffect } from 'react';
 import './cart.css';
 import { Header } from '@/components/header/header';
-import Link from "next/link";
 import {CartItem} from "@/components/cart-item/cart-item";
-import {ChevronRight, HeartCrack} from "lucide-react";
 import {OrderSummary} from "@/components/order-summary/order-summary";
 import {Breadcrumb} from "@/components/breadcrumb/breadcrumb";
-import {ICartItem} from "@/data/interfaces/ICartItem";
 import { useCartStore } from '@/data/store/useCartStore';
 import {CartSkeleton} from "@/components/cart-item/cart-skeleton";
 import {Placeholder} from "@/components/placeholder/placeholder";
 
 export default function CartPage() {
-    const { items, totalPrice, isLoading, error, fetchCart, updateItemQuantity, removeItem } = useCartStore();
+    const { items, isLoading, error, fetchCart, updateItemQuantity, removeItem } = useCartStore();
 
     useEffect(() => {
         fetchCart();
