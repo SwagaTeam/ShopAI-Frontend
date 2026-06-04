@@ -1,15 +1,6 @@
 import { create } from 'zustand';
 import { apiClient } from '@/data/api/apiClient';
-
-export interface AiProduct {
-    id: string;
-    name: string;
-    price: number;
-    imageUrl: string;
-    shopName: string;
-    brandName: string;
-    stockQuantity: number;
-}
+import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 export interface AiInterpreted {
     intent: string;
@@ -28,8 +19,8 @@ export interface AiInterpreted {
 
 export interface AiResponse {
     interpreted: AiInterpreted;
-    items: AiProduct[];
-    bundles: AiProduct[][];
+    items: ItemInterface[];
+    bundles: ItemInterface[][];
 }
 
 export interface AiHistoryEntry {

@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: dashboard stats">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart-item/cart-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart-item/cart-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/main.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/interfaces/ICartItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/interfaces/ICartItem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/interfaces/ItemInterface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/interfaces/ItemInterface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useCartStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useCartStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useProductsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useProductsStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utilsJSX.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utilsJSX.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +132,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="32161000" />
+      <workItem from="1780523650488" duration="32850000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -481,15 +470,29 @@
       <option name="project" value="LOCAL" />
       <updated>1780606616048</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="feat: new item card">
+      <option name="closed" value="true" />
+      <created>1780610908475</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1780610908475</updated>
+    </task>
+    <task id="LOCAL-00044" summary="garbage clean">
+      <option name="closed" value="true" />
+      <created>1780610916579</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1780610916579</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add catalog to header" />
-    <MESSAGE value="fix catalog" />
     <MESSAGE value="fix logo" />
     <MESSAGE value="add catalog to main" />
     <MESSAGE value="feat: breadcrumb" />
@@ -513,6 +516,8 @@
     <MESSAGE value="fix: item layout" />
     <MESSAGE value="fix: ai" />
     <MESSAGE value="feat: dashboard stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: dashboard stats" />
+    <MESSAGE value="feat: new item card" />
+    <MESSAGE value="garbage clean" />
+    <option name="LAST_COMMIT_MESSAGE" value="garbage clean" />
   </component>
 </project>

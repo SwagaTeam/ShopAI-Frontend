@@ -184,61 +184,64 @@
     text-align: center;
     padding: 10vh 20px;
     position: relative;
-    min-height: 60vh;
+    min-height: 70vh;
     isolation: isolate;
+    overflow: hidden; /* Чтобы размытые края не вылезали за пределы */
     background: radial-gradient(
             circle at center,
-            rgba(139, 92, 246, 0.15) 0%,
-            rgba(139, 92, 246, 0.08) 25%,
-            rgba(59, 130, 246, 0.04) 50%,
-            rgba(168, 85, 247, 0.02) 70%,
+            rgba(139, 92, 246, 0.08) 0%,
+            rgba(59, 130, 246, 0.03) 50%,
             transparent 100%
     );
 }
 
-/* Простой и элегантный овал, затухающий от центра */
+/* 1. Первое цветовое облако (Фиолетово-розовое) */
 .ai-page__welcome::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 80%;
     max-width: 800px;
-    height: 80%;
+    height: 30%;
     max-height: 600px;
+    /* Смещаем градиент от центра, чтобы при вращении он "перетекал" */
     background: radial-gradient(
-            ellipse at center,
-            rgba(139, 92, 246, 0.2) 0%,
-            rgba(59, 130, 246, 0.1) 30%,
-            rgba(236, 72, 153, 0.05) 50%,
+            ellipse at 30% 70%,
+            rgba(139, 92, 246, 0.25) 0%,
+            rgba(236, 72, 153, 0.15) 40%,
             transparent 70%
     );
-    border-radius: 50%;
-    filter: blur(40px);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Асимметричная форма (Blob) */
+    filter: blur(60px);
     z-index: -1;
     pointer-events: none;
+    animation: liquidRotate1 15s linear infinite;
+    will-change: transform, border-radius;
 }
+
+/* 2. Второе цветовое облако (Сине-голубое) */
 .ai-page__welcome::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    max-width: 600px;
-    height: 60%;
-    max-height: 450px;
+    width: 70%;
+    max-width: 700px;
+    height: 20%;
+    max-height: 500px;
     background: radial-gradient(
-            circle at center,
-            rgba(139, 92, 246, 0.25) 0%,
-            rgba(59, 130, 246, 0.12) 40%,
+            ellipse at 70% 30%,
+            rgba(59, 130, 246, 0.25) 0%,
+            rgba(14, 165, 233, 0.1) 50%,
             transparent 80%
     );
-    border-radius: 50%;
-    filter: blur(60px);
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+    filter: blur(50px);
     z-index: -1;
     pointer-events: none;
+    animation: liquidRotate2 18s linear infinite reverse;
+    will-change: transform, border-radius;
 }
 
 .ai-page__welcome-glow {
@@ -246,18 +249,21 @@
     width: 500px;
     height: 500px;
     background: radial-gradient(
-            circle at center,
-            rgba(139, 92, 246, 0.08) 0%,
-            rgba(59, 130, 246, 0.04) 30%,
+            circle at 50% 50%,
+            rgba(168, 85, 247, 0.15) 0%,
+            rgba(59, 130, 246, 0.1) 40%,
             transparent 70%
     );
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    filter: blur(50px);
+    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+    filter: blur(40px);
     z-index: 0;
+    pointer-events: none;
+    animation: liquidRotate3 20s ease-in-out infinite alternate;
+    will-change: transform;
 }
+
 
 .ai-page__welcome-icon {
     width: 120px;
@@ -349,6 +355,51 @@
 
 .ai-page__welcome::after {
     animation: gentlePulse 6s ease-in-out infinite reverse;
+}
+@keyframes liquidRotate1 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    33% {
+        transform: translate(-45%, -55%) rotate(120deg) scale(1.05);
+        border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+    }
+    66% {
+        transform: translate(-55%, -45%) rotate(240deg) scale(0.95);
+        border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+@keyframes liquidRotate2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translate(-55%, -45%) rotate(120deg) scale(0.95);
+    }
+    66% {
+        transform: translate(-45%, -55%) rotate(240deg) scale(1.05);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+}
+
+@keyframes liquidRotate3 {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
+    }
+    50% {
+        transform: translate(-48%, -48%) scale(1.1) rotate(180deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.9) rotate(360deg);
+    }
 }
 
 /* Messages */

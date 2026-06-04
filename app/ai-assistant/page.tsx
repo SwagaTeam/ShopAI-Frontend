@@ -3,14 +3,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import { ProductCard } from '@/components/product-card/product-card';
-import { useAiAssistantStore, AiHistoryEntry, AiProduct } from '@/data/store/useAiAssistantStore';
+import { useAiAssistantStore, AiHistoryEntry } from '@/data/store/useAiAssistantStore';
 import {
-    Send, Sparkles, SlidersHorizontal, Trash2, ChevronDown, ChevronUp,
-    Package, ShoppingBag, Tag, Search, Wrench, Smartphone, Gamepad2,
+    Send, SlidersHorizontal, Trash2, ChevronDown, ChevronUp,
+    Package, ShoppingBag, Search, Wrench, Smartphone, Gamepad2,
     Home, Shirt, Gift, DollarSign, AlertCircle, ChevronLeft
 } from 'lucide-react';
 import './ai-assistant.css';
 import Link from "next/link";
+import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 const quickPrompts = [
     { icon: <Wrench size={16} />, text: 'Всё для ремонта ванной' },
@@ -247,7 +248,7 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
         setExpandedBundle(expandedBundle === idx ? null : idx);
     };
 
-    const bundleTotal = (bundle: AiProduct[]) => bundle.reduce((sum, item) => sum + item.price, 0);
+    const bundleTotal = (bundle: ItemInterface[]) => bundle.reduce((sum, item) => sum + item.price, 0);
 
     return (
         <div className="ai-page__entry">
@@ -301,12 +302,7 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
                             <div className="ai-page__products-grid">
                                 {items.map(item => (
                                     <ProductCard
-                                        item={{
-                                            productId: item.id,
-                                            productName: item.name,
-                                            price: item.price,
-                                            imageUrl: item.imageUrl
-                                        }}
+                                        item={item}
                                         key={item.id}
                                     />
                                 ))}
@@ -348,7 +344,7 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
                                                 <div className="ai-page__products-grid">
                                                     {bundle.map(item => (
                                                         <ProductCard
-                                                            item={{ productId: item.id, productName: item.name, price: item.price, imageUrl: item.imageUrl }}
+                                                            item={item}
                                                             key={item.id}
                                                         />
                                                     ))}
