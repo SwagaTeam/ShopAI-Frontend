@@ -1,0 +1,129 @@
+/* --- Карточка отзыва --- */
+.review-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px 32px;
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #1b5bf7;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.review-user-info {
+    flex: 1;
+}
+
+.review-user-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-user-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.review-verified {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #16a34a;
+}
+
+.review-verified-icon {
+    width: 16px;
+    height: 16px;
+    fill: #16a34a;
+}
+
+.review-stars-row {
+    display: flex;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.review-stars-row svg {
+    width: 16px;
+    height: 16px;
+}
+
+.review-date {
+    font-size: 14px;
+    color: #808080;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+.review-comment {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 16px 0 20px 0;
+}
+
+/* Изображения отзыва */
+.review-images {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.review-images img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Лайки / Дизлайки */
+.review-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.review-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #808080;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.review-action-btn:hover {
+    border-color: #b0b0b0;
+}
+
+.review-action-btn svg {
+    width: 16px;
+    height: 16px;
+}

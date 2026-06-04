@@ -1,0 +1,561 @@
+/* ======================== */
+/*  СТРАНИЦА ОТЗЫВОВ        */
+/* ======================== */
+
+.reviews-page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    padding-bottom: 80px;
+}
+
+.reviews-page__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Кнопка «Назад к товару» --- */
+.reviews-page__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 20px 0;
+    transition: color 0.2s;
+}
+
+.reviews-page__back:hover {
+    color: #1b5bf7;
+}
+
+/* --- Шапка товара --- */
+.reviews-page__product-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    gap: 24px;
+}
+
+.reviews-page__product-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.reviews-page__product-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+}
+
+.reviews-page__product-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+}
+
+.reviews-page__product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reviews-page__product-avg {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-left: 4px;
+}
+
+.reviews-page__product-count {
+    font-size: 14px;
+    color: #808080;
+    margin-left: 4px;
+}
+
+.reviews-page__product-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reviews-page__product-prices {
+    text-align: right;
+    margin-right: 8px;
+}
+
+.reviews-page__price {
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+
+.reviews-page__buy-btn {
+    background-color: #1b5bf7;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.reviews-page__buy-btn:hover {
+    background-color: #1548c7;
+}
+
+.reviews-page__cart-btn {
+    background: none;
+    color: #1b5bf7;
+    border: 1px solid #1b5bf7;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.reviews-page__cart-btn:hover {
+    background-color: #f0f4ff;
+}
+
+.reviews-page__icon-btn {
+    background: none;
+    border: none;
+    color: #808080;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: color 0.2s;
+}
+
+.reviews-page__icon-btn:hover {
+    color: #1b5bf7;
+}
+
+/* --- Тело: сайдбар + контент --- */
+.reviews-page__body {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* --- Сайдбар (фильтры) --- */
+.reviews-page__sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+}
+
+.reviews-page__sidebar-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.reviews-page__filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.reviews-page__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #4a4a4a;
+    cursor: pointer;
+}
+
+.reviews-page__checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #1b5bf7;
+    cursor: pointer;
+}
+
+.reviews-page__reset {
+    background: none;
+    border: none;
+    color: #1b5bf7;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.reviews-page__reset:hover {
+    text-decoration: underline;
+}
+
+/* --- Контент справа --- */
+.reviews-page__content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Галерея фото */
+.reviews-page__photos-section {
+    margin-bottom: 24px;
+}
+
+.reviews-page__photos-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+}
+
+.reviews-page__photos-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.reviews-page__photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.reviews-page__photo:hover {
+    opacity: 0.85;
+}
+
+/* Табы фильтров + кнопка «Написать» */
+.reviews-page__filter-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.reviews-page__tabs-left {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.reviews-page__filter-tab {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #4a4a4a;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.reviews-page__filter-tab:hover {
+    background-color: #e5e7eb;
+}
+
+.reviews-page__filter-tab.active {
+    background-color: #1b5bf7;
+    color: #ffffff;
+}
+
+.reviews-page__filter-tab.active svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+.reviews-page__write-btn {
+    background-color: #1b5af5;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.reviews-page__write-btn:hover {
+    background-color: #2c66f4;
+}
+
+/* Список */
+.reviews-page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reviews-page__empty {
+    text-align: center;
+    padding: 60px 0;
+    color: #808080;
+    font-size: 16px;
+}
+
+/* Показать ещё */
+.reviews-page__load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.reviews-page__load-more {
+    background: none;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    border-radius: 24px;
+    padding: 12px 36px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reviews-page__load-more:hover {
+    background-color: #f3f4f6;
+}
+
+.reviews-page__load-more:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ======================== */
+/*  МОДАЛКА — НАПИСАТЬ ОТЗЫВ */
+/* ======================== */
+
+.review-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.review-modal {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.review-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.review-modal__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.review-modal__close {
+    background: none;
+    border: none;
+    color: #808080;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: color 0.2s;
+}
+
+.review-modal__close:hover {
+    color: #1a1a1a;
+}
+
+.review-modal__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: #f8f9fb;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.review-modal__product-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.review-modal__product-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+.review-modal__field {
+    margin-bottom: 24px;
+}
+
+.review-modal__label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.review-modal__stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.review-modal__star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    transition: transform 0.15s;
+}
+
+.review-modal__star-btn:hover {
+    transform: scale(1.15);
+}
+
+.review-modal__rating-text {
+    margin-left: 12px;
+    font-size: 14px;
+    color: #1b5bf7;
+    font-weight: 500;
+}
+
+.review-modal__textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.review-modal__textarea:focus {
+    outline: none;
+    border-color: #1b5bf7;
+}
+
+.review-modal__textarea::placeholder {
+    color: #b0b0b0;
+}
+
+.review-modal__error {
+    background-color: #fef2f2;
+    color: #dc2626;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.review-modal__submit {
+    width: 100%;
+    background-color: #1b5bf7;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.review-modal__submit:hover:not(:disabled) {
+    background-color: #1548c7;
+}
+
+.review-modal__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Статус «уже оставлен» --- */
+.reviews-page__already-reviewed {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #16a34a;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #f0fdf4;
+    padding: 8px 18px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+/* --- Баннер «Ваш отзыв» --- */
+.reviews-page__your-review-banner {
+    margin-bottom: 24px;
+    border: 2px solid #1b5bf7;
+    border-radius: 18px;
+    padding: 4px;
+    position: relative;
+}
+
+.reviews-page__your-review-banner .rc {
+    border: none;
+}
+
+.reviews-page__your-review-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: #1b5bf7;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+}

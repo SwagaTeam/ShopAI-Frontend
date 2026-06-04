@@ -4,34 +4,32 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import '../product.css';
 import { Header } from "@/components/header/header";
-import { Search, ChevronLeft, ChevronRight, Star, Heart, GitCompare, Minus, Plus } from 'lucide-react';
-import { ProductCard } from "@/components/product-card/product-card";
+import { Search,  Star, Heart, GitCompare, Minus, Plus, } from 'lucide-react';
 import { useProductStore } from '@/data/store/useProductStore';
-import {useParams} from "next/navigation";
-import {useViewedStore} from "@/data/store/useViewedStore";
-import {useCartStore} from "@/data/store/useCartStore";
-
-const similarProducts = [
-    { productId: "similar_1", productName: "Кроссовки мужские Nike Air Max Sc", price: 14999, imageUrl: "/api/placeholder/200/150" },
-    { productId: "similar_2", productName: "Кроссовки Nike Air Max 1 Platinum Tint", price: 11299, imageUrl: "/api/placeholder/200/150" },
-    { productId: "similar_3", productName: "Кроссовки Nike Air Max 1 Platinum Tint", price: 11299, imageUrl: "/api/placeholder/200/150" },
-    { productId: "similar_4", productName: "Кроссовки Nike Air Max 1 Essential", price: 11299, imageUrl: "/api/placeholder/200/150" }
-];
+import { useReviewsStore } from '@/data/store/useReviewsStore';
+import {useParams, useRouter} from "next/navigation";
+import { useViewedStore } from "@/data/store/useViewedStore";
+import { useCartStore } from "@/data/store/useCartStore";
+import {renderStars} from "@/utils/utilsJSX";
+import {ReviewCard} from "@/components/review-card/review-card";
 
 export default function ProductPage() {
     const { product, isLoading, error, fetchProduct } = useProductStore();
-    const {viewProduct} = useViewedStore();
-    const {addOrUpdateItem} = useCartStore();
+    const { review, isLoading: reviewsLoading, error: reviewsError, fetchFirstReview } = useReviewsStore();
+    const { viewProduct } = useViewedStore();
+    const { addOrUpdateItem } = useCartStore();
     const [activeTab, setActiveTab] = useState<'description' | 'characteristics' | 'reviews'>('description');
     const [quantity, setQuantity] = useState(1);
     const params = useParams() as { id?: string };
     const productId = params?.id || '';
+    const router = useRouter();
+
     useEffect(() => {
         fetchProduct(productId);
         viewProduct(productId);
-    }, [productId, fetchProduct]);
+        fetchFirstReview(productId);
+    }, [productId, fetchProduct, fetchFirstReview]);
 
-    // Обработчики количества
     const handleMinus = () => setQuantity(prev => Math.max(1, prev - 1));
     const handlePlus = () => setQuantity(prev => (product ? Math.min(product.stockQuantity, prev + 1) : prev + 1));
 
@@ -72,13 +70,7 @@ export default function ProductPage() {
                         </div>
 
                         <div className="main-image-container">
-                            {/*<button className="arrow-btn arrow-left">
-                                <ChevronLeft size={24}/>
-                            </button>*/}
-                            <img src={product.imageUrl} alt={product.name}/>
-                            {/*<button className="arrow-btn arrow-right">
-                                <ChevronRight size={24}/>
-                            </button>*/}
+                            <img src={product.imageUrl} alt={product.name} />
                         </div>
                     </div>
 
@@ -89,18 +81,15 @@ export default function ProductPage() {
 
                         <div className="rating-row">
                             <div className="stars">
-                                <Star size={20} fill="currentColor" color={"#82a4f8"} />
-                                <Star size={20} fill="currentColor" color={"#82a4f8"} />
-                                <Star size={20} fill="currentColor" color={"#82a4f8"} />
-                                <Star size={20} fill="currentColor" color={"#82a4f8"} />
-                                <Star size={20} fill="currentColor" color={"#82a4f8"} /> {/* {"#1b5bf7"}*/}
+                                {renderStars(review ? review.rating : 0, 20)}
                             </div>
-                            <span className="rating-value">0.0</span>
-                            <a href="#" className="reviews-link" onClick={(e) => { e.preventDefault(); setActiveTab('reviews'); }}>(0 отзывов)</a>
+                            <span className="rating-value">{review ? review.rating.toFixed(1) : '0.0'}</span>
+                            <a href="#" className="reviews-link" onClick={(e) => { e.preventDefault(); setActiveTab('reviews'); }}>
+                                ({review ? '1 отзыв' : '0 отзывов'})
+                            </a>
                         </div>
 
                         <div className="price-row">
-                            {/* Форматируем цену с пробелами */}
                             <span className="current-price">{product.price.toLocaleString('ru-RU')} ₽</span>
                         </div>
 
@@ -195,7 +184,6 @@ export default function ProductPage() {
                                 <span className="char-name">Остаток на складе</span>
                                 <span className="char-value">{product.stockQuantity} шт.</span>
                             </div>
-                            {/* Технические ID (обычно скрывают, но если нужно вывести по ТЗ): */}
                             <div className="char-item">
                                 <span className="char-name">ID Категории</span>
                                 <span className="char-value" style={{ fontSize: '12px', color: '#999' }}>{product.categoryId}</span>
@@ -208,21 +196,78 @@ export default function ProductPage() {
                     )}
 
                     {activeTab === 'reviews' && (
-                        <div>
-                            <p>Отзывов пока нет. Будьте первыми!</p>
+                        <div className="reviews-container">
+
+                            {/* Сводка рейтинга */}
+                            <div className="reviews-summary">
+                                <div className="reviews-summary-left">
+                                    <div className="reviews-avg-score">
+                                        {review ? review.rating.toFixed(1) : '0.0'}
+                                    </div>
+                                    <div className="reviews-avg-stars">
+                                        {renderStars(review ? review.rating : 0, 20)}
+                                    </div>
+                                    <div className="reviews-avg-count">
+                                        ({review ? '1 отзыв' : '0 отзывов'})
+                                    </div>
+                                </div>
+
+                                <div className="reviews-bars">
+                                    {[5, 4, 3, 2, 1].map(star => {
+                                        const count = review && review.rating === star ? 1 : 0;
+                                        const total = review ? 1 : 0;
+                                        const percent = total > 0 ? (count / total) * 100 : 0;
+                                        return (
+                                            <div className="reviews-bar-row" key={star}>
+                                                <span className="reviews-bar-label">{star}</span>
+                                                <Star size={14} fill="#808080" color="#808080" className="reviews-bar-star-icon" />
+                                                <div className="reviews-bar-track">
+                                                    <div className="reviews-bar-fill" style={{ width: `${percent}%` }} />
+                                                </div>
+                                                <span className="reviews-bar-count">{count}</span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <div className="reviews-summary-right">
+                                    <button
+                                        className="write-review-btn"
+                                        onClick={() => router.push(`/product/${productId}/reviews`)}
+                                    >
+                                        Написать отзыв
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Загрузка */}
+                            {reviewsLoading && (
+                                <div className="reviews-loading">Загрузка отзывов...</div>
+                            )}
+
+                            {/* Ошибка / пусто */}
+                            {!reviewsLoading && (reviewsError || !review) && (
+                                <div className="reviews-empty">Нет отзывов</div>
+                            )}
+
+                            {/* Карточка отзыва */}
+                            {!reviewsLoading && review && (
+                                <>
+                                <ReviewCard review={review} />
+
+                                <div className="all-reviews-btn-wrapper">
+                                    <button
+                                        className="all-reviews-btn"
+                                        onClick={() => router.push(`/product/${productId}/reviews`)}
+                                    >
+                                        Все отзывы
+                                    </button>
+                                </div>
+                                </>
+                            )}
                         </div>
                     )}
                 </div>
-
-                {/* Похожие товары
-                <section className="similar-section">
-                    <h2 className="similar-title">Похожие товары</h2>
-                    <div className="products-grid">
-                        {similarProducts.map((item) => (
-                            <ProductCard key={item.productId} item={item} />
-                        ))}
-                    </div>
-                </section>*/}
             </main>
         </div>
     );

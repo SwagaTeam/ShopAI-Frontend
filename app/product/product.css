@@ -161,13 +161,11 @@
 .stars {
     display: flex;
     gap: 4px;
-    color: #82a4f8;
 }
 
 .stars svg {
     width: 16px;
     height: 16px;
-    fill: currentColor;
 }
 
 .stars .inactive {
@@ -470,4 +468,165 @@
     font-weight: 500;
     flex: 1;
     text-align: left;
+}
+
+/* ===================== */
+/* СЕКЦИЯ ОТЗЫВОВ        */
+/* ===================== */
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* --- Сводка рейтинга --- */
+.reviews-summary {
+    background-color: #f8f9fb;
+    border-radius: 16px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.reviews-summary-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+.reviews-avg-score {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1a1a1a;
+}
+
+.reviews-avg-stars {
+    display: flex;
+    gap: 2px;
+    margin-top: 8px;
+}
+
+.reviews-avg-stars svg {
+    color: #f5a623;
+}
+
+.reviews-avg-count {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #808080;
+}
+
+/* Полоски распределения */
+.reviews-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reviews-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reviews-bar-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    min-width: 16px;
+    text-align: right;
+}
+
+.reviews-bar-star-icon {
+    color: #808080;
+    flex-shrink: 0;
+}
+
+.reviews-bar-track {
+    flex: 1;
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.reviews-bar-fill {
+    height: 100%;
+    background-color: #f5a623;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.reviews-bar-count {
+    font-size: 14px;
+    color: #808080;
+    min-width: 24px;
+}
+
+/* Кнопка "Написать отзыв" */
+.reviews-summary-right {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.write-review-btn {
+    background-color: #1b5af5;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.write-review-btn:hover {
+    background-color: #3a6ff3;
+}
+
+
+
+/* Кнопка "Все отзывы" */
+.all-reviews-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.all-reviews-btn {
+    background: none;
+    border: 1px solid #1b5bf7;
+    color: #1b5bf7;
+    border-radius: 24px;
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.all-reviews-btn:hover {
+    background-color: #f0f4ff;
+}
+
+/* Пустое состояние */
+.reviews-empty {
+    text-align: center;
+    padding: 40px 0;
+    color: #808080;
+    font-size: 16px;
+}
+
+.reviews-loading {
+    text-align: center;
+    padding: 40px 0;
+    color: #808080;
+    font-size: 15px;
 }
