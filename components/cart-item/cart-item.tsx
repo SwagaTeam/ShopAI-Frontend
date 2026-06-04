@@ -4,7 +4,7 @@ import "./cart-item.css"
 import {ICartItem} from "@/data/interfaces/ICartItem";
 import Link from "next/link";
 
-export const CartItem = ({ item, onToggle, onIncrement, onDecrement, onRemove, onToggleFavorite }: {
+export const CartItem = ({ item, onIncrement, onDecrement, onRemove, onToggleFavorite }: {
     item: ICartItem;
     onToggle?: () => void;
     onIncrement?: () => void;
