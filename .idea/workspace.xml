@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="push to deploy">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: img">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/api/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/api/apiClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAiAssistantStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +138,7 @@
       <workItem from="1779182940557" duration="23041000" />
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
-      <workItem from="1780523650488" duration="15701000" />
+      <workItem from="1780523650488" duration="20163000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Landing layout">
       <option name="closed" value="true" />
@@ -437,14 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780573299722</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fix: img">
+      <option name="closed" value="true" />
+      <created>1780574049459</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1780574049459</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="main page layout" />
     <MESSAGE value="feat: mock main page" />
     <MESSAGE value="fix warnings" />
     <MESSAGE value="feat: catalog" />
@@ -469,6 +483,7 @@
     <MESSAGE value="feat: reviews" />
     <MESSAGE value="feat: ai" />
     <MESSAGE value="push to deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="push to deploy" />
+    <MESSAGE value="fix: img" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: img" />
   </component>
 </project>

@@ -7,6 +7,7 @@ import { useCartStore } from "@/data/store/useCartStore";
 import { LikeButton } from "../like-button/like-button";
 import "./product-card.css";
 import { sileo } from "sileo";
+import {CircleOff} from "lucide-react";
 
 export const ProductCard = ({ item }: { item: ItemInterface }) => {
     const addOrUpdateItem = useCartStore((state) => state.addOrUpdateItem);
@@ -34,18 +35,18 @@ export const ProductCard = ({ item }: { item: ItemInterface }) => {
 
     return (
         <Link href={`/product/${item.productId}`} className="product-card-link">
-            <div className="product-card">
                 <div className="product-card__image-wrapper">
-                    <img
+                    {item.imageUrl ? (<img
                         src={item.imageUrl}
                         alt={item.productName}
                         className="product-card__image"
-                    />
-                    {/* Оборачиваем лайк, чтобы клик по нему не вызывал переход */}
+                    />) : (<div className="product-card__image"> <CircleOff size={120} color={"#d1d1d1"}/></div> )}
+
                     <div onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
                         <LikeButton itemId={item.productId} />
                     </div>
                 </div>
+            <div className="product-card">
                 <h3 className="product-card__title">{item.productName}</h3>
                 <div className="product-card__price">
                     {item.price.toLocaleString('ru-RU')} ₽

@@ -33,7 +33,6 @@ export interface AiResponse {
 }
 
 export interface AiHistoryEntry {
-    id: string;
     query: string;
     response: AiResponse;
     timestamp: Date;
@@ -73,7 +72,6 @@ export const useAiAssistantStore = create<AiAssistantState>((set, get) => ({
             const data: AiResponse = response.data;
 
             const entry: AiHistoryEntry = {
-                id: crypto.randomUUID(),
                 query: userPrompt,
                 response: data,
                 timestamp: new Date()

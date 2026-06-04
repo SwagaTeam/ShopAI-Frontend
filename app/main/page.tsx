@@ -95,7 +95,7 @@ export default function ShopAIPage() {
                         <h2 className="section__title">Новые поступления</h2>
                         <a href="#" className="section__link">Смотреть все &gt;</a>
                     </div>
-                    <div className="recommendations__grid">
+                    <div className="selections__grid">
                         {isLoading ? (
                             <p>Загрузка...</p>
                         ) : latest.length > 0 ? (
