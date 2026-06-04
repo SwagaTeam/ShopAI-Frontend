@@ -26,7 +26,7 @@ export const ReviewCard = ({review}: any) => {
                 {/* Изображения отзыва */}
                 {review.imagePaths && review.imagePaths.length > 0 && (
                     <div className="review-images">
-                        {review.imagePaths.map((path, idx) => (
+                        {review.imagePaths.map((path: string, idx: number) => (
                             <img key={idx} src={path} alt={`Фото отзыва ${idx + 1}`} />
                         ))}
                     </div>
