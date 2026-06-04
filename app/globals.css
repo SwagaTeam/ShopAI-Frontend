@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Inter, Roboto, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Geist, Inter, system-ui, -apple-system, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,7 +37,7 @@ a {
 }
 
 button {
-  font-family: Inter, Roboto, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Geist, Inter, system-ui, -apple-system, sans-serif);
 }
 
 @media (prefers-color-scheme: light) {

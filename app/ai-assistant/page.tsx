@@ -103,7 +103,6 @@ export default function AiAssistantPage() {
                                     className="ai-page__quick-item"
                                     onClick={() => handleQuickPrompt(p.text)}
                                 >
-                                    <span className="ai-page__quick-icon">{p.icon}</span>
                                     <span className="ai-page__quick-text">{p.text}</span>
                                 </button>
                             ))}
@@ -125,9 +124,16 @@ export default function AiAssistantPage() {
                         <div className="ai-page__chat-container">
                             {history.length === 0 && !isLoading && (
                                 <div className="ai-page__welcome">
+                                    {/* New animated gradient background */}
+                                    <div className="ai-page__gradient-bg">
+                                        <div className="ai-page__gradient-orb orb-1"></div>
+                                        <div className="ai-page__gradient-orb orb-2"></div>
+                                        <div className="ai-page__gradient-orb orb-3"></div>
+                                    </div>
+
                                     <div className="ai-page__welcome-glow"></div>
                                     <div className="ai-page__welcome-icon">
-                                        <img src="/images/robot-love.png" alt="Шопи"/>
+                                        <img src="/images/robot-love.png" alt="Шопи" />
                                     </div>
                                     <h1 className="ai-page__welcome-title">
                                         Что будем искать сегодня?
@@ -147,7 +153,7 @@ export default function AiAssistantPage() {
                             )}
 
                             {history.map((entry) => (
-                                <ChatEntry key={entry.id} entry={entry} />
+                                <ChatEntry key={entry.timestamp.getTime()} entry={entry} />
                             ))}
 
                             {isLoading && (
