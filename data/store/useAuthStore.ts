@@ -9,9 +9,10 @@ interface AuthState {
     name: string | null;
     email: string | null;
     phone: string | null;
+    role: string | null;
     isAuth: boolean;
     setAuth: (token: string, refreshToken: string) => Promise<void>;
-    updateProfile: (profile: Partial<Pick<AuthState, 'name' | 'email' | 'phone' | 'id'>>) => void;
+    updateProfile: (profile: Partial<Pick<AuthState, 'name' | 'email' | 'phone' | 'id' | 'role'>>) => void;
     clearAuth: () => void;
 }
 
@@ -24,6 +25,7 @@ export const useAuthStore = create<AuthState>()(
             name: null,
             email: null,
             phone: null,
+            role: null,
             isAuth: false,
 
             async setAuth(token, refreshToken) {
@@ -44,7 +46,8 @@ export const useAuthStore = create<AuthState>()(
                         id: userData.id || null,
                         name: userData.name || null,
                         email: userData.email || null,
-                        phone: userData.phone || null
+                        phone: userData.phone || null,
+                        role: userData.role || null
                     });
                 } catch (error) {
                     console.error('Ошибка при получении профиля после авторизации:', error);
@@ -66,6 +69,7 @@ export const useAuthStore = create<AuthState>()(
                     name: null,
                     email: null,
                     phone: null,
+                    role: null,
                     isAuth: false,
                 }),
         }),

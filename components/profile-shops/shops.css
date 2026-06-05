@@ -49,6 +49,218 @@
     gap: 24px;
 }
 
+.shops-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #667085;
+}
+
+.shops-empty--error {
+    color: #D92D20;
+}
+
+/* ================= SELLER REQUEST ================= */
+.seller-request,
+.admin-requests {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.seller-request__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+    color: #155DFC;
+}
+
+.seller-request__header h3,
+.admin-requests h3 {
+    margin: 0 0 6px 0;
+    color: #101828;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.seller-request__header p {
+    margin: 0;
+    color: #667085;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.seller-request__form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.seller-request__form .form-group:nth-child(4),
+.seller-request__checkbox,
+.seller-request__form .shops-create-btn {
+    grid-column: 1 / -1;
+}
+
+.seller-request__form select {
+    padding: 10px 14px;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #101828;
+    outline: none;
+    font-family: inherit;
+    background-color: #FFFFFF;
+}
+
+.seller-request__form select:focus {
+    border-color: #155DFC;
+    box-shadow: 0 0 0 4px rgba(21, 93, 252, 0.1);
+}
+
+.form-hint {
+    color: #667085;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: right;
+}
+
+.seller-request__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #344054;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.seller-request__checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: #155DFC;
+}
+
+.seller-request__status {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background-color: #F9FAFB;
+    color: #344054;
+    margin-bottom: 18px;
+}
+
+.seller-request__status strong,
+.seller-request__status span {
+    display: block;
+}
+
+.seller-request__status strong {
+    font-size: 14px;
+    line-height: 20px;
+    color: #101828;
+}
+
+.seller-request__status span {
+    color: #667085;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.seller-request__status button {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: 1px solid #155DFC;
+    background-color: #FFFFFF;
+    color: #155DFC;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.seller-request__status--pending {
+    background-color: #FFFAEB;
+    color: #B54708;
+}
+
+.seller-request__status--approved {
+    background-color: #ECFDF3;
+    color: #027A48;
+}
+
+.seller-request__status--rejected {
+    background-color: #FEF3F2;
+    color: #B42318;
+}
+
+/* ================= ADMIN REQUESTS ================= */
+.admin-requests__list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-request {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid #EAECF0;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.admin-request strong {
+    color: #101828;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.admin-request p,
+.admin-request a {
+    margin: 4px 0 0 0;
+    color: #667085;
+    font-size: 13px;
+    line-height: 19px;
+    overflow-wrap: anywhere;
+}
+
+.admin-request a {
+    color: #155DFC;
+}
+
+.admin-request__actions {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.admin-request__actions button {
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid #D0D5DD;
+    background-color: #FFFFFF;
+    color: #344054;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-request__actions button:first-child {
+    border-color: #12B76A;
+    color: #027A48;
+}
+
+.admin-request__actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 /* ================= SHOP CARD ================= */
 .shop-card {
     background-color: #FFFFFF;
@@ -338,4 +550,28 @@
 .btn-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+    .shops-header,
+    .admin-request {
+        flex-direction: column;
+    }
+
+    .shops-create-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .seller-request__form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-request__actions {
+        width: 100%;
+    }
+
+    .admin-request__actions button {
+        flex: 1;
+    }
 }

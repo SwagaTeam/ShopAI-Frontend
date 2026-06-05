@@ -24,6 +24,8 @@ export default function CartPage() {
     const handleDecrement = (productId: string, currentQuantity: number) => {
         if (currentQuantity > 1) {
             updateItemQuantity(productId, -1);
+        } else {
+            removeItem(productId);
         }
     };
 

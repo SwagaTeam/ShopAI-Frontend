@@ -1,78 +1,120 @@
-import React from 'react';
-import './checkout.css';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import "./checkout.css";
 import { Header } from "@/components/header/header";
 import { OrderSummary } from "@/components/order-summary/order-summary";
-import { CreditCard, HandCoins, Smartphone } from "lucide-react";
-import {Breadcrumb} from "@/components/breadcrumb/breadcrumb";
+import { CreditCard } from "lucide-react";
+import { Breadcrumb } from "@/components/breadcrumb/breadcrumb";
+import { useCartStore } from "@/data/store/useCartStore";
+import { apiClient } from "@/data/api/apiClient";
+import { useRouter } from "next/navigation";
+import { sileo } from "sileo";
 
-const orderItems = [
-    { id: 1, name: 'Кроссовки спортивные', qty: '1 шт.', price: '5490 ₽' },
-    { id: 2, name: 'Кроссовки спортивные', qty: '2 шт.', price: '11980 ₽' },
-];
+interface CheckoutResponse {
+    paymentId: string;
+    orderIds: string[];
+    confirmationUrl: string;
+}
 
 export default function CheckoutPage() {
+    const router = useRouter();
+    const { items, fetchCart, clearCart } = useCartStore();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        fetchCart();
+    }, [fetchCart]);
+
+    const handlePay = async () => {
+        if (items.length === 0) {
+            sileo.error({ title: "Корзина пуста", description: "Добавьте товары перед оплатой", duration: 2000 });
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const response = await apiClient.post<CheckoutResponse>("/Payments/checkout", {
+                returnUrl: `${window.location.origin}/checkout`
+            });
+
+            const { paymentId, orderIds, confirmationUrl } = response.data;
+
+            if (confirmationUrl?.startsWith("/api/Payments/")) {
+                await apiClient.post(`/Payments/${paymentId}/confirm`, { orderIds });
+                clearCart();
+                sileo.success({ title: "Заказ оплачен", description: "Покупка успешно оформлена", duration: 2500 });
+                router.push("/main");
+                return;
+            }
+
+            if (confirmationUrl) {
+                clearCart();
+                window.location.href = confirmationUrl;
+                return;
+            }
+
+            throw new Error("Payment confirmation URL is empty");
+        } catch (error) {
+            console.error("Ошибка при оформлении заказа:", error);
+            sileo.error({ title: "Ошибка оплаты", description: "Не удалось создать платеж", duration: 2500 });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <>
             <Header isCompact={true} />
             <div className="checkout-page-container">
-            <div className="checkout-page">
-                <Breadcrumb isCart={false}/>
+                <div className="checkout-page">
+                    <Breadcrumb isCart={false} />
 
-                <h1 className="checkout-page__title">Оформление заказа</h1>
+                    <h1 className="checkout-page__title">Оформление заказа</h1>
 
-                <div className="checkout-page__layout">
-                    <div className="checkout-page__forms">
-                        <section className="form-card">
-                            <h2 className="form-card__title">Информация о доставке</h2>
-                            <div className="form-group">
-                                <label className="form-group__label">Имя и фамилия</label>
-                                <input type="text" className="form-group__input" placeholder="Иван Иванов" defaultValue="Иван Иванов" />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-group__label">Телефон</label>
-                                <input type="tel" className="form-group__input" placeholder="+7 (999) 123-45-67" defaultValue="+7 (999) 123-45-67" />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-group__label">Адрес доставки</label>
-                                <input type="text" className="form-group__input" placeholder="Москва, ул. Пушкина, д. 1, кв. 1" defaultValue="Москва, ул. Пушкина, д. 1, кв. 1" />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-group__label">Комментарий к заказу (необязательно)</label>
-                                <textarea className="form-group__textarea" placeholder="Например: позвонить за час до доставки"></textarea>
-                            </div>
-                        </section>
+                    <div className="checkout-page__layout">
+                        <div className="checkout-page__forms">
+                            <section className="form-card">
+                                <h2 className="form-card__title">Состав заказа</h2>
+                                <div className="checkout-summary__items">
+                                    {items.length === 0 ? (
+                                        <p className="checkout-summary__disclaimer">Корзина пуста</p>
+                                    ) : (
+                                        items.map(item => (
+                                            <div className="checkout-item" key={item.productId}>
+                                                <div className="checkout-item__image-wrap">
+                                                    {item.imageUrl && (
+                                                        <img className="checkout-item__image" src={item.imageUrl} alt={item.productName} />
+                                                    )}
+                                                </div>
+                                                <div className="checkout-item__info">
+                                                    <div className="checkout-item__name">{item.productName}</div>
+                                                    <div className="checkout-item__qty">{item.quantity} шт.</div>
+                                                </div>
+                                                <div className="checkout-item__price">{item.price * item.quantity} ₽</div>
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
+                            </section>
 
-                        <section className="form-card">
-                            <h2 className="form-card__title">Способ оплаты</h2>
-                            <div className="payment-list">
-                                <label className="payment-method">
-                                    <input type="radio" name="payment" className="payment-method__radio" defaultChecked />
-                                    <span className="payment-method__icon">
-                                        <CreditCard size={20} />
-                                    </span>
-                                    <span className="payment-method__label">Банковская карта</span>
-                                </label>
-                                <label className="payment-method">
-                                    <input type="radio" name="payment" className="payment-method__radio" />
-                                    <span className="payment-method__icon">
-                                        <HandCoins size={20} />
-                                    </span>
-                                    <span className="payment-method__label">Наличные при получении</span>
-                                </label>
-                                <label className="payment-method">
-                                    <input type="radio" name="payment" className="payment-method__radio" />
-                                    <span className="payment-method__icon">
-                                        <Smartphone size={20} />
-                                    </span>
-                                    <span className="payment-method__label">СБП (Система быстрых платежей)</span>
-                                </label>
-                            </div>
-                        </section>
+                            <section className="form-card">
+                                <h2 className="form-card__title">Способ оплаты</h2>
+                                <div className="payment-list">
+                                    <label className="payment-method">
+                                        <input type="radio" name="payment" className="payment-method__radio" defaultChecked />
+                                        <span className="payment-method__icon">
+                                            <CreditCard size={20} />
+                                        </span>
+                                        <span className="payment-method__label">YooKassa, банковская карта / СБП</span>
+                                    </label>
+                                </div>
+                            </section>
+                        </div>
+
+                        <OrderSummary isCart={false} onPay={handlePay} isSubmitting={isSubmitting} />
                     </div>
-
-                    <OrderSummary isCart={false} />
                 </div>
-            </div>
             </div>
         </>
     );

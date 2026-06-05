@@ -44,7 +44,8 @@ export default function ProfilePage() {
                         id: response.data.id,
                         name: response.data.name,
                         email: response.data.email,
-                        phone: response.data.phone
+                        phone: response.data.phone,
+                        role: response.data.role
                     };
 
                     updateProfile(profile);

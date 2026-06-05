@@ -1,13 +1,16 @@
-"use client"
+"use client";
+
 import Link from "next/link";
-import "./order-summary.css"
-import {useCartStore} from "@/data/store/useCartStore";
+import "./order-summary.css";
+import { useCartStore } from "@/data/store/useCartStore";
 
 interface OrderSummaryProps {
     isCart: boolean;
+    onPay?: () => void;
+    isSubmitting?: boolean;
 }
 
-export const OrderSummary = ({isCart} : OrderSummaryProps) => {
+export const OrderSummary = ({ isCart, onPay, isSubmitting }: OrderSummaryProps) => {
     const { totalPrice, itemsCount } = useCartStore();
 
     return (
@@ -32,15 +35,24 @@ export const OrderSummary = ({isCart} : OrderSummaryProps) => {
             </div>
             {isCart ? (
                 <div className="summary-box__buttons">
-                <Link href={"/checkout"} className="summary-box__submit-btn">Перейти к оплате</Link>
-                <Link href={"/main"} className="summary-box__continue-link">Продолжить покупки</Link>
-            </div>
-                ) : (
-                    <div className="summary-box__buttons">
-                    <Link href={"/checkout"} className="summary-box__submit-btn">Оплатить заказ</Link>
-                        <p className="summary-box__warning">Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных</p>
+                    <Link href="/checkout" className="summary-box__submit-btn">Перейти к оплате</Link>
+                    <Link href="/main" className="summary-box__continue-link">Продолжить покупки</Link>
+                </div>
+            ) : (
+                <div className="summary-box__buttons">
+                    <button
+                        type="button"
+                        className="summary-box__submit-btn"
+                        onClick={onPay}
+                        disabled={isSubmitting || totalPrice <= 0}
+                    >
+                        {isSubmitting ? "Создание платежа..." : "Оплатить заказ"}
+                    </button>
+                    <p className="summary-box__warning">
+                        Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных
+                    </p>
                 </div>
             )}
         </aside>
-    )
-}
+    );
+};

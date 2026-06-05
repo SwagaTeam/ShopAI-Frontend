@@ -92,6 +92,7 @@ export const useCartStore = create<CartState>()(
                 set({
                     id: null,
                     items: [],
+                    itemsCount: 0,
                     totalPrice: 0,
                     error: null
                 });
