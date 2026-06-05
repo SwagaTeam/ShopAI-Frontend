@@ -1,0 +1,231 @@
+.orders-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orders-section__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.orders-section__header h2 {
+    margin: 0 0 6px 0;
+    color: #101828;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.orders-section__header p {
+    margin: 0;
+    color: #667085;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.orders-section__header button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #D0D5DD;
+    background-color: #FFFFFF;
+    color: #344054;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.orders-empty {
+    padding: 40px;
+    text-align: center;
+    color: #667085;
+    background-color: #FFFFFF;
+    border: 1px solid #EAECF0;
+    border-radius: 12px;
+}
+
+.orders-empty--error {
+    color: #D92D20;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-card {
+    background-color: #FFFFFF;
+    border: 1px solid #EAECF0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.order-card__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.order-card__top h3 {
+    margin: 0 0 4px 0;
+    color: #101828;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.order-card__top p {
+    margin: 0;
+    color: #667085;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.order-status {
+    align-self: flex-start;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #344054;
+    background-color: #F2F4F7;
+    white-space: nowrap;
+}
+
+.order-status--processing {
+    color: #175CD3;
+    background-color: #EFF8FF;
+}
+
+.order-status--shipped {
+    color: #B54708;
+    background-color: #FFFAEB;
+}
+
+.order-status--completed {
+    color: #027A48;
+    background-color: #ECFDF3;
+}
+
+.order-status--cancelled {
+    color: #B42318;
+    background-color: #FEF3F2;
+}
+
+.order-card__meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.order-card__meta div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #667085;
+    font-size: 13px;
+    line-height: 20px;
+    min-width: 0;
+}
+
+.order-card__meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-card__comment {
+    margin: 0 0 14px 0;
+    color: #344054;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.order-card__items {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #F2F4F7;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 70px 100px;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F2F4F7;
+}
+
+.order-item__image {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: #F2F4F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.order-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-item__name {
+    color: #101828;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-item__qty,
+.order-item__price {
+    color: #344054;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+}
+
+.order-card__total {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding-top: 14px;
+    color: #101828;
+}
+
+@media (max-width: 840px) {
+    .orders-section__header,
+    .order-card__top {
+        flex-direction: column;
+    }
+
+    .orders-section__header button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .order-card__meta {
+        grid-template-columns: 1fr;
+    }
+
+    .order-item {
+        grid-template-columns: 44px minmax(0, 1fr);
+    }
+
+    .order-item__qty,
+    .order-item__price {
+        grid-column: 2;
+        text-align: left;
+    }
+}

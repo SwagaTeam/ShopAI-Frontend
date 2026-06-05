@@ -9,6 +9,7 @@ import {Header} from "@/components/header/header";
 import {getInitials} from "@/utils/utils";
 import { ProfileSidebar } from "@/components/profile-sidebar/profile-sidebar";
 import { ShopsSection } from "@/components/profile-shops/shops";
+import { OrdersSection } from "@/components/profile-orders/orders";
 import "@/components/profile-sidebar/profile-sidebar.css";
 import {useRouter} from "next/navigation";
 
@@ -36,6 +37,11 @@ export default function ProfilePage() {
     });
 
     useEffect(() => {
+        const tab = new URLSearchParams(window.location.search).get('tab');
+        if (tab) {
+            setActiveTab(tab);
+        }
+
         const fetchProfile = async () => {
             try {
                 const response = await apiClient.get('/Users/current');
@@ -212,6 +218,10 @@ export default function ProfilePage() {
 
                 {activeTab === 'shops' && (
                     <ShopsSection />
+                )}
+
+                {activeTab === 'orders' && (
+                    <OrdersSection />
                 )}
 
                 {activeTab === 'notifications' && (
