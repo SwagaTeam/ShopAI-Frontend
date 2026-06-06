@@ -45,3 +45,8 @@ button {
     color-scheme: light;
   }
 }
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100% !important;
+}

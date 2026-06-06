@@ -2,7 +2,7 @@
 
 import "./header.css"
 import {Bell, ChevronDown, Handbag, Search, Store, LogOut} from "lucide-react";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
@@ -17,6 +17,20 @@ interface HeaderProps {
 export const Header = ({isCompact} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
     const [isProfileOpen, setProfileOpen] = useState(false); // Состояние для меню профиля
+
+    useEffect(() => {
+        if (isCatalogOpen) {
+            document.body.classList.add('no-scroll');
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+            document.documentElement.classList.remove('no-scroll');
+        }
+        return () => {
+            document.body.classList.remove('no-scroll');
+            document.documentElement.classList.remove('no-scroll');
+        };
+    }, [isCatalogOpen]);
 
     // Предполагаем, что в store также может быть email, если нет — используем заглушку
     const { name, email, clearAuth } = useAuthStore() as { name: string, email?: string, clearAuth: () => void };

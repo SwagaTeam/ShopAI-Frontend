@@ -51,6 +51,7 @@
 .catalog__category-list {
     flex: 1;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 0 16px;
     margin: 0;
     list-style: none;
@@ -113,6 +114,7 @@
     padding: 40px 48px;
     background-color: #ffffff;
     overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .catalog__header {
