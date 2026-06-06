@@ -1,13 +1,10 @@
-/* Основной контейнер */
 .shops-page {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 32px;
     font-family: inherit;
 }
 
-/* Шапка */
 .shops-header {
     display: flex;
     justify-content: space-between;

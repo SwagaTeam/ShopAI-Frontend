@@ -1,22 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
     ShoppingBag,
-    Store,
-    PlusCircle,
-    LogOut
+    PlusCircle
 } from 'lucide-react';
 import './sidebar.css';
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
-    {id: 'shops', title: 'Мои магазины', icon: ShoppingBag, path: '/shops'},
-    {id: 'create-shop', title: 'Создать магазин', icon: PlusCircle, path: '/create-shop'}
+    {id: 'shops', title: 'Мои магазины', icon: ShoppingBag, path: '/admin/shops'},
+    {id: 'create-shop', title: 'Создать магазин', icon: PlusCircle, path: '/admin/create-shop'}
 ];
 
 export const AdminSidebar = () => {
-    const [activeItem, setActiveItem] = useState('shops');
+    const pathname = usePathname();
 
     return (
         <aside className="sidebar">
@@ -24,11 +23,13 @@ export const AdminSidebar = () => {
             <nav className="sidebar__nav">
                 {menuItems.map((item) => {
                     const Icon = item.icon;
+                    const isActive = pathname === item.path;
+
                     return (
                         <Link
                             key={item.id}
-                            className={`sidebar__item ${activeItem === item.id ? 'sidebar__item--active' : ''}`}
-                            href={"/admin" + item.path}
+                            className={`sidebar__item ${isActive ? 'sidebar__item--active' : ''}`}
+                            href={item.path}
                         >
                             <Icon size={20} />
                             <span>{item.title}</span>

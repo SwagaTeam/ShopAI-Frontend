@@ -6,6 +6,7 @@ import {ProductCard} from "@/components/product-card/product-card";
 import {CircleDollarSign, Handbag, HeartIcon, SearchIcon} from "lucide-react";
 import { useProductsStore } from '@/data/store/useProductsStore';
 import Link from "next/link";
+import {ProductCardSkeleton, StatCardSkeleton} from "@/components/skeleton/skeleton";
 
 export default function ShopAIPage() {
     const { popular, latest, stats, isLoading, fetchMainPageProducts } = useProductsStore();
@@ -27,7 +28,9 @@ export default function ShopAIPage() {
 
                     <div className="selections__grid">
                         {isLoading ? (
-                            <p>Загрузка...</p>
+                            Array.from({ length: 5 }).map((_, i) => (
+                                <ProductCardSkeleton key={i} />
+                            ))
                         ) : popular.length > 0 ? (
                             popular.slice(0, 5).map((item) => (
                                 <ProductCard 
@@ -43,35 +46,42 @@ export default function ShopAIPage() {
 
                 <section className="dashboard">
                     <div className="stats-grid">
-                        <div className="stat-card">
-                            <div className="stat-card__icon">
-                                <SearchIcon size={17} color="#155DFC" />
-                            </div>
-                            <div className="stat-card__value">{stats.recentlyViewedCount}</div>
-                            <div className="stat-card__label">Недавно просмотрено</div>
-
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-card__icon">
-                                <HeartIcon size={17} color="#155DFC"/>
-                            </div>
-                            <div className="stat-card__value">{stats.wishlistCount}</div>
-                            <div className="stat-card__label">В избранном</div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-card__icon">
-                                <Handbag size={17} color="#155DFC"/>
-                            </div>
-                            <div className="stat-card__value">{stats.cartItemsCount}</div>
-                            <div className="stat-card__label">Товаров в корзине</div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-card__icon">
-                                <CircleDollarSign size={17} color="#155DFC"/>
-                            </div>
-                            <div className="stat-card__value">{stats.cartTotal} ₽</div>
-                            <div className="stat-card__label">Сумма корзины</div>
-                        </div>
+                        {isLoading ? (
+                            Array.from({ length: 4 }).map((_, i) => (
+                                <StatCardSkeleton key={i} />
+                            ))
+                        ) : (
+                            <>
+                                <div className="stat-card">
+                                    <div className="stat-card__icon">
+                                        <SearchIcon size={17} color="#155DFC" />
+                                    </div>
+                                    <div className="stat-card__value">{stats.recentlyViewedCount}</div>
+                                    <div className="stat-card__label">Недавно просмотрено</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-card__icon">
+                                        <HeartIcon size={17} color="#155DFC"/>
+                                    </div>
+                                    <div className="stat-card__value">{stats.wishlistCount}</div>
+                                    <div className="stat-card__label">В избранном</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-card__icon">
+                                        <Handbag size={17} color="#155DFC"/>
+                                    </div>
+                                    <div className="stat-card__value">{stats.cartItemsCount}</div>
+                                    <div className="stat-card__label">Товаров в корзине</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-card__icon">
+                                        <CircleDollarSign size={17} color="#155DFC"/>
+                                    </div>
+                                    <div className="stat-card__value">{stats.cartTotal} ₽</div>
+                                    <div className="stat-card__label">Сумма корзины</div>
+                                </div>
+                            </>
+                        )}
                     </div>
 
                     <div className="banner">
@@ -94,7 +104,9 @@ export default function ShopAIPage() {
                     </div>
                     <div className="selections__grid">
                         {isLoading ? (
-                            <p>Загрузка...</p>
+                            Array.from({ length: 10 }).map((_, i) => (
+                                <ProductCardSkeleton key={i} />
+                            ))
                         ) : latest.length > 0 ? (
                             latest.map((item) => (
                                 <ProductCard
