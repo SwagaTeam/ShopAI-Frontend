@@ -13,7 +13,7 @@ interface ShopProductsProps {
     totalCount: number;
 }
 
-export const ShopProducts = ({ products, isLoading, page, totalCount }: ShopProductsProps) => {
+export default function ShopProducts = ({ products, isLoading, page, totalCount }: ShopProductsProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);

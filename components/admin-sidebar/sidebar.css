@@ -1,0 +1,91 @@
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e0e6ee;
+}
+
+.sidebar__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.3px;
+}
+
+/* Навигация */
+.sidebar__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Элементы меню */
+.sidebar__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: transparent;
+    color: #475569;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.sidebar__item:hover {
+    background-color: #f8fafc;
+}
+
+.sidebar__item--active {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.sidebar__item--active:hover {
+    background-color: #1d4ed8;
+}
+
+.sidebar__item svg {
+    flex-shrink: 0;
+}
+
+.sidebar__item--active svg {
+    color: #ffffff;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        padding: 24px 8px;
+    }
+
+    .sidebar__title,
+    .sidebar__item span {
+        display: none;
+    }
+
+    .sidebar__item {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .sidebar__header {
+        justify-content: center;
+        padding: 0 8px 24px 8px;
+    }
+
+    .sidebar__logo {
+        margin: 0;
+    }
+}
