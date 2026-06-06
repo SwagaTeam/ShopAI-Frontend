@@ -26,13 +26,6 @@ export const ProfileSidebar = ({ activeTab, onTabChange }: ProfileSidebarProps) 
                 <ShoppingBag size={20} />
                 Мои магазины
             </button>
-            <button
-                className={`profile-nav__item ${activeTab === 'notifications' ? 'profile-nav__item--active' : ''}`}
-                onClick={() => onTabChange('notifications')}
-            >
-                <Bell size={20} />
-                Уведомления
-            </button>
         </aside>
     );
 };

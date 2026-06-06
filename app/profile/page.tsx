@@ -218,13 +218,6 @@ export default function ProfilePage() {
                 {activeTab === 'shops' && (
                     <ShopsSection />
                 )}
-
-                {activeTab === 'notifications' && (
-                    <section className="profile-section">
-                        <h2 className="profile-section__title">Уведомления</h2>
-                        <p style={{ color: '#667085' }}>Раздел в разработке...</p>
-                    </section>
-                )}
             </main>
         </div>
             </div>

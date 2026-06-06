@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: change ai slop orders layout">
-      <change afterPath="$PROJECT_DIR$/app/orders/orders.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/orders/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/robot-error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/robot-info.png" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: new placeholder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/favorites/favorites.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/placeholder/placeholder.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/placeholder/placeholder.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/placeholder/placeholder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/placeholder/placeholder.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/profile-orders/orders.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/profile-orders/orders.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/profile-sidebar/profile-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile-sidebar/profile-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewed/viewed.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewed/viewed.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,15 +134,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="17287000" />
-    </task>
-    <task id="LOCAL-00002" summary="feat AuthPage">
-      <option name="closed" value="true" />
-      <created>1778095641209</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1778095641209</updated>
+      <workItem from="1780748015029" duration="17366000" />
     </task>
     <task id="LOCAL-00003" summary="new landing">
       <option name="closed" value="true" />
@@ -543,14 +520,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780766904006</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="feat: new placeholder">
+      <option name="closed" value="true" />
+      <created>1780771901124</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1780771901124</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="get cart items" />
     <MESSAGE value="fix cart" />
     <MESSAGE value="feat: favorites" />
     <MESSAGE value="feat: animated like btn" />
@@ -575,6 +559,7 @@
     <MESSAGE value="fix: imports" />
     <MESSAGE value="fix: change ai slop order screen layout" />
     <MESSAGE value="fix: change ai slop orders layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: change ai slop orders layout" />
+    <MESSAGE value="feat: new placeholder" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: new placeholder" />
   </component>
 </project>
