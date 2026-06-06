@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: main skeleton loader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/catalog/catalog.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/catalog/catalog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/admin-layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/admin-layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/create-shop/create-shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/create-shop/create-shop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shops/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/shops.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useShopsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopsStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +100,11 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\viewed" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\admin" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\favorites" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\product\[id]" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
@@ -136,15 +142,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="29074000" />
-    </task>
-    <task id="LOCAL-00019" summary="feat: order-summary">
-      <option name="closed" value="true" />
-      <created>1779309020630</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1779309020630</updated>
+      <workItem from="1780748015029" duration="31217000" />
     </task>
     <task id="LOCAL-00020" summary="check">
       <option name="closed" value="true" />
@@ -530,14 +528,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780783798260</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="fix: categories scroll">
+      <option name="closed" value="true" />
+      <created>1780784026690</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1780784026690</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: ai" />
     <MESSAGE value="feat: dashboard stats" />
     <MESSAGE value="feat: new item card" />
     <MESSAGE value="garbage clean" />
@@ -562,6 +567,7 @@
     <MESSAGE value="feat: main skeleton loader" />
     <MESSAGE value="feat: favorites skeleton loader" />
     <MESSAGE value="feat: viewed skeleton loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: viewed skeleton loader" />
+    <MESSAGE value="fix: categories scroll" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: categories scroll" />
   </component>
 </project>

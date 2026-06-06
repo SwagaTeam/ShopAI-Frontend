@@ -1,25 +1,23 @@
-.shops-page {
+.admin-shops-page {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
     font-family: inherit;
 }
 
-.shops-header {
+.admin-shops-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
 }
 
-.shops-title {
+.admin-shops-title {
     font-size: 32px;
     font-weight: 700;
     color: #0f172a;
     margin: 0;
 }
 
-.shops-create-btn {
+.admin-shops-create-btn {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -34,19 +32,19 @@
     transition: background-color 0.2s ease;
 }
 
-.shops-create-btn:hover {
+.admin-shops-create-btn:hover {
     background-color: #1d4ed8;
 }
 
 /* Сетка аналитики */
-.analytics-grid {
+.admin-analytics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-bottom: 32px;
 }
 
-.analytics-card {
+.admin-analytics-card {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 16px;
@@ -57,7 +55,7 @@
     flex-direction: column;
 }
 
-.analytics-card__header {
+.admin-analytics-card__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,13 +63,13 @@
     z-index: 2;
 }
 
-.analytics-card__title {
+.admin-analytics-card__title {
     font-size: 14px;
     color: #64748b;
     font-weight: 500;
 }
 
-.analytics-card__icon {
+.admin-analytics-card__icon {
     width: 32px;
     height: 32px;
     border-radius: 8px;
@@ -84,7 +82,7 @@
     background-color: #eff6ff;
 }
 
-.analytics-card__value {
+.admin-analytics-card__value {
     font-size: 28px;
     font-weight: 700;
     color: #0f172a;
@@ -92,7 +90,7 @@
     z-index: 2;
 }
 
-.analytics-card__trend {
+.admin-analytics-card__trend {
     font-size: 13px;
     font-weight: 500;
     z-index: 2;
@@ -103,7 +101,7 @@
 }
 
 /* Имитация графиков на фоне карточек аналитики */
-.analytics-card__chart {
+.admin-analytics-card__chart {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -135,14 +133,14 @@
 }
 
 /* Список магазинов */
-.shops-list {
+.admin-shops-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.shop-card {
-    background-color: #94a3b8; /* Стандартный серый цвет карточки */
+.admin-shop-card {
+    background-color: #94a3b8;
     border-radius: 16px;
     padding: 24px;
     display: flex;
@@ -155,18 +153,18 @@
     transition: transform 0.2s ease;
 }
 
-.shop-card:hover {
+.admin-shop-card:hover {
     transform: translateY(-2px);
 }
 
-.shop-card__left {
+.admin-shop-card__left {
     display: flex;
     align-items: center;
     gap: 20px;
     z-index: 2;
 }
 
-.shop-card__icon-wrapper {
+.admin-shop-card__icon-wrapper {
     width: 64px;
     height: 64px;
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -177,20 +175,20 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.shop-card__info {
+.admin-shop-card__info {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.shop-card__name {
+.admin-shop-card__name {
     font-size: 24px;
     font-weight: 600;
     margin: 0;
     letter-spacing: -0.5px;
 }
 
-.shop-card__meta {
+.admin-shop-card__meta {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -198,22 +196,22 @@
     opacity: 0.9;
 }
 
-.shop-card__url {
+.admin-shop-card__url {
     font-weight: 400;
 }
 
-.shop-card__stat {
+.admin-shop-card__stat {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.shop-card__manage-btn {
+.admin-shop-card__manage-btn {
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.8);
     color: #ffffff;
     padding: 10px 24px;
-    border-radius: 999px; /* Овальная кнопка */
+    border-radius: 999px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -221,14 +219,14 @@
     z-index: 2;
 }
 
-.shop-card__manage-btn:hover {
+.admin-shop-card__manage-btn:hover {
     background-color: rgba(255, 255, 255, 0.15);
     border-color: #ffffff;
 }
 
 /* Состояния загрузки и пустых данных */
-.shops-loading,
-.shops-empty {
+.admin-shops-loading,
+.admin-shops-empty {
     padding: 48px;
     text-align: center;
     color: #64748b;
@@ -239,27 +237,27 @@
 
 /* Адаптивность */
 @media (max-width: 1024px) {
-    .analytics-grid {
+    .admin-analytics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .analytics-grid {
+    .admin-analytics-grid {
         grid-template-columns: 1fr;
     }
 
-    .shop-card {
+    .admin-shop-card {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
     }
 
-    .shop-card__manage-btn {
+    .admin-shop-card__manage-btn {
         width: 100%;
     }
 
-    .shop-card__meta {
+    .admin-shop-card__meta {
         flex-wrap: wrap;
         gap: 12px;
     }
