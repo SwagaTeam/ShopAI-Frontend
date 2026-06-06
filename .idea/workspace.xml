@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: like indicator">
-      <change afterPath="$PROJECT_DIR$/app/admin/admin-layout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/create-shop/create-shop.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/create-shop/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/shops/shops.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/admin-sidebar/sidebar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/header/header-owner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/skeleton/skeleton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shop-products/shop-products.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shop-products/shop-products.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shop-settings/shop-settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shop-settings/shop-settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shop-sidebar/shop-sidebar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shop-sidebar/shop-sidebar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useShopStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useShopsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopsStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shops/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/shops.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +104,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -152,63 +139,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="27844000" />
-    </task>
-    <task id="LOCAL-00008" summary="icons">
-      <option name="closed" value="true" />
-      <created>1779211065988</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1779211065988</updated>
-    </task>
-    <task id="LOCAL-00009" summary="main page layout">
-      <option name="closed" value="true" />
-      <created>1779211078986</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1779211078986</updated>
-    </task>
-    <task id="LOCAL-00010" summary="feat: mock main page">
-      <option name="closed" value="true" />
-      <created>1779212261777</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1779212261777</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fix warnings">
-      <option name="closed" value="true" />
-      <created>1779212310803</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1779212310803</updated>
-    </task>
-    <task id="LOCAL-00012" summary="feat: catalog">
-      <option name="closed" value="true" />
-      <created>1779215846662</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1779215846662</updated>
-    </task>
-    <task id="LOCAL-00013" summary="add catalog to header">
-      <option name="closed" value="true" />
-      <created>1779215909357</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1779215909357</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix catalog">
-      <option name="closed" value="true" />
-      <created>1779215917952</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1779215917952</updated>
+      <workItem from="1780748015029" duration="28162000" />
     </task>
     <task id="LOCAL-00015" summary="fix logo">
       <option name="closed" value="true" />
@@ -546,18 +477,69 @@
       <option name="project" value="LOCAL" />
       <updated>1780774918798</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="feat: admin-layout">
+      <option name="closed" value="true" />
+      <created>1780782824691</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782824691</updated>
+    </task>
+    <task id="LOCAL-00058" summary="delete old admin-sidebar">
+      <option name="closed" value="true" />
+      <created>1780782838164</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782838164</updated>
+    </task>
+    <task id="LOCAL-00059" summary="check">
+      <option name="closed" value="true" />
+      <created>1780782862423</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782862423</updated>
+    </task>
+    <task id="LOCAL-00060" summary="feat: new create shop layout">
+      <option name="closed" value="true" />
+      <created>1780782880806</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782880806</updated>
+    </task>
+    <task id="LOCAL-00061" summary="feat: new shops layout">
+      <option name="closed" value="true" />
+      <created>1780782902021</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782902021</updated>
+    </task>
+    <task id="LOCAL-00062" summary="fix: header">
+      <option name="closed" value="true" />
+      <created>1780782919395</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782919395</updated>
+    </task>
+    <task id="LOCAL-00063" summary="check">
+      <option name="closed" value="true" />
+      <created>1780782925563</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1780782925563</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Shop controls" />
-    <MESSAGE value="add header" />
-    <MESSAGE value="fix paths" />
-    <MESSAGE value="check" />
-    <MESSAGE value="feat: reviews" />
     <MESSAGE value="feat: ai" />
     <MESSAGE value="push to deploy" />
     <MESSAGE value="fix: img" />
@@ -576,8 +558,13 @@
     <MESSAGE value="delete notifications" />
     <MESSAGE value="feat: header dropdown menu" />
     <MESSAGE value="feat: separated profile" />
-    <MESSAGE value="fix: header" />
     <MESSAGE value="fix: like indicator" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: like indicator" />
+    <MESSAGE value="feat: admin-layout" />
+    <MESSAGE value="delete old admin-sidebar" />
+    <MESSAGE value="feat: new create shop layout" />
+    <MESSAGE value="feat: new shops layout" />
+    <MESSAGE value="fix: header" />
+    <MESSAGE value="check" />
+    <option name="LAST_COMMIT_MESSAGE" value="check" />
   </component>
 </project>

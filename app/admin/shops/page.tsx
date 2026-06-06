@@ -17,10 +17,10 @@ export default function ShopsPage() {
             {/* Header */}
             <div className="shops-header">
                 <h1 className="shops-title">Мои магазины</h1>
-                <button className="shops-create-btn">
+                {/*<button className="shops-create-btn">
                     <Plus size={20} />
                     Создать магазин
-                </button>
+                </button>*/}
             </div>
 
             {/* Блоки аналитики (пока статические заглушки по макету) */}
