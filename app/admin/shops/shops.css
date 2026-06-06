@@ -1,0 +1,269 @@
+/* Основной контейнер */
+.shops-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+    font-family: inherit;
+}
+
+/* Шапка */
+.shops-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.shops-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.shops-create-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.shops-create-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Сетка аналитики */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.analytics-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    z-index: 2;
+}
+
+.analytics-card__title {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.analytics-card__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-blue-light {
+    background-color: #eff6ff;
+}
+
+.analytics-card__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+    z-index: 2;
+}
+
+.analytics-card__trend {
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.trend-up {
+    color: #10b981;
+}
+
+/* Имитация графиков на фоне карточек аналитики */
+.analytics-card__chart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.chart-placeholder-1 {
+    background: radial-gradient(ellipse at bottom, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #3b82f6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.2);
+}
+
+.chart-placeholder-2 {
+    background: radial-gradient(ellipse at bottom, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #3b82f6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.1) translateX(-10px);
+}
+
+.chart-placeholder-3 {
+    background: radial-gradient(ellipse at bottom, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #3b82f6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.1) translateX(10px);
+}
+
+/* Список магазинов */
+.shops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.shop-card {
+    background-color: #94a3b8; /* Стандартный серый цвет карточки */
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.shop-card:hover {
+    transform: translateY(-2px);
+}
+
+.shop-card__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
+}
+
+.shop-card__icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.shop-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shop-card__name {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.shop-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.shop-card__url {
+    font-weight: 400;
+}
+
+.shop-card__stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.shop-card__manage-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 999px; /* Овальная кнопка */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.shop-card__manage-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+/* Состояния загрузки и пустых данных */
+.shops-loading,
+.shops-empty {
+    padding: 48px;
+    text-align: center;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 16px;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .shop-card__manage-btn {
+        width: 100%;
+    }
+
+    .shop-card__meta {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
