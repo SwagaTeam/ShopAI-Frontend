@@ -34,14 +34,14 @@
     background-color: #2563eb;
     color: white;
     border: none;
-    border-radius: 12px;
-    padding: 7px 18px;
-    font-weight: 700;
+    border-radius: 14px;
+    padding: 6px 18px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 28px;
     letter-spacing: 0;
 
@@ -79,8 +79,7 @@
     position: absolute;
     right: 16px;
     top: 50%;
-    transform: translateY(-50%);
-    color: #64748b;
+    color: #2563eb;
 }
 
 .header__actions {
@@ -92,8 +91,8 @@
 
 .header__ai-btn {
     background-color: transparent;
-    border: 1px solid #2563eb;
-    border-radius: 10px;
+    border: 1px solid #598cfb;
+    border-radius: 14px;
     padding: 6px 12px;
     font-weight: 500;
     font-size: 16px;
@@ -213,4 +212,114 @@
     background-color: rgba(0, 0, 0, 0.3);
     pointer-events: auto;
     z-index: 1;
+}
+
+/* Контейнер для позиционирования */
+.header__avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Изменяем аватар с кликабельной ссылки на кнопку */
+button.header__avatar {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+/* Меню профиля */
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 260px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f1f5f9;
+    z-index: 1010;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+}
+
+/* Блок информации о пользователе */
+.profile-dropdown__user {
+    display: block;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.profile-dropdown__user:hover {
+    background-color: #f8fafc;
+}
+
+.profile-dropdown__name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.profile-dropdown__email {
+    font-weight: 400;
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* Разделительная линия */
+.profile-dropdown__divider {
+    height: 1px;
+    background-color: #f1f5f9;
+    width: 100%;
+}
+
+/* Элементы списка (ссылки и кнопки) */
+.profile-dropdown__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #334155;
+    font-size: 15px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-dropdown__item:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+/* Прозрачный слой на весь экран для удобного закрытия по клику мимо */
+.profile-dropdown__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1009;
+    background: transparent;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

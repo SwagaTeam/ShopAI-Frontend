@@ -51,7 +51,7 @@ export const useAuthStore = create<AuthState>()(
                     });
                 } catch (error) {
                     console.error('Ошибка при получении профиля после авторизации:', error);
-                    get().clearAuth();
+                    set({ isAuth: false });
                 }
             },
 
