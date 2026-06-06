@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: main skeleton loader">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/admin-layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/admin-layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/create-shop/create-shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/create-shop/create-shop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/shops/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/shops.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/profile-shops/shops.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useShopsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopsStore.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: seller form">
+      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,15 +133,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="31217000" />
-    </task>
-    <task id="LOCAL-00020" summary="check">
-      <option name="closed" value="true" />
-      <created>1779309028091</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1779309028091</updated>
+      <workItem from="1780748015029" duration="31356000" />
     </task>
     <task id="LOCAL-00021" summary="profile layout">
       <option name="closed" value="true" />
@@ -536,14 +519,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780784026690</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="feat: seller form">
+      <option name="closed" value="true" />
+      <created>1780786253254</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1780786253254</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: dashboard stats" />
     <MESSAGE value="feat: new item card" />
     <MESSAGE value="garbage clean" />
     <MESSAGE value="feat: pulse anim" />
@@ -568,6 +558,7 @@
     <MESSAGE value="feat: favorites skeleton loader" />
     <MESSAGE value="feat: viewed skeleton loader" />
     <MESSAGE value="fix: categories scroll" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: categories scroll" />
+    <MESSAGE value="feat: seller form" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: seller form" />
   </component>
 </project>

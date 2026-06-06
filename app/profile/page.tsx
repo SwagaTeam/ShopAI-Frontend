@@ -6,7 +6,6 @@ import { useAuthStore } from "@/data/store/useAuthStore";
 import './profile.css';
 import { Header } from "@/components/header/header";
 import { getInitials } from "@/utils/utils";
-import { ShopsSection } from "@/components/profile-shops/shops";
 import { useRouter } from "next/navigation";
 import {sileo} from "sileo";
 
