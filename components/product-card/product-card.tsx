@@ -76,7 +76,7 @@ export const ProductCard = ({ item }: { item: ItemInterface }) => {
                 )}
 
                 <div onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
-                    <LikeButton itemId={item.id} />
+                    <LikeButton itemId={item.id} initialIsFavorite={item.isInWishlist}/>
                 </div>
             </div>
 

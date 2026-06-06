@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: separated profile">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -133,15 +134,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="20096000" />
-    </task>
-    <task id="LOCAL-00006" summary="feat: header component">
-      <option name="closed" value="true" />
-      <created>1779211035694</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1779211035694</updated>
+      <workItem from="1780748015029" duration="20325000" />
     </task>
     <task id="LOCAL-00007" summary="feat: product card component">
       <option name="closed" value="true" />
@@ -527,14 +520,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780774628295</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="fix: header">
+      <option name="closed" value="true" />
+      <created>1780774726416</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1780774726416</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="profile routing" />
     <MESSAGE value="Shops Stores" />
     <MESSAGE value="Shop controls" />
     <MESSAGE value="add header" />
@@ -559,6 +559,7 @@
     <MESSAGE value="delete notifications" />
     <MESSAGE value="feat: header dropdown menu" />
     <MESSAGE value="feat: separated profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: separated profile" />
+    <MESSAGE value="fix: header" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: header" />
   </component>
 </project>
