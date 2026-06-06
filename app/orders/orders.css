@@ -1,0 +1,404 @@
+.ozon-page-bg {
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+.ozon-orders-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= HEADER & TABS ================= */
+.ozon-header-block {
+    padding: 32px 0 32px 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.ozon-header-title {
+    display: flex;
+    align-items: center;
+}
+
+.ozon-header-title h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #155DFC;
+}
+
+.ozon-header-dot {
+    color: #b0bac5;
+    font-size: 14px;
+}
+
+.ozon-header-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #707f8d;
+}
+
+.ozon-count {
+    font-size: 14px;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+.ozon-tabs {
+    display: flex;
+    gap: 8px;
+    background-color: #ffffff;
+}
+
+.ozon-tab {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #f2f5f9;
+    color: #001a34;
+}
+
+.ozon-tab--active {
+    background-color: #005afd;
+    color: #ffffff;
+}
+
+/* ================= INFO BANNER ================= */
+.ozon-info-banner {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.ozon-info-banner__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: #001a34;
+    margin-bottom: 4px;
+}
+
+.ozon-info-banner__desc {
+    margin: 0;
+    font-size: 13px;
+    color: #8c9cb0;
+}
+
+/* ================= CARDS LIST ================= */
+.ozon-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ozon-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 1px 10px rgb(0 0 0 / 0.05);
+}
+
+.ozon-card__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Статусы заказа */
+.ozon-card__status {
+    margin: 0 0 6px 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ozon-status--green { color: #001a34; }
+.ozon-status--gray { color: #707f8d; }
+.ozon-status--red { color: #ed117c; }
+
+.ozon-card__address {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    color: #001a34;
+    line-height: 1.4;
+}
+
+.ozon-card__shopName {
+    font-size: 15px;
+    font-weight: 500;
+    color: #315070;
+    margin-bottom: 2px;
+}
+
+.ozon-card__date {
+    margin: 0;
+    font-size: 14px;
+    color: #8c9cb0;
+}
+
+/* Кнопки действий (Оценить / Чаевые) */
+.ozon-card__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto; /* Прижимаем к низу */
+    padding-top: 24px;
+}
+
+.ozon-btn {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ozon-btn--primary {
+    background-color: #005bff;
+    color: #ffffff;
+}
+.ozon-btn--primary:hover {
+    background-color: #0048cc;
+}
+
+/* Правая колонка с товарами */
+.ozon-card__right {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 200px;
+}
+
+.ozon-product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 160px;
+}
+
+.ozon-product__image-wrap {
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f2f4f7;
+}
+
+.ozon-product__image-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.ozon-product__badge {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00a63e;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.ozon-product__price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #001a34;
+}
+
+.ozon-product__qty {
+    font-size: 12px;
+    color: #8c9cb0;
+    margin-top: 2px;
+}
+
+/* Состояния загрузки / Ошибки */
+.ozon-empty-state {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 60px 20px;
+    text-align: center;
+    color: #707f8d;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.ozon-empty-state--error {
+    color: #f91155;
+}
+
+.ozon-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Адаптив */
+@media (max-width: 680px) {
+    .ozon-card {
+        flex-direction: column;
+    }
+
+    .ozon-card__right {
+        justify-content: flex-start;
+        padding-top: 16px;
+        border-top: 1px solid #f2f4f7;
+    }
+
+    .ozon-card__actions {
+        flex-wrap: wrap;
+    }
+
+    .ozon-btn {
+        width: 100%;
+    }
+}
+
+.ozon-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: ozonFadeIn 0.2s ease;
+}
+
+.ozon-popup {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: ozonSlideUp 0.3s ease;
+}
+
+.ozon-popup__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px 0 24px;
+}
+
+.ozon-popup__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #001a34;
+    margin: 0;
+}
+
+.ozon-popup__close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    color: #707f8d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background-color: transparent;
+}
+
+.ozon-popup__close:hover {
+    color: #001a34;
+}
+
+.ozon-popup__items {
+    overflow-y: auto;
+    padding: 8px;
+    flex: 1;
+}
+
+.ozon-popup-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 20px 6px 6px;
+    margin: 8px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #f2f4f7;
+}
+
+.ozon-popup-item:hover {
+    background-color: #f9fafb;
+    transform: translateX(1px);
+}
+
+.ozon-popup-item__image-wrap {
+    width: 70px;
+    height: 70px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #f2f4f7;
+}
+
+.ozon-popup-item__image-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.ozon-popup-item__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ozon-popup-item__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #001a34;
+    line-height: 1.4;
+}
+
+.ozon-popup-item__details {
+    font-size: 13px;
+    color: #707f8d;
+}

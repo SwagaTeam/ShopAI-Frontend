@@ -37,11 +37,12 @@
     background: linear-gradient(90deg, #155DFC 0%, #1447E6 100%);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
     font-size: 14px;
     transition: background-color 0.3s ease;
     margin-top: 12px;
+    border: none;
 }
 
 .cart-page__continue-link:hover {

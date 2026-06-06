@@ -27,7 +27,13 @@ export const Favorites = () => {
                         {isLoading ? (
                             <p>Загрузка...</p>
                         ) : error ? (
-                            <p style={{ color: 'red' }}>{error}</p>
+                            <Placeholder
+                                title={"Что-то пошло не так"}
+                                text={"Я уже пытаюсь это починить"}
+                                buttonText={"Обновить страницу"}
+                                img={"/images/robot-error.png"}
+                                onButtonClick={() => window.location.reload()}
+                            />
                         ) : items.length === 0 ? (
                             <Placeholder
                                 title={"У вас нет избранных товаров"}

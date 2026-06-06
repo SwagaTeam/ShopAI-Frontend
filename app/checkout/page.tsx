@@ -138,7 +138,7 @@ export default function CheckoutPage() {
             if (confirmed) {
                 clearCart();
                 sileo.success({ title: "Заказ оплачен", description: "Покупка успешно оформлена", duration: 2500 });
-                router.push("/profile?tab=orders");
+                router.push("/orders");
             }
             return;
         }

@@ -20,13 +20,6 @@ export const ProfileSidebar = ({ activeTab, onTabChange }: ProfileSidebarProps) 
                 Личные данные
             </button>
             <button
-                className={`profile-nav__item ${activeTab === 'orders' ? 'profile-nav__item--active' : ''}`}
-                onClick={() => onTabChange('orders')}
-            >
-                <PackageCheck size={20} />
-                Заказы
-            </button>
-            <button
                 className={`profile-nav__item ${activeTab === 'shops' ? 'profile-nav__item--active' : ''}`}
                 onClick={() => onTabChange('shops')}
             >
