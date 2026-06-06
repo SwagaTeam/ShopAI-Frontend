@@ -72,11 +72,8 @@ export const Header = ({isCompact} : HeaderProps) => {
 
                             {isProfileOpen && (
                                 <>
-                                    {/* Невидимая подложка для закрытия меню при клике вне его */}
                                     <div className="profile-dropdown__overlay" onClick={() => setProfileOpen(false)} />
-
                                     <div className="profile-dropdown">
-                                        {/* Блок пользователя — ведет в профиль */}
                                         <Link
                                             href="/profile"
                                             className="profile-dropdown__user"
@@ -88,9 +85,8 @@ export const Header = ({isCompact} : HeaderProps) => {
 
                                         <div className="profile-dropdown__divider" />
 
-                                        {/* Переход в профиль на вкладку магазинов */}
                                         <Link
-                                            href="/profile?tab=shops"
+                                            href="/admin/shops"
                                             className="profile-dropdown__item"
                                             onClick={() => setProfileOpen(false)}
                                         >
@@ -98,7 +94,6 @@ export const Header = ({isCompact} : HeaderProps) => {
                                             <span>Мои магазины</span>
                                         </Link>
 
-                                        {/* Кнопка выхода */}
                                         <button
                                             className="profile-dropdown__item profile-dropdown__item--logout"
                                             onClick={() => {
