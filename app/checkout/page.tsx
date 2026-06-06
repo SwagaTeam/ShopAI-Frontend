@@ -8,25 +8,9 @@ import { CreditCard, MapPin, Plus } from "lucide-react";
 import { Breadcrumb } from "@/components/breadcrumb/breadcrumb";
 import { useCartStore } from "@/data/store/useCartStore";
 import { useAuthStore } from "@/data/store/useAuthStore";
-import { apiClient } from "@/data/api/apiClient";
+import { useCheckoutStore } from "@/data/store/useCheckoutStore"; // <-- Наш новый стор
 import { useRouter } from "next/navigation";
 import { sileo } from "sileo";
-
-interface CheckoutResponse {
-    paymentId: string;
-    orderIds: string[];
-    confirmationUrl: string;
-}
-
-interface DeliveryAddress {
-    id: string;
-    title: string;
-    addressLine: string;
-    entrance?: string | null;
-    floor?: string | null;
-    apartment?: string | null;
-    comment?: string | null;
-}
 
 const emptyAddressForm = {
     title: "",
@@ -41,9 +25,17 @@ export default function CheckoutPage() {
     const router = useRouter();
     const { phone } = useAuthStore();
     const { items, fetchCart, clearCart } = useCartStore();
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isAddressSaving, setIsAddressSaving] = useState(false);
-    const [addresses, setAddresses] = useState<DeliveryAddress[]>([]);
+
+    const {
+        addresses,
+        isAddressSaving,
+        isSubmitting,
+        fetchAddresses,
+        saveAddress,
+        submitOrder,
+        confirmPayment
+    } = useCheckoutStore();
+
     const [deliveryMode, setDeliveryMode] = useState<"saved" | "new">("new");
     const [selectedAddressId, setSelectedAddressId] = useState("");
     const [addressForm, setAddressForm] = useState(emptyAddressForm);
@@ -52,8 +44,14 @@ export default function CheckoutPage() {
 
     useEffect(() => {
         fetchCart();
-        void fetchAddresses();
-    }, [fetchCart]);
+        fetchAddresses().then(() => {
+            const currentAddresses = useCheckoutStore.getState().addresses;
+            if (currentAddresses.length > 0) {
+                setDeliveryMode("saved");
+                setSelectedAddressId(currentAddresses[0].id);
+            }
+        });
+    }, [fetchCart, fetchAddresses]);
 
     useEffect(() => {
         if (!contactPhone && phone) {
@@ -61,46 +59,26 @@ export default function CheckoutPage() {
         }
     }, [contactPhone, phone]);
 
-    const fetchAddresses = async () => {
-        try {
-            const response = await apiClient.get<DeliveryAddress[]>("/DeliveryAddresses");
-            setAddresses(response.data);
-            if (response.data.length > 0) {
-                setDeliveryMode("saved");
-                setSelectedAddressId(response.data[0].id);
-            }
-        } catch (error) {
-            console.error("Ошибка при получении адресов доставки:", error);
-        }
-    };
-
     const handleAddressChange = (field: keyof typeof addressForm, value: string) => {
         setAddressForm(prev => ({ ...prev, [field]: value }));
     };
 
-    const saveAddress = async () => {
+    const handleSaveAddress = async () => {
         if (addressForm.title.trim().length === 0 || addressForm.addressLine.trim().length < 10) {
             sileo.error({ title: "Адрес не сохранен", description: "Укажите название и полный адрес", duration: 2500 });
             return null;
         }
 
-        setIsAddressSaving(true);
-        try {
-            const response = await apiClient.post<DeliveryAddress>("/DeliveryAddresses", addressForm);
-            const created = response.data;
-            setAddresses(prev => [created, ...prev]);
+        const created = await saveAddress(addressForm);
+        if (created) {
             setSelectedAddressId(created.id);
             setDeliveryMode("saved");
             setAddressForm(emptyAddressForm);
             sileo.success({ title: "Адрес сохранен", description: "Теперь его можно выбирать при заказе", duration: 2200 });
-            return created;
-        } catch (error) {
-            console.error("Ошибка при сохранении адреса:", error);
+        } else {
             sileo.error({ title: "Ошибка", description: "Не удалось сохранить адрес доставки", duration: 2500 });
-            return null;
-        } finally {
-            setIsAddressSaving(false);
         }
+        return created;
     };
 
     const resolveDeliveryPayload = async () => {
@@ -109,7 +87,6 @@ export default function CheckoutPage() {
                 sileo.error({ title: "Выберите адрес", description: "Добавьте или выберите место доставки", duration: 2500 });
                 return null;
             }
-
             return { deliveryAddressId: selectedAddressId, deliveryAddressText: null };
         }
 
@@ -118,7 +95,7 @@ export default function CheckoutPage() {
             return null;
         }
 
-        const created = await saveAddress();
+        const created = await handleSaveAddress();
         if (!created) return null;
         return { deliveryAddressId: created.id, deliveryAddressText: null };
     };
@@ -139,42 +116,43 @@ export default function CheckoutPage() {
             return;
         }
 
-        setIsSubmitting(true);
-        try {
-            const delivery = await resolveDeliveryPayload();
-            if (!delivery) return;
+        const delivery = await resolveDeliveryPayload();
+        if (!delivery) return;
 
-            const response = await apiClient.post<CheckoutResponse>("/Payments/checkout", {
-                returnUrl: `${window.location.origin}/checkout`,
-                ...delivery,
-                contactPhone,
-                comment: orderComment,
-            });
+        const orderData = await submitOrder({
+            returnUrl: `${window.location.origin}/checkout`,
+            ...delivery,
+            contactPhone,
+            comment: orderComment,
+        });
 
-            const { paymentId, orderIds, confirmationUrl } = response.data;
+        if (!orderData) {
+            sileo.error({ title: "Ошибка оплаты", description: "Не удалось создать платеж", duration: 2500 });
+            return;
+        }
 
-            if (confirmationUrl?.startsWith("/api/Payments/")) {
-                await apiClient.post(`/Payments/${paymentId}/confirm`, { orderIds });
+        const { paymentId, orderIds, confirmationUrl } = orderData;
+
+        if (confirmationUrl?.startsWith("/api/Payments/")) {
+            const confirmed = await confirmPayment(paymentId, orderIds);
+            if (confirmed) {
                 clearCart();
                 sileo.success({ title: "Заказ оплачен", description: "Покупка успешно оформлена", duration: 2500 });
                 router.push("/profile?tab=orders");
-                return;
             }
-
-            if (confirmationUrl) {
-                clearCart();
-                window.location.href = confirmationUrl;
-                return;
-            }
-
-            throw new Error("Payment confirmation URL is empty");
-        } catch (error) {
-            console.error("Ошибка при оформлении заказа:", error);
-            sileo.error({ title: "Ошибка оплаты", description: "Не удалось создать платеж", duration: 2500 });
-        } finally {
-            setIsSubmitting(false);
+            return;
         }
+
+        if (confirmationUrl) {
+            clearCart();
+            window.location.href = confirmationUrl;
+            return;
+        }
+
+        sileo.error({ title: "Ошибка", description: "Сбой получения данных для оплаты", duration: 2500 });
     };
+
+    const isFormValid = addressForm.title.trim() !== "" && addressForm.addressLine.trim() !== "";
 
     return (
         <>
@@ -182,9 +160,6 @@ export default function CheckoutPage() {
             <div className="checkout-page-container">
                 <div className="checkout-page">
                     <Breadcrumb isCart={false} />
-
-                    <h1 className="checkout-page__title">Оформление заказа</h1>
-
                     <div className="checkout-page__layout">
                         <div className="checkout-page__forms">
                             <section className="form-card">
@@ -231,12 +206,12 @@ export default function CheckoutPage() {
                                 ) : (
                                     <div className="delivery-form">
                                         <div className="form-group">
-                                            <label className="form-group__label">Название места *</label>
+                                            <label className="form-group__label">Название адреса доставки *</label>
                                             <input
                                                 className="form-group__input"
                                                 value={addressForm.title}
                                                 onChange={(e) => handleAddressChange("title", e.target.value)}
-                                                placeholder="Дом, офис, пункт выдачи"
+                                                placeholder="Например, дом или офис"
                                             />
                                         </div>
                                         <div className="form-group form-group--wide">
@@ -260,11 +235,7 @@ export default function CheckoutPage() {
                                             <label className="form-group__label">Квартира / офис</label>
                                             <input className="form-group__input" value={addressForm.apartment} onChange={(e) => handleAddressChange("apartment", e.target.value)} />
                                         </div>
-                                        <div className="form-group">
-                                            <label className="form-group__label">Комментарий к адресу</label>
-                                            <input className="form-group__input" value={addressForm.comment} onChange={(e) => handleAddressChange("comment", e.target.value)} />
-                                        </div>
-                                        <button type="button" className="address-save-btn" onClick={saveAddress} disabled={isAddressSaving}>
+                                        <button type="button" className="address-save-btn" onClick={handleSaveAddress} disabled={!isFormValid || isAddressSaving}>
                                             <Plus size={16} />
                                             {isAddressSaving ? "Сохранение..." : "Добавить место доставки"}
                                         </button>
@@ -297,30 +268,6 @@ export default function CheckoutPage() {
                             </section>
 
                             <section className="form-card">
-                                <h2 className="form-card__title">Состав заказа</h2>
-                                <div className="checkout-summary__items">
-                                    {items.length === 0 ? (
-                                        <p className="checkout-summary__disclaimer">Корзина пуста</p>
-                                    ) : (
-                                        items.map(item => (
-                                            <div className="checkout-item" key={item.productId}>
-                                                <div className="checkout-item__image-wrap">
-                                                    {item.imageUrl && (
-                                                        <img className="checkout-item__image" src={item.imageUrl} alt={item.productName} />
-                                                    )}
-                                                </div>
-                                                <div className="checkout-item__info">
-                                                    <div className="checkout-item__name">{item.productName}</div>
-                                                    <div className="checkout-item__qty">{item.quantity} шт.</div>
-                                                </div>
-                                                <div className="checkout-item__price">{item.price * item.quantity} ₽</div>
-                                            </div>
-                                        ))
-                                    )}
-                                </div>
-                            </section>
-
-                            <section className="form-card">
                                 <h2 className="form-card__title">Способ оплаты</h2>
                                 <div className="payment-list">
                                     <label className="payment-method">
@@ -328,7 +275,7 @@ export default function CheckoutPage() {
                                         <span className="payment-method__icon">
                                             <CreditCard size={20} />
                                         </span>
-                                        <span className="payment-method__label">YooKassa, банковская карта / СБП</span>
+                                        <span className="payment-method__label">ЮKassa, банковская карта / СБП</span>
                                     </label>
                                 </div>
                             </section>

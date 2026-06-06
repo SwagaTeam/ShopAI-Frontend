@@ -40,7 +40,7 @@
 }
 
 .form-card__title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     color: #111827;
     margin: 0 0 24px 0;
@@ -94,7 +94,7 @@
 }
 
 .form-group--wide {
-    grid-column: 1 / -1;
+    grid-column: 2 / -1;
 }
 
 .checkout-form-hint {
@@ -148,7 +148,7 @@
 }
 
 .address-option:has(input:checked) {
-    border-color: #155DFC;
+    border-color: #EFF8FF;
     background-color: #EFF8FF;
 }
 
@@ -165,7 +165,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    color: #155DFC;
+    color: #5a8cfb;
     background-color: #EAF1FF;
     flex-shrink: 0;
 }
@@ -205,22 +205,26 @@
     justify-content: center;
     gap: 8px;
     padding: 10px 14px;
-    border-radius: 8px;
-    border: 1px solid #155DFC;
-    background-color: #FFFFFF;
-    color: #155DFC;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(90deg, #155DFC 0%, #1447E6 100%);
+    color: #FFFAEB;
     font-weight: 700;
     cursor: pointer;
 }
 
 .address-save-btn:disabled {
-    opacity: 0.6;
+    opacity: 0.7;
     cursor: not-allowed;
+}
+
+.address-save-btn:hover {
+    background: linear-gradient(90deg, #3d77fa 0%, #1c48d3 100%);
 }
 
 .checkout-contact {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
     gap: 16px;
     padding-top: 18px;
     border-top: 1px solid #F2F4F7;
