@@ -64,6 +64,7 @@ interface ShopState {
     isLoading: boolean;
     isSubmittingProduct: boolean;
     isSubmittingCategory: boolean;
+    isSubmittingShop: boolean;
     error: string | null;
 
     fetchShop: (shopId: string) => Promise<void>;
@@ -71,6 +72,7 @@ interface ShopState {
     fetchBrands: () => Promise<void>;
     fetchShopProducts: (shopId: string, page?: number, pageSize?: number) => Promise<void>;
     createProduct: (product: CreateProductRequest) => Promise<boolean>;
+    createShop: (shop: { name: string, urlAlias: string, description: string, logoPath: string }) => Promise<boolean>;
     updateShop: (shopId: string, name: string, urlAlias: string) => Promise<void>;
     deleteShop: (shopId: string) => Promise<void>;
     createCategory: (category: CategoryDTO) => Promise<boolean>;
@@ -88,6 +90,7 @@ export const useShopStore = create<ShopState>((set) => ({
     isLoading: false,
     isSubmittingProduct: false,
     isSubmittingCategory: false,
+    isSubmittingShop: false,
     error: null,
 
     async fetchShop(shopId) {
@@ -188,6 +191,22 @@ export const useShopStore = create<ShopState>((set) => ({
             set({
                 error: 'Ошибка при создании товара',
                 isSubmittingProduct: false
+            });
+            return false;
+        }
+    },
+
+    async createShop(shop) {
+        set({ isSubmittingShop: true, error: null });
+        try {
+            await apiClient.post('/Shops', shop);
+            set({ isSubmittingShop: false });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при создании магазина:', error);
+            set({
+                error: 'Ошибка при создании магазина',
+                isSubmittingShop: false
             });
             return false;
         }

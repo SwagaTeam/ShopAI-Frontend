@@ -11,7 +11,6 @@ export interface Shop {
     ownerName: string;
 }
 
-// Тип для отправки данных на сервер
 export interface CreateShopDto {
     name: string;
     description: string;
@@ -22,12 +21,12 @@ export interface CreateShopDto {
 interface ShopsState {
     shops: Shop[];
     isLoading: boolean;
-    isCreating: boolean; // Состояние загрузки для создания
+    isCreating: boolean;
     error: string | null;
-    createError: string | null; // Ошибка при создании
+    createError: string | null;
 
     fetchMyShops: () => Promise<void>;
-    createShop: (data: CreateShopDto) => Promise<boolean>; // Возвращает true при успехе
+    createShop: (data: CreateShopDto) => Promise<boolean>;
 }
 
 export const useShopsStore = create<ShopsState>((set, get) => ({
@@ -57,10 +56,7 @@ export const useShopsStore = create<ShopsState>((set, get) => ({
     async createShop(data: CreateShopDto) {
         set({ isCreating: true, createError: null });
         try {
-            // Отправляем POST запрос
             await apiClient.post('/shops', data);
-
-            // Заново запрашиваем список магазинов, чтобы обновить UI
             await get().fetchMyShops();
 
             set({ isCreating: false });
@@ -71,7 +67,7 @@ export const useShopsStore = create<ShopsState>((set, get) => ({
                 createError: 'Не удалось создать магазин. Проверьте данные или URL.',
                 isCreating: false
             });
-            return false; // Ошибка
+            return false;
         }
     }
 }));
