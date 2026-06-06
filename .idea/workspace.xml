@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: like indicator">
-      <change afterPath="$PROJECT_DIR$/components/skeleton/skeleton.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: main skeleton loader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/shops/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/shops/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/shops.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/viewed/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/viewed/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/favorites/favorites.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/favorites/favorites.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shop-products/shop-products.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shop-products/shop-products.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/viewed/viewed.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewed/viewed.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend/app/admin/shops&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend/app/viewed&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,21 +92,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\viewed" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\admin\shops" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\data\store" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\viewed" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\favorites" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\product\[id]" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -139,23 +141,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="28162000" />
-    </task>
-    <task id="LOCAL-00015" summary="fix logo">
-      <option name="closed" value="true" />
-      <created>1779215923798</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1779215923798</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add catalog to main">
-      <option name="closed" value="true" />
-      <created>1779215949011</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1779215949011</updated>
+      <workItem from="1780748015029" duration="28717000" />
     </task>
     <task id="LOCAL-00017" summary="feat: breadcrumb">
       <option name="closed" value="true" />
@@ -533,15 +519,29 @@
       <option name="project" value="LOCAL" />
       <updated>1780782925563</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="fix: admin sidebar">
+      <option name="closed" value="true" />
+      <created>1780783465167</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1780783465167</updated>
+    </task>
+    <task id="LOCAL-00065" summary="feat: main skeleton loader">
+      <option name="closed" value="true" />
+      <created>1780783475464</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1780783475464</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: ai" />
-    <MESSAGE value="push to deploy" />
     <MESSAGE value="fix: img" />
     <MESSAGE value="fix: item layout" />
     <MESSAGE value="fix: ai" />
@@ -565,6 +565,8 @@
     <MESSAGE value="feat: new shops layout" />
     <MESSAGE value="fix: header" />
     <MESSAGE value="check" />
-    <option name="LAST_COMMIT_MESSAGE" value="check" />
+    <MESSAGE value="fix: admin sidebar" />
+    <MESSAGE value="feat: main skeleton loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: main skeleton loader" />
   </component>
 </project>
