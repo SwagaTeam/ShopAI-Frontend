@@ -302,7 +302,6 @@ button.header__avatar {
     color: #0f172a;
 }
 
-/* Прозрачный слой на весь экран для удобного закрытия по клику мимо */
 .profile-dropdown__overlay {
     position: fixed;
     top: 0;

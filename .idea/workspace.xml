@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="delete notifications">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: header dropdown menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-sidebar/profile-sidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile-sidebar/profile-sidebar.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/store/useAuthStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAuthStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,15 +138,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="18981000" />
-    </task>
-    <task id="LOCAL-00004" summary="remove garbage">
-      <option name="closed" value="true" />
-      <created>1779210994889</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1779210994889</updated>
+      <workItem from="1780748015029" duration="20021000" />
     </task>
     <task id="LOCAL-00005" summary="change route">
       <option name="closed" value="true" />
@@ -529,14 +524,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780771955425</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="feat: header dropdown menu">
+      <option name="closed" value="true" />
+      <created>1780773623143</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1780773623143</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: favorites" />
     <MESSAGE value="feat: animated like btn" />
     <MESSAGE value="profile routing" />
     <MESSAGE value="Shops Stores" />
@@ -561,6 +563,7 @@
     <MESSAGE value="fix: change ai slop orders layout" />
     <MESSAGE value="feat: new placeholder" />
     <MESSAGE value="delete notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete notifications" />
+    <MESSAGE value="feat: header dropdown menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: header dropdown menu" />
   </component>
 </project>

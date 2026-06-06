@@ -3,25 +3,29 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, Camera } from 'lucide-react';
 import { useAuthStore } from "@/data/store/useAuthStore";
-import { apiClient } from "@/data/api/apiClient";
 import './profile.css';
-import {Header} from "@/components/header/header";
-import {getInitials} from "@/utils/utils";
-import { ProfileSidebar } from "@/components/profile-sidebar/profile-sidebar";
+import { Header } from "@/components/header/header";
+import { getInitials } from "@/utils/utils";
 import { ShopsSection } from "@/components/profile-shops/shops";
-import "@/components/profile-sidebar/profile-sidebar.css";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import {sileo} from "sileo";
 
 export default function ProfilePage() {
-    const { name, email, phone, updateProfile, clearAuth } = useAuthStore();
+    const {
+        name,
+        email,
+        phone,
+        updateProfile,
+        clearAuth,
+        fetchProfile,
+        isLoading
+    } = useAuthStore();
     const router = useRouter();
-    const [activeTab, setActiveTab] = useState('personal');
 
     const handleLogout = () => {
         clearAuth();
         router.push('/');
     };
-
 
     const [formData, setFormData] = useState({
         name: name || '',
@@ -36,37 +40,17 @@ export default function ProfilePage() {
     });
 
     useEffect(() => {
-        const tab = new URLSearchParams(window.location.search).get('tab');
-        if (tab) {
-            setActiveTab(tab);
-        }
+        setFormData({
+            name: name || '',
+            email: email || '',
+            phone: phone || '',
+        });
+    }, [name, email, phone]);
 
-        const fetchProfile = async () => {
-            try {
-                const response = await apiClient.get('/Users/current');
-                if (response.data) {
-                    const profile = {
-                        id: response.data.id,
-                        name: response.data.name,
-                        email: response.data.email,
-                        phone: response.data.phone,
-                        role: response.data.role
-                    };
-
-                    updateProfile(profile);
-                    setFormData({
-                        name: profile.name || '',
-                        email: profile.email || '',
-                        phone: profile.phone || '',
-                    });
-                }
-            } catch (error) {
-                console.error('Ошибка при синхронизации профиля с сервером', error);
-            }
-        };
-
+    useEffect(() => {
+        // Получаем профиль при монтировании компонента
         fetchProfile();
-    }, [updateProfile]);
+    }, [fetchProfile]);
 
     const handleInputChange = (field: keyof typeof formData, value: string) => {
         setFormData(prev => ({ ...prev, [field]: value }));
@@ -76,16 +60,53 @@ export default function ProfilePage() {
         setPasswords(prev => ({ ...prev, [field]: value }));
     };
 
+    const handleSaveProfile = async () => {
+        try {
+            updateProfile(formData);
+            sileo.success({ title: "Успех!", description: `Профиль обновлен`, duration: 2000  });
+        } catch (error) {
+            console.error('Ошибка при сохранении профиля:', error);
+        }
+    };
+
+    const handleUpdatePassword = async () => {
+        if (passwords.new !== passwords.confirm) {
+            // Добавить уведомление о несовпадении паролей
+            return;
+        }
+
+        try {
+            setPasswords({
+                current: '',
+                new: '',
+                confirm: ''
+            });
+        } catch (error) {
+            console.error('Ошибка при обновлении пароля:', error);
+        }
+    };
+
+    if (isLoading) {
+        return (
+            <>
+                <Header isCompact={true} />
+                <div className="profile-page-container">
+                    <div className="profile-page">
+                        <main className="profile-content">
+                            <div className="loading-spinner">Загрузка...</div>
+                        </main>
+                    </div>
+                </div>
+            </>
+        );
+    }
+
     return (
         <>
-            <Header isCompact={true}/>
-            <div className={'profile-page-container'}>
-        <div className="profile-page">
-            <ProfileSidebar activeTab={activeTab} onTabChange={setActiveTab} />
-
-            <main className="profile-content">
-                {activeTab === 'personal' && (
-                    <>
+            <Header isCompact={true} />
+            <div className="profile-page-container">
+                <div className="profile-page">
+                    <main className="profile-content">
                         <section className="profile-section">
                             <h2 className="profile-section__title">Личная информация</h2>
 
@@ -117,34 +138,38 @@ export default function ProfilePage() {
                                         />
                                     </div>
                                 </div>
+                                <div className="profile-field_group">
+                                    <div className="profile-field">
+                                        <label className="profile-field__label">Email</label>
+                                        <div className="profile-field__input-wrap">
+                                            <input
+                                                type="email"
+                                                className="profile-field__input"
+                                                value={formData.email}
+                                                onChange={(e) => handleInputChange('email', e.target.value)}
+                                                placeholder="ivan@example.com"
+                                            />
+                                        </div>
+                                    </div>
 
-                                <div className="profile-field">
-                                    <label className="profile-field__label">Email</label>
-                                    <div className="profile-field__input-wrap">
-                                        <input
-                                            type="email"
-                                            className="profile-field__input"
-                                            value={formData.email}
-                                            onChange={(e) => handleInputChange('email', e.target.value)}
-                                            placeholder="ivan@example.com"
-                                        />
+                                    <div className="profile-field">
+                                        <label className="profile-field__label">Телефон</label>
+                                        <div className="profile-field__input-wrap">
+                                            <input
+                                                type="tel"
+                                                className="profile-field__input"
+                                                value={formData.phone}
+                                                onChange={(e) => handleInputChange('phone', e.target.value)}
+                                                placeholder="+7 (999) 123-45-67"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div className="profile-field">
-                                    <label className="profile-field__label">Телефон</label>
-                                    <div className="profile-field__input-wrap">
-                                        <input
-                                            type="tel"
-                                            className="profile-field__input"
-                                            value={formData.phone}
-                                            onChange={(e) => handleInputChange('phone', e.target.value)}
-                                            placeholder="+7 (999) 123-45-67"
-                                        />
-                                    </div>
-                                </div>
-
-                                <button type="button" className="profile-btn-primary">
+                                <button
+                                    type="button"
+                                    className="profile-btn-primary"
+                                    onClick={handleSaveProfile}
+                                >
                                     Сохранить изменения
                                 </button>
                             </div>
@@ -203,23 +228,24 @@ export default function ProfilePage() {
                                 </div>
 
                                 <div className="profile__botom-section">
-                                    <button type="button" className="profile-btn-primary">
+                                    <button
+                                        type="button"
+                                        className="profile-btn-primary"
+                                        onClick={handleUpdatePassword}
+                                    >
                                         Обновить пароль
                                     </button>
-                                    <button onClick={handleLogout} className="profile-btn-primary">
+                                    <button
+                                        onClick={handleLogout}
+                                        className="profile-btn-primary"
+                                    >
                                         Выйти
                                     </button>
                                 </div>
                             </div>
                         </section>
-                    </>
-                )}
-
-                {activeTab === 'shops' && (
-                    <ShopsSection />
-                )}
-            </main>
-        </div>
+                    </main>
+                </div>
             </div>
         </>
     );

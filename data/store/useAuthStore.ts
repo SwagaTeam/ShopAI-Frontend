@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import axios from 'axios';
+import { apiClient } from "@/data/api/apiClient";
 
 interface AuthState {
     token: string | null;
@@ -11,7 +12,9 @@ interface AuthState {
     phone: string | null;
     role: string | null;
     isAuth: boolean;
+    isLoading: boolean;
     setAuth: (token: string, refreshToken: string) => Promise<void>;
+    fetchProfile: () => Promise<void>;
     updateProfile: (profile: Partial<Pick<AuthState, 'name' | 'email' | 'phone' | 'id' | 'role'>>) => void;
     clearAuth: () => void;
 }
@@ -27,10 +30,11 @@ export const useAuthStore = create<AuthState>()(
             phone: null,
             role: null,
             isAuth: false,
+            isLoading: false,
 
             async setAuth(token, refreshToken) {
                 try {
-                    set({ token, refreshToken });
+                    set({ token, refreshToken, isLoading: true });
 
                     const response = await axios.get('/api/Users/current', {
                         headers: {
@@ -47,11 +51,49 @@ export const useAuthStore = create<AuthState>()(
                         name: userData.name || null,
                         email: userData.email || null,
                         phone: userData.phone || null,
-                        role: userData.role || null
+                        role: userData.role || null,
+                        isLoading: false
                     });
                 } catch (error) {
                     console.error('Ошибка при получении профиля после авторизации:', error);
-                    set({ isAuth: false });
+                    set({ isAuth: false, isLoading: false });
+                }
+            },
+
+            async fetchProfile() {
+                const { token } = get();
+
+                if (!token) {
+                    console.warn('Нет токена для получения профиля');
+                    return;
+                }
+
+                try {
+                    set({ isLoading: true });
+
+                    const response = await apiClient.get('/Users/current');
+
+                    if (response.data) {
+                        const userData = response.data;
+
+                        set({
+                            id: userData.id || null,
+                            name: userData.name || null,
+                            email: userData.email || null,
+                            phone: userData.phone || null,
+                            role: userData.role || null,
+                            isAuth: true,
+                            isLoading: false
+                        });
+                    }
+                } catch (error) {
+                    console.error('Ошибка при получении профиля:', error);
+                    set({ isLoading: false });
+
+                    // Если ошибка авторизации, возможно нужно очистить токен
+                    if (axios.isAxiosError(error) && error.response?.status === 401) {
+                        get().clearAuth();
+                    }
                 }
             },
 
@@ -71,6 +113,7 @@ export const useAuthStore = create<AuthState>()(
                     phone: null,
                     role: null,
                     isAuth: false,
+                    isLoading: false,
                 }),
         }),
         {
