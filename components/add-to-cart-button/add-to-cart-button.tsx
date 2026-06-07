@@ -18,7 +18,6 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
     const addOrUpdateItem = useCartStore((state) => state.addOrUpdateItem);
     const items = useCartStore((state) => state.items);
     const router = useRouter();
-    const [isAdding, setIsAdding] = useState(false);
 
     const cartItem = items.find(i => i.productId === productId);
     const quantityInCart = cartItem?.quantity || 0;
@@ -27,9 +26,8 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
         e.preventDefault();
         e.stopPropagation();
 
-        if (isAdding || stockQuantity === 0) return;
+        if (stockQuantity === 0) return;
 
-        setIsAdding(true);
         try {
             await addOrUpdateItem(productId, 1);
         } catch (error) {
@@ -38,8 +36,6 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
                 description: "Не удалось добавить товар в корзину",
                 duration: 2000
             });
-        } finally {
-            setIsAdding(false);
         }
     };
 
@@ -50,7 +46,11 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
         try {
             await addOrUpdateItem(productId, 1);
         } catch (error) {
-            console.error("Ошибка при увеличении", error);
+            sileo.error({
+                title: "Ошибка!",
+                description: "Не удалось увеличить количество",
+                duration: 2000
+            });
         }
     };
 
@@ -60,24 +60,26 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
         try {
             await addOrUpdateItem(productId, -1);
         } catch (error) {
-            console.error("Ошибка при уменьшении", error);
+            sileo.error({
+                title: "Ошибка!",
+                description: "Не удалось уменьшить количество",
+                duration: 2000
+            });
         }
     };
 
     return (
         <div className={`cart-action-wrapper ${className}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
             <button
-                className={`add-to-cart-btn ${quantityInCart > 0 ? 'in-cart' : ''} ${isAdding ? 'is-loading' : ''}`}
+                className={`add-to-cart-btn ${quantityInCart > 0 ? 'in-cart' : ''}`}
                 onClick={quantityInCart > 0 ? () => router.push("/cart") : handleAddToCart}
-                disabled={(isAdding && quantityInCart === 0) || stockQuantity === 0}
+                disabled={stockQuantity === 0}
             >
                 {stockQuantity === 0
                     ? 'Нет в наличии'
-                    : isAdding && quantityInCart === 0
-                        ? '...'
-                        : quantityInCart > 0
-                            ? (showText ? 'В корзине' : '')
-                            : (showText ? 'Купить' : '')}
+                    : quantityInCart > 0
+                        ? (showText ? 'В корзине' : '')
+                        : (showText ? 'Купить' : '')}
             </button>
 
             <div className={`quantity-badge ${quantityInCart > 0 ? 'visible' : ''}`}>

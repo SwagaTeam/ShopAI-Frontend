@@ -4,6 +4,9 @@ import { apiClient } from '@/data/api/apiClient';
 import { ICartItem } from '@/data/interfaces/ICartItem';
 import {sileo} from "sileo";
 
+const pendingTimeouts = new Map<string, NodeJS.Timeout>();
+const pendingDeltas = new Map<string, number>();
+
 interface CartState {
     id: string | null;
     items: ICartItem[];
@@ -11,6 +14,7 @@ interface CartState {
     totalPrice: number;
     isLoading: boolean;
     error: string | null;
+    _pendingCount: number;
 
     fetchCart: () => Promise<void>;
     addOrUpdateItem: (productId: string, quantity: number) => Promise<void>;
@@ -30,6 +34,7 @@ export const useCartStore = create<CartState>()(
             totalPrice: 0,
             isLoading: false,
             error: null,
+            _pendingCount: 0,
 
             async fetchCart() {
                 set({ isLoading: true, error: null });
@@ -52,16 +57,84 @@ export const useCartStore = create<CartState>()(
             },
 
             async addOrUpdateItem(productId, quantity) {
-                try {
-                    await apiClient.post('/Cart/items', {
+                const state = useCartStore.getState();
+                const currentItems = [...state.items];
+                const existingItemIndex = currentItems.findIndex(i => i.productId === productId);
+
+                // 1. Оптимистичное обновление UI (мгновенно)
+                if (existingItemIndex > -1) {
+                    const existingItem = currentItems[existingItemIndex];
+                    const newQuantity = existingItem.quantity + quantity;
+
+                    if (newQuantity <= 0) {
+                        currentItems.splice(existingItemIndex, 1);
+                    } else {
+                        currentItems[existingItemIndex] = {
+                            ...existingItem,
+                            quantity: newQuantity
+                        };
+                    }
+                } else if (quantity > 0) {
+                    currentItems.push({
                         productId,
-                        quantity
+                        quantity,
+                        productName: 'Загрузка...',
+                        price: 0,
+                        imageUrl: '',
+                        brandName: '',
+                        stockQuantity: 999,
+                        rating: 0,
+                        reviewsCount: 0,
+                        shopName: '',
+                        tags: [],
+                        isInWishlist: false
                     });
-                    await useCartStore.getState().fetchCart();
-                } catch (error) {
-                    console.error('Ошибка при добавлении товара в корзину:', error);
-                    sileo.error({ title: "Ошибка!", description: "Товар не добавлен в корзину", duration: 2000 });
                 }
+
+                set({
+                    items: currentItems,
+                    itemsCount: currentItems.length
+                });
+
+                // 2. Дебаунс отправки запроса на сервер
+                const accumulatedDelta = (pendingDeltas.get(productId) || 0) + quantity;
+                pendingDeltas.set(productId, accumulatedDelta);
+
+                if (pendingTimeouts.has(productId)) {
+                    clearTimeout(pendingTimeouts.get(productId)!);
+                } else {
+                    set(s => ({ _pendingCount: s._pendingCount + 1 }));
+                }
+
+                const timeout = setTimeout(async () => {
+                    const delta = pendingDeltas.get(productId);
+                    pendingDeltas.delete(productId);
+                    pendingTimeouts.delete(productId);
+
+                    try {
+                        if (delta !== undefined && delta !== 0) {
+                            await apiClient.post('/Cart/items', {
+                                productId,
+                                quantity: delta
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Ошибка при синхронизации корзины:', error);
+                        sileo.error({
+                            title: "Ошибка!",
+                            description: "Не удалось синхронизировать изменения с сервером",
+                            duration: 2000
+                        });
+                    } finally {
+                        set(s => ({ _pendingCount: Math.max(0, s._pendingCount - 1) }));
+
+                        if (useCartStore.getState()._pendingCount === 0) {
+                            await useCartStore.getState().fetchCart();
+                        }
+                    }
+                }, 500);
+
+                pendingTimeouts.set(productId, timeout);
             },
 
             async removeItem(productId) {

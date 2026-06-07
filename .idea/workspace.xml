@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: pwa starts from /auth">
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: optimistic like button update">
+      <change beforePath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useCartStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useCartStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,14 +135,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00040" summary="fix: item layout">
-      <option name="closed" value="true" />
-      <created>1780586655627</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1780586655627</updated>
     </task>
     <task id="LOCAL-00041" summary="fix: ai">
       <option name="closed" value="true" />
@@ -529,14 +520,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780848327186</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="feat: optimistic like button update">
+      <option name="closed" value="true" />
+      <created>1780848594600</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1780848594601</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="check" />
     <MESSAGE value="fix: admin sidebar" />
     <MESSAGE value="feat: main skeleton loader" />
     <MESSAGE value="feat: favorites skeleton loader" />
@@ -561,6 +559,7 @@
     <MESSAGE value="feat: ai assistant adaptive" />
     <MESSAGE value="fix: unauthorized route" />
     <MESSAGE value="fix: pwa starts from /auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: pwa starts from /auth" />
+    <MESSAGE value="feat: optimistic like button update" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: optimistic like button update" />
   </component>
 </project>
