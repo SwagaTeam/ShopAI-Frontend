@@ -23,7 +23,7 @@ export default function ShopAIPage() {
                 <section className="selections">
                     <div className="section__header">
                         <h2 className="section__title">Личные подборки от Шопи</h2>
-                        <a href="#" className="section__link">Смотреть все &gt;</a>
+                        {/*<a href="#" className="section__link">Смотреть все &gt;</a>*/}
                     </div>
 
                     <div className="selections__grid">

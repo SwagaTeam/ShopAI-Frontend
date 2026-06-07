@@ -74,10 +74,10 @@ export const AddToCartButton = ({ productId, stockQuantity, className = "", show
                 {stockQuantity === 0
                     ? 'Нет в наличии'
                     : isAdding && quantityInCart === 0
-                        ? 'Добавление...'
+                        ? '...'
                         : quantityInCart > 0
                             ? (showText ? 'В корзине' : '')
-                            : (showText ? 'В корзину' : '')}
+                            : (showText ? 'Купить' : '')}
             </button>
 
             <div className={`quantity-badge ${quantityInCart > 0 ? 'visible' : ''}`}>

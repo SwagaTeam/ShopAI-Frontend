@@ -76,108 +76,8 @@
     margin-top: -2px;
 }
 
-/* --- НОВЫЕ СТИЛИ ДЛЯ КНОПКИ И АНИМАЦИИ --- */
-
-
 .product-card__actions {
     width: 100%;
-}
-
-.cart-action-wrapper {
-    display: flex;
-    width: 100%;
-    height: 40px;
-}
-
-/* Главная кнопка */
-.add-to-cart-btn {
-    flex-grow: 1;
-    height: 100%;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: #2b65e3;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.add-to-cart-btn.in-cart {
-    background-color: #00c250;
-}
-
-.add-to-cart-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-/* Плашка с количеством и кнопками */
-.quantity-badge {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f4f5f7;
-    border-radius: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    flex-shrink: 0;
-
-    /* Скрытое состояние */
-    max-width: 0;
-    opacity: 0;
-    margin-left: 0;
-    padding: 0;
-
-    /* Анимация */
-    transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.2s ease,
-    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Видимое состояние */
-.quantity-badge.visible {
-    max-width: 96px; /* Ширина плашки с кнопками +/- */
-    width: 100%;
-    opacity: 1;
-    margin-left: 8px;
-    padding: 0 4px; /* Внутренние отступы */
-}
-
-/* Кнопки + и - внутри плашки */
-.quantity-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 100%;
-    background: transparent;
-    border: none;
-    color: #2b65e3; /* Синий цвет как на фото */
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.quantity-btn:hover {
-    opacity: 0.7;
-}
-
-
-/* Цифра между кнопками */
-.quantity-value {
-    font-weight: 500;
-    font-size: 15px;
-    color: #0f172a;
-    flex-grow: 1;
-    text-align: center;
-    min-width: 20px;
 }
 
 @media (max-width: 640px) {
@@ -197,23 +97,5 @@
 
     .product-card__rating {
         font-size: 12px;
-    }
-
-    .add-to-cart-btn {
-        font-size: 12px;
-        border-radius: 10px;
-    }
-
-    .quantity-badge.visible {
-        max-width: 80px;
-        margin-left: 4px;
-    }
-
-    .quantity-btn {
-        width: 24px;
-    }
-
-    .quantity-value {
-        font-size: 14px;
     }
 }

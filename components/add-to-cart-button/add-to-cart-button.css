@@ -4,6 +4,7 @@
     height: 48px;
 }
 
+/* Стили по умолчанию (Крупные) */
 .add-to-cart-btn {
     flex-grow: 1;
     height: 100%;
@@ -20,6 +21,8 @@
     transition: all 0.3s ease;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 16px;
 }
 
 .add-to-cart-btn.in-cart {
@@ -87,17 +90,87 @@
     min-width: 24px;
 }
 
+/* ================= COMPACT VARIANT (for Product Cards) ================= */
+.cart-action-wrapper--compact {
+    height: 40px;
+}
+
+.cart-action-wrapper--compact .add-to-cart-btn {
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.cart-action-wrapper--compact .quantity-badge.visible {
+    max-width: 96px;
+    margin-left: 8px;
+    padding: 0 4px;
+}
+
+.cart-action-wrapper--compact .quantity-btn {
+    width: 28px;
+}
+
+.cart-action-wrapper--compact .quantity-value {
+    font-size: 14px;
+    min-width: 20px;
+}
+
+/* ================= ADAPTIVE ================= */
+
 @media (max-width: 768px) {
+    /* На мобилке по умолчанию (на странице товара) кнопка чуть меньше десктопной, но всё еще крупная */
     .cart-action-wrapper {
         height: 44px;
     }
 
     .add-to-cart-btn {
-        font-size: 14px;
+        font-size: 15px;
     }
 
-    .quantity-badge.visible {
-        max-width: 100px;
-        margin-left: 8px;
+    /* А для карточек (compact) на мобилке еще меньше */
+    .cart-action-wrapper--compact {
+        height: 34px;
+    }
+
+    .cart-action-wrapper--compact .add-to-cart-btn {
+        font-size: 12px;
+        padding: 0 6px;
+        border-radius: 8px;
+    }
+
+    .cart-action-wrapper--compact .quantity-badge.visible {
+        max-width: 80px;
+        margin-left: 6px;
+        padding: 0 2px;
+        border-radius: 8px;
+    }
+
+    .cart-action-wrapper--compact .quantity-btn {
+        width: 24px;
+    }
+
+    .cart-action-wrapper--compact .quantity-value {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* На самых маленьких экранах для страницы товара */
+    .cart-action-wrapper {
+        height: 42px;
+    }
+
+    /* Для карточек товаров */
+    .cart-action-wrapper--compact {
+        height: 32px;
+    }
+
+    .cart-action-wrapper--compact .add-to-cart-btn {
+        font-size: 11px;
+    }
+
+    .cart-action-wrapper--compact .quantity-badge.visible {
+        max-width: 72px;
+        margin-left: 4px;
     }
 }

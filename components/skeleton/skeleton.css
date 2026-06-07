@@ -75,6 +75,27 @@
     border-radius: 12px;
 }
 
+@media (max-width: 768px) {
+    .product-card-skeleton {
+        padding: 8px;
+    }
+
+    .product-card-skeleton__button {
+        height: 34px;
+        border-radius: 8px;
+    }
+
+    .product-card-skeleton__image {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card-skeleton__button {
+        height: 32px;
+    }
+}
+
 /* Stat Card Skeleton */
 .stat-card-skeleton {
     background-color: #ffffff;

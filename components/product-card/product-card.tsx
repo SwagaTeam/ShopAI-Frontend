@@ -48,7 +48,11 @@ export const ProductCard = ({ item }: { item: ItemInterface }) => {
                 </div>
 
                 <div className="product-card__actions">
-                    <AddToCartButton productId={item.id} stockQuantity={item.stockQuantity} />
+                    <AddToCartButton
+                        productId={item.id}
+                        stockQuantity={item.stockQuantity}
+                        className="cart-action-wrapper--compact"
+                    />
                 </div>
             </div>
         </Link>
