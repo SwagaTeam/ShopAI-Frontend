@@ -1,12 +1,13 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import './auth.css';
-import {ChevronLeft, Eye, EyeOff, LockKeyhole, Mail, Phone, User} from "lucide-react";
+import {Bot, ChevronLeft, Eye, EyeOff} from "lucide-react";
 import {sileo} from "sileo";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
 import {useRouter} from "next/navigation";
 import {authApi} from "@/data/AuthApi";
+import Image from "next/image";
 
 export default function AuthPage() {
     const [activeTab, setActiveTab] = useState('login');
@@ -14,10 +15,10 @@ export default function AuthPage() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
-    // Состояния для полей пароля
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showLoginPassword, setShowLoginPassword] = useState(false);
+
     useEffect(() => {
         if (isAuth) {
             router.replace('/main');
@@ -88,205 +89,190 @@ export default function AuthPage() {
         }
     };
 
-        return (
-            <div className="auth-page">
-                <div className="auth-page__container">
-                    {/* Декоративные элементы */}
-                    <div className="auth-decor">
-                        <div className="auth-decor__item auth-decor__item--small">
-                            <div className="auth-decor__dot auth-decor__dot--left"></div>
-                            <div className="auth-decor__dot auth-decor__dot--right"></div>
-                        </div>
-                        <div className="auth-decor__item auth-decor__item--white">
-                            <div className="auth-decor__dot auth-decor__dot--left"></div>
-                            <div className="auth-decor__dot auth-decor__dot--right"></div>
-                        </div>
-                        <div className="auth-decor__item auth-decor__item--blue">
-                            <div className="auth-decor__dot auth-decor__dot--left"></div>
-                            <div className="auth-decor__dot auth-decor__dot--right"></div>
-                        </div>
-                        <div className="auth-decor__item auth-decor__item--super-small">
-                            <div className="auth-decor__dot auth-decor__dot--left"></div>
-                            <div className="auth-decor__dot auth-decor__dot--right"></div>
-                        </div>
-                    </div>
+    return (
+        <div className="auth-page">
 
-                    {/* Карточка с формой */}
-                    <div className="auth-card">
-                        <Link href={"/"} className="auth-page__back-btn" aria-label="Назад">
-                            <ChevronLeft size={24} color="#4A5565" />
-                        </Link>
-                        <div className="auth-card__header">
-                            <div className="auth-card__logo"></div>
-                            <h1 className="auth-card__title">ShopAI</h1>
-                        </div>
-
-                        <div className="auth-tabs">
-                            <button
-                                className={`auth-tabs__btn ${activeTab === 'login' ? 'auth-tabs__btn--active' : ''}`}
-                                onClick={() => setActiveTab('login')}
-                            >
-                                Вход
-                            </button>
-                            <button
-                                className={`auth-tabs__btn ${activeTab === 'register' ? 'auth-tabs__btn--active' : ''}`}
-                                onClick={() => setActiveTab('register')}
-                            >
-                                Регистрация
-                            </button>
-                        </div>
-
-                        {activeTab === 'register' ? (
-                            // ФОРМА РЕГИСТРАЦИИ
-                            <form className="auth-form" onSubmit={handleRegisterSubmit}>
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Имя</label>
-                                    <div className="auth-input-wrapper">
-                                    <span className="auth-input-wrapper__icon">
-                                        <User size={15} color={"#99A1AF"} />
-                                    </span>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={registerData.name}
-                                            onChange={handleRegisterChange}
-                                            className="auth-input auth-input--with-icon"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="auth-field">
-                                <label className="auth-field__label">Почта</label>
-                                <div className="auth-input-wrapper">
-                                    <span className="auth-input-wrapper__icon">
-                                        <Mail size={15} color={"#99A1AF"}/>
-                                    </span>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={registerData.email}
-                                        onChange={handleRegisterChange}
-                                        className="auth-input auth-input--with-icon"
-                                    />
-                                </div>
-                            </div>
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Номер телефона</label>
-                                    <div className="auth-input-wrapper">
-                                    <span className="auth-input-wrapper__icon">
-                                        <Phone size={15} color={"#99A1AF"}/>
-                                    </span>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={registerData.phone}
-                                            onChange={handleRegisterChange}
-                                            className="auth-input auth-input--with-icon"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Пароль</label>
-                                    <div className="auth-input-wrapper">
-                                    <span className="auth-input-wrapper__icon">
-                                        <LockKeyhole size={15} color={"#99A1AF"} />
-                                    </span>
-                                        <input
-                                            type={showPassword ? "text" : "password"}
-                                            name="password"
-                                            value={registerData.password}
-                                            onChange={handleRegisterChange}
-                                            className="auth-input auth-input--with-icon auth-input--with-action"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="auth-input-wrapper__action"
-                                            onClick={() => setShowPassword(!showPassword)}
-                                        >
-                                            {showPassword ? <EyeOff size={15} color={"#99A1AF"} /> : <Eye size={15} color={"#99A1AF"} />}
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Подтвердите пароль</label>
-                                    <div className="auth-input-wrapper">
-                                    <span className="auth-input-wrapper__icon">
-                                        <LockKeyhole size={15} color={"#99A1AF"} />
-                                    </span>
-                                        <input
-                                            type={showConfirmPassword ? "text" : "password"}
-                                            name="confirmPassword"
-                                            value={registerData.confirmPassword}
-                                            onChange={handleRegisterChange}
-                                            className="auth-input auth-input--with-icon auth-input--with-action"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="auth-input-wrapper__action"
-                                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                        >
-                                            {showConfirmPassword ? <EyeOff size={15} color={"#99A1AF"} /> : <Eye size={15} color={"#99A1AF"} />}
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <button type="submit" disabled={loading} className="auth-btn">
-                                    {loading ? "Загрузка..." : "Зарегистрироваться"}
-                                </button>
-
-                                <div className="auth-footer">
-                                    <span>Уже есть аккаунт? <button className="auth-footer__link" onClick={() => setActiveTab('login')}>Авторизация</button></span>
-                                </div>
-                            </form>
-                        ) : (
-                            // ФОРМА ВХОДА
-                            <form className="auth-form" onSubmit={handleLoginSubmit}>
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Email</label>
-                                    <div className="auth-input-wrapper">
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={loginData.email}
-                                            onChange={handleLoginChange}
-                                            className="auth-input"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="auth-field">
-                                    <label className="auth-field__label">Пароль</label>
-                                    <div className="auth-input-wrapper">
-                                        <input
-                                            type={showLoginPassword ? "text" : "password"}
-                                            name="password"
-                                            value={loginData.password}
-                                            onChange={handleLoginChange}
-                                            className="auth-input auth-input--with-action"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="auth-input-wrapper__action"
-                                            onClick={() => setShowLoginPassword(!showLoginPassword)}
-                                        >
-                                            {showLoginPassword ? <EyeOff size={15} color={"#99A1AF"} /> : <Eye size={15} color={"#99A1AF"} />}
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <button type="submit" disabled={loading} className="auth-btn">
-                                    {loading ? "Вход..." : "Войти"}
-                                </button>
-
-                                <div className="auth-footer">
-                                    <button type="button" className="auth-footer__link">Забыли пароль?</button>
-                                </div>
-                            </form>
-                        )}
+            {/* Декоративные элементы фона */}
+            <div className="auth-decor">
+                <div className="auth-decor__speech">
+                    <Image src="/images/auth/robot-hello.png" alt="Robot" width={600} height={600} className="auth-decor__robot" priority />
+                    <div className="auth-decor__bubble">
+                        Привет! <br />
+                        Меня зовут Шопи :) <br />
+                        Буду рад помочь <br />
+                        с выбором товара
                     </div>
                 </div>
+                <Image src="/images/auth/plum.png" alt="Plum" width={280} height={280} className="auth-decor__item auth-decor__plum" />
+                <Image src="/images/auth/sweater.png" alt="Sweater" width={160} height={160} className="auth-decor__item auth-decor__sweater" />
+                <Image src="/images/auth/trainers.png" alt="Trainers" width={180} height={180} className="auth-decor__trainers" />
+                <Image src="/images/auth/court.png" alt="Cart" width={220} height={220} className="auth-decor__cart" />
+                <div className="auth-decor__floor-container">
+                     <Image src="/images/auth/Floor.png" alt="Floor" width={1920} height={200} className="auth-decor__floor" />
+                </div>
             </div>
-        );
-    }
+
+            <div className="auth-page__container">
+                <div className="auth-card">
+                    <div className="auth-card__header">
+                        <div className="auth-card__logo">
+                            <Bot size={32} color="#fff" />
+                        </div>
+                        <h1 className="auth-card__title">ShopAI</h1>
+                    </div>
+
+                    <div className="auth-tabs">
+                        <button
+                            className={`auth-tabs__btn ${activeTab === 'login' ? 'auth-tabs__btn--active' : ''}`}
+                            onClick={() => setActiveTab('login')}
+                        >
+                            Вход
+                        </button>
+                        <button
+                            className={`auth-tabs__btn ${activeTab === 'register' ? 'auth-tabs__btn--active' : ''}`}
+                            onClick={() => setActiveTab('register')}
+                        >
+                            Регистрация
+                        </button>
+                    </div>
+
+                    {activeTab === 'register' ? (
+                        <form className="auth-form" onSubmit={handleRegisterSubmit}>
+                            <div className="auth-field">
+                                <label className="auth-field__label">Имя</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Ваше имя"
+                                    value={registerData.name}
+                                    onChange={handleRegisterChange}
+                                    className="auth-input"
+                                />
+                            </div>
+
+                            <div className="auth-field">
+                                <label className="auth-field__label">Почта</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="your@email.com"
+                                    value={registerData.email}
+                                    onChange={handleRegisterChange}
+                                    className="auth-input"
+                                />
+                            </div>
+
+                            <div className="auth-field">
+                                <label className="auth-field__label">Номер телефона</label>
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="+7 (___) ___-__-__"
+                                    value={registerData.phone}
+                                    onChange={handleRegisterChange}
+                                    className="auth-input"
+                                />
+                            </div>
+
+                            <div className="auth-field">
+                                <label className="auth-field__label">Пароль</label>
+                                <div className="auth-input-wrapper">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        name="password"
+                                        placeholder="********"
+                                        value={registerData.password}
+                                        onChange={handleRegisterChange}
+                                        className="auth-input auth-input--with-action"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="auth-input-wrapper__action"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="auth-field">
+                                <label className="auth-field__label">Подтвердите пароль</label>
+                                <div className="auth-input-wrapper">
+                                    <input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        name="confirmPassword"
+                                        placeholder="********"
+                                        value={registerData.confirmPassword}
+                                        onChange={handleRegisterChange}
+                                        className="auth-input auth-input--with-action"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="auth-input-wrapper__action"
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    >
+                                        {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" disabled={loading} className="auth-btn">
+                                {loading ? "Загрузка..." : "Зарегистрироваться"}
+                            </button>
+
+                            <div className="auth-footer">
+                                <span>Уже есть аккаунт? <button type="button" className="auth-footer__link" onClick={() => setActiveTab('login')}>Вход</button></span>
+                            </div>
+                        </form>
+                    ) : (
+                        <form className="auth-form" onSubmit={handleLoginSubmit}>
+                            <div className="auth-field">
+                                <label className="auth-field__label">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="your@email.com"
+                                    value={loginData.email}
+                                    onChange={handleLoginChange}
+                                    className="auth-input"
+                                />
+                            </div>
+
+                            <div className="auth-field">
+                                <label className="auth-field__label">Пароль</label>
+                                <div className="auth-input-wrapper">
+                                    <input
+                                        type={showLoginPassword ? "text" : "password"}
+                                        name="password"
+                                        placeholder="********"
+                                        value={loginData.password}
+                                        onChange={handleLoginChange}
+                                        className="auth-input auth-input--with-action"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="auth-input-wrapper__action"
+                                        onClick={() => setShowLoginPassword(!showLoginPassword)}
+                                    >
+                                        {showLoginPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" disabled={loading} className="auth-btn">
+                                {loading ? "Вход..." : "Войти"}
+                            </button>
+
+                            <div className="auth-footer">
+                                <button type="button" className="auth-footer__link">Забыли пароль?</button>
+                                <div className="auth-footer__text">
+                                    Нет аккаунта? <button type="button" className="auth-footer__link" onClick={() => setActiveTab('register')}>Регистрация</button>
+                                </div>
+                            </div>
+                        </form>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}

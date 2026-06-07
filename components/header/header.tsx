@@ -110,7 +110,7 @@ export const Header = ({isCompact} : HeaderProps) => {
                                             className="profile-dropdown__item profile-dropdown__item--logout"
                                             onClick={() => {
                                                 clearAuth();
-                                                router.push("/");
+                                                router.push("/auth");
                                             }}
                                         >
                                             <LogOut size={20} color="#4A5565" />

@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: ai assistant adaptive">
-      <change afterPath="$PROJECT_DIR$/public/images/auth/Floor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/auth/court.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/auth/plum.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/auth/robot-with-sweater-and-trainers.png" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: unauthorized route">
+      <change afterPath="$PROJECT_DIR$/public/images/auth/robot-hello.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/auth/sweater.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/auth/trainers.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/api/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/api/apiClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header-owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header-owner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/auth/robot-with-sweater-and-trainers.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend/public/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Evgen/Desktop/ShopAI-Frontend/public/images/auth&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,21 +92,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\auth" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\viewed" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\admin\shops" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\data\store" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\viewed" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\public\images\auth" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\admin" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\favorites" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\product\[id]" />
-      <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -140,14 +142,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00038" summary="push to deploy">
-      <option name="closed" value="true" />
-      <created>1780573299722</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1780573299722</updated>
     </task>
     <task id="LOCAL-00039" summary="fix: img">
       <option name="closed" value="true" />
@@ -533,14 +527,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780830454595</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="fix: unauthorized route">
+      <option name="closed" value="true" />
+      <created>1780846928826</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1780846928826</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: new shops layout" />
     <MESSAGE value="fix: header" />
     <MESSAGE value="check" />
     <MESSAGE value="fix: admin sidebar" />
@@ -565,6 +566,7 @@
     <MESSAGE value="feat: checkout adaptive" />
     <MESSAGE value="fix: checkout adaptive panel" />
     <MESSAGE value="feat: ai assistant adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ai assistant adaptive" />
+    <MESSAGE value="fix: unauthorized route" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: unauthorized route" />
   </component>
 </project>
