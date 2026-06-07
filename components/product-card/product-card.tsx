@@ -11,55 +11,9 @@ import {CircleOff, Plus, Minus} from "lucide-react";
 import { useRouter } from "next/navigation";
 import {renderStars} from "@/utils/utilsJSX";
 
+import { AddToCartButton } from "../add-to-cart-button/add-to-cart-button";
+
 export const ProductCard = ({ item }: { item: ItemInterface }) => {
-    const addOrUpdateItem = useCartStore((state) => state.addOrUpdateItem);
-    const items = useCartStore((state) => state.items); // Получаем все товары в корзине
-    const router = useRouter();
-    const [isAdding, setIsAdding] = useState(false);
-
-    const cartItem = items.find(i => i.productId === item.id);
-    const quantityInCart = cartItem?.quantity || 0;
-
-    const handleAddToCart = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isAdding) return;
-
-        setIsAdding(true);
-        try {
-            await addOrUpdateItem(item.id, 1);
-        } catch (error) {
-            sileo.error({
-                title: "Ошибка!",
-                description: "Не удалось добавить товар в корзину",
-                duration: 2000
-            });
-        } finally {
-            setIsAdding(false);
-        }
-    };
-
-    const handleIncrease = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        try {
-            await addOrUpdateItem(item.id, 1);
-        } catch (error) {
-            console.error("Ошибка при увеличении", error);
-        }
-    };
-
-    const handleDecrease = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        try {
-            await addOrUpdateItem(item.id, -1);
-        } catch (error) {
-            console.error("Ошибка при уменьшении", error);
-        }
-    };
-
     return (
         <Link href={`/product/${item.id}`} className="product-card-link">
             <div className="product-card__image-wrapper">
@@ -93,26 +47,8 @@ export const ProductCard = ({ item }: { item: ItemInterface }) => {
 
                 </div>
 
-                <div className="product-card__actions" onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
-                    <div className="cart-action-wrapper">
-                        <button
-                            className={`add-to-cart-btn ${quantityInCart > 0 ? 'in-cart' : ''} ${isAdding ? 'is-loading' : ''}`}
-                            onClick={quantityInCart > 0 ? () => router.push("/cart") : handleAddToCart}
-                            disabled={isAdding && quantityInCart === 0}
-                        >
-                            {isAdding && quantityInCart === 0 ? 'Добавление...' : quantityInCart > 0 ? 'В корзине' : 'Добавить в корзину'}
-                        </button>
-
-                        <div className={`quantity-badge ${quantityInCart > 0 ? 'visible' : ''}`}>
-                            <button className="quantity-btn" onClick={handleDecrease}>
-                                <Minus size={18} strokeWidth={3} />
-                            </button>
-                            <span className="quantity-value">{quantityInCart}</span>
-                            <button className="quantity-btn" onClick={handleIncrease}>
-                                <Plus size={18} strokeWidth={3} />
-                            </button>
-                        </div>
-                    </div>
+                <div className="product-card__actions">
+                    <AddToCartButton productId={item.id} stockQuantity={item.stockQuantity} />
                 </div>
             </div>
         </Link>

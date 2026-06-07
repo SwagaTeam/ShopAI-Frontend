@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
+      <change afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/favorites/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/favorites/favorites.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/orders/orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/orders/orders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/viewed/viewed.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/viewed/viewed.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart-item/cart-item.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart-item/cart-item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/catalog/catalog.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/catalog/catalog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/order-summary/order-summary.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/order-summary/order-summary.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/order-summary/order-summary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/order-summary/order-summary.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/placeholder/placeholder.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/placeholder/placeholder.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useProductStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useProductStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,55 +139,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="34070000" />
-    </task>
-    <task id="LOCAL-00023" summary="get cart items">
-      <option name="closed" value="true" />
-      <created>1779316781517</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1779316781517</updated>
-    </task>
-    <task id="LOCAL-00024" summary="fix cart">
-      <option name="closed" value="true" />
-      <created>1779318492040</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1779318492040</updated>
-    </task>
-    <task id="LOCAL-00025" summary="feat: favorites">
-      <option name="closed" value="true" />
-      <created>1779318502374</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1779318502374</updated>
-    </task>
-    <task id="LOCAL-00026" summary="feat: favorites">
-      <option name="closed" value="true" />
-      <created>1779319487552</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1779319487552</updated>
-    </task>
-    <task id="LOCAL-00027" summary="feat: animated like btn">
-      <option name="closed" value="true" />
-      <created>1779320079432</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1779320079432</updated>
-    </task>
-    <task id="LOCAL-00028" summary="profile routing">
-      <option name="closed" value="true" />
-      <created>1779358769555</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1779358769555</updated>
+      <workItem from="1780748015029" duration="35199000" />
     </task>
     <task id="LOCAL-00029" summary="Shops Stores">
       <option name="closed" value="true" />
@@ -540,19 +485,61 @@
       <option name="project" value="LOCAL" />
       <updated>1780822776627</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="cart adaptive">
+      <option name="closed" value="true" />
+      <created>1780824808834</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824808834</updated>
+    </task>
+    <task id="LOCAL-00073" summary="placeholder adaptive">
+      <option name="closed" value="true" />
+      <created>1780824819565</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824819565</updated>
+    </task>
+    <task id="LOCAL-00074" summary="header adaptive">
+      <option name="closed" value="true" />
+      <created>1780824825594</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824825594</updated>
+    </task>
+    <task id="LOCAL-00075" summary="favorites adaptive">
+      <option name="closed" value="true" />
+      <created>1780824837134</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824837134</updated>
+    </task>
+    <task id="LOCAL-00076" summary="order-summary adaptive">
+      <option name="closed" value="true" />
+      <created>1780824845220</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824845220</updated>
+    </task>
+    <task id="LOCAL-00077" summary="viewed adaptive">
+      <option name="closed" value="true" />
+      <created>1780824856586</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1780824856586</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: pulse anim" />
-    <MESSAGE value="fix: tsc" />
-    <MESSAGE value="fix: warnings" />
-    <MESSAGE value="fix: imports" />
-    <MESSAGE value="fix: change ai slop order screen layout" />
-    <MESSAGE value="fix: change ai slop orders layout" />
     <MESSAGE value="feat: new placeholder" />
     <MESSAGE value="delete notifications" />
     <MESSAGE value="feat: header dropdown menu" />
@@ -572,6 +559,12 @@
     <MESSAGE value="feat: seller form" />
     <MESSAGE value="garbage clean" />
     <MESSAGE value="landing adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="landing adaptive" />
+    <MESSAGE value="cart adaptive" />
+    <MESSAGE value="placeholder adaptive" />
+    <MESSAGE value="header adaptive" />
+    <MESSAGE value="favorites adaptive" />
+    <MESSAGE value="order-summary adaptive" />
+    <MESSAGE value="viewed adaptive" />
+    <option name="LAST_COMMIT_MESSAGE" value="viewed adaptive" />
   </component>
 </project>

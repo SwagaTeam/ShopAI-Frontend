@@ -7,12 +7,19 @@ export interface Product {
     description: string;
     price: number;
     imageUrl: string;
+    imageUrls?: string[];
     stockQuantity: number;
     categoryId: string;
     categoryName: string;
     shopId: string;
     shopName: string;
     brandName: string;
+    attributes?: Record<string, string>;
+    cartQuantity?: number;
+    isInWishlist?: boolean;
+    rating: number;
+    reviewsCount: number;
+    tags?: string[];
 }
 
 interface ProductState {

@@ -12,6 +12,8 @@ import { useViewedStore } from "@/data/store/useViewedStore";
 import { useCartStore } from "@/data/store/useCartStore";
 import {renderStars} from "@/utils/utilsJSX";
 import {ReviewCard} from "@/components/review-card/review-card";
+import { LikeButton } from "@/components/like-button/like-button";
+import { AddToCartButton } from "@/components/add-to-cart-button/add-to-cart-button";
 
 export default function ProductPage() {
     const { product, isLoading, error, fetchProduct } = useProductStore();
@@ -71,6 +73,10 @@ export default function ProductPage() {
 
                         <div className="main-image-container">
                             <img src={product.imageUrl} alt={product.name} />
+
+                            <div className="product-like-wrapper">
+                                <LikeButton itemId={productId} initialIsFavorite={product.isInWishlist} />
+                            </div>
                         </div>
                     </div>
 
@@ -92,44 +98,26 @@ export default function ProductPage() {
                         <div className="price-row">
                             <span className="current-price">{product.price.toLocaleString('ru-RU')} ₽</span>
                         </div>
-
-                        {product.stockQuantity > 0 ? (
-                            <div className="availability">
-                                <span className="availability-dot"></span>
-                                В наличии
-                            </div>
-                        ) : (
-                            <div className="availability" style={{ backgroundColor: '#fef2f2', color: '#dc2626' }}>
-                                <span className="availability-dot" style={{ backgroundColor: '#dc2626' }}></span>
-                                Нет в наличии
-                            </div>
-                        )}
-
-                        <span className="quantity-label">Количество</span>
-                        <div className="quantity-selector">
-                            <button className="quantity-btn" onClick={handleMinus} disabled={quantity <= 1}>
-                                <Minus size={16} />
-                            </button>
-                            <span className="quantity-value">{quantity}</span>
-                            <button className="quantity-btn" onClick={handlePlus} disabled={quantity >= product.stockQuantity}>
-                                <Plus size={16} />
-                            </button>
-                        </div>
-
-                        <div className="action-buttons">
-                            <button onClick={() => addOrUpdateItem(productId, quantity)} className="btn-primary" disabled={product.stockQuantity === 0}>В корзину</button>
-                            <button className="btn-secondary" disabled={product.stockQuantity === 0}>Купить в 1 клик</button>
-                        </div>
-
-                        <div className="meta-actions">
-                            <button className="meta-btn">
-                                <Heart size={20} />
-                                В избранное
-                            </button>
+                        <div className="rating-row">
+                            {product.stockQuantity > 0 ? (
+                                <div className="availability">
+                                    <span className="availability-dot"></span>
+                                    В наличии
+                                </div>
+                            ) : (
+                                <div className="availability" style={{ backgroundColor: '#fef2f2', color: '#dc2626' }}>
+                                    <span className="availability-dot" style={{ backgroundColor: '#dc2626' }}></span>
+                                    Нет в наличии
+                                </div>
+                            )}
                             <button className="meta-btn">
                                 <GitCompare size={20} />
                                 Сравнить
                             </button>
+                        </div>
+                        <div className="action-buttons">
+                            <AddToCartButton productId={productId} stockQuantity={product.stockQuantity} />
+                            <button className="btn-secondary" disabled={product.stockQuantity === 0}>Купить в 1 клик</button>
                         </div>
                     </div>
                 </div>
@@ -168,10 +156,18 @@ export default function ProductPage() {
 
                     {activeTab === 'characteristics' && (
                         <div className="characteristics-list">
-                            <div className="char-item">
-                                <span className="char-name">Бренд</span>
-                                <span className="char-value" style={{ textTransform: 'capitalize' }}>{product.brandName}</span>
-                            </div>
+                            {product.brandName && (
+                                <div className="char-item">
+                                    <span className="char-name">Бренд</span>
+                                    <span className="char-value" style={{ textTransform: 'capitalize' }}>{product.brandName}</span>
+                                </div>
+                            )}
+                            {product.attributes && Object.entries(product.attributes).map(([key, value]) => (
+                                <div className="char-item" key={key}>
+                                    <span className="char-name" style={{ textTransform: 'capitalize' }}>{key}</span>
+                                    <span className="char-value">{value}</span>
+                                </div>
+                            ))}
                             <div className="char-item">
                                 <span className="char-name">Категория</span>
                                 <span className="char-value">{product.categoryName}</span>
@@ -183,14 +179,6 @@ export default function ProductPage() {
                             <div className="char-item">
                                 <span className="char-name">Остаток на складе</span>
                                 <span className="char-value">{product.stockQuantity} шт.</span>
-                            </div>
-                            <div className="char-item">
-                                <span className="char-name">ID Категории</span>
-                                <span className="char-value" style={{ fontSize: '12px', color: '#999' }}>{product.categoryId}</span>
-                            </div>
-                            <div className="char-item">
-                                <span className="char-name">ID Магазина</span>
-                                <span className="char-value" style={{ fontSize: '12px', color: '#999' }}>{product.shopId}</span>
                             </div>
                         </div>
                     )}
@@ -269,6 +257,11 @@ export default function ProductPage() {
                     )}
                 </div>
             </main>
+
+            {/* Фиксированная кнопка для мобильных устройств */}
+            <div className="mobile-sticky-actions">
+                <AddToCartButton productId={productId} stockQuantity={product.stockQuantity} />
+            </div>
         </div>
     );
 }
