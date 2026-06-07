@@ -35,3 +35,27 @@ body {
     gap: 16px;
 }
 
+/* ================= ADAPTIVE ================= */
+
+@media (max-width: 1024px) {
+    .cart-page__layout {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .cart-page__list {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-page {
+        padding: 20px 16px 120px 16px; /* Большой отступ снизу для фиксированной панели */
+    }
+
+    .cart-page__title {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+}
+
