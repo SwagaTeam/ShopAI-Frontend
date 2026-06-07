@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="auth screen adaptive">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/skeleton/skeleton.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/skeleton/skeleton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -139,23 +138,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="36978000" />
-    </task>
-    <task id="LOCAL-00032" summary="fix paths">
-      <option name="closed" value="true" />
-      <created>1780519220431</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1780519220431</updated>
-    </task>
-    <task id="LOCAL-00033" summary="check">
-      <option name="closed" value="true" />
-      <created>1780566389297</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1780566389297</updated>
+      <workItem from="1780748015029" duration="37301000" />
     </task>
     <task id="LOCAL-00034" summary="feat: reviews">
       <option name="closed" value="true" />
@@ -533,15 +516,29 @@
       <option name="project" value="LOCAL" />
       <updated>1780827513723</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="fix: add to cart button">
+      <option name="closed" value="true" />
+      <created>1780828013886</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1780828013886</updated>
+    </task>
+    <task id="LOCAL-00082" summary="feat: skeleton loader for product screen">
+      <option name="closed" value="true" />
+      <created>1780828156518</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1780828156518</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: header dropdown menu" />
-    <MESSAGE value="feat: separated profile" />
     <MESSAGE value="fix: like indicator" />
     <MESSAGE value="feat: admin-layout" />
     <MESSAGE value="delete old admin-sidebar" />
@@ -565,6 +562,8 @@
     <MESSAGE value="viewed adaptive" />
     <MESSAGE value="product details adaptive" />
     <MESSAGE value="auth screen adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="auth screen adaptive" />
+    <MESSAGE value="fix: add to cart button" />
+    <MESSAGE value="feat: skeleton loader for product screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: skeleton loader for product screen" />
   </component>
 </project>

@@ -300,12 +300,12 @@
     }
 
     .stat-card__value {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 20px;
     }
 
     .stat-card__label {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .banner {

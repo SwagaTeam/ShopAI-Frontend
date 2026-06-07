@@ -216,3 +216,76 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 0 16px;
+    }
+
+    .profile-content {
+        padding: 20px 0;
+    }
+
+    .profile-section__title {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 16px;
+    }
+
+    .profile-avatar {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .profile-avatar__circle {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+    }
+
+    .profile-avatar__btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .profile-avatar__info-title {
+        font-size: 13px;
+    }
+
+    .profile-avatar__info-desc {
+        font-size: 12px;
+    }
+
+    .profile-field_group {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .profile-field__input {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .password-section {
+        width: 100%;
+    }
+
+    .password-title {
+        margin-top: 32px;
+    }
+
+    .profile-btn-primary {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 10px;
+        justify-content: center;
+        display: flex;
+    }
+
+    .profile__botom-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

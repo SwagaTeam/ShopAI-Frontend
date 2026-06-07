@@ -62,3 +62,49 @@ export const ProductPageSkeleton = () => {
     );
 };
 
+export const ProfileSkeleton = () => {
+    return (
+        <div className="profile-skeleton">
+            <div className="skeleton profile-skeleton__title" />
+
+            <div className="profile-skeleton__avatar-row">
+                <div className="skeleton profile-skeleton__avatar" />
+                <div className="profile-skeleton__avatar-info">
+                    <div className="skeleton profile-skeleton__text-s" />
+                    <div className="skeleton profile-skeleton__text-m" />
+                </div>
+            </div>
+
+            <div className="profile-skeleton__form">
+                <div className="profile-skeleton__field">
+                    <div className="skeleton profile-skeleton__label" />
+                    <div className="skeleton profile-skeleton__input" />
+                </div>
+
+                <div className="profile-skeleton__group">
+                    <div className="profile-skeleton__field" style={{ flex: 1 }}>
+                        <div className="skeleton profile-skeleton__label" />
+                        <div className="skeleton profile-skeleton__input" />
+                    </div>
+                    <div className="profile-skeleton__field" style={{ flex: 1 }}>
+                        <div className="skeleton profile-skeleton__label" />
+                        <div className="skeleton profile-skeleton__input" />
+                    </div>
+                </div>
+
+                <div className="skeleton profile-skeleton__btn" />
+            </div>
+
+            <div className="skeleton profile-skeleton__title" style={{ marginTop: '20px' }} />
+            <div className="profile-skeleton__form">
+                <div className="profile-skeleton__field">
+                    <div className="skeleton profile-skeleton__label" />
+                    <div className="skeleton profile-skeleton__input" />
+                </div>
+                <div className="skeleton profile-skeleton__btn" />
+            </div>
+        </div>
+    );
+};
+
+

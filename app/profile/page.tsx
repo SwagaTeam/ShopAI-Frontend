@@ -8,6 +8,7 @@ import { Header } from "@/components/header/header";
 import { getInitials } from "@/utils/utils";
 import { useRouter } from "next/navigation";
 import {sileo} from "sileo";
+import { ProfileSkeleton } from "@/components/skeleton/skeleton";
 
 export default function ProfilePage() {
     const {
@@ -92,13 +93,14 @@ export default function ProfilePage() {
                 <div className="profile-page-container">
                     <div className="profile-page">
                         <main className="profile-content">
-                            <div className="loading-spinner">Загрузка...</div>
+                            <ProfileSkeleton />
                         </main>
                     </div>
                 </div>
             </>
         );
     }
+
 
     return (
         <>
