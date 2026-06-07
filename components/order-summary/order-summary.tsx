@@ -25,7 +25,7 @@ export const OrderSummary = ({ isCart, onPay, isSubmitting }: OrderSummaryProps)
 
     return (
         <>
-            <aside className="summary-box">
+            <aside className={`summary-box ${isCart ? "summary-box--cart" : ""}`}>
                 <h2 className="summary-box__title">{isCart ? "Итого" : "Ваш заказ"}</h2>
 
                 {!isCart && items.length > 0 && (
