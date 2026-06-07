@@ -48,3 +48,57 @@
 .cart-page__continue-link:hover {
     background-color: #1255D1;
 }
+
+/* ================= ADAPTIVE ================= */
+
+@media (max-width: 768px) {
+    .cart-page__empty {
+        padding: 40px 20px;
+        min-height: 400px;
+        gap: 20px;
+    }
+
+    .cart-page__empty-image {
+        width: 240px;
+        height: 240px;
+    }
+
+    .cart-page__empty-title {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .cart-page__empty-text {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-page__empty {
+        padding: 32px 16px;
+        min-height: 350px;
+        gap: 16px;
+    }
+
+    .cart-page__empty-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .cart-page__empty-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .cart-page__empty-text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .cart-page__continue-link {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+}
