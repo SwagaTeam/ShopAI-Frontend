@@ -454,7 +454,6 @@
         box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
         z-index: 100;
         border-radius: 16px 16px 0 0;
-        /* Убираем анимацию или делаем её через transform для стабильности */
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform: translateY(0);
     }

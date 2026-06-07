@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: checkout adaptive panel">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: ai assistant adaptive">
+      <change afterPath="$PROJECT_DIR$/public/images/auth/Floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/auth/court.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/auth/plum.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/auth/robot-with-sweater-and-trainers.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/checkout/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/api/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/api/apiClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +104,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -135,14 +140,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00037" summary="push to deploy">
-      <option name="closed" value="true" />
-      <created>1780573176393</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1780573176393</updated>
     </task>
     <task id="LOCAL-00038" summary="push to deploy">
       <option name="closed" value="true" />
@@ -528,14 +525,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780830247564</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="feat: ai assistant adaptive">
+      <option name="closed" value="true" />
+      <created>1780830454595</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1780830454595</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: new create shop layout" />
     <MESSAGE value="feat: new shops layout" />
     <MESSAGE value="fix: header" />
     <MESSAGE value="check" />
@@ -560,6 +564,7 @@
     <MESSAGE value="feat: PWA" />
     <MESSAGE value="feat: checkout adaptive" />
     <MESSAGE value="fix: checkout adaptive panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: checkout adaptive panel" />
+    <MESSAGE value="feat: ai assistant adaptive" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ai assistant adaptive" />
   </component>
 </project>

@@ -5,6 +5,7 @@ export const apiClient = axios.create({
     baseURL: "/api/",
 });
 
+
 apiClient.interceptors.request.use((config) => {
     const token = useAuthStore.getState().token;
     if (token) {
@@ -34,6 +35,7 @@ apiClient.interceptors.response.use(
                 return apiClient(originalRequest);
             } catch (refreshError) {
                 useAuthStore.getState().clearAuth();
+                window.location.href="/auth"
                 return Promise.reject(refreshError);
             }
         }
