@@ -5,17 +5,19 @@ import {ItemInterface} from "@/data/interfaces/ItemInterface";
 interface FavoritesState {
     items: ItemInterface[];
     isLoading: boolean;
+    isFetched: boolean;
     error: string | null;
     
     fetchFavorites: () => Promise<void>;
     addToFavorites: (productId: string) => Promise<void>;
     removeFromFavorites: (productId: string) => Promise<void>;
-    toggleFavorite: (productId: string) => Promise<boolean>;
+    toggleFavorite: (productId: string, initialItem?: ItemInterface) => Promise<boolean>;
 }
 
 export const useFavoritesStore = create<FavoritesState>((set) => ({
     items: [],
     isLoading: false,
+    isFetched: false,
     error: null,
 
     async fetchFavorites() {
@@ -24,13 +26,15 @@ export const useFavoritesStore = create<FavoritesState>((set) => ({
             const response = await apiClient.get('/Favorites');
             set({
                 items: response.data,
-                isLoading: false
+                isLoading: false,
+                isFetched: true
             });
         } catch (error) {
             console.error('Ошибка при получении избранного:', error);
             set({
                 error: 'Ошибка при загрузке избранного',
-                isLoading: false
+                isLoading: false,
+                isFetched: true
             });
         }
     },
@@ -59,13 +63,28 @@ export const useFavoritesStore = create<FavoritesState>((set) => ({
         }
     },
 
-    async toggleFavorite(productId) {
+    async toggleFavorite(productId, initialItem) {
+        const previousItems = useFavoritesStore.getState().items;
+        const isCurrentlyFavorite = previousItems.some(item => item.id === productId);
+
+        // Оптимистичное обновление
+        if (isCurrentlyFavorite) {
+            set({ items: previousItems.filter(item => item.id !== productId) });
+        } else {
+            // Если у нас есть объект товара, добавляем его, иначе создаем минимальный объект
+            const newItem = initialItem || { id: productId, name: '', price: 0, imageUrl: '', rating: 0, stockQuantity: 0, categoryId: '', shopId: '', isInWishlist: true };
+            set({ items: [...previousItems, newItem] });
+        }
+
         try {
             const response = await apiClient.post(`/Favorites/${productId}/toggle`, {});
             const isAdded = response.data.isAdded;
+            // После успешного запроса можно обновить список полностью, чтобы синхронизировать данные (например, если newItem был неполным)
             await useFavoritesStore.getState().fetchFavorites();
             return isAdded;
         } catch (error) {
+            // Откат в случае ошибки
+            set({ items: previousItems });
             console.error('Ошибка при изменении избранного:', error);
             set({
                 error: 'Ошибка при изменении избранного'

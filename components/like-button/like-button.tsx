@@ -1,49 +1,50 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useFavoritesStore } from "@/data/store/useFavoritesStore";
 import { triggerConfetti } from "@/utils/confetti";
 import { Heart } from "lucide-react";
+import { sileo } from "sileo";
 import "./like-button.css"
 
 export function LikeButton(props: { itemId: string; initialIsFavorite?: boolean }) {
-    const [isAnimating, setIsAnimating] = useState(false);
-    const { items, toggleFavorite } = useFavoritesStore();
+    const [isRequesting, setIsRequesting] = useState(false);
+    const { items, isFetched, toggleFavorite } = useFavoritesStore();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const isFavorite = items.some(item => item.id === props.itemId) || props.initialIsFavorite || false;
-
-    useEffect(() => {
-        const isInStore = items.some(item => item.id === props.itemId);
-        if (!isInStore && props.initialIsFavorite) {
-        }
-    }, [items, props.itemId, props.initialIsFavorite]);
+    const isFavorite = isFetched
+        ? items.some(item => item.id === props.itemId)
+        : props.initialIsFavorite || false;
 
     const handleLikeClick = async (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
 
-        if (isAnimating) return;
+        if (isRequesting) return;
+
+        // Триггерим конфетти сразу, если товар добавляется в избранное
+        if (!isFavorite && buttonRef.current) {
+            triggerConfetti(buttonRef.current);
+        }
 
         try {
-            setIsAnimating(true);
-            const result = await toggleFavorite(props.itemId);
-
-            if (result && buttonRef.current) {
-                triggerConfetti(buttonRef.current);
-            }
+            setIsRequesting(true);
+            await toggleFavorite(props.itemId);
         } catch (error) {
-            console.error('Ошибка при изменении избранного:', error);
+            sileo.error({
+                title: "Ошибка",
+                description: "Не удалось обновить список избранного",
+                duration: 2000
+            });
         } finally {
-            setIsAnimating(false);
+            setIsRequesting(false);
         }
     };
 
     return (
         <button
             ref={buttonRef}
-            className={`product-card__like-btn ${isFavorite ? 'active' : ''} ${isAnimating ? 'animating' : ''}`}
+            className={`product-card__like-btn ${isFavorite ? 'active' : ''} ${isRequesting ? 'requesting' : ''}`}
             onClick={handleLikeClick}
             title={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
-            disabled={isAnimating}
         >
             <Heart
                 size={20}

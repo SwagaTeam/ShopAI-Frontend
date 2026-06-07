@@ -6,6 +6,7 @@ import React, {useState, useEffect} from "react";
 import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
+import {useFavoritesStore} from "@/data/store/useFavoritesStore";
 import {getInitials} from "@/utils/utils";
 import {usePathname, useRouter} from "next/navigation";
 
@@ -16,6 +17,13 @@ interface HeaderProps {
 export const Header = ({isCompact} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
     const [isProfileOpen, setProfileOpen] = useState(false);
+    const { fetchFavorites, isFetched } = useFavoritesStore();
+
+    useEffect(() => {
+        if (!isFetched) {
+            fetchFavorites();
+        }
+    }, [isFetched, fetchFavorites]);
 
     useEffect(() => {
         if (isCatalogOpen) {

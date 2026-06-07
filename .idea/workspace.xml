@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: unauthorized route">
-      <change beforePath="$PROJECT_DIR$/app/manifest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/manifest.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: pwa starts from /auth">
+      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,14 +136,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00039" summary="fix: img">
-      <option name="closed" value="true" />
-      <created>1780574049459</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1780574049459</updated>
     </task>
     <task id="LOCAL-00040" summary="fix: item layout">
       <option name="closed" value="true" />
@@ -527,14 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780846928826</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="fix: pwa starts from /auth">
+      <option name="closed" value="true" />
+      <created>1780848327186</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1780848327186</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: header" />
     <MESSAGE value="check" />
     <MESSAGE value="fix: admin sidebar" />
     <MESSAGE value="feat: main skeleton loader" />
@@ -559,6 +560,7 @@
     <MESSAGE value="fix: checkout adaptive panel" />
     <MESSAGE value="feat: ai assistant adaptive" />
     <MESSAGE value="fix: unauthorized route" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: unauthorized route" />
+    <MESSAGE value="fix: pwa starts from /auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: pwa starts from /auth" />
   </component>
 </project>
