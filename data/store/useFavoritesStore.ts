@@ -72,7 +72,21 @@ export const useFavoritesStore = create<FavoritesState>((set) => ({
             set({ items: previousItems.filter(item => item.id !== productId) });
         } else {
             // Если у нас есть объект товара, добавляем его, иначе создаем минимальный объект
-            const newItem = initialItem || { id: productId, name: '', price: 0, imageUrl: '', rating: 0, stockQuantity: 0, categoryId: '', shopId: '', isInWishlist: true };
+            const newItem: ItemInterface = initialItem || {
+                id: productId,
+                name: '',
+                price: 0,
+                imageUrl: '',
+                rating: 0,
+                stockQuantity: 0,
+                isInWishlist: true,
+                quantity: 0,
+                brandName: '',
+                reviewsCount: 0,
+                shopName: '',
+                tags: [],
+                cartQuantity: 0
+            };
             set({ items: [...previousItems, newItem] });
         }
 

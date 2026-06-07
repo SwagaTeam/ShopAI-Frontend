@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: optimistic like button update">
-      <change beforePath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useCartStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useCartStore.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: optimistic add-to-cart update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,14 +136,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00041" summary="fix: ai">
-      <option name="closed" value="true" />
-      <created>1780589158119</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1780589158119</updated>
     </task>
     <task id="LOCAL-00042" summary="feat: dashboard stats">
       <option name="closed" value="true" />
@@ -528,14 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780848594601</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="feat: optimistic add-to-cart update">
+      <option name="closed" value="true" />
+      <created>1780848957648</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1780848957648</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: admin sidebar" />
     <MESSAGE value="feat: main skeleton loader" />
     <MESSAGE value="feat: favorites skeleton loader" />
     <MESSAGE value="feat: viewed skeleton loader" />
@@ -560,6 +560,7 @@
     <MESSAGE value="fix: unauthorized route" />
     <MESSAGE value="fix: pwa starts from /auth" />
     <MESSAGE value="feat: optimistic like button update" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: optimistic like button update" />
+    <MESSAGE value="feat: optimistic add-to-cart update" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: optimistic add-to-cart update" />
   </component>
 </project>

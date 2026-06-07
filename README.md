@@ -1,33 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Проект Маркетплейса с исккуственным интеллектом для ПП ИРИТ-РТФ 2026
 
-## Getting Started
 
-First, run the development server:
+## ✨ Основные возможности
+*   **🤖 AI-Ассистент**: Встроенный помощник (Шопи), который помогает пользователям с выбором товаров.
+*   **📱 PWA Ready**: Возможность установки на смартфон и работа в режиме автономного приложения.
+*   **🛠 Админ-панель**: Управление магазинами, продуктами и заказами, одобрение заявки на становление продавцом.
+*   **🛠 Модуль оплаты**: Интеграция с Юkassa для проведения оплаты
+---
+## 🛠 Технологический стек
 
+### Frontend
+*   **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/)
+*   **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) (с персистентным хранилищем)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Styling**: Чистый CSS с использованием методологии BEM
+*   **API Client**: Axios с системой перехватчиков (interceptors) для обработки токенов
+
+### UX/UI Эффекты
+*   **Notifications**: Sileo (кастомная библиотека уведомлений)
+*   **UX Patterns**: Optimistic Updates, Debouncing, Skeleton Loading
+---
+
+## 🚀 Быстрый старт
+
+### Приступая к работе
+Убедитесь, что у вас установлен [Node.js](https://nodejs.org/) версии 18 или выше.
+
+### 1. Клонирование репозитория
 ```bash
-
-npm i
-npm run dev
-
+git clone https://github.com/your-username/ShopAI-Frontend.git
+cd ShopAI-Frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Установка зависимостей
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/layout.tsx`. The page auto-updates as you edit the file.
+### 3. Настройка окружения
+Создайте файл `.env.local` в корневом каталоге и добавьте адрес вашего бэкенда:
+```env
+BACKEND_URL=http://your-api-url.com/api
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Запуск в режиме разработки
+```bash
+npm run dev
+```
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 PWA (Progressive Web App)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Приложение полностью поддерживает стандарты PWA. 
+- **Start URL**: `/auth` (автоматический переход к авторизации при запуске приложения).
+- **Service Worker**: Настроен кэширующий sw для стабильной работы.
+- **Офлайн**: Базовая поддержка манифеста и иконок для всех платформ.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📂 Структура проекта
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*   `app/` — Маршрутизация и основные страницы.
+*   `components/` — Переиспользуемые UI компоненты (карточки, кнопки, хедер).
+*   `data/` — Логика данных:
+    *   `api/` — Конфигурация API клиента.
+    *   `store/` — Хранилища Zustand (Корзина, Избранное, Auth).
+    *   `interfaces/` — Типизация TypeScript.
+*   `public/` — Статические ресурсы: изображения, иконки, манифест.
+*   `utils/` — Вспомогательные функции
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Если у вас есть вопросы или предложения по развитию проекта, создавайте **Issue** или присылайте **Pull Request**.
+
+## Разработано с ❤️ командой 67бит
