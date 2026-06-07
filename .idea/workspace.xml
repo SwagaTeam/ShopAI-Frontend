@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: unauthorized route">
-      <change afterPath="$PROJECT_DIR$/public/images/auth/robot-hello.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/auth/sweater.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/auth/trainers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header-owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header-owner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/auth/robot-with-sweater-and-trainers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/manifest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/manifest.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +98,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app\product\[id]" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>

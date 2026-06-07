@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'ShopAI',
     short_name: 'ShopAI',
     description: 'Интеллектуальный магазин ShopAI',
-    start_url: '/',
+    start_url: '/auth',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#1A56DB',
