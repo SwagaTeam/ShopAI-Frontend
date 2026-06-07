@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: seller form">
-      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,15 +134,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="31356000" />
-    </task>
-    <task id="LOCAL-00021" summary="profile layout">
-      <option name="closed" value="true" />
-      <created>1779312234392</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1779312234392</updated>
+      <workItem from="1780748015029" duration="32615000" />
     </task>
     <task id="LOCAL-00022" summary="check">
       <option name="closed" value="true" />
@@ -527,7 +520,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780786253254</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="garbage clean">
+      <option name="closed" value="true" />
+      <created>1780786483690</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1780786483690</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +536,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: new item card" />
-    <MESSAGE value="garbage clean" />
     <MESSAGE value="feat: pulse anim" />
     <MESSAGE value="fix: tsc" />
     <MESSAGE value="fix: warnings" />
@@ -559,6 +559,7 @@
     <MESSAGE value="feat: viewed skeleton loader" />
     <MESSAGE value="fix: categories scroll" />
     <MESSAGE value="feat: seller form" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: seller form" />
+    <MESSAGE value="garbage clean" />
+    <option name="LAST_COMMIT_MESSAGE" value="garbage clean" />
   </component>
 </project>
