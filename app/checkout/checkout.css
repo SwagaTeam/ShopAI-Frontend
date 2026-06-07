@@ -358,25 +358,138 @@
     margin-top: 16px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+    .checkout-page {
+        padding: 16px 12px;
+    }
+
     .checkout-page__layout {
         flex-direction: column;
+        gap: 16px;
     }
 
-    .summary-box {
-        width: 100%;
+    .form-card {
+        padding: 16px;
+        border-radius: 12px;
     }
 
-    .delivery-form,
+    .form-card__title {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .delivery-form {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .form-group--wide,
+    .address-save-btn {
+        grid-column: auto;
+    }
+
     .checkout-contact {
         grid-template-columns: 1fr;
+        gap: 12px;
+        padding-top: 16px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    .form-group__input,
+    .form-group__textarea {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-radius: 10px;
     }
 
     .delivery-toggle {
         width: 100%;
+        display: flex;
     }
 
     .delivery-toggle button {
         flex: 1;
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .address-option {
+        padding: 10px;
+    }
+
+    .address-option__icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .address-option strong {
+        font-size: 13px;
+    }
+
+    .address-option small {
+        font-size: 11px;
+    }
+
+    .payment-method {
+        padding: 12px;
+    }
+
+    .payment-method__label {
+        font-size: 14px;
+    }
+
+    .mobile-sticky-pay {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        padding: 12px 16px 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        animation: slideUp 0.3s ease-out;
+        border-radius: 16px 16px 0 0;
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+
+    .mobile-sticky-pay__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-sticky-pay__label {
+        font-size: 12px;
+        color: #667085;
+    }
+
+    .mobile-sticky-pay__price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .mobile-sticky-pay__btn {
+        background: linear-gradient(90deg, #155DFC 0%, #1447E6 100%);
+        color: #ffffff;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .checkout-page__summary-wrapper {
+        width: 100%;
     }
 }
+

@@ -11,6 +11,7 @@ import { useAuthStore } from "@/data/store/useAuthStore";
 import { useCheckoutStore } from "@/data/store/useCheckoutStore"; // <-- Наш новый стор
 import { useRouter } from "next/navigation";
 import { sileo } from "sileo";
+import { useRef } from "react";
 
 const emptyAddressForm = {
     title: "",
@@ -24,7 +25,9 @@ const emptyAddressForm = {
 export default function CheckoutPage() {
     const router = useRouter();
     const { phone } = useAuthStore();
-    const { items, fetchCart, clearCart } = useCartStore();
+    const { items, fetchCart, clearCart, totalPrice } = useCartStore();
+    const [isSummaryVisible, setIsSummaryVisible] = useState(true);
+    const summaryRef = useRef<HTMLDivElement>(null);
 
     const {
         addresses,
@@ -35,6 +38,21 @@ export default function CheckoutPage() {
         submitOrder,
         confirmPayment
     } = useCheckoutStore();
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsSummaryVisible(entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        if (summaryRef.current) {
+            observer.observe(summaryRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const [deliveryMode, setDeliveryMode] = useState<"saved" | "new">("new");
     const [selectedAddressId, setSelectedAddressId] = useState("");
@@ -281,9 +299,27 @@ export default function CheckoutPage() {
                             </section>
                         </div>
 
-                        <OrderSummary isCart={false} onPay={handlePay} isSubmitting={isSubmitting} />
+                        <div ref={summaryRef} className="checkout-page__summary-wrapper">
+                            <OrderSummary isCart={false} onPay={handlePay} isSubmitting={isSubmitting} />
+                        </div>
                     </div>
                 </div>
+
+                {!isSummaryVisible && items.length > 0 && (
+                    <div className="mobile-sticky-pay">
+                        <div className="mobile-sticky-pay__info">
+                            <span className="mobile-sticky-pay__label">Итого</span>
+                            <span className="mobile-sticky-pay__price">{totalPrice} ₽</span>
+                        </div>
+                        <button
+                            className="mobile-sticky-pay__btn"
+                            onClick={handlePay}
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? "..." : "Оплатить"}
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );
