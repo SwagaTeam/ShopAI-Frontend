@@ -123,3 +123,148 @@
     height: 14px;
     width: 70%;
 }
+
+/* Product Page Skeleton */
+.product-page-skeleton {
+    width: 100%;
+}
+
+.product-page-skeleton__breadcrumbs {
+    height: 16px;
+    width: 250px;
+    margin-bottom: 24px;
+}
+
+.product-page-skeleton__main {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.product-page-skeleton__gallery {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+}
+
+.product-page-skeleton__thumbs {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product-page-skeleton__thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.product-page-skeleton__main-img {
+    flex: 1;
+    height: 500px;
+    border-radius: 16px;
+}
+
+.product-page-skeleton__info {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-page-skeleton__brand {
+    height: 14px;
+    width: 80px;
+}
+
+.product-page-skeleton__title {
+    height: 32px;
+    width: 100%;
+}
+
+.product-page-skeleton__rating {
+    height: 20px;
+    width: 150px;
+}
+
+.product-page-skeleton__price {
+    height: 36px;
+    width: 120px;
+}
+
+.product-page-skeleton__stock {
+    height: 24px;
+    width: 100px;
+}
+
+.product-page-skeleton__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.product-page-skeleton__btn {
+    height: 48px;
+    flex: 1;
+    border-radius: 12px;
+}
+
+.product-page-skeleton__tabs {
+    height: 44px;
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 32px;
+}
+
+.product-page-skeleton__tab {
+    height: 100%;
+    width: 100px;
+}
+
+@media (max-width: 768px) {
+    .product-page-skeleton__main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product-page-skeleton__gallery {
+        flex-direction: column-reverse;
+    }
+
+    .product-page-skeleton__thumbs {
+        width: 100%;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .product-page-skeleton__main-img {
+        height: 300px;
+    }
+
+    .product-page-skeleton__info {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .product-page-skeleton__breadcrumbs {
+        display: none;
+    }
+
+    .product-page-skeleton__title {
+        height: 24px;
+    }
+
+    .product-page-skeleton__tabs {
+        gap: 16px;
+        overflow-x: auto;
+    }
+
+    .product-page-skeleton__tab {
+        width: 80px;
+        flex-shrink: 0;
+    }
+}
+

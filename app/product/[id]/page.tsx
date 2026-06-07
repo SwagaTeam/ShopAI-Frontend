@@ -11,9 +11,10 @@ import {useParams, useRouter} from "next/navigation";
 import { useViewedStore } from "@/data/store/useViewedStore";
 import { useCartStore } from "@/data/store/useCartStore";
 import {renderStars} from "@/utils/utilsJSX";
-import {ReviewCard} from "@/components/review-card/review-card";
+import { ReviewCard } from "@/components/review-card/review-card";
 import { LikeButton } from "@/components/like-button/like-button";
 import { AddToCartButton } from "@/components/add-to-cart-button/add-to-cart-button";
+import { ProductPageSkeleton } from "@/components/skeleton/skeleton";
 
 export default function ProductPage() {
     const { product, isLoading, error, fetchProduct } = useProductStore();
@@ -36,12 +37,20 @@ export default function ProductPage() {
     const handlePlus = () => setQuantity(prev => (product ? Math.min(product.stockQuantity, prev + 1) : prev + 1));
 
     if (isLoading) {
-        return <div className="page-container" style={{ padding: '40px', textAlign: 'center' }}>Загрузка товара...</div>;
+        return (
+            <div className="page-container">
+                <Header isCompact={false} />
+                <main className="container" style={{ paddingTop: '20px' }}>
+                    <ProductPageSkeleton />
+                </main>
+            </div>
+        );
     }
 
     if (error || !product) {
         return <div className="page-container" style={{ padding: '40px', textAlign: 'center', color: 'red' }}>{error || 'Товар не найден'}</div>;
     }
+
 
     return (
         <div className="page-container">
