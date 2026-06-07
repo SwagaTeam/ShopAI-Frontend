@@ -127,3 +127,35 @@
     width: 16px;
     height: 16px;
 }
+
+@media (max-width: 768px) {
+    .review-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .review-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .review-user-name {
+        font-size: 14px;
+    }
+
+    .review-date {
+        font-size: 12px;
+    }
+
+    .review-comment {
+        font-size: 13px;
+        margin: 12px 0;
+        line-height: 1.5;
+    }
+
+    .review-images img {
+        width: 60px;
+        height: 60px;
+    }
+}

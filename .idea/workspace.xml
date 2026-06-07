@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
-      <change afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/add-to-cart-button/add-to-cart-button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/product/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useProductStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useProductStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/review-card/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/review-card/review.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +100,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\components\like-button" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -139,15 +135,7 @@
       <workItem from="1780519121081" duration="338000" />
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
-      <workItem from="1780748015029" duration="35199000" />
-    </task>
-    <task id="LOCAL-00029" summary="Shops Stores">
-      <option name="closed" value="true" />
-      <created>1779358786221</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1779358786221</updated>
+      <workItem from="1780748015029" duration="35874000" />
     </task>
     <task id="LOCAL-00030" summary="Shop controls">
       <option name="closed" value="true" />
@@ -533,14 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780824856586</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="product details adaptive">
+      <option name="closed" value="true" />
+      <created>1780826067409</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1780826067409</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: new placeholder" />
     <MESSAGE value="delete notifications" />
     <MESSAGE value="feat: header dropdown menu" />
     <MESSAGE value="feat: separated profile" />
@@ -565,6 +560,7 @@
     <MESSAGE value="favorites adaptive" />
     <MESSAGE value="order-summary adaptive" />
     <MESSAGE value="viewed adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="viewed adaptive" />
+    <MESSAGE value="product details adaptive" />
+    <option name="LAST_COMMIT_MESSAGE" value="product details adaptive" />
   </component>
 </project>

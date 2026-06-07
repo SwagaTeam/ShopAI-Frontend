@@ -584,6 +584,9 @@
     .main-image-container {
         min-height: 400px;
     }
+    .reviews-container {
+        gap: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -653,26 +656,53 @@
     .tab {
         font-size: 14px;
         white-space: nowrap;
+        padding: 12px;
     }
 
     .reviews-summary {
-        flex-direction: column;
-        padding: 24px;
-        gap: 24px;
-        text-align: center;
+        flex-direction: row;
+        padding: 16px;
+        gap: 12px;
+        text-align: left;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reviews-summary-left {
+        min-width: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .reviews-avg-score {
+        font-size: 32px;
+    }
+
+    .reviews-avg-stars, .reviews-avg-count {
+        display: none;
+    }
+
+    .reviews-summary-left::after {
+        content: "рейтинг";
+        font-size: 13px;
+        color: #808080;
     }
 
     .reviews-summary-right {
         margin-left: 0;
-        width: 100%;
+        width: auto;
     }
 
     .write-review-btn {
-        width: 100%;
+        width: auto;
+        padding: 8px 16px;
+        font-size: 13px;
+        border-radius: 8px;
     }
 
     .reviews-bars {
-        width: 100%;
+        display: none;
     }
 
     .products-grid {
@@ -693,6 +723,10 @@
 
     .char-name, .char-value {
         font-size: 13px;
+    }
+
+    .all-reviews-btn-wrapper {
+        display: none;
     }
 }
 
@@ -734,6 +768,6 @@
     }
 
     .product-info .action-buttons {
-        display: none; /* Скрываем обычные кнопки, так как есть липкие */
+        display: none;
     }
 }
