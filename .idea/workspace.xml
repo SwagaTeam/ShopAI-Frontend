@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="garbage clean">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/review-card/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/review-card/review.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/[id]/reviews/reviews.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/[id]/reviews/reviews.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

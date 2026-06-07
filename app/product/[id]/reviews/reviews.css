@@ -559,3 +559,232 @@
     padding: 4px 12px;
     border-radius: 12px;
 }
+
+@media (max-width: 768px) {
+    .reviews-page {
+        padding-bottom: 30px;
+    }
+
+    .reviews-page__container {
+        padding: 0 10px;
+    }
+
+    .reviews-page__back {
+        padding: 10px 0;
+        font-size: 13px;
+        gap: 4px;
+    }
+
+    .reviews-page__product-bar {
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 10px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+
+    .reviews-page__product-left {
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .reviews-page__product-left > div {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .reviews-page__product-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+
+    .reviews-page__product-name {
+        font-size: 13px;
+        line-height: 1.2;
+        margin-bottom: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+    }
+
+    .reviews-page__product-rating {
+        gap: 2px;
+    }
+
+    .reviews-page__product-rating svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .reviews-page__product-avg, .reviews-page__product-count {
+        font-size: 11px;
+    }
+
+    .reviews-page__product-right {
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+
+    .reviews-page__product-prices {
+        text-align: right;
+    }
+
+    .reviews-page__price {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .reviews-page__buy-btn,
+    .reviews-page__cart-btn,
+    .reviews-page__product-right .reviews-page__icon-btn {
+        display: none;
+    }
+
+    .reviews-page__body {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .reviews-page__sidebar {
+        display: none;
+    }
+
+    .reviews-page__photos-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .reviews-page__photo {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+    }
+
+    .reviews-page__filter-tabs {
+        margin-bottom: 12px;
+        gap: 6px;
+    }
+
+    .reviews-page__tabs-left {
+        gap: 4px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        width: 100%;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .reviews-page__tabs-left::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reviews-page__filter-tab {
+        padding: 5px 10px;
+        font-size: 11px;
+        border-radius: 14px;
+    }
+
+    .reviews-page__write-btn {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+
+    .reviews-page__already-reviewed {
+        width: 100%;
+        justify-content: center;
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .reviews-page__list {
+        gap: 8px;
+    }
+
+    .review-modal {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .review-modal__title {
+        font-size: 17px;
+    }
+
+    .review-modal__product {
+        padding: 8px;
+        margin-bottom: 12px;
+        gap: 8px;
+    }
+
+    .review-modal__product-img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .review-modal__product-name {
+        font-size: 12px;
+    }
+
+    .review-modal__stars {
+        gap: 2px;
+    }
+
+    .review-modal__stars svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .review-modal__rating-text {
+        font-size: 12px;
+        margin-left: 8px;
+    }
+
+    .review-modal__field {
+        margin-bottom: 12px;
+    }
+
+    .review-modal__label {
+        margin-bottom: 4px;
+        font-size: 13px;
+    }
+
+    .review-modal__textarea {
+        padding: 8px 10px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+
+    .review-modal__submit {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .reviews-page__your-review-banner {
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+
+    .reviews-page__your-review-label {
+        left: 10px;
+        font-size: 10px;
+        padding: 2px 8px;
+        top: -10px;
+    }
+
+    .reviews-page__load-more {
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+}

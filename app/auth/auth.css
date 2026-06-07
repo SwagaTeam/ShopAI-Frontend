@@ -309,3 +309,81 @@
 .auth-footer__link:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+    .auth-page {
+        align-items: flex-start;
+        background-color: #FFFFFF;
+    }
+
+    .auth-page__container {
+        padding: 0 16px;
+        justify-content: center;
+    }
+
+    .auth-page__back-btn {
+        top: 20px;
+        left: 20px;
+        transform: none;
+    }
+
+    .auth-card {
+        margin: 60px 0 20px 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .auth-card__header {
+        margin-bottom: 24px;
+        justify-content: flex-start;
+    }
+
+    .auth-card__logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .auth-card__title {
+        font-size: 20px;
+    }
+
+    .auth-tabs {
+        margin-bottom: 24px;
+        border-radius: 10px;
+    }
+
+    .auth-tabs__btn {
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .auth-form {
+        gap: 12px;
+    }
+
+    .auth-field {
+        gap: 6px;
+    }
+
+    .auth-input {
+        padding: 10px 12px;
+    }
+
+    .auth-input--with-icon {
+        padding-left: 40px;
+    }
+
+    .auth-input--with-action {
+        padding-right: 40px;
+    }
+
+    .auth-btn {
+        padding: 12px;
+        margin-top: 8px;
+    }
+
+    .auth-footer {
+        margin-top: 16px;
+    }
+}
