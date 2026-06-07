@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: PWA" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: checkout adaptive" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,14 +132,6 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-    </task>
-    <task id="LOCAL-00035" summary="feat: ai">
-      <option name="closed" value="true" />
-      <created>1780571356460</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1780571356460</updated>
     </task>
     <task id="LOCAL-00036" summary="push to deploy">
       <option name="closed" value="true" />
@@ -525,14 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780828645906</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="feat: checkout adaptive">
+      <option name="closed" value="true" />
+      <created>1780829933399</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1780829933399</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: admin-layout" />
     <MESSAGE value="delete old admin-sidebar" />
     <MESSAGE value="feat: new create shop layout" />
     <MESSAGE value="feat: new shops layout" />
@@ -557,6 +556,7 @@
     <MESSAGE value="fix: add to cart button" />
     <MESSAGE value="feat: skeleton loader for product screen" />
     <MESSAGE value="feat: PWA" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: PWA" />
+    <MESSAGE value="feat: checkout adaptive" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: checkout adaptive" />
   </component>
 </project>

@@ -26,7 +26,7 @@ export default function CheckoutPage() {
     const router = useRouter();
     const { phone } = useAuthStore();
     const { items, fetchCart, clearCart, totalPrice } = useCartStore();
-    const [isSummaryVisible, setIsSummaryVisible] = useState(true);
+    const [isSummaryVisible, setIsSummaryVisible] = useState(false);
     const summaryRef = useRef<HTMLDivElement>(null);
 
     const {
@@ -44,7 +44,12 @@ export default function CheckoutPage() {
             ([entry]) => {
                 setIsSummaryVisible(entry.isIntersecting);
             },
-            { threshold: 0.1 }
+            {
+                threshold: 0,
+                // Отрицательный отступ заставляет панель оставаться видимой,
+                // пока основной блок оплаты не зайдет в экран на 150px.
+                rootMargin: "0px 0px -150px 0px"
+            }
         );
 
         if (summaryRef.current) {
@@ -305,21 +310,19 @@ export default function CheckoutPage() {
                     </div>
                 </div>
 
-                {!isSummaryVisible && items.length > 0 && (
-                    <div className="mobile-sticky-pay">
-                        <div className="mobile-sticky-pay__info">
-                            <span className="mobile-sticky-pay__label">Итого</span>
-                            <span className="mobile-sticky-pay__price">{totalPrice} ₽</span>
-                        </div>
-                        <button
-                            className="mobile-sticky-pay__btn"
-                            onClick={handlePay}
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? "..." : "Оплатить"}
-                        </button>
+                <div className={`mobile-sticky-pay ${isSummaryVisible || items.length === 0 ? "mobile-sticky-pay--hidden" : ""}`}>
+                    <div className="mobile-sticky-pay__info">
+                        <span className="mobile-sticky-pay__label">Итого</span>
+                        <span className="mobile-sticky-pay__price">{totalPrice} ₽</span>
                     </div>
-                )}
+                    <button
+                        className="mobile-sticky-pay__btn"
+                        onClick={handlePay}
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "..." : "Оплатить"}
+                    </button>
+                </div>
             </div>
         </>
     );
