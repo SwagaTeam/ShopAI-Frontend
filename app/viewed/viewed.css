@@ -48,3 +48,52 @@
 .selections__grid > * {
     min-width: 0;
 }
+
+/* ================= ADAPTIVE ================= */
+
+@media (max-width: 1024px) {
+    .main {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .selections__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 20px;
+    }
+
+    .selections__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section__title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 640px) {
+    .selections__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 12px;
+    }
+
+    .selections__grid {
+        gap: 10px;
+    }
+
+    .section__title {
+        font-size: 20px;
+    }
+}

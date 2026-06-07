@@ -264,23 +264,129 @@
 }
 
 /* Адаптив */
+@media (max-width: 1024px) {
+    .ozon-header-block {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ozon-orders-container {
+        padding: 0 16px;
+    }
+
+    .ozon-header-block {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0;
+    }
+
+    .ozon-header-title h2 {
+        font-size: 24px;
+    }
+
+    .ozon-tabs {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+    }
+
+    .ozon-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ozon-tab {
+        flex-shrink: 0;
+    }
+
+    .ozon-card {
+        padding: 16px;
+    }
+
+    .ozon-card__status {
+        font-size: 20px;
+    }
+
+    .ozon-card__address {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 680px) {
     .ozon-card {
         flex-direction: column;
+        gap: 16px;
     }
 
     .ozon-card__right {
         justify-content: flex-start;
         padding-top: 16px;
         border-top: 1px solid #f2f4f7;
+        min-width: unset;
+        gap: 12px;
+    }
+
+    .ozon-product {
+        width: 120px;
+    }
+
+    .ozon-product__image-wrap {
+        width: 120px;
+        height: 120px;
     }
 
     .ozon-card__actions {
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
     }
 
     .ozon-btn {
         width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .ozon-header-title h2 {
+        font-size: 22px;
+    }
+
+    .ozon-card__status {
+        font-size: 18px;
+    }
+
+    .ozon-card__address {
+        font-size: 15px;
+    }
+
+    .ozon-product {
+        width: 100px;
+    }
+
+    .ozon-product__image-wrap {
+        width: 100px;
+        height: 100px;
+    }
+
+    .ozon-popup {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .ozon-popup-item {
+        gap: 12px;
+        padding: 8px;
+    }
+
+    .ozon-popup-item__image-wrap {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ozon-popup-item__name {
+        font-size: 14px;
     }
 }
 
