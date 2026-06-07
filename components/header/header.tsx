@@ -1,14 +1,13 @@
 'use client';
 
 import "./header.css"
-import {Bell, ChevronDown, Handbag, Search, Store, LogOut} from "lucide-react";
+import {ChevronDown, Handbag, Search, Store, LogOut, Sparkle, Sparkles} from "lucide-react";
 import React, {useState, useEffect} from "react";
 import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
 import {getInitials} from "@/utils/utils";
 import {usePathname, useRouter} from "next/navigation";
-import {router} from "next/client";
 
 interface HeaderProps {
     isCompact: boolean;
@@ -16,7 +15,7 @@ interface HeaderProps {
 
 export const Header = ({isCompact} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
-    const [isProfileOpen, setProfileOpen] = useState(false); // Состояние для меню профиля
+    const [isProfileOpen, setProfileOpen] = useState(false);
 
     useEffect(() => {
         if (isCatalogOpen) {
@@ -32,7 +31,6 @@ export const Header = ({isCompact} : HeaderProps) => {
         };
     }, [isCatalogOpen]);
 
-    // Предполагаем, что в store также может быть email, если нет — используем заглушку
     const { name, email, clearAuth } = useAuthStore() as { name: string, email?: string, clearAuth: () => void };
     const pathname = usePathname();
     const router = useRouter();
@@ -53,9 +51,9 @@ export const Header = ({isCompact} : HeaderProps) => {
                     <div className="header__search">
                         <button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
                             <ChevronDown size={24}/>
-                            Каталог
+                            <span>Каталог</span>
                         </button>
-                        <input type="text" className="header__search-input" placeholder="Найти товар или магазин..." />
+                        <input type="text" className="header__search-input" placeholder="Поиск товаров..." />
                         <div className="header__search-icon">
                             <Search size={16} color={"#99A1AF"} />
                         </div>
@@ -63,8 +61,8 @@ export const Header = ({isCompact} : HeaderProps) => {
 
                     <div className="header__actions">
                         <Link href={"/ai-assistant"} className="header__ai-btn">
-                            ИИ-помощник
-                            <Search size={14} color={"#2563eb"} />
+                            <span>ИИ-помощник</span>
+                            <Sparkles size={14} color={"#2563eb"} />
                         </Link>
                         {/*<button className="header__icon-btn">
                             <Bell size={24} color={"#4A5565"}/>

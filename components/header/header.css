@@ -368,3 +368,116 @@ button.header__avatar {
         transform: translateY(0);
     }
 }
+
+/* ================= ADAPTIVE ================= */
+
+@media (max-width: 1024px) {
+    .header__top {
+        padding: 10px 24px;
+        gap: 16px;
+    }
+
+    .header__logo {
+        font-size: 24px;
+    }
+
+    .header__logo img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .header__search {
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__top {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+    }
+
+    .header__logo {
+        order: 1;
+    }
+
+    .header__actions {
+        order: 2;
+        gap: 12px;
+    }
+
+    .header__search {
+        order: 3;
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-top: 4px;
+    }
+
+    .header__ai-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .nav {
+        gap: 15px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 16px;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .nav::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .nav__link {
+        white-space: nowrap;
+        font-size: 13px;
+        padding-bottom: 12px;
+    }
+
+    .catalog-overlay, .catalog-wrapper {
+        top: 115px; /* Adjust for wrapped search on mobile */
+    }
+
+    .header-catalog__compact {
+        top: 65px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__ai-btn span,
+    .header__catalog-btn span {
+        display: none;
+    }
+
+    .header__catalog-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+        gap: 0;
+    }
+
+    .header__logo {
+        font-size: 20px;
+    }
+
+    .header__ai-btn {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .header__search-input {
+        padding: 10px 40px 10px 16px;
+        font-size: 14px;
+    }
+
+    .header__search-input::placeholder {
+        font-size: 13px;
+    }
+
+    .header__search-icon {
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
