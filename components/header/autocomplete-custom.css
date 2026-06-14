@@ -1,0 +1,89 @@
+.header__search-autocomplete {
+    flex: 1;
+    width: 100%;
+}
+
+/* Стилизация контейнера Algolia Autocomplete под дизайн проекта */
+.aa-Autocomplete {
+    --aa-search-input-height: 44px;
+    --aa-input-border-color: #E5E7EB;
+    --aa-input-border-color-rgb: 229, 231, 235;
+    --aa-input-background-color: #F9FAFB;
+    --aa-input-background-color-rgb: 249, 250, 251;
+    --aa-primary-color: #2563eb;
+    --aa-primary-color-rgb: 37, 99, 235;
+    border: none;
+}
+
+.aa-Form {
+    border-radius: 9999px !important;
+    border: 1px solid #E5E7EB !important;
+    background-color: #F9FAFB !important;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.aa-Form:focus-within {
+    border-color: #2563eb !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.aa-Input {
+    padding-left: 12px !important;
+    font-size: 16px !important;
+}
+
+.aa-SubmitButton {
+    color: #2563eb !important;
+    order: 2;
+    padding-right: 12px;
+}
+
+.aa-LoadingIndicator {
+    order: 3;
+}
+
+.aa-ClearButton {
+    order: 4;
+}
+
+/* Стили для выпадающего списка */
+.aa-Panel {
+    border-radius: 16px !important;
+    margin-top: 8px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #f1f5f9 !important;
+}
+
+.aa-ItemWrapper {
+    padding: 4px 8px;
+}
+
+.aa-ItemContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.aa-ItemIcon img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.aa-ItemContentTitle {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.aa-ItemContentDescription {
+    font-size: 13px;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+/* Прячем дефолтную иконку поиска если нужно, или стилизуем её */
+.aa-SubmitIcon {
+    width: 18px;
+    height: 18px;
+}

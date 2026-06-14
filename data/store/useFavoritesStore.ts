@@ -12,6 +12,7 @@ interface FavoritesState {
     addToFavorites: (productId: string) => Promise<void>;
     removeFromFavorites: (productId: string) => Promise<void>;
     toggleFavorite: (productId: string, initialItem?: ItemInterface) => Promise<boolean>;
+    addBundleToFavorites: (productIds: string[]) => Promise<void>;
 }
 
 export const useFavoritesStore = create<FavoritesState>((set) => ({
@@ -36,6 +37,18 @@ export const useFavoritesStore = create<FavoritesState>((set) => ({
                 isLoading: false,
                 isFetched: true
             });
+        }
+    },
+
+    async addBundleToFavorites(productIds) {
+        set({ isLoading: true });
+        try {
+            await apiClient.post('/Favorites/bundles', { productIds });
+            await useFavoritesStore.getState().fetchFavorites();
+        } catch (error) {
+            console.error('Ошибка при добавлении бандла в избранное:', error);
+            set({ error: 'Не удалось добавить комплект в избранное', isLoading: false });
+            throw error;
         }
     },
 

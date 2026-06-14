@@ -20,7 +20,6 @@
 .product-card__like-btn:hover {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .product-card__like-btn:active {

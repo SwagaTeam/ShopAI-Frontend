@@ -7,11 +7,15 @@ import { useAiAssistantStore, AiHistoryEntry } from '@/data/store/useAiAssistant
 import {
     Send, SlidersHorizontal, Trash2, ChevronDown, ChevronUp,
     Package, ShoppingBag, Search, Wrench, Smartphone, Gamepad2,
-    Home, Shirt, Gift, DollarSign, AlertCircle, ChevronLeft
+    Home, Shirt, Gift, DollarSign, AlertCircle, ChevronLeft, Heart, ShoppingCart, CircleOff
 } from 'lucide-react';
 import './ai-assistant.css';
 import Link from "next/link";
 import {ItemInterface} from "@/data/interfaces/ItemInterface";
+import {Header} from "@/components/header/header";
+import {useFavoritesStore} from "@/data/store/useFavoritesStore";
+import {useCartStore} from "@/data/store/useCartStore";
+import {sileo} from "sileo";
 
 const quickPrompts = [
     { icon: <Wrench size={16} />, text: 'Всё для ремонта ванной' },
@@ -77,6 +81,9 @@ export default function AiAssistantPage() {
             <Head>
                 <title>ИИ-помощник ШОПИ — ShopAI</title>
             </Head>
+            <div className="ai-page-header-container">
+                <Header isCompact isSuperCompact />
+            </div>
 
             <div className="ai-page__layout">
                 <aside className="ai-page__sidebar">
@@ -119,6 +126,7 @@ export default function AiAssistantPage() {
                         </div>
                     )}
                 </aside>
+
 
                 <main className="ai-page__main">
                     <div className="ai-page__chat">
@@ -243,12 +251,57 @@ export default function AiAssistantPage() {
 function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
     const [expandedBundle, setExpandedBundle] = useState<number | null>(null);
     const { interpreted, items, bundles } = entry.response;
+    const { addBundleToFavorites } = useFavoritesStore();
+    const { addBundleToCart } = useCartStore();
+    const [isActionLoading, setIsActionLoading] = useState(false);
 
     const toggleBundle = (idx: number) => {
         setExpandedBundle(expandedBundle === idx ? null : idx);
     };
 
     const bundleTotal = (bundle: ItemInterface[]) => bundle.reduce((sum, item) => sum + item.price, 0);
+
+    const handleAddBundleToCart = async (bundle: ItemInterface[]) => {
+        setIsActionLoading(true);
+        try {
+            const productIds = bundle.map(item => item.id);
+            await addBundleToCart(productIds);
+            sileo.success({
+                title: "Успех!",
+                description: "Комплект добавлен в корзину",
+                duration: 2000
+            });
+        } catch (e) {
+            sileo.error({
+                title: "Ошибка",
+                description: "Не удалось добавить комплект в корзину",
+                duration: 2000
+            });
+        } finally {
+            setIsActionLoading(false);
+        }
+    };
+
+    const handleAddBundleToFavorites = async (bundle: ItemInterface[]) => {
+        setIsActionLoading(true);
+        try {
+            const productIds = bundle.map(item => item.id);
+            await addBundleToFavorites(productIds);
+            sileo.success({
+                title: "Успех!",
+                description: "Комплект добавлен в избранное",
+                duration: 2000
+            });
+        } catch (e) {
+            sileo.error({
+                title: "Ошибка",
+                description: "Не удалось добавить комплект в избранное",
+                duration: 2000
+            });
+        } finally {
+            setIsActionLoading(false);
+        }
+    };
 
     return (
         <div className="ai-page__entry">
@@ -285,7 +338,6 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
 
                             {(interpreted.budgetMin > 0 || interpreted.budgetMax > 0) && (
                                 <div className="ai-page__budget-line">
-                                    <DollarSign size={14} />
                                     <span>Бюджет: {interpreted.budgetMin > 0 ? `от ${interpreted.budgetMin.toLocaleString('ru-RU')} ₽` : ''}
                                         {interpreted.budgetMax > 0 ? ` до ${interpreted.budgetMax.toLocaleString('ru-RU')} ₽` : ''}</span>
                                 </div>
@@ -296,7 +348,6 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
                     {items && items.length > 0 && (
                         <div className="ai-page__results-section">
                             <div className="ai-page__results-header">
-                                <ShoppingBag size={18} />
                                 <h3>Отдельные товары</h3>
                             </div>
                             <div className="ai-page__products-grid">
@@ -313,7 +364,6 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
                     {bundles && bundles.length > 0 && (
                         <div className="ai-page__bundles-section">
                             <div className="ai-page__results-header">
-                                <Package size={18} />
                                 <h3>Готовые комплекты</h3>
                             </div>
                             <div className="ai-page__bundles-list">
@@ -328,7 +378,18 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
                                             </div>
                                             <div className="ai-page__bundle-preview">
                                                 {bundle.slice(0, 3).map((item, i) => (
-                                                    <img key={i} src={item.imageUrl} alt={item.name} className="ai-page__bundle-thumb" />
+                                                    item.imageUrl ? (
+                                                        <img
+                                                            key={i}
+                                                            src={item.imageUrl}
+                                                            alt={item.name}
+                                                            className="ai-page__bundle-thumb"
+                                                        />
+                                                    ) : (
+                                                        <div key={i} className="ai-page__bundle-thumb ai-page__bundle-thumb--empty">
+                                                            <CircleOff size={20} color="#d1d1d1" />
+                                                        </div>
+                                                    )
                                                 ))}
                                                 {bundle.length > 3 && (
                                                     <span className="ai-page__bundle-more">+{bundle.length - 3}</span>
@@ -341,6 +402,24 @@ function ChatEntry({ entry }: { entry: AiHistoryEntry }) {
 
                                         {expandedBundle === idx && (
                                             <div className="ai-page__bundle-content">
+                                                <div className="ai-page__bundle-actions">
+                                                    <button
+                                                        className="ai-page__bundle-btn ai-page__bundle-btn--primary"
+                                                        onClick={() => handleAddBundleToCart(bundle)}
+                                                        disabled={isActionLoading}
+                                                    >
+                                                        <ShoppingCart size={16} />
+                                                        Добавить всё в корзину
+                                                    </button>
+                                                    <button
+                                                        className="ai-page__bundle-btn ai-page__bundle-btn--secondary"
+                                                        onClick={() => handleAddBundleToFavorites(bundle)}
+                                                        disabled={isActionLoading}
+                                                    >
+                                                        <Heart size={16} />
+                                                        В избранное
+                                                    </button>
+                                                </div>
                                                 <div className="ai-page__products-grid">
                                                     {bundle.map(item => (
                                                         <ProductCard

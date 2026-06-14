@@ -23,18 +23,64 @@ export default function ProductPage() {
     const { addOrUpdateItem } = useCartStore();
     const [activeTab, setActiveTab] = useState<'description' | 'characteristics' | 'reviews'>('description');
     const [quantity, setQuantity] = useState(1);
+    const [activeImage, setActiveImage] = useState<string | null>(null);
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    const [showLens, setShowLens] = useState(false);
+    const [lensProps, setLensProps] = useState({ top: 0, left: 0, backgroundPosition: '' });
     const params = useParams() as { id?: string };
     const productId = params?.id || '';
     const router = useRouter();
 
     useEffect(() => {
+        setActiveImage(null); // Сбрасываем текущее изображение при смене ID
         fetchProduct(productId);
         viewProduct(productId);
         fetchFirstReview(productId);
     }, [productId, fetchProduct, fetchFirstReview]);
 
+    useEffect(() => {
+        if (product) {
+            setActiveImage(product.imageUrl);
+        }
+    }, [product?.id]);
+
     const handleMinus = () => setQuantity(prev => Math.max(1, prev - 1));
     const handlePlus = () => setQuantity(prev => (product ? Math.min(product.stockQuantity, prev + 1) : prev + 1));
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const container = e.currentTarget;
+        const { left, top, width, height } = container.getBoundingClientRect();
+
+        const LENS_SIZE = 200; // Размер квадрата увеличения
+
+        let x = e.clientX - left;
+        let y = e.clientY - top;
+
+        // Позиционируем линзу так, чтобы курсор был в центре
+        let lensX = x - LENS_SIZE / 2;
+        let lensY = y - LENS_SIZE / 2;
+
+        // Ограничиваем перемещение линзы пределами контейнера
+        if (lensX < 0) lensX = 0;
+        if (lensY < 0) lensY = 0;
+        if (lensX > width - LENS_SIZE) lensX = width - LENS_SIZE;
+        if (lensY > height - LENS_SIZE) lensY = height - LENS_SIZE;
+
+        // Вычисляем смещение фона (в процентах)
+        const bgX = (x / width) * 100;
+        const bgY = (y / height) * 100;
+
+        setLensProps({
+            top: lensY,
+            left: lensX,
+            backgroundPosition: `${bgX}% ${bgY}%`
+        });
+        setShowLens(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowLens(false);
+    };
 
     if (isLoading) {
         return (
@@ -77,13 +123,42 @@ export default function ProductPage() {
                     {/* Левая колонка - Фото */}
                     <div className="product-gallery">
                         <div className="thumbnails">
-                            <div className="thumb active"><img src={product.imageUrl} alt="thumb 1" /></div>
+                            {(product.imageUrls && product.imageUrls.length > 0 ? product.imageUrls : [product.imageUrl]).map((url, index) => (
+                                <div
+                                    key={index}
+                                    className={`thumb ${activeImage === url ? 'active' : ''}`}
+                                    onClick={() => setActiveImage(url)}
+                                >
+                                    <img src={url} alt={`thumb ${index + 1}`} />
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="main-image-container">
-                            <img src={product.imageUrl} alt={product.name} />
+                        <div
+                            className="main-image-container"
+                            onMouseMove={handleMouseMove}
+                            onMouseLeave={handleMouseLeave}
+                            onClick={() => setIsFullScreen(true)}
+                        >
+                            <img
+                                src={activeImage || product.imageUrl}
+                                alt={product.name}
+                                className="main-product-image"
+                            />
 
-                            <div className="product-like-wrapper">
+                            {showLens && (
+                                <div
+                                    className="zoom-lens"
+                                    style={{
+                                        top: lensProps.top,
+                                        left: lensProps.left,
+                                        backgroundImage: `url(${activeImage || product.imageUrl})`,
+                                        backgroundPosition: lensProps.backgroundPosition,
+                                    }}
+                                />
+                            )}
+
+                            <div className="product-like-wrapper" onClick={(e) => e.stopPropagation()}>
                                 <LikeButton itemId={productId} initialIsFavorite={product.isInWishlist} />
                             </div>
                         </div>
@@ -271,6 +346,15 @@ export default function ProductPage() {
             <div className="mobile-sticky-actions">
                 <AddToCartButton productId={productId} stockQuantity={product.stockQuantity} />
             </div>
+
+            {isFullScreen && (
+                <div className="fullscreen-overlay" onClick={() => setIsFullScreen(false)}>
+                    <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
+                        <img src={activeImage || product.imageUrl} alt={product.name} />
+                        <button className="close-fullscreen" onClick={() => setIsFullScreen(false)}>&times;</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

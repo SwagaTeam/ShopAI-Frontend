@@ -1,16 +1,16 @@
 import React from "react";
-import {Heart, Plus, Minus, Trash2, CircleOff} from "lucide-react";
+import {Plus, Minus, Trash2, CircleOff} from "lucide-react";
 import "./cart-item.css"
 import {ICartItem} from "@/data/interfaces/ICartItem";
 import Link from "next/link";
+import {LikeButton} from "@/components/like-button/like-button";
 
-export const CartItem = ({ item, onIncrement, onDecrement, onRemove, onToggleFavorite }: {
+export const CartItem = ({ item, onIncrement, onDecrement, onRemove }: {
     item: ICartItem;
     onToggle?: () => void;
     onIncrement?: () => void;
     onDecrement?: () => void;
     onRemove?: () => void;
-    onToggleFavorite?: () => void;
 }) => {
     return (
         <div className="cart-item">
@@ -32,9 +32,7 @@ export const CartItem = ({ item, onIncrement, onDecrement, onRemove, onToggleFav
                     </button>
                 </div>
                 <div className="cart-item__actions">
-                    <button className="cart-item__action-btn" onClick={onToggleFavorite}>
-                        <Heart size={20} color={"#99A1AF"} />
-                    </button>
+                    <LikeButton itemId={item.productId} initialIsFavorite={item.isInWishlist} />
                     <button className="cart-item__action-btn" onClick={onRemove}>
                         <Trash2 size={20} color={"#99A1AF"} />
                     </button>

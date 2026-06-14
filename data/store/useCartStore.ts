@@ -16,13 +16,14 @@ interface CartState {
     error: string | null;
     _pendingCount: number;
 
-    fetchCart: () => Promise<void>;
+    fetchCart: (silent?: boolean) => Promise<void>;
     addOrUpdateItem: (productId: string, quantity: number) => Promise<void>;
     removeItem: (productId: string) => Promise<void>;
     updateItemQuantity: (productId: string, quantity: number) => Promise<void>;
     setItems: (items: ICartItem[]) => void;
     setTotalPrice: (price: number) => void;
     clearCart: () => void;
+    addBundleToCart: (productIds: string[]) => Promise<void>;
 }
 
 export const useCartStore = create<CartState>()(
@@ -36,8 +37,23 @@ export const useCartStore = create<CartState>()(
             error: null,
             _pendingCount: 0,
 
-            async fetchCart() {
-                set({ isLoading: true, error: null });
+            async addBundleToCart(productIds) {
+                set({ isLoading: true });
+                try {
+                    await apiClient.post('/Cart/bundles', {
+                        productIds,
+                        quantity: 1
+                    });
+                    await useCartStore.getState().fetchCart();
+                } catch (error) {
+                    console.error('Ошибка при добавлении бандла в корзину:', error);
+                    set({ error: 'Не удалось добавить комплект в корзину', isLoading: false });
+                    throw error;
+                }
+            },
+
+            async fetchCart(silent = false) {
+                if (!silent) set({ isLoading: true, error: null });
                 try {
                     const response = await apiClient.get('/Cart');
                     set({
@@ -129,7 +145,7 @@ export const useCartStore = create<CartState>()(
                         set(s => ({ _pendingCount: Math.max(0, s._pendingCount - 1) }));
 
                         if (useCartStore.getState()._pendingCount === 0) {
-                            await useCartStore.getState().fetchCart();
+                            await useCartStore.getState().fetchCart(true); // Тихая загрузка для обновления данных без скелетона
                         }
                     }
                 }, 500);
@@ -138,14 +154,22 @@ export const useCartStore = create<CartState>()(
             },
 
             async removeItem(productId) {
+                const state = useCartStore.getState();
+                const newItems = state.items.filter(i => i.productId !== productId);
+
+                // Оптимистичное удаление
+                set({
+                    items: newItems,
+                    itemsCount: newItems.length
+                });
+
                 try {
                     await apiClient.delete(`/Cart/items/${productId}`);
-                    await useCartStore.getState().fetchCart();
+                    await useCartStore.getState().fetchCart(true); // Тихая загрузка для обновления итогов
                 } catch (error) {
                     console.error('Ошибка при удалении товара из корзины:', error);
-                    set({
-                        error: 'Ошибка при удалении товара'
-                    });
+                    // В случае ошибки возвращаем товар (опционально) или показываем ошибку
+                    await useCartStore.getState().fetchCart();
                 }
             },
 

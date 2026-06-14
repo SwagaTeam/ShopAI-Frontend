@@ -1,0 +1,374 @@
+.catalog {
+    padding: 24px 0 60px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.catalog__container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.breadcrumbs__link {
+    color: #8a92a6;
+    text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+    color: #2962ff;
+}
+
+.breadcrumbs__separator {
+    margin: 0 8px;
+    color: #8a92a6;
+}
+
+.breadcrumbs__current {
+    color: #1a1a1a;
+}
+
+/* Заголовок страницы */
+.catalog__header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 24px;
+}
+
+.catalog__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-right: 12px;
+}
+
+.catalog__count {
+    font-size: 14px;
+    color: #8a92a6;
+}
+
+/* Layout: Сайдбар + Контент */
+.catalog__body {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Сайдбар */
+.filters {
+    width: 260px;
+    flex-shrink: 0;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+.filter-group {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filter-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+.filter-group__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Фильтр: Цена */
+.filter-price__inputs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.filter-price__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-price__input:focus {
+    border-color: #2962ff;
+}
+
+.filter-price__slider {
+    margin-bottom: 12px;
+    padding: 0 8px;
+}
+
+.filter-price__slider-track {
+    height: 4px;
+    background-color: #e5e5e5;
+    border-radius: 2px;
+    position: relative;
+}
+
+.filter-price__slider-range {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: #2962ff;
+    border-radius: 2px;
+}
+
+.filter-price__slider-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border: 4px solid #2962ff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.filter-price__slider-thumb--left { left: 0; }
+.filter-price__slider-thumb--right { right: 0; }
+
+.filter-price__labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #8a92a6;
+}
+
+/* Чекбоксы (Бренд, Рейтинг) */
+.checkbox-list {
+    list-style: none;
+}
+
+.checkbox-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.checkbox-item:last-child {
+    margin-bottom: 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    background-color: #ffffff;
+    transition: all 0.2s;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+    background-color: #2962ff;
+    border-color: #2962ff;
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-text {
+    font-size: 14px;
+}
+
+.checkbox-count {
+    font-size: 13px;
+    color: #8a92a6;
+}
+
+.filter-group__show-all {
+    background: none;
+    border: none;
+    color: #2962ff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 16px;
+    padding: 0;
+}
+
+/* Звезды рейтинга */
+.rating-stars {
+    color: #2962ff;
+    letter-spacing: 2px;
+}
+
+.rating-stars--empty {
+    color: #d9d9d9;
+}
+
+/* Фильтр: Размеры */
+.size-tabs {
+    display: flex;
+    background-color: #f4f5f7;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 16px;
+}
+
+.size-tabs__btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 6px 0;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #8a92a6;
+}
+
+.size-tabs__btn--active {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Кнопка сброса */
+.btn-reset-filters {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #2962ff;
+    color: #2962ff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-reset-filters:hover {
+    background-color: #f0f4ff;
+}
+
+/* Основной контент (Сетка и контролы) */
+.catalog__content {
+    flex: 1;
+    min-width: 0;
+    margin-left: 24px;
+    min-height: 800px; /* Предотвращаем сужение страницы при отсутствии товаров */
+}
+
+/* ИИ Помощник */
+.ai-prompt-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 8px 8px 8px 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.ai-prompt-box__icon {
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.ai-prompt-box__input {
+    flex: 1;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    color: #2962ff;
+}
+
+.ai-prompt-box__input::placeholder {
+    color: #2962ff;
+    opacity: 0.8;
+}
+
+.ai-prompt-box__btn {
+    background-color: #2962ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.catalog__controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+
+.sort-select {
+    padding: 10px 32px 10px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #ffffff;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+/* Сетка товаров */
+.selections__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.selections__grid > * {
+    min-width: 0;
+}
+
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}

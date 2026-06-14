@@ -1,23 +1,35 @@
 'use client';
 
 import "./header.css"
-import {ChevronDown, Handbag, Search, Store, LogOut, Sparkle, Sparkles} from "lucide-react";
+import {ChevronDown, Handbag, Store, LogOut, Sparkles} from "lucide-react";
 import React, {useState, useEffect} from "react";
 import {Catalog} from "@/components/catalog/Catalog";
 import Link from "next/link";
 import {useAuthStore} from "@/data/store/useAuthStore";
 import {useFavoritesStore} from "@/data/store/useFavoritesStore";
+import {useCatalogStore} from "@/data/store/useCatalogStore";
 import {getInitials} from "@/utils/utils";
 import {usePathname, useRouter} from "next/navigation";
+import {AutocompleteSearch} from "./Autocomplete";
 
 interface HeaderProps {
     isCompact: boolean;
+    isSuperCompact?: boolean;
 }
 
-export const Header = ({isCompact} : HeaderProps) => {
+export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
     const [isCatalogOpen, setCatalogOpen] = useState(false);
     const [isProfileOpen, setProfileOpen] = useState(false);
+
     const { fetchFavorites, isFetched } = useFavoritesStore();
+    const { setFilters } = useCatalogStore();
+    const router = useRouter();
+
+    const handleSearch = (term: string) => {
+        if (!term.trim()) return;
+        setFilters({ searchTerm: term });
+        router.push("/catalog");
+    };
 
     useEffect(() => {
         if (!isFetched) {
@@ -41,7 +53,6 @@ export const Header = ({isCompact} : HeaderProps) => {
 
     const { name, email, clearAuth } = useAuthStore() as { name: string, email?: string, clearAuth: () => void };
     const pathname = usePathname();
-    const router = useRouter();
 
     const isActive = (href: string) => {
         return pathname === href ? 'nav__link nav__link--active' : 'nav__link';
@@ -56,31 +67,25 @@ export const Header = ({isCompact} : HeaderProps) => {
                         ShopAI
                     </Link>
 
-                    <div className="header__search">
-                        <button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
-                            <ChevronDown size={24}/>
-                            <span>Каталог</span>
-                        </button>
-                        <input type="text" className="header__search-input" placeholder="Поиск товаров..." />
-                        <div className="header__search-icon">
-                            <Search size={16} color={"#99A1AF"} />
+                    {!isSuperCompact && (
+                        <div className="header__search">
+                            <button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
+                                <ChevronDown size={24}/>
+                                <span>Каталог</span>
+                            </button>
+                            <AutocompleteSearch onSearch={handleSearch} />
                         </div>
-                    </div>
+                    )}
 
                     <div className="header__actions">
                         <Link href={"/ai-assistant"} className="header__ai-btn">
                             <span>ИИ-помощник</span>
                             <Sparkles size={14} color={"#2563eb"} />
                         </Link>
-                        {/*<button className="header__icon-btn">
-                            <Bell size={24} color={"#4A5565"}/>
-                        </button>*/}
                         <Link href={"/cart"} className="header__icon-btn">
                             <Handbag size={24} color={"#4A5565"}/>
-                            {/*<span className="header__badge">3</span>*/}
                         </Link>
 
-                        {/* Контейнер для аватара и выпадающего меню */}
                         <div className="header__avatar-wrapper">
                             <button
                                 className="header__avatar"

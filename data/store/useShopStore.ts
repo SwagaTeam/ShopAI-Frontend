@@ -72,6 +72,7 @@ interface ShopState {
     fetchBrands: () => Promise<void>;
     fetchShopProducts: (shopId: string, page?: number, pageSize?: number) => Promise<void>;
     createProduct: (product: CreateProductRequest) => Promise<boolean>;
+    createProductWithImage: (formData: FormData) => Promise<boolean>;
     createShop: (shop: { name: string, urlAlias: string, description: string, logoPath: string }) => Promise<boolean>;
     updateShop: (shopId: string, name: string, urlAlias: string) => Promise<void>;
     deleteShop: (shopId: string) => Promise<void>;
@@ -188,6 +189,30 @@ export const useShopStore = create<ShopState>((set) => ({
             return true;
         } catch (error) {
             console.error('Ошибка при создании товара:', error);
+            set({
+                error: 'Ошибка при создании товара',
+                isSubmittingProduct: false
+            });
+            return false;
+        }
+    },
+
+    async createProductWithImage(formData: FormData) {
+        set({ isSubmittingProduct: true, error: null });
+        try {
+            await apiClient.post('/Products/with-image', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            const shopId = formData.get('ShopId') as string;
+            if (shopId) {
+                await useShopStore.getState().fetchShopProducts(shopId, 1, useShopStore.getState().productsPageSize);
+            }
+            set({ isSubmittingProduct: false, error: null });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при создании товара с изображением:', error);
             set({
                 error: 'Ошибка при создании товара',
                 isSubmittingProduct: false

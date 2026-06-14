@@ -49,7 +49,6 @@
 /* Основная карточка товара */
 .product-main {
     display: flex;
-    gap: 40px;
     margin-bottom: 60px;
 }
 
@@ -58,6 +57,7 @@
     display: flex;
     gap: 20px;
     flex: 1;
+    max-width: 800px; /* Ограничиваем общую ширину галереи */
 }
 
 .thumbnails {
@@ -83,8 +83,8 @@
 }
 
 .thumb img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
@@ -96,14 +96,89 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    min-height: 500px;
+    width: 100%;
+    max-width: 650px;
+    aspect-ratio: 777 / 846;
+    overflow: hidden;
+    cursor: zoom-in;
 }
 
-.main-image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+.main-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px;
+    pointer-events: none;
+}
+
+.zoom-lens {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+
+    background-repeat: no-repeat;
+    background-size: 600% auto;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    z-index: 5;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 1024px) {
+    .zoom-lens {
+        display: none !important;
+    }
+    .main-image-container {
+        cursor: pointer;
+    }
+}
+
+/* Стили для полноэкранного режима */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    cursor: zoom-out;
+}
+
+.fullscreen-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.fullscreen-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.close-fullscreen {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .close-fullscreen {
+        top: -30px;
+        right: 0;
+    }
 }
 
 .product-like-wrapper {

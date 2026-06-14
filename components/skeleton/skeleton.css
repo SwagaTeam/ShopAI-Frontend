@@ -33,23 +33,28 @@
 .product-card-skeleton {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 12px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    overflow: hidden;
+    height: 100%; /* Растягиваем, чтобы сетка была ровной */
 }
 
 .product-card-skeleton__image {
     width: 100%;
     aspect-ratio: 11 / 12;
-    border-radius: 12px;
     margin-bottom: 16px;
 }
 
+.product-card-skeleton__content {
+    padding: 0 12px 12px 12px;
+}
+
 .product-card-skeleton__title {
-    height: 20px;
-    width: 80%;
-    margin-bottom: 12px;
+    height: 18px;
+    width: 85%;
+    margin-top: -12px;
+    margin-bottom: 8px;
 }
 
 .product-card-skeleton__bottom {
@@ -60,13 +65,13 @@
 }
 
 .product-card-skeleton__price {
-    height: 24px;
-    width: 40%;
+    height: 22px;
+    width: 45%;
 }
 
 .product-card-skeleton__rating {
     height: 16px;
-    width: 30%;
+    width: 25%;
 }
 
 .product-card-skeleton__button {

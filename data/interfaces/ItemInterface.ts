@@ -1,8 +1,8 @@
 export interface ItemInterface {
-    id: string,
-    name: string,
-    price: number,
-    imageUrl: string
+    id: string;
+    name: string;
+    price: number;
+    imageUrl: string;
     quantity: number;
     brandName: string;
     stockQuantity: number;
@@ -13,4 +13,5 @@ export interface ItemInterface {
     isInWishlist: boolean;
     imageUrls?: string[];
     cartQuantity: number;
+    [key: string]: any;
 }

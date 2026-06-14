@@ -7,8 +7,7 @@ import { useCartStore } from "@/data/store/useCartStore";
 import { LikeButton } from "../like-button/like-button";
 import "./product-card.css";
 import { sileo } from "sileo";
-import {CircleOff, Plus, Minus} from "lucide-react";
-import { useRouter } from "next/navigation";
+import {CircleOff} from "lucide-react";
 import {renderStars} from "@/utils/utilsJSX";
 
 import { AddToCartButton } from "../add-to-cart-button/add-to-cart-button";
