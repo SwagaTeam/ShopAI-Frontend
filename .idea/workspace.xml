@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="NEW LANDING">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-    </list>
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="header ai btn" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +96,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
+  <component name="RunManager">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -137,15 +132,7 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-      <workItem from="1781372597168" duration="32109000" />
-    </task>
-    <task id="LOCAL-00046" summary="fix: tsc">
-      <option name="closed" value="true" />
-      <created>1780611804466</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1780611804466</updated>
+      <workItem from="1781372597168" duration="32880000" />
     </task>
     <task id="LOCAL-00047" summary="fix: warnings">
       <option name="closed" value="true" />
@@ -531,14 +518,21 @@
       <option name="project" value="LOCAL" />
       <updated>1781534317246</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="header ai btn">
+      <option name="closed" value="true" />
+      <created>1781535629852</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1781535629852</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: seller form" />
     <MESSAGE value="garbage clean" />
     <MESSAGE value="landing adaptive" />
     <MESSAGE value="cart adaptive" />
@@ -563,6 +557,7 @@
     <MESSAGE value="BIG UPDATE" />
     <MESSAGE value="fix: ai-tags layout" />
     <MESSAGE value="NEW LANDING" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW LANDING" />
+    <MESSAGE value="header ai btn" />
+    <option name="LAST_COMMIT_MESSAGE" value="header ai btn" />
   </component>
 </project>

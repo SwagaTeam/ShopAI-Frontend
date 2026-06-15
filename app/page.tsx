@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import styles from './styles.module.css';
 import GlassSurface from "@/components/glass-surface/GlassSurface";
+import PWAInstallBanner from "@/components/pwa-install-banner/PWAInstallBanner";
 
 // ============================================================
 // BLUR TEXT COMPONENT (from New)
@@ -404,6 +405,7 @@ export default function NewLandingPage() {
             </div>
           </div>
         </section>
+        <PWAInstallBanner />
       </div>
   );
 }
