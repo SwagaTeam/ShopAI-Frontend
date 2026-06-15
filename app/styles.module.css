@@ -210,8 +210,6 @@
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   color: #103278;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
 }
 
 @media (min-width: 480px) {
@@ -222,13 +220,20 @@
 
 @media (min-width: 768px) {
   .heroTitle {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .heroTitle {
     font-size: 6.5rem;
+
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroTitle {
+    margin-top: -100px;
   }
 }
 
@@ -243,6 +248,18 @@
 @media (min-width: 768px) {
   .heroSubtitle {
     font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 200px) {
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .btnLink {
+    display: none !important;
+  }
+  .btnSecondary {
+    margin-bottom: 30px;
   }
 }
 
@@ -370,7 +387,15 @@
 @media (min-width: 1024px) {
   .capabilitiesSection {
     padding: 6rem 0;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .capabilitiesSection {
+    padding: 3rem 0;
+    overflow: visible;
   }
 }
 
@@ -420,6 +445,12 @@
   }
 }
 
+@media (min-width: 200px) {
+    .sectionLabel {
+    font-size: 1rem;
+  }
+}
+
 .capabilitiesLayout {
   display: flex;
   align-items: center;
@@ -429,6 +460,7 @@
 @media (max-width: 1024px) {
   .capabilitiesLayout {
     flex-direction: column;
+    gap: 2rem;
   }
 }
 
@@ -440,12 +472,16 @@
   margin: 0 auto;
 }
 
+@media (max-width: 1024px) {
+  .heroIllustrationOld {
+    transform: scale(0.8);
+    margin: -20px auto;
+  }
+}
+
 @media (max-width: 768px) {
   .heroIllustrationOld {
-    width: 100%;
-    height: 350px;
-    max-width: 320px;
-    transform: scale(0.8);
+    display: none;
   }
 }
 
@@ -454,6 +490,12 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   flex: 1;
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Базовый эффект светлого стекла */
@@ -500,6 +542,15 @@
   overflow: hidden;
   padding: 2rem;
   transition: all 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .liquidGlassCard {
+    padding: 1.5rem;
+  }
+  .cardTitle {
+    font-size: 1.6rem;
+  }
 }
 
 .liquidGlassCard::before {
@@ -829,6 +880,22 @@
   overflow: hidden;
 }
 
+@media (max-width: 1023px) {
+  .demoContainer {
+    max-width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 20px;
+    height: auto;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+  }
+  /* Remove notch */
+  .demoContainer::before {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .demoContainer {
     flex-direction: row;
@@ -842,6 +909,30 @@
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
+}
+
+@media (max-width: 1023px) {
+  .chatPanel {
+    display: contents; /* Позволяет дочерним элементам участвовать в flex-сетке родителя */
+  }
+  .chatHeader {
+    order: 1;
+    padding: 16px;
+    background: #FFFFFF;
+    border-bottom: none;
+  }
+  .chatBody {
+    order: 2;
+    padding: 16px;
+    gap: 12px;
+    background: #FFFFFF;
+  }
+  .chatInputArea {
+    order: 4;
+    border-top: 1px solid #F1F5F9;
+    padding: 16px;
+    background: #FFFFFF;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -926,6 +1017,63 @@
   position: relative;
   border-radius: 16px;
   padding-bottom: 80px;
+}
+
+@media (max-width: 1023px) {
+  .previewPanel {
+    order: 3;
+    padding-bottom: 20px;
+    border-radius: 0;
+    background: #FFFFFF;
+  }
+  .previewHeader, .windowControls, .mockHeader, .mockMainTitle {
+    display: none !important;
+  }
+  .previewBody {
+    padding: 0 16px;
+  }
+  .mockWindow {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+  .mockContent {
+    padding: 0;
+  }
+  .mockListItem {
+    padding: 12px;
+    background: #F8FAFC;
+    border: none;
+    margin-bottom: 8px;
+    box-shadow: none;
+  }
+  .successBadge {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 8px 0 16px 0;
+    width: fit-content;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 200px) {
+  .successBadge {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 0 !important;
+    padding: 6px 12px !important;
+    width: fit-content;
+    border: none;
+    background: transparent;
+    font-size: 12px !important;
+  }
 }
 
 .previewHeader {

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
   Heart,
   Lightbulb,
@@ -58,6 +58,20 @@ export default function NewLandingPage() {
   const demoRef = useRef<HTMLElement>(null);
   const isCapabilitiesInView = useInView(capabilitiesRef, { once: true, amount: 0.2 });
   const isDemoInView = useInView(demoRef, { once: true, amount: 0.2 });
+
+  const [demoStep, setDemoStep] = useState(0);
+
+  useEffect(() => {
+    if (isDemoInView) {
+      const timers = [
+        setTimeout(() => setDemoStep(1), 600),   // Бот: Что ищете?
+        setTimeout(() => setDemoStep(2), 1500),  // Юзер: Ноутбук...
+        setTimeout(() => setDemoStep(3), 2400),  // Бот: Подбираю...
+        setTimeout(() => setDemoStep(4), 4200),  // Результаты + скрытие точек
+      ];
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [isDemoInView]);
 
   const cards = [
     {
@@ -334,12 +348,41 @@ export default function NewLandingPage() {
                   <span className={styles.chatTitle}>ИИ-ассистент</span>
                 </div>
                 <div className={styles.chatBody}>
-                  <div className={styles.msgBot}>Что вы ищите?</div>
-                  <div className={styles.msgUser}>Ноутбук для работы и видеомонтажа до 80 000₽</div>
-                  <div className={styles.msgBotGenerating}>
-                    Подбираю варианты...
-                    <div className={styles.loadingDots}><span></span><span></span><span></span></div>
-                  </div>
+                  <AnimatePresence>
+                    {demoStep >= 1 && (
+                      <motion.div
+                        key="msg-bot-1"
+                        initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        className={styles.msgBot}
+                      >
+                        Что вы ищите?
+                      </motion.div>
+                    )}
+                    {demoStep >= 2 && (
+                      <motion.div
+                        key="msg-user-1"
+                        initial={{ opacity: 0, x: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        className={styles.msgUser}
+                      >
+                        Ноутбук для работы и видеомонтажа до 80 000₽
+                      </motion.div>
+                    )}
+                    {demoStep >= 3 && (
+                      <motion.div
+                        key="msg-bot-2"
+                        initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        className={styles.msgBotGenerating}
+                      >
+                        {demoStep === 3 ? 'Подбираю варианты...' : 'Нашел отличные варианты!'}
+                        {demoStep === 3 && (
+                          <div className={styles.loadingDots}><span></span><span></span><span></span></div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <div className={styles.chatInputArea}>
                   <div className={styles.chatInputBar}></div>
@@ -372,27 +415,45 @@ export default function NewLandingPage() {
                       <div className={styles.mockMainTitle}></div>
 
                       <div className={styles.mockList}>
-                        <div className={styles.mockListItem}>
-                          <div className={styles.mockItemIcon}>
-                            <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
-                          </div>
-                          <div className={styles.mockItemDetails}>
-                            <div className={styles.mockLineLong}></div>
-                            <div className={styles.mockLineShort}></div>
-                            <div className={styles.mockButton}></div>
-                          </div>
-                        </div>
+                        <AnimatePresence>
+                          {demoStep >= 4 && (
+                            <React.Fragment key="results-wrapper">
+                              <motion.div
+                                key="result-1"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: 0.1 }}
+                                className={styles.mockListItem}
+                              >
+                                <div className={styles.mockItemIcon}>
+                                  <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
+                                </div>
+                                <div className={styles.mockItemDetails}>
+                                  <div className={styles.mockLineLong}></div>
+                                  <div className={styles.mockLineShort}></div>
+                                  <div className={styles.mockButton}></div>
+                                </div>
+                              </motion.div>
 
-                        <div className={styles.mockListItem}>
-                          <div className={styles.mockItemIcon}>
-                            <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
-                          </div>
-                          <div className={styles.mockItemDetails}>
-                            <div className={styles.mockLineLong}></div>
-                            <div className={styles.mockLineShort}></div>
-                            <div className={styles.mockButton}></div>
-                          </div>
-                        </div>
+                              <motion.div
+                                key="result-2"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: 0.3 }}
+                                className={styles.mockListItem}
+                              >
+                                <div className={styles.mockItemIcon}>
+                                  <img className={styles.mockItemIconLaptop} src="/images/laptop.png" alt="Ноутбук"/>
+                                </div>
+                                <div className={styles.mockItemDetails}>
+                                  <div className={styles.mockLineLong}></div>
+                                  <div className={styles.mockLineShort}></div>
+                                  <div className={styles.mockButton}></div>
+                                </div>
+                              </motion.div>
+                            </React.Fragment>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
                   </div>
