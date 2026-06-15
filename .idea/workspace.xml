@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix: ai-tags layout">
-      <change afterPath="$PROJECT_DIR$/app/landing/new/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/landing/new/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/landing/old/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/landing/old/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/landing/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/landing/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/glass-surface/GlassSurface.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/glass-surface/GlassSurface.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/landing/shopy-bg.png" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="NEW LANDING">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,15 +137,7 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-      <workItem from="1781372597168" duration="30858000" />
-    </task>
-    <task id="LOCAL-00045" summary="feat: pulse anim">
-      <option name="closed" value="true" />
-      <created>1780611549799</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1780611549799</updated>
+      <workItem from="1781372597168" duration="32109000" />
     </task>
     <task id="LOCAL-00046" summary="fix: tsc">
       <option name="closed" value="true" />
@@ -539,14 +523,21 @@
       <option name="project" value="LOCAL" />
       <updated>1781500877821</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="NEW LANDING">
+      <option name="closed" value="true" />
+      <created>1781534317246</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1781534317246</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: categories scroll" />
     <MESSAGE value="feat: seller form" />
     <MESSAGE value="garbage clean" />
     <MESSAGE value="landing adaptive" />
@@ -571,6 +562,7 @@
     <MESSAGE value="update Readme.md" />
     <MESSAGE value="BIG UPDATE" />
     <MESSAGE value="fix: ai-tags layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: ai-tags layout" />
+    <MESSAGE value="NEW LANDING" />
+    <option name="LAST_COMMIT_MESSAGE" value="NEW LANDING" />
   </component>
 </project>

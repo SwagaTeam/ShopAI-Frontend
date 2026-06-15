@@ -201,20 +201,25 @@
 }
 
 .header__ai-btn {
-    background-color: transparent;
-    border: 1px solid #598cfb;
-    border-radius: 14px;
-    padding: 6px 12px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0;
-    text-align: center;
-    color: #2563eb;
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
+    background: radial-gradient(49.77% 83.55% at 50.23% 49.99%, #CCE4FF 0%, #EFF6FF 100%);
+    color: #155DFC;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    padding: 12px;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.header__ai-btn:hover {
+    box-shadow: 0 4px 12px rgb(19 38 83 / 0.05);
 }
 
 .header__icon-btn {
@@ -525,7 +530,6 @@ button.header__avatar {
 }
 
 @media (max-width: 480px) {
-    .header__ai-btn span,
     .header__catalog-btn span {
         display: none;
     }

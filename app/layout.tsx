@@ -47,7 +47,11 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Toaster position="top-center" />
+        <Toaster position="top-center"
+                 options={{
+          fill: "#dbe9ff",
+          roundness: 16,
+        }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
