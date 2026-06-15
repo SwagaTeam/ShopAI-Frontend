@@ -4,42 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="feat: new loginscreen layout">
-      <change afterPath="$PROJECT_DIR$/app/admin/products/create/SortableImage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/products/create/create-product.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/products/create/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/catalog/catalog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/catalog/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/header/Autocomplete.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/header/autocomplete-custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/product-preview-modal/product-preview-modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/product-preview-modal/product-preview-modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/searchable-select/searchable-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/searchable-select/searchable-select.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/store/useCatalogStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/imageProcessing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="BIG UPDATE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/ai-assistant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ai-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai-assistant/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/product/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart-item/cart-item.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart-item/cart-item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart-item/cart-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart-item/cart-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart-item/cart-skeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart-item/cart-skeleton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/like-button/like-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/like-button/like-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/product-card/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/product-card/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/skeleton/skeleton.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/skeleton/skeleton.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/skeleton/skeleton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/interfaces/ItemInterface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/interfaces/ItemInterface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useCartStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useCartStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useFavoritesStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store/useShopStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useShopStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,15 +135,7 @@
       <workItem from="1780520443817" duration="1095000" />
       <workItem from="1780523650488" duration="33301000" />
       <workItem from="1780748015029" duration="37301000" />
-      <workItem from="1781372597168" duration="13042000" />
-    </task>
-    <task id="LOCAL-00043" summary="feat: new item card">
-      <option name="closed" value="true" />
-      <created>1780610908475</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1780610908475</updated>
+      <workItem from="1781372597168" duration="13824000" />
     </task>
     <task id="LOCAL-00044" summary="garbage clean">
       <option name="closed" value="true" />
@@ -562,14 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1780849496107</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="BIG UPDATE">
+      <option name="closed" value="true" />
+      <created>1781462756428</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1781462756429</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: favorites skeleton loader" />
     <MESSAGE value="feat: viewed skeleton loader" />
     <MESSAGE value="fix: categories scroll" />
     <MESSAGE value="feat: seller form" />
@@ -594,6 +560,7 @@
     <MESSAGE value="feat: optimistic like button update" />
     <MESSAGE value="feat: optimistic add-to-cart update" />
     <MESSAGE value="update Readme.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="update Readme.md" />
+    <MESSAGE value="BIG UPDATE" />
+    <option name="LAST_COMMIT_MESSAGE" value="BIG UPDATE" />
   </component>
 </project>
