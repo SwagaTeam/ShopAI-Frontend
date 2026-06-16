@@ -292,7 +292,7 @@ export default function ProductPage() {
                                         return (
                                             <div className="reviews-bar-row" key={star}>
                                                 <span className="reviews-bar-label">{star}</span>
-                                                <Star size={14} fill="#808080" color="#808080" className="reviews-bar-star-icon" />
+                                                <Star size={14} fill={"#808080"} color={"#808080"} className="reviews-bar-star-icon" />
                                                 <div className="reviews-bar-track">
                                                     <div className="reviews-bar-fill" style={{ width: `${percent}%` }} />
                                                 </div>
