@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/data/store/useAuthStore';
 import { useShopsStore } from '@/data/store/useShopsStore';
+import Link from 'next/link';
 import { ShieldCheck, Clock, CheckCircle, Store, AlertCircle } from 'lucide-react';
 import { sileo } from 'sileo';
 import './shops.css';
@@ -54,6 +55,11 @@ export default function AdminPage() {
     }, [myRequests]);
 
     useEffect(() => {
+        if (role === 'Admin') {
+            router.push('/admin/requests');
+            return;
+        }
+
         if (canManageShops) {
             fetchMyShops().then(() => {
                 if (useShopsStore.getState().shops.length > 0) {
@@ -63,11 +69,12 @@ export default function AdminPage() {
         } else {
             fetchMySellerRequests();
         }
-    }, [canManageShops, fetchMyShops, fetchMySellerRequests, router]);
+    }, [role, canManageShops, fetchMyShops, fetchMySellerRequests, router]);
 
     const handleRequestInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setRequestForm((prev) => ({ ...prev, [name]: value }));
+        const { name, value, type } = e.target;
+        const val = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+        setRequestForm((prev) => ({ ...prev, [name]: val }));
     };
 
     const handleSellerRequestSubmit = async (e: React.FormEvent) => {
@@ -103,24 +110,27 @@ export default function AdminPage() {
                     <div className="gov-card__header">
                         <ShieldCheck size={36} color="#005BFF" strokeWidth={1.5} />
                         <div>
-                            <h1>Регистрация продавца на платформе</h1>
-                            <p>Заполните форму заявления для получения прав на ведение торговой деятельности.</p>
+                            <h1>{latestRequest ? 'Статус вашего заявления' : 'Регистрация продавца на платформе'}</h1>
+                            {!latestRequest && <p>Заполните форму заявления для получения прав на ведение торговой деятельности.</p>}
                         </div>
                     </div>
 
                     {isRequestLoading ? (
                         <div className="gov-loading">Получение данных из реестра...</div>
                     ) : latestRequest ? (
-                        <div className={`gov-status-banner gov-status-banner--${latestRequest.status}`}>
+                        <div className={`gov-status-banner gov-status-banner--${latestRequest.status.toLowerCase()}`}>
                             <div className="gov-status-banner__icon">
-                                {latestRequest.status === 'pending' ? <Clock size={24} /> :
-                                    latestRequest.status === 'rejected' ? <AlertCircle size={24} /> :
+                                {latestRequest.status.toLowerCase() === 'pending' ? <Clock size={24} /> :
+                                    latestRequest.status.toLowerCase() === 'rejected' ? <AlertCircle size={24} /> :
                                         <CheckCircle size={24} />}
                             </div>
                             <div className="gov-status-banner__content">
-                                <strong>{REQUEST_STATUS_LABELS[latestRequest.status]}</strong>
+                                <strong>{REQUEST_STATUS_LABELS[latestRequest.status.toLowerCase()] || latestRequest.status}</strong>
+                                {latestRequest.status.toLowerCase() === 'pending' && (
+                                    <span>Мы уже получили вашу заявку. Мы уведомим вас о результате после завершения проверки всех данных.</span>
+                                )}
                                 <span>Категория: {CATEGORY_LABELS[latestRequest.plannedCategory] ?? latestRequest.plannedCategory}</span>
-                                {latestRequest.status === 'approved' && (
+                                {latestRequest.status.toLowerCase() === 'approved' && (
                                     <button className="gov-btn-secondary" onClick={refreshCurrentRole}>
                                         Обновить профиль и продолжить
                                     </button>
@@ -176,6 +186,19 @@ export default function AdminPage() {
                                         placeholder="Укажите специфику реализуемых товаров"
                                         required
                                     />
+                                </div>
+                                <div className="gov-checkbox-group">
+                                    <input
+                                        type="checkbox"
+                                        id="acceptedMarketplaceRules"
+                                        name="acceptedMarketplaceRules"
+                                        checked={requestForm.acceptedMarketplaceRules}
+                                        onChange={handleRequestInputChange}
+                                        required
+                                    />
+                                    <label htmlFor="acceptedMarketplaceRules">
+                                        Я принимаю <Link href="/rules" className="gov-link">правила маркетплейса</Link> и подтверждаю достоверность данных <span className="required">*</span>
+                                    </label>
                                 </div>
                             </div>
 

@@ -113,6 +113,38 @@
     color: #999999;
 }
 
+.gov-checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.gov-checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #005BFF;
+}
+
+.gov-checkbox-group label {
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A5565;
+    cursor: pointer;
+}
+
+.gov-link {
+    color: #005BFF;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.gov-link:hover {
+    text-decoration: none;
+}
+
 /* Специфичный инпут с префиксом (как на Госуслугах для ссылок) */
 .gov-input-prefix-wrapper {
     display: flex;

@@ -51,7 +51,7 @@ export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
         };
     }, [isCatalogOpen]);
 
-    const { name, email, clearAuth } = useAuthStore() as { name: string, email?: string, clearAuth: () => void };
+    const { name, email, role, clearAuth } = useAuthStore() as { name: string, email?: string, role: string | null, clearAuth: () => void };
     const pathname = usePathname();
 
     const isActive = (href: string) => {
@@ -111,12 +111,14 @@ export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
                                         <div className="profile-dropdown__divider" />
 
                                         <Link
-                                            href="/admin/shops"
+                                            href={role === 'Admin' ? "/admin/requests" : role === 'Seller' ? "/admin/shops" : "/admin"}
                                             className="profile-dropdown__item"
                                             onClick={() => setProfileOpen(false)}
                                         >
                                             <Store size={20} color="#4A5565" />
-                                            <span>Мои магазины</span>
+                                            <span>
+                                                {role === 'Admin' ? 'Управление' : role === 'Seller' ? 'Мои магазины' : 'Стать продавцом'}
+                                            </span>
                                         </Link>
 
                                         <button
