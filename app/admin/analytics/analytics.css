@@ -15,6 +15,36 @@
     gap: 16px;
 }
 
+.admin-analytics-period-selector {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    gap: 4px;
+}
+
+.period-btn {
+    padding: 6px 12px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.period-btn:hover {
+    color: #0f172a;
+}
+
+.period-btn.active {
+    background: white;
+    color: #2563eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
 .download-report-btn {
     display: flex;
     align-items: center;
@@ -225,68 +255,38 @@
     font-size: 24px;
     font-weight: 600;
     color: #2562e9;
+}
 
+.section-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.revenue-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.revenue-total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.revenue-label {
+    font-size: 12px;
+    color: #94a3b8;
 }
 
 /* Custom Chart Styling */
 .chart-container {
-    height: 300px;
+    height: 350px;
     width: 100%;
     position: relative;
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
     padding-top: 20px;
-}
-
-.chart-bar-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    height: 100%;
-    justify-content: flex-end;
-}
-
-.chart-bar {
-    width: 100%;
-    background: linear-gradient(to top, #3b82f6, #60a5fa);
-    border-radius: 6px 6px 0 0;
-    transition: height 0.3s ease, opacity 0.2s;
-    position: relative;
-}
-
-.chart-bar:hover {
-    opacity: 0.8;
-}
-
-.chart-bar-tooltip {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1f2937;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-}
-
-.chart-bar:hover .chart-bar-tooltip {
-    opacity: 1;
-}
-
-.chart-label {
-    font-size: 11px;
-    color: #9ca3af;
-    transform: rotate(-45deg);
-    white-space: nowrap;
-    margin-top: 10px;
 }
 
 /* Состояние склада - Улучшенный дизайн */

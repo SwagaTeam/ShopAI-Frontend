@@ -1,7 +1,20 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useAnalyticsStore } from '@/data/store/useAnalyticsStore';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+} from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
 import {
     DollarSign,
     ShoppingBag,
@@ -22,21 +35,41 @@ import './analytics.css';
 import { ProductCard } from '@/components/product-card/product-card';
 import { motion } from 'framer-motion';
 
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+);
+
 export default function AnalyticsPage() {
     const {
         overview,
         dailyOrders,
         topProducts,
         isLoading,
-        fetchAllAnalytics
+        fetchAllAnalytics,
+        fetchDailyOrders
     } = useAnalyticsStore();
 
     const [isExporting, setIsExporting] = useState(false);
+    const [period, setPeriod] = useState(30);
     const reportRef = useRef<HTMLDivElement>(null);
+    const chartRef = useRef<any>(null);
 
     useEffect(() => {
         fetchAllAnalytics();
     }, [fetchAllAnalytics]);
+
+    const handlePeriodChange = async (days: number) => {
+        setPeriod(days);
+        await fetchDailyOrders(days);
+    };
 
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('ru-RU', {
@@ -83,8 +116,93 @@ export default function AnalyticsPage() {
         return <div className="loading-overlay">Загрузка аналитики...</div>;
     }
 
-    // Calculate max revenue for chart scaling
-    const maxRevenue = Math.max(...dailyOrders.map(d => d.revenue), 1);
+    const chartData = {
+        labels: dailyOrders.map(day => new Date(day.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })),
+        datasets: [
+            {
+                label: 'Выручка',
+                data: dailyOrders.map(day => day.revenue),
+                fill: true,
+                backgroundColor: (context: any) => {
+                    const chart = context.chart;
+                    const { ctx, chartArea } = chart;
+                    if (!chartArea) return null;
+                    const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                    gradient.addColorStop(0, 'rgba(37, 99, 235, 0.2)');
+                    gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
+                    return gradient;
+                },
+                borderColor: '#2563eb',
+                borderWidth: 3,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#2563eb',
+                pointBorderWidth: 2,
+                pointRadius: dailyOrders.length > 30 ? 0 : 4,
+                pointHoverRadius: 6,
+                tension: 0.4,
+            }
+        ]
+    };
+
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: '#1f2937',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                padding: 12,
+                cornerRadius: 8,
+                displayColors: false,
+                callbacks: {
+                    label: (context: any) => formatCurrency(context.raw)
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false, // Убираем горизонтальные линии
+                },
+                border: {
+                    display: false // Убираем линию оси
+                },
+                ticks: {
+                    callback: (value: any) => formatCurrency(value),
+                    font: {
+                        size: 11
+                    },
+                    color: '#94a3b8'
+                }
+            },
+            x: {
+                grid: {
+                    display: false // Убираем вертикальные линии
+                },
+                border: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 11
+                    },
+                    color: '#94a3b8',
+                    maxRotation: 0,
+                    autoSkip: true,
+                    maxTicksLimit: 10
+                }
+            }
+        },
+        interaction: {
+            intersect: false,
+            mode: 'index',
+        },
+    };
 
     return (
         <div className="admin-analytics-page" ref={reportRef}>
@@ -99,7 +217,17 @@ export default function AnalyticsPage() {
                         {isExporting ? <Loader2 size={18} className="animate-spin" /> : <Download size={18} />}
                         {isExporting ? 'Генерация...' : 'Скачать PDF отчет'}
                     </button>
-                    <div className="admin-analytics-period">Последние 14 дней</div>
+                    <div className="admin-analytics-period-selector">
+                        {[7, 14, 30, 90].map((d) => (
+                            <button
+                                key={d}
+                                className={`period-btn ${period === d ? 'active' : ''}`}
+                                onClick={() => handlePeriodChange(d)}
+                            >
+                                {d}д
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </header>
 
@@ -171,27 +299,15 @@ export default function AnalyticsPage() {
             <div className="analytics-charts-grid">
                 {/* График выручки */}
                 <div className="analytics-section-card">
-                    <h2 className="analytics-section-title">Динамика выручки</h2>
+                    <div className="section-card-header">
+                        <h2 className="analytics-section-title">Динамика выручки</h2>
+                        <div className="revenue-summary">
+                            <span className="revenue-total">{formatCurrency(dailyOrders.reduce((acc, day) => acc + day.revenue, 0))}</span>
+                            <span className="revenue-label">за {period} дней</span>
+                        </div>
+                    </div>
                     <div className="chart-container">
-                        {dailyOrders.map((day, index) => (
-                            <div key={index} className="chart-bar-wrapper">
-                                <motion.div
-                                    className="chart-bar"
-                                    initial={{ height: 0 }}
-                                    animate={{ height: `${(day.revenue / maxRevenue) * 100}%` }}
-                                    transition={{ duration: 0.8, delay: index * 0.05 }}
-                                >
-                                    <div className="chart-bar-tooltip">
-                                        {formatCurrency(day.revenue)}
-                                        <br />
-                                        {new Date(day.date).toLocaleDateString('ru-RU')}
-                                    </div>
-                                </motion.div>
-                                <span className="chart-label">
-                                    {new Date(day.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}
-                                </span>
-                            </div>
-                        ))}
+                        <Line ref={chartRef} data={chartData as any} options={chartOptions as any} />
                     </div>
                 </div>
 

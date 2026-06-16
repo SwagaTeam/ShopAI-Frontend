@@ -52,7 +52,7 @@ export const useAnalyticsStore = create<AnalyticsState>((set, get) => ({
         }
     },
 
-    async fetchDailyOrders(days = 14) {
+    async fetchDailyOrders(days = 30) {
         set({ isLoading: true, error: null });
         try {
             const response = await apiClient.get('/Analytics/orders/daily', {
@@ -83,7 +83,7 @@ export const useAnalyticsStore = create<AnalyticsState>((set, get) => ({
         try {
             const [overview, daily, top] = await Promise.all([
                 apiClient.get('/Analytics/overview'),
-                apiClient.get('/Analytics/orders/daily', { params: { days: 14 } }),
+                apiClient.get('/Analytics/orders/daily', { params: { days: 30 } }),
                 apiClient.get('/Analytics/products/top', { params: { limit: 8 } })
             ]);
 

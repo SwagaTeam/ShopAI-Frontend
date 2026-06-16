@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="check">
-      <change afterPath="$PROJECT_DIR$/app/admin/requests/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/admin/requests/requests.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/store/useSellerRequestsStore.ts" afterDir="false" />
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/shops.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin-sidebar/admin-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/analytics/analytics.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/analytics/analytics.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/analytics/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/analytics/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useAnalyticsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useAnalyticsStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/sw.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +104,7 @@
       <recent name="C:\Users\Evgen\Desktop\ShopAI-Frontend\app" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Next.js: debug client-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -145,14 +143,6 @@
       <workItem from="1781372597168" duration="32880000" />
       <workItem from="1781622534665" duration="3987000" />
       <workItem from="1781632031089" duration="16406000" />
-    </task>
-    <task id="LOCAL-00060" summary="feat: new create shop layout">
-      <option name="closed" value="true" />
-      <created>1780782880806</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1780782880806</updated>
     </task>
     <task id="LOCAL-00061" summary="feat: new shops layout">
       <option name="closed" value="true" />
@@ -538,14 +528,21 @@
       <option name="project" value="LOCAL" />
       <updated>1781647822894</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="requests">
+      <option name="closed" value="true" />
+      <created>1781649821012</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1781649821012</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: checkout adaptive" />
     <MESSAGE value="fix: checkout adaptive panel" />
     <MESSAGE value="feat: ai assistant adaptive" />
     <MESSAGE value="fix: unauthorized route" />
@@ -570,6 +567,7 @@
     <MESSAGE value="feat: admin shop layout" />
     <MESSAGE value="feat: admin sidebar layout" />
     <MESSAGE value="feat: admin categories" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: admin categories" />
+    <MESSAGE value="requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="requests" />
   </component>
 </project>
