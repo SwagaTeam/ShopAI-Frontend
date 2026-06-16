@@ -98,7 +98,13 @@ export const useShopStore = create<ShopState>((set) => ({
     error: null,
 
     async fetchShop(shopId) {
-        set({ isLoading: true, error: null });
+        set({
+            shop: null,
+            categories: [],
+            products: [],
+            isLoading: true,
+            error: null
+        });
         try {
             const response = await apiClient.get(`/Shops/${shopId}`);
             set({
@@ -241,17 +247,19 @@ export const useShopStore = create<ShopState>((set) => ({
     },
 
     async updateShop(shopId, name, urlAlias) {
+        set({ isSubmittingShop: true, error: null });
         try {
             await apiClient.put(`/Shops/${shopId}`, {
                 name,
                 urlAlias
             });
             await useShopStore.getState().fetchShop(shopId);
-            set({ error: null });
+            set({ isSubmittingShop: false, error: null });
         } catch (error) {
             console.error('Ошибка при обновлении магазина:', error);
             set({
-                error: 'Ошибка при обновлении магазина'
+                error: 'Ошибка при обновлении магазина',
+                isSubmittingShop: false
             });
         }
     },

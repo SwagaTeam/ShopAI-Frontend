@@ -71,7 +71,7 @@ export const useShopsStore = create<ShopsState>((set, get) => ({
         try {
             const response = await apiClient.get('/Shops/my');
             set({
-                shops: response.data,
+                shops: response.data.reverse(),
                 isLoading: false
             });
         } catch (error) {
