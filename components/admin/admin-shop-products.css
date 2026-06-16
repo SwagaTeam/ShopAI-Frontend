@@ -15,9 +15,9 @@
 }
 
 .admin-shop-products__title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    color: #0f172a;
+    color: #2562e9;
     margin: 0;
 }
 
@@ -120,6 +120,16 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    text-decoration: none;
+}
+
+.product-cell-info.clickable {
+    cursor: pointer;
+}
+
+.product-cell-info.clickable:hover .product-name {
+    color: #2563eb;
+    text-decoration: underline;
 }
 
 .product-image-mini {

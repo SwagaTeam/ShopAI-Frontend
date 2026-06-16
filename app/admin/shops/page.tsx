@@ -2,39 +2,46 @@
 
 import React, { useEffect } from 'react';
 import { useShopsStore } from '@/data/store/useShopsStore';
-import { Plus, Store, Box, ShoppingBag, DollarSign, Package } from 'lucide-react';
+import { useAnalyticsStore } from '@/data/store/useAnalyticsStore';
+import { Plus, Store, Box, ShoppingBag, DollarSign, Package, Star } from 'lucide-react';
 import './shops.css';
 import Link from "next/link";
 import { AdminShopCard } from '@/components/admin/admin-shop-card';
 
-const cardGradients = [
-    'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
-    'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-    'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-    'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
-];
-
 export default function ShopsPage() {
-    const { shops, isLoading, fetchMyShops } = useShopsStore();
+    const { shops, isLoading: isShopsLoading, fetchMyShops } = useShopsStore();
+    const { overview, fetchOverview, isLoading: isAnalyticsLoading } = useAnalyticsStore();
 
     useEffect(() => {
-        if (shops.length === 0 && !isLoading) {
-            fetchMyShops();
-        }
-    }, [fetchMyShops, shops.length, isLoading]);
+        fetchMyShops();
+        fetchOverview();
+    }, [fetchMyShops, fetchOverview]);
+
+    const formatCurrency = (value: number) => {
+        return new Intl.NumberFormat('ru-RU', {
+            style: 'currency',
+            currency: 'RUB',
+            maximumFractionDigits: 0
+        }).format(value);
+    };
 
     return (
         <div className="admin-shops-page">
             {/* Header */}
             <div className="admin-shops-header">
                 <h1 className="admin-shops-title">Мои магазины</h1>
-                <Link href="/admin/create-shop" className="admin-shops-create-btn">
-                    <Plus size={20} />
-                    Создать магазин
-                </Link>
+                <div className="admin-shops-actions">
+                    <Link href="/admin/analytics" className="admin-shops-analytics-link">
+                        Подробная аналитика
+                    </Link>
+                    <Link href="/admin/create-shop" className="admin-shops-create-btn">
+                        <Plus size={20} />
+                        Создать магазин
+                    </Link>
+                </div>
             </div>
 
-            {/* Блоки аналитики (пока статические заглушки по макету) */}
+            {/* Блоки аналитики */}
             <div className="admin-analytics-grid">
                 <div className="admin-analytics-card">
                     <div className="admin-analytics-card__header">
@@ -43,39 +50,45 @@ export default function ShopsPage() {
                             <DollarSign size={16} color="#2563eb" />
                         </div>
                     </div>
-                    <div className="admin-analytics-card__value">582 340 ₽</div>
-                    <div className="admin-analytics-card__trend trend-up">+18% за месяц</div>
+                    <div className="admin-analytics-card__value">
+                        {isAnalyticsLoading ? '...' : formatCurrency(overview?.revenue || 0)}
+                    </div>
+                    <div className="admin-analytics-card__trend trend-up">Всего по всем магазинам</div>
                     <div className="admin-analytics-card__chart chart-placeholder-1"></div>
                 </div>
 
                 <div className="admin-analytics-card">
                     <div className="admin-analytics-card__header">
                         <span className="admin-analytics-card__title">Всего заказов</span>
-                        <div className="admin-analytics-card__icon bg-blue-light">
-                            <ShoppingBag size={16} color="#2563eb" />
+                        <div className="admin-analytics-card__icon bg-green-light">
+                            <ShoppingBag size={16} color="#10b981" />
                         </div>
                     </div>
-                    <div className="admin-analytics-card__value">342</div>
-                    <div className="admin-analytics-card__trend trend-up">+24 за неделю</div>
+                    <div className="admin-analytics-card__value">
+                        {isAnalyticsLoading ? '...' : overview?.ordersCount || 0}
+                    </div>
+                    <div className="admin-analytics-card__trend trend-up">За всё время</div>
                     <div className="admin-analytics-card__chart chart-placeholder-2"></div>
                 </div>
 
                 <div className="admin-analytics-card">
                     <div className="admin-analytics-card__header">
-                        <span className="admin-analytics-card__title">Товаров продано</span>
-                        <div className="admin-analytics-card__icon bg-blue-light">
-                            <Package size={16} color="#2563eb" />
+                        <span className="admin-analytics-card__title">Рейтинг товаров</span>
+                        <div className="admin-analytics-card__icon bg-amber-light">
+                            <Star size={16} color="#f59e0b" />
                         </div>
                     </div>
-                    <div className="admin-analytics-card__value">1 248</div>
-                    <div className="admin-analytics-card__trend trend-up">+156 за неделю</div>
+                    <div className="admin-analytics-card__value">
+                        {isAnalyticsLoading ? '...' : (overview?.averageRating || 0).toFixed(1)}
+                    </div>
+                    <div className="admin-analytics-card__trend trend-up">Средняя оценка</div>
                     <div className="admin-analytics-card__chart chart-placeholder-3"></div>
                 </div>
             </div>
 
             {/* Список магазинов */}
             <div className="admin-shops-list">
-                {isLoading ? (
+                {isShopsLoading ? (
                     <div className="admin-shops-loading">Загрузка магазинов...</div>
                 ) : shops.length === 0 ? (
                     <div className="admin-shops-empty">У вас пока нет созданных магазинов.</div>

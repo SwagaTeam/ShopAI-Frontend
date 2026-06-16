@@ -10,7 +10,8 @@ import {
     ChevronRight,
     MoreVertical,
     Package,
-    Image as ImageIcon
+    Image as ImageIcon,
+    ExternalLink
 } from 'lucide-react';
 import { useShopStore } from '@/data/store/useShopStore';
 import { ConfirmModal } from '@/components/confirm-modal/confirm-modal';
@@ -23,6 +24,7 @@ export const AdminShopProducts = () => {
         fetchShopProducts,
         shop,
         isLoading,
+        error,
         productsPage,
         totalProductPages,
         totalProducts,
@@ -37,11 +39,16 @@ export const AdminShopProducts = () => {
         productName: ''
     });
 
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.id.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     useEffect(() => {
-        if (shop?.id) {
+        if (shop?.id && products.length === 0 && !isLoading) {
             fetchShopProducts(shop.id, 1, productsPageSize);
         }
-    }, [shop?.id, fetchShopProducts, productsPageSize]);
+    }, [shop?.id, products.length]);
 
     const handlePageChange = (newPage: number) => {
         if (shop?.id && newPage >= 1 && newPage <= totalProductPages) {
@@ -99,10 +106,10 @@ export const AdminShopProducts = () => {
                         <Package size={40} className="animate-bounce mb-4 opacity-20" />
                         <p>Загрузка товаров...</p>
                     </div>
-                ) : products.length === 0 ? (
+                ) : filteredProducts.length === 0 ? (
                     <div className="admin-shop-products__empty">
                         <Package size={40} className="mb-4 opacity-20" />
-                        <p>В магазине пока нет товаров</p>
+                        <p>{searchQuery ? 'Товары не найдены' : 'В магазине пока нет товаров'}</p>
                     </div>
                 ) : (
                     <table className="admin-shop-products__table">
@@ -116,10 +123,15 @@ export const AdminShopProducts = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product) => (
+                            {filteredProducts.map((product) => (
                                 <tr key={product.id}>
                                     <td>
-                                        <div className="product-cell-info">
+                                        <Link
+                                            href={`/product/${product.id}`}
+                                            target="_blank"
+                                            className="product-cell-info clickable"
+                                            title="Перейти к товару на сайте"
+                                        >
                                             {product.imageUrl ? (
                                                 <img src={product.imageUrl} alt={product.name} className="product-image-mini" />
                                             ) : (
@@ -131,7 +143,7 @@ export const AdminShopProducts = () => {
                                                 <span className="product-name">{product.name}</span>
                                                 <span className="product-id">ID: {product.id.substring(0, 8)}...</span>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </td>
                                     <td>{product.brandName || '—'}</td>
                                     <td>
@@ -147,6 +159,14 @@ export const AdminShopProducts = () => {
                                     </td>
                                     <td>
                                         <div className="product-actions">
+                                            <Link
+                                                href={`/product/${product.id}`}
+                                                target="_blank"
+                                                className="product-action-btn"
+                                                title="Посмотреть на сайте"
+                                            >
+                                                <ExternalLink size={16} />
+                                            </Link>
                                             <Link href={`/admin/products/${product.id}/edit`} className="product-action-btn" title="Редактировать">
                                                 <Edit2 size={16} />
                                             </Link>
