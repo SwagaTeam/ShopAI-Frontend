@@ -10,18 +10,52 @@ interface AdminShopCardProps {
         id: string;
         name: string;
         urlAlias: string;
-
+        logoPath?: string;
     };
     index: number;
     showManageButton?: boolean;
 }
 
-const cardGradients = [
-    'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
-    'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-    'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-    'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
-];
+const DEFAULT_COLOR = '#2563eb';
+
+const parseLogoPath = (path: string | undefined): string => {
+    if (!path) return DEFAULT_COLOR;
+
+    // Если это URL от S3/MinIO (содержит /bucket/), извлекаем строку цвета/градиента
+    if (path.includes('/bucket/')) {
+        try {
+            // Извлекаем всё что после /bucket/ и до начала query параметров (?)
+            const match = path.match(/\/bucket\/([^?]+)/);
+            if (match && match[1]) {
+                // Декодируем и заменяем + на пробелы (на случай если S3 так закодировал)
+                return decodeURIComponent(match[1]).replace(/\+/g, ' ');
+            }
+        } catch (e) {
+            console.error('Error parsing logoPath:', e);
+        }
+    }
+
+    return path;
+};
+
+export const AdminShopCardSkeleton = () => {
+    return (
+        <div className="admin-shop-card is-skeleton">
+            <div className="admin-shop-card__left">
+                <div className="admin-shop-card__icon-wrapper skeleton-pulse" />
+                <div className="admin-shop-card__info">
+                    <div className="skeleton-line skeleton-pulse" style={{ width: '200px', height: '28px', marginBottom: '8px' }} />
+                    <div className="admin-shop-card__meta">
+                        <div className="skeleton-line skeleton-pulse" style={{ width: '120px', height: '16px' }} />
+                        <span className="admin-shop-card__divider"></span>
+                        <div className="skeleton-line skeleton-pulse" style={{ width: '100px', height: '16px' }} />
+                        <div className="skeleton-line skeleton-pulse" style={{ width: '100px', height: '16px' }} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export const AdminShopCard = ({ shop, index, showManageButton = true }: AdminShopCardProps) => {
     const router = useRouter();
@@ -32,10 +66,12 @@ export const AdminShopCard = ({ shop, index, showManageButton = true }: AdminSho
         }
     };
 
+    const background = parseLogoPath(shop.logoPath);
+
     return (
         <div
             className="admin-shop-card"
-            style={{ background: cardGradients[index % cardGradients.length], cursor: showManageButton ? 'pointer' : 'default' }}
+            style={{ background: background, cursor: showManageButton ? 'pointer' : 'default' }}
             onClick={handleCardClick}
         >
             <div className="admin-shop-card__left">
