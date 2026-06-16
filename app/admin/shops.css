@@ -106,7 +106,6 @@
 .gov-input-group select:focus,
 .gov-input-group textarea:focus {
     border-color: #005BFF; /* Ozon Blue */
-    box-shadow: 0 0 0 3px rgba(0, 91, 255, 0.15);
 }
 
 .gov-input-group input::placeholder,
@@ -126,7 +125,6 @@
 
 .gov-input-prefix-wrapper:focus-within {
     border-color: #005BFF;
-    box-shadow: 0 0 0 3px rgba(0, 91, 255, 0.15);
 }
 
 .gov-input-prefix {

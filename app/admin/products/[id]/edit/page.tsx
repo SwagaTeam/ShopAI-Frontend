@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useShopsStore } from '@/data/store/useShopsStore';
 import { useShopStore } from '@/data/store/useShopStore';
-import { X,Plus, Info, Sparkles } from 'lucide-react';
+import { useProductStore } from '@/data/store/useProductStore';
+import { X, Plus, Info, Sparkles, ArrowLeft } from 'lucide-react';
 import Cropper, { Point, Area } from 'react-easy-crop';
 import { getCroppedImg } from '@/utils/imageProcessing';
 import { sileo } from 'sileo';
@@ -23,27 +24,36 @@ import {
     sortableKeyboardCoordinates,
     rectSortingStrategy,
 } from '@dnd-kit/sortable';
-import { SortableImage } from './SortableImage';
+import { SortableImage } from '../../create/SortableImage';
 import { SearchableSelect } from '@/components/searchable-select/searchable-select';
 import { ProductPreviewWrapper } from '@/components/product-preview-modal/product-preview-wrapper';
 import { apiClient } from '@/data/api/apiClient';
-import './create-product.css';
+import '../../create/create-product.css';
 
 interface ImageItem {
     id: string;
-    blob: Blob;
+    blob: Blob | null;
     url: string;
+    isExisting?: boolean;
 }
 
-export default function CreateProductPage() {
+export default function EditProductPage() {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const shopIdFromQuery = searchParams.get('shopId');
+    const params = useParams();
+    const productId = params.id as string;
 
     const { shops, fetchMyShops } = useShopsStore();
-    const { categories, fetchCategories, brands, fetchBrands, createProductWithImage, isSubmittingProduct } = useShopStore();
+    const {
+        categories,
+        fetchCategories,
+        brands,
+        fetchBrands,
+        updateProductWithImages,
+        isSubmittingProduct
+    } = useShopStore();
+    const { product, fetchProduct, isLoading: isProductLoading } = useProductStore();
 
-    const [selectedShopId, setSelectedShopId] = useState<string>(shopIdFromQuery || '');
+    const [selectedShopId, setSelectedShopId] = useState<string>('');
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -75,15 +85,43 @@ export default function CreateProductPage() {
     useEffect(() => {
         fetchMyShops();
         fetchBrands();
-    }, [fetchMyShops, fetchBrands]);
+        if (productId) {
+            fetchProduct(productId);
+        }
+    }, [productId, fetchMyShops, fetchBrands, fetchProduct]);
 
     useEffect(() => {
-        if (shopIdFromQuery) {
-            setSelectedShopId(shopIdFromQuery);
-        } else if (shops.length > 0 && !selectedShopId) {
-            setSelectedShopId(shops[0].id);
+        if (product) {
+            setSelectedShopId(product.shopId);
+            setFormData({
+                name: product.name,
+                description: product.description || '',
+                price: product.price.toString(),
+                stockQuantity: product.stockQuantity.toString(),
+                categoryId: product.categoryId,
+                brandId: product.brandId || '',
+            });
+            setTags(product.tags || []);
+
+            const attrs = product.attributes
+                ? Object.entries(product.attributes).map(([key, value]) => ({ key, value }))
+                : [];
+            setAttributes(attrs);
+
+            const initialImages: ImageItem[] = [];
+            if (product.imageUrl) {
+                initialImages.push({ id: 'main', url: product.imageUrl, blob: null, isExisting: true });
+            }
+            if (product.imageUrls) {
+                product.imageUrls.forEach((url, index) => {
+                    if (url !== product.imageUrl) {
+                        initialImages.push({ id: `existing-${index}`, url, blob: null, isExisting: true });
+                    }
+                });
+            }
+            setImages(initialImages);
         }
-    }, [shops, selectedShopId, shopIdFromQuery]);
+    }, [product]);
 
     useEffect(() => {
         if (selectedShopId) fetchCategories(selectedShopId);
@@ -117,7 +155,7 @@ export default function CreateProductPage() {
                 if (cropped) {
                     const id = Math.random().toString(36).substr(2, 9);
                     const url = URL.createObjectURL(cropped);
-                    setImages(prev => [...prev, { id, blob: cropped, url }]);
+                    setImages(prev => [...prev, { id, blob: cropped, url, isExisting: false }]);
                     setIsCropping(false);
                     setCurrentImageSrc(null);
                     if (fileInputRef.current) fileInputRef.current.value = '';
@@ -132,7 +170,7 @@ export default function CreateProductPage() {
     const removeImage = (id: string) => {
         setImages(prev => {
             const item = prev.find(img => img.id === id);
-            if (item) URL.revokeObjectURL(item.url);
+            if (item && !item.isExisting) URL.revokeObjectURL(item.url);
             return prev.filter(img => img.id !== id);
         });
     };
@@ -210,10 +248,11 @@ export default function CreateProductPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!selectedShopId || images.length === 0) {
-            sileo.error({ title: 'Ошибка', description: 'Заполните обязательные поля и добавьте фото' });
+        if (!selectedShopId) {
+            sileo.error({ title: 'Ошибка', description: 'Выберите магазин' });
             return;
         }
+
         const data = new FormData();
         data.append('ShopId', selectedShopId);
         data.append('Name', formData.name);
@@ -221,22 +260,48 @@ export default function CreateProductPage() {
         data.append('CategoryId', formData.categoryId);
         data.append('Description', formData.description);
         data.append('StockQuantity', formData.stockQuantity);
-        if (formData.brandId) data.append('BrandId', formData.brandId);
+        if (formData.brandId) {
+            data.append('BrandId', formData.brandId);
+        } else {
+            data.append('ClearBrand', 'true');
+        }
+
         if (tags.length > 0) data.append('TagsCsv', tags.join(','));
         const attrObj: Record<string, string> = {};
         attributes.forEach(a => { if (a.key.trim()) attrObj[a.key.trim()] = a.value.trim(); });
-        if (Object.keys(attrObj).length > 0) data.append('AttributesJson', JSON.stringify(attrObj));
-        images.forEach((img, index) => data.append('Images', img.blob, `product_${index}.jpg`));
+        data.append('AttributesJson', JSON.stringify(attrObj));
 
-        const success = await createProductWithImage(data);
+        const newImages = images.filter(img => !img.isExisting);
+        if (newImages.length > 0) {
+            newImages.forEach((img, index) => {
+                if (img.blob) {
+                    data.append('Images', img.blob, `product_${index}.jpg`);
+                }
+            });
+        }
+
+        // If user removed some existing images, we might want to use ClearImages or ReplaceImages.
+        // But the current UI doesn't easily distinguish between "reordered existing" and "removed existing"
+        // in a way that maps perfectly to the API without sending all files again.
+        // Since we can't easily get Files from existing URLs, we'll just add new ones for now.
+
+        const success = await updateProductWithImages(productId, data);
         if (success) {
-            sileo.success({ title: 'Успех', description: 'Товар успешно создан' });
-            router.push('/admin/shops');
+            sileo.success({ title: 'Успех', description: 'Товар успешно обновлен' });
+            router.back();
         }
     };
 
+    if (isProductLoading) return <div className="p-8 text-center">Загрузка данных товара...</div>;
+
     return (
         <div className="create-product">
+            <div className="create-product__header" style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <button type="button" onClick={() => router.back()} className="btn-icon">
+                    <ArrowLeft size={24} />
+                </button>
+                <h1 className="btn-icon" style={{ fontSize: '24px', fontWeight: 'bold' }}>Редактирование товара</h1>
+            </div>
             <form onSubmit={handleSubmit} className="create-product__grid">
                 <div className="create-product__main">
                     <section className="form-section">
@@ -299,6 +364,15 @@ export default function CreateProductPage() {
                     <section className="form-section">
                         <h2 className="form-section__title">Организация</h2>
                         <div className="form-group">
+                            <label>Магазин</label>
+                            <SearchableSelect
+                                options={shops.map(s => ({ id: s.id, name: s.name }))}
+                                value={selectedShopId}
+                                onChange={setSelectedShopId}
+                                placeholder="Выберите магазин"
+                            />
+                        </div>
+                        <div className="form-group">
                             <label>Категория</label>
                             <SearchableSelect
                                 options={categories.map(c => ({ id: c.id, name: c.name }))}
@@ -350,7 +424,7 @@ export default function CreateProductPage() {
                             Предпросмотр
                         </button>
                         <button type="submit" className="btn-primary" disabled={isSubmittingProduct} style={{ width: '100%', padding: '18px', fontSize: '16px', borderRadius: '16px' }}>
-                            {isSubmittingProduct ? 'Создание...' : 'Опубликовать товар'}
+                            {isSubmittingProduct ? 'Сохранение...' : 'Сохранить изменения'}
                         </button>
                     </div>
                 </div>
@@ -376,7 +450,7 @@ export default function CreateProductPage() {
 
             {fullscreenImage && (
                 <div className="fullscreen-viewer" onClick={() => setFullscreenImage(null)}>
-                    <button className="fullscreen-viewer__close" onClick={() => setFullscreenImage(null)}><X size={24} /></button>
+                    <button type="button" className="fullscreen-viewer__close" onClick={() => setFullscreenImage(null)}><X size={24} /></button>
                     <img src={fullscreenImage} className="fullscreen-viewer__img" alt="Full view" />
                 </div>
             )}

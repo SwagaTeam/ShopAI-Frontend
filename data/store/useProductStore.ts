@@ -13,6 +13,7 @@ export interface Product {
     categoryName: string;
     shopId: string;
     shopName: string;
+    brandId?: string;
     brandName: string;
     attributes?: Record<string, string>;
     cartQuantity?: number;

@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 
 const menuItems = [
     {id: 'shops', title: 'Мои магазины', icon: ShoppingBag, path: '/admin/shops'},
-    {id: 'create-product', title: 'Добавить товар', icon: PlusCircle, path: '/admin/products/create'},
     {id: 'create-shop', title: 'Создать магазин', icon: PlusCircle, path: '/admin/create-shop'}
 ];
 

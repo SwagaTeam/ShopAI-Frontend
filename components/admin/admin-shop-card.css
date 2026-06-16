@@ -1,0 +1,105 @@
+.admin-shop-card {
+    background-color: #94a3b8;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.admin-shop-card.is-clickable {
+    cursor: pointer;
+}
+
+.admin-shop-card.is-clickable:hover {
+    transform: translateY(-2px);
+}
+
+.admin-shop-card__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
+}
+
+.admin-shop-card__icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-shop-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-shop-card__name {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.admin-shop-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.admin-shop-card__url {
+    font-weight: 400;
+}
+
+.admin-shop-card__stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-shop-card__manage-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.admin-shop-card__manage-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .admin-shop-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .admin-shop-card__manage-btn {
+        width: 100%;
+    }
+
+    .admin-shop-card__meta {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}

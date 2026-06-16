@@ -5,6 +5,7 @@ import { useShopsStore } from '@/data/store/useShopsStore';
 import { Plus, Store, Box, ShoppingBag, DollarSign, Package } from 'lucide-react';
 import './shops.css';
 import Link from "next/link";
+import { AdminShopCard } from '@/components/admin/admin-shop-card';
 
 const cardGradients = [
     'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
@@ -80,39 +81,7 @@ export default function ShopsPage() {
                     <div className="admin-shops-empty">У вас пока нет созданных магазинов.</div>
                 ) : (
                     shops.map((shop, index) => (
-                        <div
-                            key={shop.id}
-                            className="admin-shop-card"
-                            style={{ background: cardGradients[index % cardGradients.length] }}
-                        >
-                            <div className="admin-shop-card__left">
-                                <div className="admin-shop-card__icon-wrapper">
-                                    <Store size={28} />
-                                </div>
-                                <div className="admin-shop-card__info">
-                                    <h3 className="admin-shop-card__name">{shop.name}</h3>
-                                    <div className="admin-shop-card__meta">
-                                        <span className="admin-shop-card__url">
-                                            shopai.ru/{shop.urlAlias}
-                                        </span>
-                                        <span className="admin-shop-card__divider"></span>
-
-                                        <div className="admin-shop-card__stat">
-                                            <Box size={16} />
-                                            <span>156 товаров</span>
-                                        </div>
-                                        <div className="admin-shop-card__stat">
-                                            <ShoppingBag size={16} />
-                                            <span>89 заказов</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button className="admin-shop-card__manage-btn">
-                                Управление
-                            </button>
-                        </div>
+                        <AdminShopCard key={shop.id} shop={shop} index={index} />
                     ))
                 )}
             </div>

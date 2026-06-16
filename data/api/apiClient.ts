@@ -2,7 +2,7 @@ import axios from "axios";
 import {useAuthStore} from "@/data/store/useAuthStore";
 
 export const apiClient = axios.create({
-    baseURL: "/api/",
+    baseURL: "https://84.252.132.226/api/",
 });
 
 

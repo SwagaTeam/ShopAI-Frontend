@@ -3,6 +3,12 @@
     margin: 0 auto;
 }
 
+.btn-icon {
+    border: none;
+    background: none;
+    color: #2562e9;
+}
+
 .create-product__grid {
     display: grid;
     grid-template-columns: 1fr 420px;

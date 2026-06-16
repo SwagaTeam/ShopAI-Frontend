@@ -22,6 +22,7 @@ export interface Category {
 export interface CategoryDTO {
     name: string;
     shopId: string;
+    parentId?: string | null;
 }
 
 export interface Brand {
@@ -77,6 +78,8 @@ interface ShopState {
     updateShop: (shopId: string, name: string, urlAlias: string) => Promise<void>;
     deleteShop: (shopId: string) => Promise<void>;
     createCategory: (category: CategoryDTO) => Promise<boolean>;
+    deleteProduct: (productId: string) => Promise<boolean>;
+    updateProductWithImages: (productId: string, formData: FormData) => Promise<boolean>;
 }
 
 export const useShopStore = create<ShopState>((set) => ({
@@ -262,6 +265,50 @@ export const useShopStore = create<ShopState>((set) => ({
             set({
                 error: 'Ошибка при удалении магазина'
             });
+        }
+    },
+
+    async deleteProduct(productId) {
+        set({ isSubmittingProduct: true, error: null });
+        try {
+            await apiClient.delete(`/Products/${productId}`);
+            const { shop, productsPage, productsPageSize } = useShopStore.getState();
+            if (shop?.id) {
+                await useShopStore.getState().fetchShopProducts(shop.id, productsPage, productsPageSize);
+            }
+            set({ isSubmittingProduct: false });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при удалении товара:', error);
+            set({
+                error: 'Ошибка при удалении товара',
+                isSubmittingProduct: false
+            });
+            return false;
+        }
+    },
+
+    async updateProductWithImages(productId, formData) {
+        set({ isSubmittingProduct: true, error: null });
+        try {
+            await apiClient.put(`/Products/${productId}/with-images`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            const { shop, productsPage, productsPageSize } = useShopStore.getState();
+            if (shop?.id) {
+                await useShopStore.getState().fetchShopProducts(shop.id, productsPage, productsPageSize);
+            }
+            set({ isSubmittingProduct: false });
+            return true;
+        } catch (error) {
+            console.error('Ошибка при обновлении товара:', error);
+            set({
+                error: 'Ошибка при обновлении товара',
+                isSubmittingProduct: false
+            });
+            return false;
         }
     }
 }));
