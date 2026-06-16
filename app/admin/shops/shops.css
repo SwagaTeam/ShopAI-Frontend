@@ -10,10 +10,29 @@
     margin-bottom: 32px;
 }
 
+.admin-shops-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.admin-shops-analytics-link {
+    color: #2563eb;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.admin-shops-analytics-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 .admin-shops-title {
     font-size: 32px;
     font-weight: 700;
-    color: #0f172a;
+    color: #1b57dc;
     margin: 0;
 }
 
@@ -82,6 +101,14 @@
     background-color: #eff6ff;
 }
 
+.bg-green-light {
+    background-color: #ecfdf5;
+}
+
+.bg-amber-light {
+    background-color: #fffbeb;
+}
+
 .admin-analytics-card__value {
     font-size: 28px;
     font-weight: 700;
@@ -91,7 +118,7 @@
 }
 
 .admin-analytics-card__trend {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     z-index: 2;
 }
