@@ -44,9 +44,6 @@ export const ConfirmModal = ({
                 </div>
 
                 <div className="confirm-modal__footer">
-                    <button className="btn-secondary" onClick={onClose}>
-                        {cancelText}
-                    </button>
                     <button
                         className={`btn-primary ${isDanger ? 'btn-danger' : ''}`}
                         onClick={() => {
