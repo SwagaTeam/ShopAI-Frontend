@@ -1,0 +1,533 @@
+.admin-analytics-page {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.admin-analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-analytics-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.download-report-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-report-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.pdf-branding {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #3b82f6;
+    margin-bottom: 10px;
+}
+
+.pdf-branding__logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.pdf-branding__date {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+@media print {
+    .pdf-branding {
+        display: flex;
+    }
+}
+
+/* Стили для того, чтобы html2canvas корректно видел элементы брендинга при захвате */
+.admin-analytics-page .pdf-branding {
+    display: flex;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.is-exporting .pdf-branding {
+    height: auto;
+    overflow: visible;
+    opacity: 1;
+}
+
+.admin-analytics-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1b57dc;
+}
+
+/* Статистика с уникальными классами */
+.analytics-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 1200px) {
+    .analytics-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .analytics-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.analytics-stat-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-stat-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    z-index: 2;
+}
+
+.analytics-stat-item__title {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.analytics-stat-item__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-blue-light { background-color: #eff6ff; }
+.bg-green-light { background-color: #ecfdf5; }
+.bg-amber-light { background-color: #fffbeb; }
+.bg-purple-light { background-color: #f5f3ff; }
+
+.analytics-stat-item__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+    margin-top: -8px;
+    z-index: 2;
+}
+
+.analytics-stat-item__trend {
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.trend-up {
+    color: #424242;
+    text-shadow: #ffffff 2px 2px 2px;
+}
+
+.analytics-stat-item__chart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.chart-placeholder-1 {
+    background: radial-gradient(ellipse at bottom, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #3b82f6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.2);
+}
+
+.chart-placeholder-2 {
+    background: radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #8b5cf6;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.1) translateX(-10px);
+}
+
+.chart-placeholder-3 {
+    background: radial-gradient(ellipse at bottom, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    border-top: 2px solid #10b981;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: translateY(20px) scaleX(1.1) translateX(10px);
+}
+
+.analytics-charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 1024px) {
+    .analytics-charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.analytics-section-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
+}
+
+.analytics-section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2562e9;
+
+}
+
+/* Custom Chart Styling */
+.chart-container {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding-top: 20px;
+}
+
+.chart-bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.chart-bar {
+    width: 100%;
+    background: linear-gradient(to top, #3b82f6, #60a5fa);
+    border-radius: 6px 6px 0 0;
+    transition: height 0.3s ease, opacity 0.2s;
+    position: relative;
+}
+
+.chart-bar:hover {
+    opacity: 0.8;
+}
+
+.chart-bar-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2937;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.chart-bar:hover .chart-bar-tooltip {
+    opacity: 1;
+}
+
+.chart-label {
+    font-size: 11px;
+    color: #9ca3af;
+    transform: rotate(-45deg);
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+/* Состояние склада - Улучшенный дизайн */
+.stock-health-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.stock-health-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.stock-health-total {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.stock-health-total__label {
+    font-size: 14px;
+    color: #606060;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.stock-health-total__value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.stock-health-summary-bar {
+    display: flex;
+    height: 10px;
+    width: 100%;
+    background-color: #f3f4f6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.stock-health-segment {
+    height: 100%;
+    transition: flex 1s ease-out;
+}
+
+.segment-ok { background-color: #10b981; }
+.segment-warning { background-color: #f59e0b; }
+.segment-error { background-color: #ef4444; }
+
+.stock-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stock-health-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stock-health-row__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stock-health-row__label-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.stock-health-row__desc {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.stock-health-row__metrics {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 180px;
+}
+
+.stock-health-row__progress-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stock-health-row__progress-bg {
+    flex: 1;
+    height: 6px;
+    background-color: #f3f4f6;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.stock-health-row__progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease-out;
+}
+
+.status-ok .stock-health-row__progress-fill { background-color: #2562e9; }
+.status-warning .stock-health-row__progress-fill { background-color: #012065; }
+.status-error .stock-health-row__progress-fill { background-color: #ef4444; }
+
+.status-ok .stock-health-row__icon { color: #2562e9; }
+.status-warning .stock-health-row__icon { color: #0336a8; }
+.status-error .stock-health-row__icon { color: #ef4444; }
+
+.stock-health-row__percentage {
+    font-size: 14px;
+    font-weight: 500;
+    color: #545a65;
+    min-width: 35px;
+    text-align: right;
+}
+
+.stock-health-row__value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    min-width: 40px;
+    text-align: right;
+}
+
+.stock-rating-footer {
+    margin-top: 12px;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.stock-rating-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stock-rating-label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.stock-rating-value-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stock-rating-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.stock-rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.stock-reviews-count {
+    font-size: 13px;
+    color: #9ca3af;
+    padding-bottom: 4px;
+}
+
+/* Секция топ товаров */
+.top-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+}
+
+.top-products-count {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+/* Top Products */
+.top-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.bg-blue-soft { background-color: #eff6ff; }
+.bg-green-soft { background-color: #ecfdf5; }
+.bg-amber-soft { background-color: #fffbeb; }
+.bg-purple-soft { background-color: #f5f3ff; }
+.bg-red-soft { background-color: #fef2f2; }
+
+.text-blue { color: #3b82f6; }
+.text-green { color: #10b981; }
+.text-amber { color: #f59e0b; }
+.text-purple { color: #8b5cf6; }
+.text-red { color: #ef4444; }
+
+.loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: 18px;
+    color: #6b7280;
+}
+
+@media print {
+    .no-print, .sidebar, .sidebar__nav, .sidebar__footer, .admin-shops-analytics-link, .download-report-btn {
+        display: none !important;
+    }
+
+    .admin-analytics-page {
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .analytics-section-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+    }
+
+    .chart-bar, .stock-status-bar-fill, .analytics-stat-item__icon {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
