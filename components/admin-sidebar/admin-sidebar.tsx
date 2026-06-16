@@ -3,7 +3,10 @@
 import React from 'react';
 import {
     ShoppingBag,
-    PlusCircle
+    PlusCircle,
+    BarChart3,
+    Tag,
+    LogOut
 } from 'lucide-react';
 import './sidebar.css';
 import Link from "next/link";
@@ -11,6 +14,8 @@ import { usePathname } from "next/navigation";
 
 const menuItems = [
     {id: 'shops', title: 'Мои магазины', icon: ShoppingBag, path: '/admin/shops'},
+    {id: 'analytics', title: 'Аналитика', icon: BarChart3, path: '/admin/analytics'},
+    {id: 'brands', title: 'Бренды', icon: Tag, path: '/admin/brands'},
     {id: 'create-shop', title: 'Создать магазин', icon: PlusCircle, path: '/admin/create-shop'}
 ];
 
@@ -19,7 +24,6 @@ export const AdminSidebar = () => {
 
     return (
         <aside className="sidebar">
-
             <nav className="sidebar__nav">
                 {menuItems.map((item) => {
                     const Icon = item.icon;
@@ -40,6 +44,7 @@ export const AdminSidebar = () => {
 
             <div className="sidebar__footer">
                 <Link href="/main" className="sidebar__item sidebar__item--logout">
+                    <LogOut size={20} />
                     <span>Вернуться на маркетплейс</span>
                 </Link>
             </div>
