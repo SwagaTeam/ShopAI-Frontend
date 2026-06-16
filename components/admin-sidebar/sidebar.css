@@ -1,19 +1,14 @@
 .sidebar {
-    width: 280px;
+    width: 72px;
     height: 100vh;
     background-color: #ffffff;
-    padding: 24px 16px;
+    padding: 24px 8px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border-right: 1px solid #e0e6ee;
-}
-
-.sidebar__title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1e293b;
-    letter-spacing: -0.3px;
+    transition: width 0.3s ease;
+    z-index: 1010;
 }
 
 /* Навигация */
@@ -21,71 +16,115 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
+    align-items: center;
 }
 
 /* Элементы меню */
 .sidebar__item {
-    width: 100%;
+    position: relative;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
     background-color: transparent;
     color: #475569;
-    border: none;
     border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 15px;
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    text-align: left;
+    text-decoration: none;
 }
 
 .sidebar__item:hover {
-    background-color: #f8fafc;
+    background-color: #f1f5f9;
+    color: #2563eb;
 }
 
 .sidebar__item--active {
     background-color: #2563eb;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .sidebar__item--active:hover {
-    background-color: #1d4ed8;
+    background-color: #2563eb!important;
+    color: #ffffff !important;
 }
 
 .sidebar__item svg {
     flex-shrink: 0;
 }
 
-.sidebar__item--active svg {
+/* Скрываем текст по умолчанию */
+.sidebar__item span {
+    position: absolute;
+    left: 60px;
+    background-color: #1e293b;
     color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+/* Треугольник для тултипа */
+.sidebar__item span::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 4px 4px 4px 0;
+    border-style: solid;
+    border-color: transparent #1e293b transparent transparent;
+}
+
+/* Показываем текст при наведении */
+.sidebar__item:hover span {
+    opacity: 1;
+    visibility: visible;
+    left: 56px;
+}
+
+.sidebar__footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Адаптивность - скрываем сайдбар совсем на очень маленьких экранах или оставляем как есть */
+@media (max-width: 640px) {
     .sidebar {
-        width: 80px;
-        padding: 24px 8px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        padding: 0 16px;
+        border-right: none;
+        border-top: 1px solid #e0e6ee;
     }
 
-    .sidebar__title,
-    .sidebar__item span {
+    .sidebar__nav {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    .sidebar__footer {
         display: none;
     }
 
-    .sidebar__item {
-        justify-content: center;
-        padding: 12px;
-    }
-
-    .sidebar__header {
-        justify-content: center;
-        padding: 0 8px 24px 8px;
-    }
-
-    .sidebar__logo {
-        margin: 0;
+    .sidebar__item span {
+        display: none;
     }
 }
