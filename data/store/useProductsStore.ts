@@ -33,7 +33,7 @@ export const useProductsStore = create<ProductsState>((set) => ({
     isLoading: false,
     error: null,
 
-    async fetchMainPageProducts(count = 30) {
+    async fetchMainPageProducts(count = 50) {
         set({ isLoading: true, error: null });
         try {
             const responseDashboard = await apiClient.get('/dashboard');

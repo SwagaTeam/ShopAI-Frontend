@@ -2,14 +2,8 @@ import { create } from 'zustand';
 import { apiClient } from '@/data/api/apiClient';
 import { ItemInterface } from "@/data/interfaces/ItemInterface";
 
-export interface Category {
-    id: string;
-    name: string;
-    shopId?: string;
-    parentCategoryId?: string | null;
-}
-
 export interface Brand {
+    logoUrl: string;
     id: string;
     name: string;
 }
@@ -34,18 +28,18 @@ interface FilterParams {
 
 interface CatalogState {
     products: ItemInterface[];
-    categories: Category[];
     brands: Brand[];
     totalCount: number;
     isLoading: boolean;
+    isFetchingMore: boolean;
     error: string | null;
     filters: FilterParams;
 
     setFilters: (filters: Partial<FilterParams>) => void;
-    fetchProducts: () => Promise<void>;
-    fetchCategories: () => Promise<void>;
+    fetchProducts: (append?: boolean) => Promise<void>;
     fetchBrands: () => Promise<void>;
     resetFilters: () => void;
+    clearSearch: () => void;
 }
 
 const initialFilters: FilterParams = {
@@ -57,52 +51,55 @@ const initialFilters: FilterParams = {
 
 export const useCatalogStore = create<CatalogState>((set, get) => ({
     products: [],
-    categories: [],
     brands: [],
     totalCount: 0,
     isLoading: false,
+    isFetchingMore: false,
     error: null,
     filters: initialFilters,
 
     setFilters: (newFilters) => {
+        const isPageChange = Object.keys(newFilters).length === 1 && 'pageNumber' in newFilters;
+
         set((state) => ({
             filters: { ...state.filters, ...newFilters }
         }));
-        get().fetchProducts();
+
+        if (isPageChange) {
+            get().fetchProducts(true);
+        } else {
+            get().fetchProducts(false);
+        }
     },
 
     resetFilters: () => {
         set({ filters: initialFilters });
-        get().fetchProducts();
+        get().fetchProducts(false);
     },
 
-    fetchProducts: async () => {
-        set({ isLoading: true, error: null });
+    fetchProducts: async (append = false) => {
+        if (append) set({ isFetchingMore: true });
+        else set({ isLoading: true, error: null });
+
         try {
             const { filters } = get();
             const response = await apiClient.get('/Products/filter', {
                 params: filters
             });
-            set({
-                products: response.data.items,
+
+            set((state) => ({
+                products: append ? [...state.products, ...response.data.items] : response.data.items,
                 totalCount: response.data.totalCount,
-                isLoading: false
-            });
+                isLoading: false,
+                isFetchingMore: false
+            }));
         } catch (error) {
             console.error('Ошибка при загрузке товаров:', error);
             set({
                 error: 'Ошибка при загрузке товаров',
-                isLoading: false
+                isLoading: false,
+                isFetchingMore: false
             });
-        }
-    },
-
-    fetchCategories: async () => {
-        try {
-            const response = await apiClient.get('/Categories');
-            set({ categories: response.data });
-        } catch (error) {
-            console.error('Ошибка при загрузке категорий:', error);
         }
     },
 
@@ -113,5 +110,11 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
         } catch (error) {
             console.error('Ошибка при загрузке брендов:', error);
         }
+    },
+
+    clearSearch: () => {
+        set((state) => ({
+            filters: { ...state.filters, searchTerm: undefined }
+        }));
     }
 }));

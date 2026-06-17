@@ -91,13 +91,12 @@
 
 .request-card {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 20px;
     padding: 20px;
     border: 1px solid #e0e6ee;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    transition: box-shadow 0.2s ease;
 }
 
 .request-card:hover {
@@ -117,36 +116,36 @@
 }
 
 .request-card__user-name {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     color: #1e293b;
 }
 
 .request-card__user-email {
-    font-size: 14px;
+    font-size: 16px;
     color: #64748b;
 }
 
 .request-card__status {
     padding: 4px 12px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .request-card__status--pending {
-    background: #fff7ed;
-    color: #9a3412;
+    background: #ffffff;
+    color: #1d4ed8;
 }
 
 .request-card__status--approved {
-    background: #eff6ff;
+    background: #ffffff;
     color: #1d4ed8;
 }
 
 .request-card__status--rejected {
-    background: #fef2f2;
+    background: #ffffff;
     color: #991b1b;
 }
 
@@ -163,7 +162,7 @@
 }
 
 .request-card__label {
-    font-size: 11px;
+    font-size: 13px;
     color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -171,7 +170,7 @@
 }
 
 .request-card__value {
-    font-size: 15px;
+    font-size: 16px;
     color: #334155;
     word-break: break-all;
     line-height: 1.5;
@@ -191,7 +190,7 @@
 
 .request-card__btn {
     padding: 10px 24px;
-    border-radius: 8px;
+    border-radius: 14px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

@@ -107,7 +107,7 @@ const RequestsPage = () => {
                                     </span>
                                 </div>
                                 <div className="request-card__field">
-                                    <span className="request-card__label">Категория</span>
+                                    <span className="request-card__label">Категория товаров</span>
                                     <span className="request-card__value">{request.plannedCategory}</span>
                                 </div>
                                 <div className="request-card__field">

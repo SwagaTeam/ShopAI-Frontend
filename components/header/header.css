@@ -106,18 +106,12 @@
     outline: none;
     transition: border-color 0.2s, background-color 0.2s;
 }
-
-.header__search-input:focus {
-    border-color: #2563eb;
-    background-color: #ffffff;
-}
-
 .header__search-icon {
     position: absolute;
     right: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: #2563eb;
+    color: #8eaff6;
     cursor: pointer;
     display: flex;
     align-items: center;

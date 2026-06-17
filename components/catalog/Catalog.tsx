@@ -52,57 +52,57 @@ export function Catalog() {
     const activeData = subcategoriesData[activeCategory as keyof typeof subcategoriesData];
 
     return (
-        <div className="catalog-container">
-            <div className="catalog">
-            <aside className="catalog__sidebar">
-                <div className="catalog__sidebar-header">
-                    <h3 className="catalog__sidebar-title">Категории</h3>
-                    <span className="catalog__sidebar-arrow">
+        <div className="megamenu-container">
+            <div className="megamenu">
+            <aside className="megamenu__sidebar">
+                <div className="megamenu__sidebar-header">
+                    <h3 className="megamenu__sidebar-title">Категории</h3>
+                    <span className="megamenu__sidebar-arrow">
                         <ChevronDown size={10} />
                     </span>
                 </div>
 
-                <ul className="catalog__category-list">
+                <ul className="megamenu__category-list">
                     {categories.map((category) => (
                         <li
                             key={category.id}
-                            className={`catalog__category-item ${
-                                activeCategory === category.id ? 'catalog__category-item--active' : ''
+                            className={`megamenu__category-item ${
+                                activeCategory === category.id ? 'megamenu__category-item--active' : ''
                             }`}
                             onClick={() => setActiveCategory(category.id)}
                         >
-                            <span className="catalog__category-icon">{category.icon}</span>
+                            <span className="megamenu__category-icon">{category.icon}</span>
                             {category.label}
                         </li>
                     ))}
                 </ul>
 
-                <div className="catalog__sidebar-header" style={{ paddingTop: '16px', paddingBottom: 0 }}>
+                <div className="megamenu__sidebar-header" style={{ paddingTop: '16px', paddingBottom: 0 }}>
                     <span style={{ visibility: 'hidden' }}>Spacer</span>
-                    <span className="catalog__sidebar-arrow">
+                    <span className="megamenu__sidebar-arrow">
                         <ChevronUp size={10} />
                     </span>
                 </div>
             </aside>
 
-            <main className="catalog__content">
+            <main className="megamenu__content">
                 {activeData ? (
                     <>
-                        <header className="catalog__header">
-                            <h1 className="catalog__title">{activeData.title}</h1>
-                            <p className="catalog__subtitle">{activeData.subtitle}</p>
+                        <header className="megamenu__header">
+                            <h1 className="megamenu__title">{activeData.title}</h1>
+                            <p className="megamenu__subtitle">{activeData.subtitle}</p>
                         </header>
 
-                        <div className="catalog__grid">
+                        <div className="megamenu__grid">
                             {activeData.columns.map((col, colIndex) => (
-                                <div key={colIndex} className="catalog__column">
+                                <div key={colIndex} className="megamenu__column">
                                     {col.map((group, groupIndex) => (
-                                        <section key={groupIndex} className="catalog__group">
-                                            <h2 className="catalog__group-title">{group.title}</h2>
-                                            <ul className="catalog__item-list">
+                                        <section key={groupIndex} className="megamenu__group">
+                                            <h2 className="megamenu__group-title">{group.title}</h2>
+                                            <ul className="megamenu__item-list">
                                                 {group.items.map((item, itemIndex) => (
-                                                    <li key={itemIndex} className="catalog__item">
-                                                        <a href="#" className="catalog__item-link">
+                                                    <li key={itemIndex} className="megamenu__item">
+                                                        <a href="#" className="megamenu__item-link">
                                                             {item}
                                                         </a>
                                                     </li>
@@ -115,9 +115,9 @@ export function Catalog() {
                         </div>
                     </>
                 ) : (
-                    <div className="catalog__header">
-                        <h1 className="catalog__title">Раздел в разработке</h1>
-                        <p className="catalog__subtitle">Выберите категорию &quot;Обувь&quot; для просмотра макета</p>
+                    <div className="megamenu__header">
+                        <h1 className="megamenu__title">Раздел в разработке</h1>
+                        <p className="megamenu__subtitle">Выберите категорию &quot;Обувь&quot; для просмотра макета</p>
                     </div>
                 )}
             </main>

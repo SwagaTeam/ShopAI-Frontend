@@ -127,7 +127,7 @@ export const AutocompleteSearch = ({ onSearch, ...props }: AutocompleteProps) =>
                 roots.clear();
             }, 0);
         };
-    }, [props, onSearch, router]);
+    }, [props, onSearch, router, filters.searchTerm]);
 
     return <div ref={containerRef} className="header__search-autocomplete" />;
 };
