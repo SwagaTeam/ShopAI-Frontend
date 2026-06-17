@@ -69,10 +69,10 @@ export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
 
                     {!isSuperCompact && (
                         <div className="header__search">
-                            {/*<button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
+                            <button className="header__catalog-btn" onClick={() => setCatalogOpen(!isCatalogOpen)}>
                                 <ChevronDown size={24}/>
                                 <span>Каталог</span>
-                            </button>*/}
+                            </button>
                             <AutocompleteSearch onSearch={handleSearch} />
                         </div>
                     )}

@@ -106,12 +106,13 @@
     outline: none;
     transition: border-color 0.2s, background-color 0.2s;
 }
+
 .header__search-icon {
     position: absolute;
     right: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: #8eaff6;
+    color: #2563eb;
     cursor: pointer;
     display: flex;
     align-items: center;
