@@ -7,6 +7,7 @@ import { ProductCardSkeleton } from "@/components/skeleton/skeleton";
 import { ProductCard } from "@/components/product-card/product-card";
 import { useCatalogStore } from "@/data/store/useCatalogStore";
 import { Filter, X, Loader2 } from 'lucide-react';
+import {Placeholder} from "@/components/placeholder/placeholder";
 
 export default function CatalogPage() {
     const {
@@ -235,8 +236,14 @@ export default function CatalogPage() {
                                         })}
                                     </>
                                 ) : (
-                                    <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px 0', background: '#fff', borderRadius: '12px' }}>
-                                        <p style={{ color: '#808080', fontSize: '16px' }}>Товары не найдены</p>
+                                    <div style={{ gridColumn: '1 / -1'}}>
+                                        <Placeholder
+                                            title={"Товары не найдены"}
+                                            text={"Обратитесь ко мне за помощью :)"}
+                                            buttonText={"Искать товары с Шопи"}
+                                            img={"/images/robot-info.png"}
+                                            nav={"/ai-assistant"}
+                                        />
                                     </div>
                                 )}
                             </div>

@@ -4,6 +4,9 @@ import React from 'react';
 import { Store, Box, ShoppingBag } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import './admin-shop-card.css';
+import {parseLogoPath} from "@/utils/utils";
+
+
 
 interface AdminShopCardProps {
     shop: {
@@ -16,27 +19,6 @@ interface AdminShopCardProps {
     showManageButton?: boolean;
 }
 
-const DEFAULT_COLOR = '#2563eb';
-
-const parseLogoPath = (path: string | undefined): string => {
-    if (!path) return DEFAULT_COLOR;
-
-    // Если это URL от S3/MinIO (содержит /bucket/), извлекаем строку цвета/градиента
-    if (path.includes('/bucket/')) {
-        try {
-            // Извлекаем всё что после /bucket/ и до начала query параметров (?)
-            const match = path.match(/\/bucket\/([^?]+)/);
-            if (match && match[1]) {
-                // Декодируем и заменяем + на пробелы (на случай если S3 так закодировал)
-                return decodeURIComponent(match[1]).replace(/\+/g, ' ');
-            }
-        } catch (e) {
-            console.error('Error parsing logoPath:', e);
-        }
-    }
-
-    return path;
-};
 
 export const AdminShopCardSkeleton = () => {
     return (

@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useShopsStore } from '@/data/store/useShopsStore';
 import { useAnalyticsStore } from '@/data/store/useAnalyticsStore';
-import { Plus, Store, Box, ShoppingBag, DollarSign, Package, Star } from 'lucide-react';
+import { Plus,ShoppingBag, DollarSign, Star } from 'lucide-react';
 import './shops.css';
 import Link from "next/link";
 import { AdminShopCard } from '@/components/admin/admin-shop-card';

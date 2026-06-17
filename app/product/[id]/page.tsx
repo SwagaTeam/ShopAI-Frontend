@@ -15,6 +15,7 @@ import { ReviewCard } from "@/components/review-card/review-card";
 import { LikeButton } from "@/components/like-button/like-button";
 import { AddToCartButton } from "@/components/add-to-cart-button/add-to-cart-button";
 import { ProductPageSkeleton } from "@/components/skeleton/skeleton";
+import Link from "next/link";
 
 export default function ProductPage() {
     const { product, isLoading, error, fetchProduct } = useProductStore();
@@ -203,6 +204,7 @@ export default function ProductPage() {
                             <AddToCartButton productId={productId} stockQuantity={product.stockQuantity} />
                             <button className="btn-secondary" disabled={product.stockQuantity === 0}>Купить в 1 клик</button>
                         </div>
+                        <Link className="action-buttons-seller" href={`/shop/${product.shopId}`}>Продавец: {product.shopName}</Link>
                     </div>
                 </div>
 

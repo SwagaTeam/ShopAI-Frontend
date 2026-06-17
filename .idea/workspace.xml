@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="requests">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="fix SSR">
+      <change afterPath="$PROJECT_DIR$/app/shop/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shop/[id]/shop-user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/logo-loop/LogoLoop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/logo-loop/LogoLoop.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/create-shop/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/create-shop/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/products/create/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/create/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/Autocomplete.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Autocomplete.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shop/[id]/shop-layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shop/[id]/shop-layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/shops/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/shops/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/catalog/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/catalog/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/product/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/product/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/admin-shop-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/admin-shop-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store/useProductStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store/useProductStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +43,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -140,14 +149,6 @@
       <workItem from="1781372597168" duration="32880000" />
       <workItem from="1781622534665" duration="3987000" />
       <workItem from="1781632031089" duration="16406000" />
-    </task>
-    <task id="LOCAL-00064" summary="fix: admin sidebar">
-      <option name="closed" value="true" />
-      <created>1780783465167</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1780783465167</updated>
     </task>
     <task id="LOCAL-00065" summary="feat: main skeleton loader">
       <option name="closed" value="true" />
@@ -533,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781657815175</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="fix SSR">
+      <option name="closed" value="true" />
+      <created>1781685564506</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1781685564506</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +560,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: pwa starts from /auth" />
     <MESSAGE value="feat: optimistic like button update" />
     <MESSAGE value="feat: optimistic add-to-cart update" />
     <MESSAGE value="update Readme.md" />
@@ -576,6 +584,7 @@
     <MESSAGE value="feat: analytics periods" />
     <MESSAGE value="fix: product page layout" />
     <MESSAGE value="catalog page layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="catalog page layout" />
+    <MESSAGE value="fix SSR" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix SSR" />
   </component>
 </project>

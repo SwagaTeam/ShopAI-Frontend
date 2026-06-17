@@ -20,3 +20,23 @@ export const formatDate = (dateStr: string) => {
 export const getInitial = (name: string) => {
     return name?.charAt(0)?.toUpperCase() || '?';
 };
+
+export const parseLogoPath = (path: string | undefined): string => {
+    if (!path) return  '#2563eb';
+
+    // Если это URL от S3/MinIO (содержит /bucket/), извлекаем строку цвета/градиента
+    if (path.includes('/bucket/')) {
+        try {
+            // Извлекаем всё что после /bucket/ и до начала query параметров (?)
+            const match = path.match(/\/bucket\/([^?]+)/);
+            if (match && match[1]) {
+                // Декодируем и заменяем + на пробелы (на случай если S3 так закодировал)
+                return decodeURIComponent(match[1]).replace(/\+/g, ' ');
+            }
+        } catch (e) {
+            console.error('Error parsing logoPath:', e);
+        }
+    }
+
+    return path;
+};

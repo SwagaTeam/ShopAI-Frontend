@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { apiClient } from '@/data/api/apiClient'; // Ваш импорт apiClient
+import { apiClient } from '@/data/api/apiClient';
 
 export interface Product {
     id: string;
