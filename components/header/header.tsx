@@ -22,6 +22,7 @@ export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
     const [isProfileOpen, setProfileOpen] = useState(false);
 
     const { fetchFavorites, isFetched } = useFavoritesStore();
+    const token = useAuthStore((state) => state.token);
     const { setFilters } = useCatalogStore();
     const router = useRouter();
 
@@ -32,10 +33,10 @@ export const Header = ({isCompact, isSuperCompact = false} : HeaderProps) => {
     };
 
     useEffect(() => {
-        if (!isFetched) {
+        if (token && !isFetched) {
             fetchFavorites();
         }
-    }, [isFetched, fetchFavorites]);
+    }, [token, isFetched, fetchFavorites]);
 
     useEffect(() => {
         if (isCatalogOpen) {

@@ -5,9 +5,25 @@ export const apiClient = axios.create({
     baseURL: "https://84.252.132.226/api/",
 });
 
+export function getStoredAccessToken() {
+    const stateToken = useAuthStore.getState().token;
+    if (stateToken || typeof window === "undefined") {
+        return stateToken;
+    }
+
+    try {
+        const raw = window.localStorage.getItem("auth-storage");
+        if (!raw) return null;
+
+        const parsed = JSON.parse(raw);
+        return parsed?.state?.token ?? null;
+    } catch {
+        return null;
+    }
+}
 
 apiClient.interceptors.request.use((config) => {
-    const token = useAuthStore.getState().token;
+    const token = getStoredAccessToken();
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

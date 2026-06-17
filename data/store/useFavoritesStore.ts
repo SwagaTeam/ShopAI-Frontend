@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { apiClient } from '@/data/api/apiClient';
+import { apiClient, getStoredAccessToken } from '@/data/api/apiClient';
 import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 interface FavoritesState {
@@ -23,6 +23,15 @@ export const useFavoritesStore = create<FavoritesState>((set) => ({
 
     async fetchFavorites() {
         set({ isLoading: true, error: null });
+        if (!getStoredAccessToken()) {
+            set({
+                items: [],
+                isLoading: false,
+                isFetched: true
+            });
+            return;
+        }
+
         try {
             const response = await apiClient.get('/Favorites');
             set({

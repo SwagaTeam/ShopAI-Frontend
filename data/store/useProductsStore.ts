@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { apiClient } from '@/data/api/apiClient';
+import axios from 'axios';
+import { apiClient, getStoredAccessToken } from '@/data/api/apiClient';
 import {ItemInterface} from "@/data/interfaces/ItemInterface";
 
 interface Stats {
@@ -36,14 +37,29 @@ export const useProductsStore = create<ProductsState>((set) => ({
     async fetchMainPageProducts(count = 50) {
         set({ isLoading: true, error: null });
         try {
-            const responseDashboard = await apiClient.get('/dashboard');
             const responseMain = await apiClient.get('/Products/main-page', {
                 params: { count }
             });
+
+            let popular = responseMain.data.popular;
+            let stats = useProductsStore.getState().stats;
+
+            if (getStoredAccessToken()) {
+                try {
+                    const responseDashboard = await apiClient.get('/Dashboard');
+                    popular = responseDashboard.data.popular;
+                    stats = responseDashboard.data.stats;
+                } catch (error) {
+                    if (!axios.isAxiosError(error) || error.response?.status !== 401) {
+                        throw error;
+                    }
+                }
+            }
+
             set({
                 latest: responseMain.data.latest,
-                popular: responseDashboard.data.popular,
-                stats: responseDashboard.data.stats,
+                popular,
+                stats,
                 isLoading: false
             });
         } catch (error) {

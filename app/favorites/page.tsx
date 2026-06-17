@@ -4,16 +4,20 @@ import {Header} from "@/components/header/header";
 import {ProductCard} from "@/components/product-card/product-card";
 import React, { useEffect } from "react";
 import { useFavoritesStore } from "@/data/store/useFavoritesStore";
+import { useAuthStore } from "@/data/store/useAuthStore";
 import "./favorites.css"
 import {Placeholder} from "@/components/placeholder/placeholder";
 import {ProductCardSkeleton} from "@/components/skeleton/skeleton";
 
 export  default function Page () {
     const { items, isLoading, error, fetchFavorites } = useFavoritesStore();
+    const token = useAuthStore((state) => state.token);
 
     useEffect(() => {
-        fetchFavorites();
-    }, [fetchFavorites]);
+        if (token) {
+            fetchFavorites();
+        }
+    }, [token, fetchFavorites]);
 
     return (
         <div className="page">
