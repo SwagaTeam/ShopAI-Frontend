@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./checkout.css";
 import { Header } from "@/components/header/header";
 import { OrderSummary } from "@/components/order-summary/order-summary";
@@ -8,10 +8,9 @@ import { CreditCard, MapPin, Plus } from "lucide-react";
 import { Breadcrumb } from "@/components/breadcrumb/breadcrumb";
 import { useCartStore } from "@/data/store/useCartStore";
 import { useAuthStore } from "@/data/store/useAuthStore";
-import { useCheckoutStore } from "@/data/store/useCheckoutStore"; // <-- Наш новый стор
+import { useCheckoutStore } from "@/data/store/useCheckoutStore";
 import { useRouter } from "next/navigation";
 import { sileo } from "sileo";
-import { useRef } from "react";
 
 const emptyAddressForm = {
     title: "",
@@ -36,20 +35,19 @@ export default function CheckoutPage() {
         fetchAddresses,
         saveAddress,
         submitOrder,
-        confirmPayment
+        confirmPayment,
     } = useCheckoutStore();
+
+    const [deliveryMode, setDeliveryMode] = useState<"saved" | "new">("new");
+    const [selectedAddressId, setSelectedAddressId] = useState("");
+    const [addressForm, setAddressForm] = useState(emptyAddressForm);
+    const [contactPhone, setContactPhone] = useState(phone || "");
+    const [orderComment, setOrderComment] = useState("");
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsSummaryVisible(entry.isIntersecting);
-            },
-            {
-                threshold: 0,
-                // Отрицательный отступ заставляет панель оставаться видимой,
-                // пока основной блок оплаты не зайдет в экран на 150px.
-                rootMargin: "0px 0px -150px 0px"
-            }
+            ([entry]) => setIsSummaryVisible(entry.isIntersecting),
+            { threshold: 0, rootMargin: "0px 0px -150px 0px" }
         );
 
         if (summaryRef.current) {
@@ -58,12 +56,6 @@ export default function CheckoutPage() {
 
         return () => observer.disconnect();
     }, []);
-
-    const [deliveryMode, setDeliveryMode] = useState<"saved" | "new">("new");
-    const [selectedAddressId, setSelectedAddressId] = useState("");
-    const [addressForm, setAddressForm] = useState(emptyAddressForm);
-    const [contactPhone, setContactPhone] = useState(phone || "");
-    const [orderComment, setOrderComment] = useState("");
 
     useEffect(() => {
         fetchCart();
@@ -83,7 +75,7 @@ export default function CheckoutPage() {
     }, [contactPhone, phone]);
 
     const handleAddressChange = (field: keyof typeof addressForm, value: string) => {
-        setAddressForm(prev => ({ ...prev, [field]: value }));
+        setAddressForm((prev) => ({ ...prev, [field]: value }));
     };
 
     const handleSaveAddress = async () => {
@@ -101,6 +93,7 @@ export default function CheckoutPage() {
         } else {
             sileo.error({ title: "Ошибка", description: "Не удалось сохранить адрес доставки", duration: 2500 });
         }
+
         return created;
     };
 
@@ -110,6 +103,7 @@ export default function CheckoutPage() {
                 sileo.error({ title: "Выберите адрес", description: "Добавьте или выберите место доставки", duration: 2500 });
                 return null;
             }
+
             return { deliveryAddressId: selectedAddressId, deliveryAddressText: null };
         }
 
@@ -120,6 +114,7 @@ export default function CheckoutPage() {
 
         const created = await handleSaveAddress();
         if (!created) return null;
+
         return { deliveryAddressId: created.id, deliveryAddressText: null };
     };
 
@@ -143,10 +138,10 @@ export default function CheckoutPage() {
         if (!delivery) return;
 
         const orderData = await submitOrder({
-            returnUrl: `${window.location.origin}/checkout`,
+            returnUrl: `${window.location.origin}/orders?payment=returned`,
             ...delivery,
-            contactPhone,
-            comment: orderComment,
+            contactPhone: contactPhone.trim(),
+            comment: orderComment.trim() || null,
         });
 
         if (!orderData) {
@@ -158,21 +153,24 @@ export default function CheckoutPage() {
 
         if (confirmationUrl?.startsWith("/api/Payments/")) {
             const confirmed = await confirmPayment(paymentId, orderIds);
-            if (confirmed) {
-                clearCart();
-                sileo.success({ title: "Заказ оплачен", description: "Покупка успешно оформлена", duration: 2500 });
-                router.push("/orders");
+            if (!confirmed) {
+                sileo.error({ title: "Ошибка оплаты", description: "Не удалось подтвердить тестовый платеж", duration: 2500 });
+                return;
             }
+
+            clearCart();
+            sileo.success({ title: "Заказ оплачен", description: "Покупка успешно оформлена", duration: 2500 });
+            router.push("/orders");
             return;
         }
 
         if (confirmationUrl) {
             clearCart();
-            window.location.href = confirmationUrl;
+            window.location.assign(confirmationUrl);
             return;
         }
 
-        sileo.error({ title: "Ошибка", description: "Сбой получения данных для оплаты", duration: 2500 });
+        sileo.error({ title: "Ошибка", description: "Сбой получения ссылки для оплаты", duration: 2500 });
     };
 
     const isFormValid = addressForm.title.trim() !== "" && addressForm.addressLine.trim() !== "";
@@ -209,7 +207,7 @@ export default function CheckoutPage() {
 
                                 {deliveryMode === "saved" && addresses.length > 0 ? (
                                     <div className="address-list">
-                                        {addresses.map(address => (
+                                        {addresses.map((address) => (
                                             <label className="address-option" key={address.id}>
                                                 <input
                                                     type="radio"
@@ -315,11 +313,7 @@ export default function CheckoutPage() {
                         <span className="mobile-sticky-pay__label">Итого</span>
                         <span className="mobile-sticky-pay__price">{totalPrice} ₽</span>
                     </div>
-                    <button
-                        className="mobile-sticky-pay__btn"
-                        onClick={handlePay}
-                        disabled={isSubmitting}
-                    >
+                    <button className="mobile-sticky-pay__btn" onClick={handlePay} disabled={isSubmitting}>
                         {isSubmitting ? "..." : "Оплатить"}
                     </button>
                 </div>
