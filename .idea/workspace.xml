@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="catalog page layout">
+    <list default="true" id="9694b351-50f9-4484-ab17-84abdb730a7d" name="Changes" comment="requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/create-shop/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/create-shop/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/products/create/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/create/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/Autocomplete.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Autocomplete.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

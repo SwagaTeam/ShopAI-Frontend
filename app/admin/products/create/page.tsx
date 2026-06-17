@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, {useState, useEffect, useCallback, useRef, Suspense} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useShopsStore } from '@/data/store/useShopsStore';
 import { useShopStore } from '@/data/store/useShopStore';
@@ -35,7 +35,7 @@ interface ImageItem {
     url: string;
 }
 
-export default function CreateProductPage() {
+function CreateProductFormContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const shopIdFromQuery = searchParams.get('shopId');
@@ -381,5 +381,13 @@ export default function CreateProductPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function CreateProductPage() {
+    return (
+        <Suspense fallback={<div>Загрузка формы...</div>}>
+            <CreateProductFormContent />
+        </Suspense>
     );
 }

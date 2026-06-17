@@ -32,10 +32,13 @@ export const AutocompleteSearch = ({ onSearch, ...props }: AutocompleteProps) =>
                 render(children, container) {
                     const domElement = container as Element;
                     let root = rootMap.current.get(domElement);
+
                     if (!root) {
                         root = createRoot(domElement);
                         rootMap.current.set(domElement, root);
                     }
+                    //@ts-ignore
+                    domElement.style.zIndex = '999999';
                     root.render(children);
                 },
             },

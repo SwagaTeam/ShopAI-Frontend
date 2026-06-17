@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import {Sparkles, UploadCloud, MessageSquare, Store, ShoppingBag, Loader2, RefreshCw, WandSparkles} from 'lucide-react';
+import React, {useState, useEffect, Suspense} from 'react';
+import {Sparkles, MessageSquare, Store, Loader2, RefreshCw, WandSparkles} from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useShopStore } from '@/data/store/useShopStore';
 import './create-shop.css';
 
-export default function CreateShopPage() {
+function CreateShopFormContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const editId = searchParams.get('editId');
@@ -423,5 +423,13 @@ export default function CreateShopPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function CreateShopPage() {
+    return (
+        <Suspense fallback={<div>Загрузка формы...</div>}>
+            <CreateShopFormContent />
+        </Suspense>
     );
 }
